@@ -22,7 +22,7 @@
 
 ## 07/06/2019
 
-- Hasta el día de hoy, vimos muchas cosas relacionadas con el Swing
+- Hasta el día de hoy, vimos muchas cosas relacionadas con el UI
 
 --> Primer minijuego cutre (usando los ArrayList, la función random, clases privadas).
 
