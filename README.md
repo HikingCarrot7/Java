@@ -30,7 +30,7 @@
 
 --> Fuentes (Objetos evento, Objetos fuente, Objetos oyentes).
 
---> Movimiento circular usando las funciones Math.sin y Math.cos
+--> Movimiento circular usando los métodos Math.sin y Math.cos
 
 --> Propiedades básicas generales de las interfaces gráficas
 
