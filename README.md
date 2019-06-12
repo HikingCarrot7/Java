@@ -35,4 +35,13 @@
 --> Propiedades básicas generales de las interfaces gráficas
 
 
+## 12/06/2019
+
+- Componentes Swing
+
+--> JTextField, JPasswordField, JTextArea, JCheckBox, JRadioButton, JComboBox, JSlider.
+--> Layout (FlowLayout, BorderLayout, GridLayout).
+--> Uso de la (Graphics2D) g.rotate y misceláneos.
+--> Intento del BattleShip mejorado (fallido por el momento).
+
 
