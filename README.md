@@ -47,5 +47,5 @@
 
 --> Intento del BattleShip mejorado (fallido por el momento).
 
-
+--> Creo que ya podemos hacer cositas interesantes
 
