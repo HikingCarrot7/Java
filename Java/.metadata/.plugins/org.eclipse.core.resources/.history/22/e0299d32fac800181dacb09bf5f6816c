@@ -1,0 +1,19 @@
+import javax.swing.*;
+
+	public class Label1 extends JFrame {
+		
+		public Label1() {
+			
+			setLayout(null);
+		}
+
+		public static void main(String[] args) {
+			
+			Label1 Label = new Label1();
+			Label.setBounds(0, 0, 400, 550);
+			Label.setVisible(true);
+
+
+	}
+
+}

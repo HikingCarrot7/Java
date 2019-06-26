@@ -1,0 +1,15 @@
+import javax.swing.*;
+
+	public class Label1 extends JFrame {
+		
+		public Label1() {
+			
+			setLayout(null);
+		}
+
+		public static void main(String[] args) {
+
+
+	}
+
+}
