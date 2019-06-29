@@ -47,5 +47,18 @@
 
 --> Intento del BattleShip mejorado (fallido por el momento).
 
+## 29/06/2019
+
+
+--> Archivos (básico)
+
+--> ficheros JAR
+
+--> JOptionPane
+
+--> Algunas pruebas con el JPanel
+
+-->Recreción grafos (aún no terminado)
+
 --> Creo que ya podemos hacer cositas interesantes
 
