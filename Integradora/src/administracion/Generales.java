@@ -72,7 +72,7 @@ public class Generales
 	
 	public static boolean validarDatos(JTextField texto, JLabel campo) 
 	{	
-		if(texto.getText().trim().contentEquals("")) 
+		if(texto.getText().trim().contentEquals(" ")) 
 		{
 			campo.setText("*Campo vacío");
 			

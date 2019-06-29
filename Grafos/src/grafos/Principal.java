@@ -12,13 +12,14 @@ public class Principal extends JFrame
 	{
 		lamina = new Lamina();
 		
-		setBounds(0, 0, 800, 800);
+		setBounds(0, 0, 1000, 700);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setTitle("Grafos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		addMouseListener(lamina);
 		addMouseMotionListener(lamina);
+		addKeyListener(lamina);
 		add(lamina);
 		setVisible(true);
 	}

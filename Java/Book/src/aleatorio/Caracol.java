@@ -1,9 +1,27 @@
 package aleatorio;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Caracol 
 {
 	public static void main(String[] args) 
 	{
+		
+		System.out.println("Introduce algo...");
+		
+		try 
+		{
+			System.out.println(new BufferedReader(new InputStreamReader(System.in)).readLine());
+			
+			//System.out.println(new InputStreamReader(System.in).read(new char[5]));
+			
+		}catch(IOException e) 
+		{
+			System.out.println("Hubo un error...");
+		}
+		
 		int matriz[][] = new int[5][5];
 		int n = 5, inicio = 0, nlimite = n - 1, c = 1;
 		

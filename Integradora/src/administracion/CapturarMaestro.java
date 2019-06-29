@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.swing.AbstractAction;
@@ -200,10 +201,12 @@ public class CapturarMaestro extends JFrame
 				
 				if(datosCorrectos) 
 				{
-					
 					LaminaAdministrador.listaMaestros.addItem(new Maestro(nombre.getText()).toString());
 					
-					LaminaMaestro.maestrosInstanciados.add(new Maestro(nombre.getText(), Integer.parseInt(edad.getText()), asignatura.getText(), Double.parseDouble(salario.getText()), user.getText(), Generales.pasarAString(password.getPassword()), new GregorianCalendar(calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR))));
+					Maestro nuevoMaestro = new Maestro(nombre.getText(), Integer.parseInt(edad.getText()), asignatura.getText(), Double.parseDouble(salario.getText()), user.getText(), Generales.pasarAString(password.getPassword()), new Date().toString());
+					
+					LaminaMaestro.maestrosInstanciados.add(nuevoMaestro);
+					LeerDatos.anadirMaestros(nuevoMaestro);
 					
 					Generales.actualizarTextoMaestros();
 					
@@ -214,6 +217,7 @@ public class CapturarMaestro extends JFrame
 					LaminaAdministrador.eliminarMaestro.setEnabled(true);
 					
 					LaminaAdministrador.salarioMaestro.setEnabled(true);
+					
 					
 					dispose();
 					

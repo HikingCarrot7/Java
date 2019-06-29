@@ -25,6 +25,16 @@ public class Alumno extends Persona
 		
 	}
 	
+	public String obtenerLic() 
+	{
+		return licenciatura;
+	}
+	
+	public double obtenerCalif() 
+	{
+		return calificacion;
+	}
+	
 	@Override
 	public String mostrarDatos() 
 	{

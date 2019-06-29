@@ -1,8 +1,5 @@
 package administracion;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 public class Maestro extends Persona implements InicioSesion
 {
 	
@@ -10,10 +7,9 @@ public class Maestro extends Persona implements InicioSesion
 	private double sueldo;
 	private String usuario;
 	private String contrasena;
-	private Date fechaAlta;
+	private String fechaAlta;
 	
-	
-	public Maestro(String nombre, int edad, String asignatura, double sueldo, String usuario , String contrasena, GregorianCalendar fechaAlta) 
+	public Maestro(String nombre, int edad, String asignatura, double sueldo, String usuario , String contrasena, String fechaAlta) 
 	{
 		
 		super(nombre, edad);
@@ -23,7 +19,7 @@ public class Maestro extends Persona implements InicioSesion
 		this.usuario = usuario;
 		this.contrasena = contrasena;
 		
-		this.fechaAlta = fechaAlta.getTime();
+		this.fechaAlta = fechaAlta;
 		
 	}
 	
@@ -35,6 +31,21 @@ public class Maestro extends Persona implements InicioSesion
 	public void cambiarSueldo(double sueldo) 
 	{
 		this.sueldo = sueldo;
+	}
+	
+	public double getSueldo() 
+	{
+		return sueldo;
+	}
+	
+	public String getAsignatura() 
+	{
+		return asignatura;
+	}
+	
+	public String getFecha() 
+	{
+		return fechaAlta;
 	}
 	
 	@Override

@@ -73,6 +73,8 @@ public class LaminaMaestro extends JPanel{
 				{
 					alumnosInstancias.get(Login.indiceMaestro).remove(listaAlumnos.getSelectedIndex());
 					
+					LeerDatos.actualizarListaAlumnos();
+					
 					Generales.actualizarTextoAlumnos();
 					
 					listaAlumnos.removeItemAt(listaAlumnos.getSelectedIndex());

@@ -11,7 +11,7 @@ public class CapturarAlumno extends JFrame
 	
 	private DatosAlumno datosAlumno;
 	
-	private boolean datosCorrectos = true;
+	private boolean datosCorrectos;
 	
 	public CapturarAlumno() 
 	{
@@ -126,7 +126,11 @@ public class CapturarAlumno extends JFrame
 					
 					LaminaMaestro.listaAlumnos.addItem(new Alumno(nombre.getText()).toString());
 					
-					LaminaMaestro.alumnosInstancias.get(Login.indiceMaestro).add((new Alumno(nombre.getText(), Integer.parseInt(edad.getText()), licenciatura.getText(), Double.parseDouble(calificacion.getText()))));
+					Alumno nuevoAlumno = new Alumno(nombre.getText(), Integer.parseInt(edad.getText()), licenciatura.getText(), Double.parseDouble(calificacion.getText()));
+					
+					LaminaMaestro.alumnosInstancias.get(Login.indiceMaestro).add(nuevoAlumno);
+					
+					LeerDatos.anadirAlumnos(nuevoAlumno);
 					
 					Generales.actualizarTextoAlumnos();
 					

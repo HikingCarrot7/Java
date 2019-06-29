@@ -88,6 +88,12 @@ public class LaminaAdministrador extends JFrame
 					{
 						LaminaMaestro.maestrosInstanciados.remove(listaMaestros.getSelectedIndex());
 						
+						LaminaMaestro.alumnosInstancias.remove(listaMaestros.getSelectedIndex());
+						
+						LeerDatos.actualizarListaMaestros();
+						
+						LeerDatos.actualizarListaAlumnos();
+						
 						listaMaestros.removeItemAt(listaMaestros.getSelectedIndex());
 						
 						Generales.actualizarTextoMaestros();

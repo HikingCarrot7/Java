@@ -23,6 +23,11 @@ public abstract class Persona
 		return nombre;
 	}
 	
+	public int getEdad() 
+	{
+		return edad;
+	}
+	
 	@Override
 	public String toString() 
 	{

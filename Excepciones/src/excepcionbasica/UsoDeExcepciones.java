@@ -2,7 +2,6 @@ package excepcionbasica;
 
 public class UsoDeExcepciones 
 {
-
 	public static void main(String[] args)
 	{
 		try 
@@ -11,18 +10,14 @@ public class UsoDeExcepciones
 			
 		}catch(IndexOutOfBoundsException e) 
 		{
-			System.out.println("Atrapé la excepción en método main");
-			
-			
+			System.out.println("Atrapé la excepción en método main");	
 		}
 		
 		noLanzaExcepcion();
-		
 	}
 	
 	public static void LanzaExcepciones() throws IndexOutOfBoundsException 
 	{
-		
 		try 
 		{
 			System.out.println("Método lanza excepción");
@@ -30,8 +25,7 @@ public class UsoDeExcepciones
 			throw new IndexOutOfBoundsException();
 			
 		}catch(IndexOutOfBoundsException a) 
-		{
-			
+		{	
 			System.out.println("La Excepcion ha sido manejada");
 			
 			throw a;
@@ -40,7 +34,6 @@ public class UsoDeExcepciones
 		{
 			System.out.println("Se ejecutó el finally xd");
 		}
-		
 	}
 	
 	public static void noLanzaExcepcion()
@@ -57,7 +50,18 @@ public class UsoDeExcepciones
 		{
 			System.out.println("Adiós!");
 		}
-		
 	}
-	
 }
+
+/*class PruebaException extends Exception
+{
+	private static final long serialVersionUID = 1L;
+
+	public PruebaException() {};
+	
+	public PruebaException(String mensaje) 
+	{
+		super(mensaje);
+	};
+
+}*/

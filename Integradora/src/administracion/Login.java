@@ -70,9 +70,14 @@ public class Login extends JFrame
 		public LaminaLogin() 
 		{
 			
+			LeerDatos.LeerMaestros();
+			
+			LeerDatos.leerAlumnos();
+			
 			iniciarElementos();
 			
 			colocarElementos();
+			
 			
 		}
 		
@@ -128,7 +133,7 @@ public class Login extends JFrame
 					{
 						for(Administradores A: administradores) 
 						{
-							if(!(A.getUsuario().contentEquals(usuario.getText()) && A.getContrasena().contentEquals(Generales.pasarAString(password.getPassword()))))
+							if(!(A.getUsuario().contentEquals(usuario.getText().trim()) && A.getContrasena().contentEquals(Generales.pasarAString(password.getPassword()))))
 							{
 								incorrecto = true;
 								
@@ -170,7 +175,7 @@ public class Login extends JFrame
 						
 						for(Maestro M: LaminaMaestro.maestrosInstanciados) 
 						{
-							if(!(M.getUsuario().contentEquals(usuario.getText()) && M.getContrasena().contentEquals(Generales.pasarAString(password.getPassword()))))
+							if(!(M.getUsuario().contentEquals(usuario.getText().trim()) && M.getContrasena().contentEquals(Generales.pasarAString(password.getPassword()))))
 							{
 								incorrecto = true;
 								
@@ -233,7 +238,7 @@ public class Login extends JFrame
 			admin.setEnabled(false);
 			
 			maestro = new JButton(new AccionBotones("Maestro", "Acceder como maestro"));
-			maestro.setEnabled(false);
+			maestro.setEnabled(LaminaMaestro.maestrosInstanciados.size() > 0 ? true : false);
 			
 			login = new JButton(new AccionBotones("Iniciar sesión", "Inicia sesión según tu roll"));
 			
