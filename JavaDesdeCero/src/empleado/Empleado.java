@@ -3,7 +3,8 @@ package empleado;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Empleado implements Comparable {
+public class Empleado implements Comparable
+{
 	
 	private int ticket;
 	private int edad;
@@ -34,6 +35,7 @@ public class Empleado implements Comparable {
 		
 	}
 	
+	@Override
 	public String toString() 
 	{
 		
@@ -52,13 +54,11 @@ public class Empleado implements Comparable {
 	
 	public int compareTo(Object miObjeto) 
 	{
-		Empleado otroEmpleado = (Empleado) miObjeto;
-		
-		if(this.sueldo < otroEmpleado.sueldo) 
+		if(this.sueldo < ((Empleado) miObjeto).sueldo) 
 		{
 			return -1;
 			
-		}else if(this.sueldo > otroEmpleado.sueldo) 
+		}else if(this.sueldo > ((Empleado) miObjeto).sueldo) 
 		{
 			return 1;
 			
@@ -66,8 +66,5 @@ public class Empleado implements Comparable {
 		{
 			return 0;
 		}
-		
 	}
-	
-	
 }

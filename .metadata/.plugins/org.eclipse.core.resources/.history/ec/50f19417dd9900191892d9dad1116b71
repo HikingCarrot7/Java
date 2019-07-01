@@ -1,0 +1,61 @@
+package alumos;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class PruebaAlumnos 
+{
+	private static ArrayList<Alumnos> matematicas, historia;
+	
+	private static Scanner in;
+	
+	public static void main(String[] args) 
+	{
+		
+		declarar();
+		
+		
+		
+		preguntar();
+		
+	}
+	
+	public static void declarar() 
+	{
+		in = new Scanner(System.in);
+		
+		matematicas = new ArrayList<>();
+		
+		historia = new ArrayList<>();
+		
+	}
+	
+	public static void preguntar() 
+	{
+		
+		int opcion;
+		
+		System.out.println("1.- Añadir alumno\n2.-Mostrar a los alumnos de matemáticas\n3.-Mostrar a los alumnos de historia");
+		opcion = in.nextInt();
+		
+		switch(opcion)
+		{
+		
+		case 1:
+			
+			break;
+		
+		
+		
+		}
+		if(!(matematicas.size() > 0 && historia.size() > 0))
+			System.out.println("Presione 1 para registrar a un alumno");
+		
+		else if()
+		
+		
+		
+		
+	}
+
+}

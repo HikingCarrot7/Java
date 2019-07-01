@@ -1,0 +1,24 @@
+package calculadoramejorada;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+public class Display extends JPanel
+{
+	private static final long serialVersionUID = 1L;
+	
+	JButton display;
+	
+	public Display() 
+	{
+		setLayout(new BorderLayout());
+		
+		display = new JButton("0");
+		
+		add(display, BorderLayout.NORTH);
+		
+	}
+	
+}

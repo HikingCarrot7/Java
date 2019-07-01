@@ -1,0 +1,20 @@
+package directorios;
+
+public class Alumnos 
+{
+	private String nombre;
+	private int edad;
+	
+	public Alumnos(String nombre, int edad) 
+	{
+		this.nombre = nombre;
+		this.edad = edad;
+	}
+	
+	@Override
+	public String toString() 
+	{
+		return String.format("%-15s%s", "Nombre: " + nombre, edad + " años");
+	}
+	
+}

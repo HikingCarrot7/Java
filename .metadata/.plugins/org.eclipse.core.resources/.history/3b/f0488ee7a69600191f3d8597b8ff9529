@@ -1,0 +1,18 @@
+package empleados;
+
+public class PruebaEmpleado 
+{
+
+	public static void main(String[] args) 
+	{
+		Empleados[] misEmpleados = new Empleados[2];
+		
+		misEmpleados[0] = new Empleados("Nicolás");
+		misEmpleados[1] = new Empleados("Alexis");
+		
+		for(Empleados M: misEmpleados)
+			System.out.println(M);
+
+	}
+
+}

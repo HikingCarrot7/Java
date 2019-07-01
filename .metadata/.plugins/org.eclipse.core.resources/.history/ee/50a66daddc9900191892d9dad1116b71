@@ -1,0 +1,38 @@
+package alumos;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class PruebaAlumnos 
+{
+	private static ArrayList<Alumnos> matematicas, historia;
+	
+	private static Scanner in;
+	
+	public static void main(String[] args) 
+	{
+		
+		declarar();
+		
+		preguntar();
+		
+		
+
+	}
+	
+	public static void declarar() 
+	{
+		in = new Scanner(System.in);
+		
+		matematicas = new ArrayList<>();
+		
+		historia = new ArrayList<>();
+		
+	}
+	
+	public static void preguntar() 
+	{
+		
+	}
+
+}

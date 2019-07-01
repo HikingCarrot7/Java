@@ -19,7 +19,7 @@ public class LeerDatos
 	{
 		try 
 		{
-			salida = new Formatter(new FileWriter("C:\\Archivos\\Administración\\Maestros.txt", true));
+			salida = new Formatter(new FileWriter("Maestros.txt", true));
 			
 			escrituraDatosMaestros(maestro);
 			
@@ -35,7 +35,7 @@ public class LeerDatos
 	{
 		try 
 		{
-			entrada = new Scanner(new File("C:\\Archivos\\Administración\\Maestros.txt"));
+			entrada = new Scanner(new File("Maestros.txt"));
 			
 			//LaminaMaestro.maestrosInstanciados.clear();
 			
@@ -63,7 +63,7 @@ public class LeerDatos
 	{
 		try 
 		{
-			salida = new Formatter(new FileWriter("C:\\Archivos\\Administración\\Alumnos.txt", true));
+			salida = new Formatter(new FileWriter("Alumnos.txt", true));
 			
 			escrituraDatosAlumnos(alumno, Login.indiceMaestro);
 			
@@ -79,7 +79,7 @@ public class LeerDatos
 	{
 		try 
 		{
-			entrada = new Scanner(new File("C:\\Archivos\\Administración\\Alumnos.txt"));
+			entrada = new Scanner(new File("Alumnos.txt"));
 			
 			//LaminaMaestro.maestrosInstanciados.clear();
 			
@@ -104,7 +104,7 @@ public class LeerDatos
 	{
 		try 
 		{
-			salida = new Formatter(new FileWriter("C:\\Archivos\\Administración\\Maestros.txt"));
+			salida = new Formatter(new FileWriter("Maestros.txt"));
 			
 			for(Maestro M: LaminaMaestro.maestrosInstanciados)
 				escrituraDatosMaestros(M);
@@ -121,7 +121,7 @@ public class LeerDatos
 	{
 		try 
 		{
-			salida = new Formatter(new FileWriter("C:\\Archivos\\Administración\\Alumnos.txt"));
+			salida = new Formatter(new FileWriter("Alumnos.txt"));
 			 
 			for(int i = 0; i < LaminaMaestro.alumnosInstancias.size(); i++)
 				for(int  j = 0; j < LaminaMaestro.alumnosInstancias.get(i).size(); j++)

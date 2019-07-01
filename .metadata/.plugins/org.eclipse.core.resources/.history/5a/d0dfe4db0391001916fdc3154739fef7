@@ -1,0 +1,18 @@
+package swing;
+
+public class Juguete 
+{
+	
+	private static int i = 0;
+
+	public static void main(String[] args) 
+	{
+		Juguete miJuguete = new Juguete(); 
+		
+		miJuguete.i = 10;
+		
+		System.out.println(i);
+
+	}
+
+}

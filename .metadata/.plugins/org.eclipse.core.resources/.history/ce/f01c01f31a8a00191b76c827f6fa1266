@@ -1,0 +1,63 @@
+package multiplesoyentes;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.security.SecureRandom;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Lamina extends JPanel
+{
+
+	private static final long serialVersionUID = 1L;
+	
+	JButton nuevo;
+	JButton cerrar;
+	
+	public Lamina()
+	{
+		nuevo = new JButton("Nueva ventana");
+		cerrar = new JButton("Cerrar todas las ventanas");
+		
+		nuevo.addActionListener(new CrearVentanas());
+		
+		add(nuevo);
+		add(cerrar);
+		
+	}
+	
+	private class CrearVentanas implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			while(true) 
+			{
+				new Ventanas();				
+			}
+		}
+	}
+	
+	private class Ventanas extends JFrame
+	{
+		private static final long serialVersionUID = 1L;
+		
+		SecureRandom rand = new SecureRandom();
+
+		public Ventanas()
+		{
+			int x = rand.nextInt(1920);
+			int y = rand.nextInt(1080);
+			
+			this.setBounds(0, 0, x, y);
+			this.setVisible(true);
+			this.setResizable(false);
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+		}
+	}
+
+}

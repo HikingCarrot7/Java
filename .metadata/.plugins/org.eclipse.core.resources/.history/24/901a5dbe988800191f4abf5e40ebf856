@@ -1,0 +1,38 @@
+package eventos;
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
+import javax.swing.JFrame;
+
+public class MiFrame extends JFrame 
+{
+	
+	public MiFrame() 
+	{
+		miLamina lamina = new miLamina();
+		EventoRaton raton = new EventoRaton();
+		
+		Toolkit miPantalla = Toolkit.getDefaultToolkit();
+		Dimension TamanoPantalla = miPantalla.getScreenSize();
+		
+		
+		setSize(TamanoPantalla.width/2, TamanoPantalla.height/2);
+		setVisible(true);
+		setResizable(true);
+		add(lamina);
+		addWindowStateListener(lamina);
+		addMouseListener(raton);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+
+	private static final long serialVersionUID = 1L;
+
+	public static void main(String[] args) 
+	{
+		new MiFrame();
+
+	}
+
+}

@@ -1,0 +1,81 @@
+package eventos;
+
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.awt.event.WindowStateListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+public class miLamina extends JPanel implements WindowStateListener
+{
+	private static final long serialVersionUID = 1L;
+	
+	private JButton azul = new JButton("Azul");
+	private JButton amarillo = new JButton("Amarillo");
+	private JButton rojo = new JButton("Rojo");
+	
+	public miLamina() 
+	{
+		add(azul);
+		add(amarillo);
+		add(rojo);
+		
+		azul.addActionListener(new ColorFondo(Color.blue));
+		
+		amarillo.addActionListener(new ColorFondo(Color.yellow));
+		
+		rojo.addActionListener(new ColorFondo(Color.red));
+		
+		setBackground(Color.cyan);
+	}
+	
+	private class ColorFondo implements ActionListener
+	{
+		private Color c;
+		
+		public ColorFondo(Color c) 
+		{
+			this.c = c;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			setBackground(c);
+			
+		}
+	}
+	
+	private class ColorChange extends WindowAdapter implements WindowListener
+	{
+
+		@Override
+		public void windowDeiconified(WindowEvent e) 
+		{
+			setBackground(Color.pink);
+		}
+	}
+	
+	@Override
+	public void windowStateChanged(WindowEvent e) 
+	{	
+		if(e.getNewState() == Frame.MAXIMIZED_BOTH) 
+		{
+			setBackground(Color.green);
+			
+		}else if(e.getOldState() == Frame.MAXIMIZED_BOTH) 
+		{
+			setBackground(Color.black);
+		}
+	}
+}
+
+
+
+

@@ -1,0 +1,26 @@
+package practicadialogos;
+
+import java.awt.GridLayout;
+
+import javax.swing.JPanel;
+
+public class Lamina extends JPanel
+{
+	private static final long serialVersionUID = 1L;
+	 
+	private JPanel mensajes, boton;
+	
+	public Lamina() 
+	{
+		setLayout(new GridLayout(2,3));
+		
+		add(new LaminaSecciones("Tipo", new String[] {"Mensaje", "Confirmar", "Opción", "Entrada"}));
+		add(new LaminaSecciones("Tipo mensaje", new String[] {"ERROR_MESSAGE", "INFORMATION_MESSAGE", "WARNING_MENSSAGE", "QUESTION_MENSSAGE", "PLAIN_MENSSAGE"}));
+		add(new LaminaSecciones("Mensaje", new String[] {"Cadena", "Icono", "Componente", "Otros", "Object[]"}));
+		add(new LaminaSecciones("Confirmar", new String[] {"DEFAUT_OPTION", "YES_NO_OPTION", "YES_NO_CANCEL_OPTION", "OK_CANCEL_OPTION"}));
+		add(new LaminaSecciones("Opción", new String[] {"String[]", "Icon[]", "Object[]"}));
+		add(new LaminaSecciones("Entrada", new String[] {"Campo de texto", "Combo"}));
+		
+	}
+	
+}

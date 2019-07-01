@@ -1,0 +1,17 @@
+package empleados;
+
+public class Parametros 
+{
+
+	public static void main(String[] args) 
+	{
+		new Parametros().prueba();
+
+	}
+	
+	public void prueba() 
+	{
+		System.out.println("Java es cool");
+	}
+
+}

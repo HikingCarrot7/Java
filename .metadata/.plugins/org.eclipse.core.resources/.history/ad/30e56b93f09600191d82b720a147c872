@@ -1,0 +1,48 @@
+package clasesinternas;
+
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+
+import javax.swing.Timer;
+
+public class Reloj 
+{
+	
+	/*private int intervalo;
+	private boolean sonido;
+	
+	public Reloj(int intervalo, boolean sonido) 
+	{
+		
+		this.intervalo = intervalo;
+		this.sonido = sonido;
+		
+	}*/
+	
+	public void enMarcha(int intervalo, final boolean sonido) 
+	{	
+		class DameLaHora implements ActionListener
+		{	
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				
+				Date ahora = new Date();
+				
+				System.out.println("La hora es: " + ahora);
+				
+				if(sonido) 
+				{
+					Toolkit.getDefaultToolkit().beep();
+				}
+			}
+		}
+		
+		Timer miTemporizador = new Timer(intervalo, new DameLaHora());
+		
+		miTemporizador.start();
+		
+	}
+}

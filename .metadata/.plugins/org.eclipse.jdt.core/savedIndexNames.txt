@@ -1,0 +1,14 @@
+INDEX VERSION 1.131+C:\Users\HikingCarrot\Desktop\JavaPrimerosPasos\.metadata\.plugins\org.eclipse.jdt.core
+2472236216.index
+4081797655.index
+218080732.index
+1809220799.index
+3274250709.index
+1378574051.index
+4217418853.index
+2264543121.index
+2617301672.index
+1901201092.index
+789531584.index
+1531463744.index
+1762777314.index
