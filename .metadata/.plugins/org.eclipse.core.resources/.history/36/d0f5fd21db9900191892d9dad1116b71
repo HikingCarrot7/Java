@@ -1,0 +1,30 @@
+package alumos;
+
+public class Alumnos 
+{
+	private String nombre, asignatura;
+	private int edad;
+	
+	public Alumnos(String nombre, int edad) 
+	{
+		this.nombre = nombre;
+		this.edad = edad;
+	}
+	
+	public String obtenerNombre() 
+	{
+		return nombre;
+	}
+	
+	public int obtenerEdad() 
+	{
+		return edad;
+	}
+	
+	@Override
+	public String toString() 
+	{
+		return String.format("%-15s%s", "Nombre: " + nombre, edad + " años.");
+	}
+	
+}

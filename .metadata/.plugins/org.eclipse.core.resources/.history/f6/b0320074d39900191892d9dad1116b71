@@ -1,0 +1,50 @@
+package directorios;
+
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Formatter;
+
+public class LibroLectura 
+{
+	private static Formatter salida;
+	
+	private static String[] nombres = {"Nicolás", "Carlos", "Alejandro", "Luis", "Estrella", "Viviana"};
+	
+	public static void main(String[] args) 
+	{
+		try 
+		{
+			salida = new Formatter(new FileWriter("C:/Archivos/Prueba.txt", true));
+			
+			escribir();
+			
+		}catch(SecurityException e) 
+		{
+			System.out.println("No se puede acceder al archivo");
+			
+			System.exit(1);
+			
+		}catch(FileNotFoundException e) 
+		{
+			System.out.println("No se encuentra el archivo");
+			
+			System.exit(1);
+			
+		}catch(IOException e) 
+		{
+			
+		}
+	}
+	
+	public static void escribir() 
+	{
+		for(String N: nombres)
+			salida.format("%s%n%n", N);
+		
+		salida.flush();
+		
+		salida.close();
+		
+	}
+}

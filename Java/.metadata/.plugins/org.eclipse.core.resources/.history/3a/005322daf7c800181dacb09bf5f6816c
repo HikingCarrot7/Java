@@ -1,0 +1,26 @@
+import javax.swing.*;
+
+	public class Interfaz extends JFrame {
+		
+		private JLabel label1; 
+		
+		public Interfaz() {
+			
+			setLayout(null);
+			
+			label1 = new JLabel("Interfaz gráfica");
+			label1.setBounds(100, 20, 200, 300);
+			add(label1);	
+		}
+		
+		public static void main(String[] args) {
+			
+			Interfaz interfaz1 = new Interfaz();
+			interfaz1.setBounds(0, 0, 400, 300);
+			interfaz1.setVisible(true);
+			interfaz1.setLocationRelativeTo(null);
+		}
+
+	}
+
+

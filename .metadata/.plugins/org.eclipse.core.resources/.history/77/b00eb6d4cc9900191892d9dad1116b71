@@ -1,0 +1,80 @@
+package directorios;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class AccesoFichero 
+{
+	private static Fichero fichero;
+	
+	public static void main(String[] args) 
+	{
+		fichero = new Fichero();
+		
+		fichero.leerArchivo();
+		
+		fichero.escribirArchivo();
+	}
+}
+
+class Fichero
+{
+	
+	private int c;
+	
+	private BufferedReader mibuffer;
+	
+	private String linea = ""; 
+	
+	public void leerArchivo() 
+	{
+		try 
+		{
+			mibuffer = new BufferedReader(new FileReader("C:/Archivos/Prueba.txt"));
+			
+			/*do 
+			{				
+				c = lectura.read();
+				
+				System.out.print((char) c);
+				
+			}while(c != -1);
+			
+			lectura.close();*/
+			
+			while(linea != null) 
+			{
+				System.out.println(linea);
+				
+				linea = mibuffer.readLine();
+			}
+			
+			mibuffer.close();
+			 
+		} catch (IOException e) 
+		{
+			System.out.println("No está el archivo");		
+		}
+	}
+	
+	public void escribirArchivo() 
+	{	
+		String s = "Esto es una prueba de escritura\n";
+		
+		/*try 
+		{
+			escritura = new FileWriter("C:/Archivos/Prueba.txt", true);
+			
+			for(int i = 0; i < s.length(); i++) 
+				escritura.write(s.charAt(i));
+			
+			escritura.close();
+			
+		} catch (IOException e) 
+		{
+			System.out.println("No se encuentra el archivo");
+		}*/
+	}
+}

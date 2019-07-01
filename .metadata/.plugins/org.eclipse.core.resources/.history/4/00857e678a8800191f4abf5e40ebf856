@@ -1,0 +1,78 @@
+package eventos;
+
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+public class miLamina extends JPanel
+{
+	private static final long serialVersionUID = 1L;
+	
+	JButton azul = new JButton("Azul");
+	JButton amarillo = new JButton("Amarillo");
+	JButton rojo = new JButton("Rojo");
+	ColorFondo color;
+	
+	public miLamina() 
+	{
+		add(azul);
+		add(amarillo);
+		add(rojo);
+		
+		azul.addActionListener(new ColorFondo(Color.blue));
+		
+		amarillo.addActionListener(new ColorFondo(Color.yellow));
+		
+		rojo.addActionListener(new ColorFondo(Color.red));
+		
+	}
+	
+	private class ColorFondo implements ActionListener
+	{
+		private Color c;
+		
+		public ColorFondo(Color c) 
+		{
+			this.c = c;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			setBackground(c);
+			
+		}
+	}
+
+	
+	
+
+}
+
+class CambioColor extends JPanel implements WindowStateListener
+{
+	@Override
+	public void windowStateChanged(WindowEvent e) {
+
+
+		System.out.println("Cambio de estado!");
+		
+		if(e.getNewState() == Frame.MAXIMIZED_BOTH) 
+		{
+			System.out.println("Pantalla completa!");
+			
+			setBackground(Color.green);
+			
+		}
+		
+	}
+}
+
+

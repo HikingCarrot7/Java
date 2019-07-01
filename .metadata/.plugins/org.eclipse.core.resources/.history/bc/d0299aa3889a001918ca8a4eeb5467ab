@@ -1,0 +1,25 @@
+package lectura;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class Lectura 
+{
+
+	public static void main(String[] args) 
+	{
+		try 
+		{
+			
+			FileInputStream file = new FileInputStream("C:\\Users\\Public\\Pictures\\Sample Pictures\\Medusa.jpg");
+			
+			
+			
+		}catch(IOException e) 
+		{
+			
+		}
+
+	}
+
+}

@@ -1,0 +1,11 @@
+package alumos;
+
+public class PruebaAlumnos 
+{
+	public static void main(String[] args) 
+	{
+		
+
+	}
+
+}

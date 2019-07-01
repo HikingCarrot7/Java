@@ -1,0 +1,11 @@
+package practicadialogos;
+
+public class BotonAcciones 
+{
+	
+	public static void AccionesBoton() 
+	{
+		Lamina.listo
+	}
+
+}

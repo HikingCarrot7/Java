@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 7 elements to &apos;Snake&apos;&#x0D;&#x0A;- Original project: &apos;Snake&apos;&#x0D;&#x0A;- Destination element: &apos;Snake&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     snaketitle.jpg&#x0D;&#x0A;     upmouth.png&#x0D;&#x0A;     enemy.png&#x0D;&#x0A;     snakeimage.png&#x0D;&#x0A;     leftmouth.png&#x0D;&#x0A;     downmouth.png&#x0D;&#x0A;     rightmouth.png&#x0D;&#x0A;- Update references to refactored element" description="Move files" destination="=Snake" element1="src/snaketitle.jpg" element2="src/upmouth.png" element3="src/enemy.png" element4="src/snakeimage.png" element5="src/leftmouth.png" element6="src/downmouth.png" element7="src/rightmouth.png" files="7" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1538846499416" units="0" version="1.0"/>
+</session>

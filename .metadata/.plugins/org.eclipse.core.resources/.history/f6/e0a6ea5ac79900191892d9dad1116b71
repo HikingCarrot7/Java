@@ -1,0 +1,55 @@
+package directorios;
+
+import java.io.FileReader;
+import java.io.IOException;
+
+public class AccesoFichero 
+{
+	public static void main(String[] args) 
+	{
+		new Fichero().leerArchivo();
+	}
+}
+
+class Fichero
+{
+	
+	private int c;
+	private FileReader file;
+	
+	public void leerArchivo() 
+	{
+		try 
+		{
+			file = new FileReader("C:/Archivos/Prueba.txt");
+			
+			do 
+			{				
+				c = file.read();
+				
+				System.out.print((char) c);
+				
+			}while(c != -1);
+			
+			file.close();
+			
+		} catch (IOException e) 
+		{
+			System.out.println("No está el archivo");
+			
+		}
+	}
+	
+	public void escribirArchivo() 
+	{
+		
+		String s = "Esto es una prueba de escritura";
+		
+		
+		
+		
+		
+	}
+	
+	
+}

@@ -1,0 +1,22 @@
+package iteradores;
+
+import java.util.ArrayList;
+
+public class Iterador 
+{
+	
+	private static ArrayList<Integer> numeros;
+
+	public static void main(String[] args)
+	{
+		numeros = new ArrayList<Integer>();
+		
+		numeros.add(new Integer(2));
+		
+		while(numeros.iterator().hasNext())
+			System.out.println(numeros.iterator().next());
+		
+
+	}
+
+}

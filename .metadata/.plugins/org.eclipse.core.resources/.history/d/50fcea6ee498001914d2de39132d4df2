@@ -1,0 +1,35 @@
+package practicadialogos;
+
+import java.awt.event.ActionEvent;
+
+import javax.swing.JOptionPane;
+
+public class BotonAcciones 
+{
+	
+	public static void AccionesBoton() 
+	{
+		Lamina.listo.addActionListener((ActionEvent e) ->
+		{
+			
+			if(Lamina.secciones[0].toString().contentEquals("Mensaje")) 
+				JOptionPane.showMessageDialog(null, "Nicolás", "Título", 0, null);
+			
+			else if(Lamina.secciones[0].toString().contentEquals("Confirmar")) 
+				JOptionPane.showConfirmDialog(null, "Nicolás", "Título", 0, 0, null);
+			
+			else if(Lamina.secciones[0].toString().contentEquals("Opción")) 
+				JOptionPane.showOptionDialog(null, "Nicolás", "Título", 0, 0, null, null, null);
+			
+			else 
+				JOptionPane.showInputDialog(null, "Nicolás", "Título", 0, null, null, null);
+			
+		});
+	}
+	
+	public Object obtenerMensaje() 
+	{
+		if(Lamina.secciones[2].toString().contentEquals("")) 
+	}
+
+}

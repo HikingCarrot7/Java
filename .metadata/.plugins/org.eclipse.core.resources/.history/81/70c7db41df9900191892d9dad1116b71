@@ -1,0 +1,33 @@
+package alumos;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Formatter;
+import java.util.Scanner;
+
+public class LeerAlumnos 
+{
+	private static Formatter salida;
+	private static Scanner entrada;
+	
+	public static void escribirAlumnos(String nombre, int edad, int opcion) 
+	{
+		try 
+		{
+			salida = new Formatter(new FileWriter("C:\\Archivos\\Alumnos.txt", true));
+			
+			salida.format("%s%n%d%n%s", nombre, edad, opcion == 1 ? "Matemáticas" : "Historia");
+			
+			salida.close();
+			
+		}catch(IOException e) 
+		{
+			System.out.println("No se encuentra el archivo");
+		}
+	}
+	
+	public static void leerAlumnos() 
+	{
+		
+	}
+}

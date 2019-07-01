@@ -1,0 +1,12 @@
+package alumos;
+
+public class LeerAlumnos 
+{
+	
+	public static void leerAlumnos() 
+	{
+		
+	}
+	
+
+}

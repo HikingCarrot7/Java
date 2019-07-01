@@ -1,0 +1,27 @@
+package alumos;
+
+import java.util.ArrayList;
+
+public class PruebaAlumnos 
+{
+	private static ArrayList<Alumnos> matematicas, historia;
+	
+	public static void main(String[] args) 
+	{
+		
+		declarar();
+		
+		
+		
+
+	}
+	
+	public static void declarar() 
+	{
+		matematicas = new ArrayList<>();
+		
+		historia = new ArrayList<>();
+		
+	}
+
+}

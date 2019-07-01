@@ -1,0 +1,21 @@
+package empleados;
+
+public class Test 
+{
+	
+	private String xd = "Nicolás";
+
+	public static void main(String[] args) 
+	{
+		new Test().main();
+
+	}
+	
+	public void main() 
+	{
+		System.out.println(xd.hashCode());
+		
+		System.out.println("Java-is-cool");
+	}
+
+}

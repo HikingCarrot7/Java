@@ -1,0 +1,37 @@
+package lectura;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class Lectura 
+{
+
+	public static void main(String[] args) 
+	{
+		
+		int[] imagen;
+		
+		try 
+		{
+			FileInputStream file = new FileInputStream("C:\\Archivos\\lolis.jpg");
+			
+			imagen = new int[(int) file.getChannel().size()];
+			
+			while(file.read() != -1) 
+			{
+				int byte_arc = file.read();
+				
+				//System.out.println(byte_arc);
+				
+			}
+			
+			file.close();
+			
+		}catch(IOException e) 
+		{
+			System.out.println("No se encuentra el archivo");
+		}
+
+	}
+
+}

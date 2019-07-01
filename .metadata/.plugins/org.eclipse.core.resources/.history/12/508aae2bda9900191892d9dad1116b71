@@ -1,0 +1,19 @@
+package alumos;
+
+public class LeerAlumnos 
+{
+	
+	private 
+	
+	public static void escribirAlumnos() 
+	{
+		
+		
+		
+	}
+	
+	public static void leerAlumnos() 
+	{
+		
+	}
+}
