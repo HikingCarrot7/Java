@@ -94,17 +94,19 @@ public final class Servidor extends JFrame
                     
                     jugador = in.readUTF();
                     
-                    coordenadas = in.readUTF();
-                    
                     switch(jugador)
                     {
                     case "1":
+                        
+                        coordenadas = in.readUTF();
                         
                         player1.setText(coordenadas);
                           
                         break;
                         
                     case "2":
+                        
+                        coordenadas = in.readUTF();
                         
                         player2.setText(coordenadas);
                         
