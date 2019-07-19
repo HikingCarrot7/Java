@@ -58,9 +58,10 @@ public final class Cliente
                         {
                             currentPlayer = Integer.parseInt(in.readUTF());
                             renderHandler.addObject(new Player(currentPlayer * 50, 100, GameId.Player, currentPlayer));
-                            System.out.println("xdxddd");
                             newUser = "null";
                         }
+                        
+                        out.writeUTF(currentPlayer + "");
                         
                         out.writeUTF("X: " + renderHandler.getPlayer().getX() + " Y: " + renderHandler.getPlayer().getY());
                         

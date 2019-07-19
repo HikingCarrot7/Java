@@ -24,7 +24,7 @@ public final class Servidor extends JFrame
     private DataInputStream in;
     private DataOutputStream out;
     private Thread thread;
-    private String coordenadas;
+    private String coordenadas, jugador;
     private int contPlayers = 1;
     
     private JPanel panel;
@@ -92,8 +92,24 @@ public final class Servidor extends JFrame
                         setPlayers(getPlayers() + 1);
                     }
                     
+                    jugador = in.readUTF();
+                    
                     coordenadas = in.readUTF();
-                    player1.setText(coordenadas);
+                    
+                    switch(jugador)
+                    {
+                    case "1":
+                        
+                        player1.setText(coordenadas);
+                          
+                        break;
+                        
+                    case "2":
+                        
+                        player2.setText(coordenadas);
+                        
+                        break;
+                    }
                     
                     serverSocket.close();
                     cliente.close();

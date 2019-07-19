@@ -15,8 +15,6 @@ import java.awt.image.BufferStrategy;
  */
 public class Game extends Canvas
 {
-    
-    
     public static int ANCHO = 600, ALTO = 500;
 
     private RenderHandler renderHandler;
