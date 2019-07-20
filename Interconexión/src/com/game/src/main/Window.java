@@ -9,7 +9,8 @@ import javax.swing.JFrame;
  */
 public class Window extends JFrame
 {
-    public Window(int w, int h, String title, Game game) 
+
+    public Window(int w, int h, String title, Game game)
     {
         game.setPreferredSize(new Dimension(w, h));
         game.setMaximumSize(new Dimension(w, h));
