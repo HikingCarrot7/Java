@@ -1,0 +1,21 @@
+package treeset;
+
+import java.util.TreeSet;
+
+public class Trees 
+{
+	public static void main(String[] args) 
+	{
+		TreeSet<String> nombres = new TreeSet<>();
+		
+		nombres.add("Nicolás");
+		nombres.add("Luis");
+		nombres.add("Fernando");
+		
+		for (String S : nombres) 
+			System.out.println(S);
+		
+		
+	}
+
+}

@@ -1,0 +1,42 @@
+package swingworker;
+
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class NumerosFibonacci extends JPanel 
+{
+	private static final long serialVersionUID = 1L;
+	
+	//Calculadora Fibonacci
+	private JPanel calculoFibonacci;
+	private JTextField capturarNumero;
+	private JLabel resultado;
+	private JButton empezar;
+	
+	//Número por número
+	
+	public NumerosFibonacci() 
+	{
+		this.setLayout(new GridLayout(2, 1, 10 , 10));
+		
+		iniciarCalculadora();
+	}
+	
+	private void iniciarCalculadora()
+	{
+		calculoFibonacci = new JPanel(new GridLayout(2, 2, 5, 5));
+		capturarNumero = new JTextField();
+		resultado = new JLabel();
+		empezar = new JButton("Iniciar");
+		
+	}
+	
+	
+	
+	
+
+}

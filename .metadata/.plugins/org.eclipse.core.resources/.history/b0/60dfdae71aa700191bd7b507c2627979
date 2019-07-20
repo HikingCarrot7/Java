@@ -1,0 +1,22 @@
+package productorconsumidor;
+
+public class BufferSinSincronizacion implements Buffer
+{
+	
+	private int bufer = -1; 
+
+	@Override
+	public void establecer(int valor) throws InterruptedException
+	{
+		
+		
+	}
+
+	@Override
+	public int obtener() throws InterruptedException 
+	{
+		
+		return 0;
+	}
+
+}

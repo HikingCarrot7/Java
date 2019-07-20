@@ -1,0 +1,55 @@
+package clientes;
+
+public class Clientes
+{
+	
+	private String nombre, numCuenta;
+	private double sueldo;
+	
+	public Clientes(String nombre, String numCuenta, double sueldo) 
+	{
+		this.nombre = nombre;
+		this.numCuenta = numCuenta;
+		this.sueldo = sueldo;
+	}
+
+	public String getNombre() 
+	{
+		return nombre;
+	}
+
+	public void setNombre(String nombre)
+	{
+		this.nombre = nombre;
+	}
+
+	public String getNumCuenta()
+	{
+		return numCuenta;
+	}
+
+	public void setNumCuenta(String numCuenta)
+	{
+		this.numCuenta = numCuenta;
+	}
+
+	public double getSueldo() 
+	{
+		return sueldo;
+	}
+
+	public void setSueldo(double sueldo) 
+	{
+		this.sueldo = sueldo;
+	}
+	
+	@Override
+	public boolean equals(Object obj) 
+	{
+		return false;
+	}
+	
+	
+	
+
+}

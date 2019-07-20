@@ -1,0 +1,64 @@
+package treeset;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.TreeSet;
+
+public class Trees 
+{
+	public static void main(String[] args) 
+	{
+		TreeSet<Persona> personas = new TreeSet<>();
+		ArrayList<Persona> nombres = new ArrayList<>();
+		
+		nombres.add(new Persona("Fernando", 24));
+		nombres.add(new Persona("Nicolas", 19));
+		nombres.add(new Persona("Luis", 17));
+		nombres.add(new Persona("Carlos", 18));
+		
+		for (int i = 0; i < nombres.size(); i++) 
+			personas.add(nombres.get(i));
+		
+		System.out.println("Ordenados por edad...");
+		
+		for (Persona S : personas) 
+			System.out.println(S);
+	}
+
+}
+
+class Persona implements Comparable<Persona>, Comparator<Persona>
+{
+	private String nombre;
+	private int edad;
+	
+	public Persona(String nombre, int edad) 
+	{
+		this.nombre = nombre;
+		this.edad = edad;
+	}
+
+	@Override
+	public int compareTo(Persona p) 
+	{
+		return edad - p.edad;
+	}
+	
+	public String getNombre() 
+	{
+		return nombre;
+	}
+	
+	@Override
+	public int compare(Persona p1, Persona p2)
+	{
+		return p1.getNombre().compareTo(p2.getNombre());
+	}
+	
+	@Override
+	public String toString() 
+	{
+		return nombre;
+	}
+	
+}

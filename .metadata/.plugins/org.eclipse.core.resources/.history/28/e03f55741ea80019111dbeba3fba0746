@@ -1,0 +1,13 @@
+package reloj;
+
+public class PruebaReloj 
+{
+	
+	private static Thread thread;
+	
+	public static void main(String[] args) 
+	{
+		
+	}
+
+}

@@ -1,0 +1,109 @@
+package carreradecaballos;
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.LayoutManager;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+
+public class Hipodromo extends JPanel implements Observer
+{
+	private static final long serialVersionUID = 1L;
+	
+	private JProgressBar c1;
+	private JLabel nombrec1;
+	private JPanel carrera;
+	
+	public Hipodromo() 
+	{
+		setLayout(new BorderLayout());
+		
+		iniciarElementos();
+		
+		anadirElementos();
+		
+		add(carrera, BorderLayout.CENTER);
+		
+	}
+	
+	public void iniciarElementos() 
+	{
+		carrera = new JPanel();
+		
+		carrera.setLayout(new Diseno());
+		
+		c1 = new JProgressBar();
+		c1.setString("0%");
+		
+		nombrec1 = new JLabel("Caballo 1: ");
+	}
+	
+	public void anadirElementos() 
+	{
+		carrera.add(nombrec1);
+		carrera.add(c1);
+	}
+	
+	@Override
+	public void update(Observable o, Object arg) 
+	{
+		
+		
+	}
+	
+	private class Diseno implements LayoutManager
+	{
+
+		@Override
+		public void layoutContainer(Container c) 
+		{
+			int x = 50, y = 50;
+			
+			for (int i = 0; i < c.getComponentCount(); i++) 
+			{
+				if(i + 1 % 2 == 0) 
+					c.getComponent(i).setBounds(x, y, 100, 50);
+					
+				else 
+					c.getComponent(i).setBounds(x, y, 500, 30);
+
+				x += 80;
+				
+				if(i % 2 != 0) 
+				{
+					y += 100;
+					x = 50;
+				}
+				
+			}
+			
+		}
+		
+		@Override
+		public void addLayoutComponent(String name, Component comp) 
+		{}
+
+		@Override
+		public Dimension minimumLayoutSize(Container parent) 
+		{
+			return null;
+		}
+
+		@Override
+		public Dimension preferredLayoutSize(Container parent) 
+		{
+			return null;
+		}
+
+		@Override
+		public void removeLayoutComponent(Component comp) {}
+		
+	}
+
+}

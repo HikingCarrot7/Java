@@ -1,0 +1,49 @@
+package treeset;
+
+import java.util.TreeSet;
+
+public class Trees 
+{
+	public static void main(String[] args) 
+	{
+		TreeSet<String> nombres = new TreeSet<>();
+		
+		nombres.add("Nicolás");
+		nombres.add("Luis");
+		nombres.add("Fernando");
+		
+		for (String S : nombres) 
+			System.out.println(S);
+	}
+
+}
+
+class Persona implements Comparable<Persona>
+{
+	
+	private String nombre;
+	private int edad;
+	
+	public Persona(String nombre, int edad) 
+	{
+		this.nombre = nombre;
+		this.edad = edad;
+	}
+	
+	
+
+	@Override
+	public int compareTo(Persona p) 
+	{
+		if(this.nombre > p.nombre)
+			return 1;
+		
+		
+		
+		return 0;
+	}
+	
+
+
+
+}

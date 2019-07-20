@@ -1,0 +1,25 @@
+package swingworker;
+
+import javax.swing.JLabel;
+import javax.swing.SwingWorker;
+
+public class CalculadoraSegundoPlano extends SwingWorker<String, Object>
+{
+
+	private final int numero;
+	private final JLabel resultado;
+	
+	public CalculadoraSegundoPlano(int numero, JLabel resultado) 
+	{
+		this.numero = numero;
+		this.resultado = resultado;
+	}
+	
+	@Override
+	protected String doInBackground() throws Exception
+	{
+		
+		return null;
+	}
+
+}

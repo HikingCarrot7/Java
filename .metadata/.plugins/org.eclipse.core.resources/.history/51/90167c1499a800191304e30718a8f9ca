@@ -1,0 +1,15 @@
+package swingworker;
+
+import javax.swing.SwingWorker;
+
+public class CalculadoraSegundoPlano extends SwingWorker<String, Object>
+{
+
+	@Override
+	protected String doInBackground() throws Exception
+	{
+		
+		return null;
+	}
+
+}

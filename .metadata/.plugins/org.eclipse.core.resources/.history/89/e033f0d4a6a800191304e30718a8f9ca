@@ -1,0 +1,8 @@
+package swingworkerprimos;
+
+import javax.swing.JPanel;
+
+public class Primos extends JPanel
+{
+
+}

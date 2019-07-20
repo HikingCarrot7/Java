@@ -1,0 +1,35 @@
+package carreradecaballos;
+
+import java.util.Observable;
+import java.util.Random;
+
+public class Caballos extends Observable implements Runnable
+{
+	private Random rand;
+	
+	public Caballos() 
+	{
+		rand = new Random();
+	}
+
+	@Override
+	public void run() 
+	{
+		String porcentaje;
+		
+		while(true) 
+		{
+			try 
+			{
+				Thread.sleep(1000);
+				
+				
+				
+			} catch (InterruptedException e) {}
+		}
+		
+	}
+	
+	
+
+}

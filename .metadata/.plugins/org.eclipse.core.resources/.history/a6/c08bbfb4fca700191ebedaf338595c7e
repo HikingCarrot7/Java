@@ -1,0 +1,33 @@
+package clientes;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class PruebaClientes 
+{
+	private static Set<Clientes> clientes, clientes1;
+	
+	public static void main(String[] args) 
+	{
+		Clientes c1 = new Clientes("Nicolás", "01", 5000);
+		Clientes c2 = new Clientes("Fernando", "02", 6000);
+		Clientes c3 = new Clientes("Luis", "03", 7000);
+		Clientes c4 = new Clientes("Carlos", "04", 8000);
+		
+		clientes = new HashSet<>();
+		
+		clientes1 = new HashSet<>();
+		
+		clientes.add(c1);
+		clientes.add(c2);
+		clientes.add(c3);
+		clientes.add(c4);
+		
+		
+		
+		for (Clientes C : clientes) 
+			System.out.println(C.getSueldo());
+		
+	}
+
+}

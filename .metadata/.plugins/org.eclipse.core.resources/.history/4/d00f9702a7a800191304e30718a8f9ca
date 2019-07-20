@@ -1,0 +1,11 @@
+package swingworkerprimos;
+
+import javax.swing.JPanel;
+
+public class Primos extends JPanel
+{
+	private static final long serialVersionUID = 1L;
+	
+	
+
+}

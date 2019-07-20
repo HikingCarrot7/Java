@@ -1,0 +1,29 @@
+package listiterator;
+
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class Listiterator
+{
+	private static LinkedList<String> paises, capitales;
+	
+	public static void main(String[] args) 
+	{
+		paises = new LinkedList<>();
+		capitales = new LinkedList<>();
+		
+		personas.add("Nicolas");
+		personas.add("Fernando");
+		personas.add("Estrella");
+		
+		ListIterator<String> p =  personas.listIterator();
+		
+		p.next();
+		p.add("Viviana");
+		
+		for (String P : personas) 
+			System.out.println(P);
+		
+	}
+
+}

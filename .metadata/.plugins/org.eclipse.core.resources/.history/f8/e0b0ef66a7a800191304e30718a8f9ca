@@ -1,0 +1,18 @@
+package swingworkerprimos;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class Primos extends JPanel
+{
+	private static final long serialVersionUID = 1L;
+	
+	private JTextField primoMayor;
+	private JButton obtenerPrimos, cancelar;
+	private JTextArea mostrarPrimos;
+
+	
+
+}

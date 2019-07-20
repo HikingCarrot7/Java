@@ -1,0 +1,62 @@
+package swingworkerprimos;
+
+import java.util.Random;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.SwingWorker;
+
+public class CalculadoraPrimos extends SwingWorker<Integer, Integer>
+{
+	
+	private final Random rand;
+	private final JTextArea mostrarNumeros;
+	private final JButton obtenerPrimos, cancelar;
+	private final JLabel estado;
+	private final boolean[] primos;
+	private boolean detenido;
+	
+	public CalculadoraPrimos(int max, JTextArea mostrarNumeros, JButton obtenerPrimos, JButton cancelar, JLabel estado) 
+	{
+		rand = new Random();
+		
+		primos = new boolean[max];
+		
+		this.mostrarNumeros = mostrarNumeros;
+		this.obtenerPrimos = obtenerPrimos;
+		this.cancelar = cancelar;
+		this.estado = estado;
+		
+		for (int i = 0; i < primos.length; i++) 
+			primos[i] = true;
+	}
+	
+
+	@Override
+	protected Integer doInBackground()
+	{
+		int cuenta = 0;
+		
+		for (int i = 2; i < primos.length; i++) 
+		{
+			if(detenido)
+				return cuenta;
+			else
+				setProgress(100 * (i+1)/primos.length);
+			
+			try 
+			{
+				Thread.sleep(rand.nextInt(4));
+				
+			} catch (InterruptedException e) {}
+			
+			
+		}
+		
+		
+		
+		return cuenta;
+	}
+
+}

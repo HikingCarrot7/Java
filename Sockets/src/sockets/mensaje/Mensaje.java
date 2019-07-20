@@ -1,6 +1,7 @@
 package sockets.mensaje;
 
-public class Mensaje {
+public class Mensaje 
+{
 
     private String nick, ip, mensaje;
 

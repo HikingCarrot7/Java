@@ -1,0 +1,59 @@
+package swingworkerprimos;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class Primos extends JPanel
+{
+	private static final long serialVersionUID = 1L;
+	
+	private JTextField primoMayor;
+	private JButton obtenerPrimos, cancelar;
+	private JTextArea mostrarPrimos;
+	private JProgressBar progreso;
+	private JLabel estado;
+	private CalculadoraPrimos calculadora;
+	private JPanel norte, centro, sur;
+	
+	public Primos() 
+	{
+		setLayout(new BorderLayout());
+		
+		iniciarElementos();
+		
+		anadirElementos();
+		
+		add(norte, BorderLayout.NORTH);
+		add(centro, BorderLayout.CENTER);
+		add(sur, BorderLayout.SOUTH);
+	}
+
+	public void iniciarElementos() 
+	{
+		norte = new JPanel();
+		centro = new JPanel();
+		sur = new JPanel();
+		
+		primoMayor = new JTextField();
+		obtenerPrimos = new JButton();
+		cancelar = new JButton();
+		mostrarPrimos = new JTextArea();
+		progreso = new JProgressBar();
+		estado = new JLabel();
+		
+	}
+	
+	public void anadirElementos() 
+	{
+		norte.add();
+		
+		
+	}
+
+}

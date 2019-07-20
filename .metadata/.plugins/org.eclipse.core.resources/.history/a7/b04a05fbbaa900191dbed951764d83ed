@@ -1,0 +1,31 @@
+package sockets.servidor;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+public class ServidorInterfaz extends JPanel implements Runnable
+{
+	private static final long serialVersionUID = 1L;
+	
+	private JTextArea texto;
+	
+	public ServidorInterfaz() 
+	{
+		setLayout(new BorderLayout());
+		
+		texto = new JTextArea();
+		
+		add(texto, BorderLayout.CENTER);
+		
+	}
+
+	@Override
+	public void run()
+	{
+		
+		
+	}
+
+}

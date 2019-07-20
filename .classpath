@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Adventure/src"/>
+	<classpathentry kind="src" path="Aplicaciones/src"/>
+	<classpathentry kind="src" path="ArchivosBásico/src"/>
+	<classpathentry kind="src" path="Colecciones/src"/>
+	<classpathentry kind="src" path="Cube/src"/>
+	<classpathentry kind="src" path="Dialogos/src"/>
+	<classpathentry kind="src" path="Excepciones/src"/>
+	<classpathentry kind="src" path="Genérica/src"/>
+	<classpathentry kind="src" path="geometria game/src"/>
+	<classpathentry kind="src" path="GraficaCircular/src"/>
+	<classpathentry kind="src" path="Grafos/src"/>
+	<classpathentry kind="src" path="Hilos/src"/>
+	<classpathentry kind="src" path="Integradora/src"/>
+	<classpathentry kind="src" path="Interconexión/src"/>
+	<classpathentry kind="src" path="Interfaces/src"/>
+	<classpathentry kind="src" path="Java/Book/src"/>
+	<classpathentry kind="src" path="Java/BrickBreaker/src"/>
+	<classpathentry kind="src" path="Java/Poo/src"/>
+	<classpathentry kind="src" path="Java/Snake/src"/>
+	<classpathentry kind="src" path="JavaDesdeCero/src"/>
+	<classpathentry kind="src" path="JavaFXRoer/src"/>
+	<classpathentry kind="src" path="Juguete/src"/>
+	<classpathentry kind="src" path="LD27/src"/>
+	<classpathentry kind="src" path="Links/src"/>
+	<classpathentry kind="src" path="Plataforma/src"/>
+	<classpathentry kind="src" path="Roer/src"/>
+	<classpathentry kind="src" path="Sockets/src"/>
+	<classpathentry kind="src" path="SocketsRoer/src"/>
+	<classpathentry kind="src" path="Space/src"/>
+	<classpathentry kind="src" path="UI/src"/>
+	<classpathentry kind="src" path="WizardCourse/src"/>
+	<classpathentry kind="lib" path="JavaFXRoer/dist/JavaFXRoer.jar"/>
+	<classpathentry kind="output" path="Adventure/bin"/>
+</classpath>

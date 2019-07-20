@@ -61,7 +61,7 @@ public class MiFrame extends JFrame
 	{
 		AccionBotones accionClose = new AccionBotones("Apagar", "Apagar", "Desactiva las animaciones");
 		AccionBotones accionCircular = new AccionBotones("Circular", "Circular", "Movimiento circular");
-		AccionBotones accionCirculos = new AccionBotones("Círculos", "Circulos", "Mover círculos");
+		AccionBotones accionCirculos = new AccionBotones("Cï¿½rculos", "Circulos", "Mover cï¿½rculos");
 		AccionBotones accionZoom = new AccionBotones("Zoom", "Zoom", "Zoom");
 		
 		boton.add(new JButton(accionClose));

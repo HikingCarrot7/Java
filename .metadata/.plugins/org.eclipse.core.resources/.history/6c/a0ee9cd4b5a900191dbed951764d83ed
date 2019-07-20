@@ -1,0 +1,30 @@
+package sockets.cliente;
+
+import javax.swing.JFrame;
+
+public class Cliente extends JFrame
+{
+	private static final long serialVersionUID = 1L;
+
+	private ClienteInterfaz interfaz;
+	
+	public Cliente() 
+	{
+		interfaz = new ClienteInterfaz();
+		
+		setBounds(0, 0, 400, 300);
+		setLocationRelativeTo(null);
+		setResizable(false);
+		setTitle("Cliente");
+		add(interfaz);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	public static void main(String[] args)
+	{
+		new Cliente();
+	}
+	
+
+}

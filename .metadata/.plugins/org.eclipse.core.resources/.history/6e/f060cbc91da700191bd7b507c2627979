@@ -1,0 +1,31 @@
+package productorconsumidor;
+
+import java.util.concurrent.ArrayBlockingQueue;
+
+public class BufferBloqueo implements Buffer
+{
+	private final ArrayBlockingQueue<Integer>buffer;
+	
+	public BufferBloqueo() 
+	{
+		buffer = new ArrayBlockingQueue<>(1);
+	}
+
+	@Override
+	public void establecer(int valor) throws InterruptedException
+	{
+		System.out.printf("Productor escribe\t%2d", valor);
+		
+		buffer = valor;
+		
+	}
+
+	@Override
+	public int obtener() throws InterruptedException 
+	{
+		System.out.printf("Consumidor lee\t\t%2d", buffer);
+		
+		return buffer;
+	}
+
+}

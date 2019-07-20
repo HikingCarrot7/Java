@@ -1,0 +1,23 @@
+package listiterator;
+
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+public class Listiterator
+{
+	private String nombre;
+	private static LinkedList<String> personas;
+	
+	public static void main(String[] args) 
+	{
+		personas = new LinkedList<>();
+		
+		personas.add("Nicolas");
+		personas.add("Fernando");
+		personas.add("Estrella");
+		
+		ListIterator<String> p =  personas.listIterator();
+		
+	}
+
+}

@@ -1,0 +1,20 @@
+package swingworker;
+
+import javax.swing.JFrame;
+
+public class PruebaFibonacci extends JFrame
+{
+	private static final long serialVersionUID = 1L;
+	
+	public PruebaFibonacci() 
+	{
+		
+	}
+
+	public static void main(String[] args) 
+	{
+		
+
+	}
+
+}
