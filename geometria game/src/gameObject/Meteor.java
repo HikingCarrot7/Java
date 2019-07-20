@@ -8,64 +8,73 @@ import java.awt.image.BufferedImage;
 import math.Vector2D;
 import states.GameState;
 
-public class Meteor extends MovingObject {
-	
-	private Size size;
+public class Meteor extends MovingObject
+{
 
-	public Meteor(Vector2D position, Vector2D velocity, double maxVel, BufferedImage texture, GameState gameState, Size size) {
-		super(position, velocity, maxVel, texture, gameState);
-		this.size = size;
-		this.velocity = velocity.scale(maxVel);
-		
-	}
+    private Size size;
 
-	@Override
-	public void update() {
-		position = position.add(velocity);
-		
-		if(position.getX() > Constants.WIDTH)
-			position.setX(-width);
-		if(position.getY() > Constants.HEIGHT)
-			position.setY(-height);
-		 
-		if(position.getX() < -width)
-			position.setX(Constants.WIDTH);
-		if(position.getY() < -height)
-			position.setY(Constants.HEIGHT);
-		
+    public Meteor(Vector2D position, Vector2D velocity, double maxVel, BufferedImage texture, GameState gameState, Size size)
+    {
+        super(position, velocity, maxVel, texture, gameState);
+        this.size = size;
+        this.velocity = velocity.scale(maxVel);
+
+    }
+
+    @Override
+    public void update()
+    {
+        position = position.add(velocity);
+
+        if (position.getX() > Constants.WIDTH)
+        {
+            position.setX(-width);
+        }
+        if (position.getY() > Constants.HEIGHT)
+        {
+            position.setY(-height);
+        }
+
+        if (position.getX() < -width)
+        {
+            position.setX(Constants.WIDTH);
+        }
+        if (position.getY() < -height)
+        {
+            position.setY(Constants.HEIGHT);
+        }
+
 		//rotacion
-		
-		angle += Constants.DELTAANGLE/2;	
-		
-	}
-	@Override
-	public void Destroy() {
-		gameState.divideMeteor(this);
-		gameState.addScore(Constants.METEOR_SCORE);
-		super.Destroy();
-	}
-	
-	
-	
+        angle += Constants.DELTAANGLE / 2;
 
-	@Override
-	public void draw(Graphics g) {
-		
-		Graphics2D g2d = (Graphics2D)g;
-		
-		
+    }
+
+    @Override
+    public void Destroy()
+    {
+        gameState.divideMeteor(this);
+        gameState.addScore(Constants.METEOR_SCORE);
+        super.Destroy();
+    }
+
+    @Override
+    public void draw(Graphics g)
+    {
+
+        Graphics2D g2d = (Graphics2D) g;
+
         at = AffineTransform.getTranslateInstance(position.getX(), position.getY());
-		
-		at.rotate(angle, width/2, height/2);
-		
-		g2d.drawImage(texture, at, null);
-		
-		
-	}
-	
-	public Size getSize() {
-		return size;
-		
-	}
+
+        at.rotate(angle, width / 2, height / 2);
+
+        g2d.drawImage(texture, at, null);
+
+    }
+
+    public Size getSize()
+    {
+        return size;
+
+    }
 
 }
