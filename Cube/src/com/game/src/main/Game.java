@@ -21,166 +21,190 @@ import com.game.src.objects.Spawn;
 
 public class Game extends Canvas
 {
-	private static final long serialVersionUID = 1L;
 
-	public static int ANCHO = 800;
-	public static int ALTO = 600;
-	
-	public ArrayList<ExplosionAnimation> explosiones;
+    private static final long serialVersionUID = 1L;
 
-	public boolean running = false;
-	public static boolean paused = false;
-	public static boolean difficulty = false;
-	
-	private Handler handler;
-	private HUD hud;
-	private Spawn spawn;
-	private MainMenu menu;
-	private Random rand;
-	private Textures tex;
-	private Shop shop;
+    public static int ANCHO = 800;
+    public static int ALTO = 600;
 
-	public static enum STATE
-	{
-		Menu,
-		Select,
-		Help,
-		Game,
-		Shop,
-		End
-	};
+    public ArrayList<ExplosionAnimation> explosiones;
 
-	public static STATE gameState = STATE.Menu;
+    public boolean running = false;
+    public static boolean paused = false;
+    public static boolean difficulty = false;
 
-	public static void main(String[] args) 
-	{
-		new Window(ANCHO, ALTO, "Cube game", new Game());
-	}
+    private Handler handler;
+    private HUD hud;
+    private Spawn spawn;
+    private MainMenu menu;
+    private Random rand;
+    private Textures tex;
+    private Shop shop;
 
-	public synchronized void start() 
-	{
-		if(!running)
-			running = true;
-	}
+    public static enum STATE
+    {
 
-	public synchronized void stop() 
-	{
-		System.exit(1);
-	}
+        Menu,
+        Select,
+        Help,
+        Game,
+        Shop,
+        End
+    };
 
-	public void init() 
-	{
-		AudioPlayer.load();
-		
-		AudioPlayer.getMusic("paladins").loop();
-		
-		explosiones = new ArrayList<>();
-		
-		rand = new Random();
-		tex = new Textures();
-		handler = new Handler();
-		hud = new HUD(this, handler);
-		spawn = new Spawn(handler, hud, tex);
-		shop = new Shop(handler, hud);
-		menu = new MainMenu(handler, hud, spawn, this, tex);
+    public static STATE gameState = STATE.Menu;
 
-		handler.addObject(new Player(ANCHO / 2 - 32, ALTO / 2 - 32, ObjectId.Player1, handler, tex));
+    public static void main(String[] args)
+    {
+        new Window(ANCHO, ALTO, "Cube game", new Game());
+    }
 
-		createBackground();
-		
-		requestFocus();
-		addKeyListener(new KeyInput(handler, (Player) handler.getObjects().get(0)));
-		addMouseListener(new MouseInput(menu, shop));
-	}
+    public synchronized void start()
+    {
+        if (!running)
+        {
+            running = true;
+        }
+    }
 
-	public void tick() 
-	{
-		if(!(paused || gameState.equals(STATE.Shop))) 
-		{
-			handler.tick();
-			
-			for (ExplosionAnimation A : explosiones) 
-				A.tick();
-			
-			if(gameState.equals(STATE.Game)) 
-			{
-				hud.tick();
-				spawn.tick();
-				
-			}else if(gameState.equals(STATE.Menu) || gameState.equals(STATE.End))
-				menu.tick();
-		}
+    public synchronized void stop()
+    {
+        System.exit(1);
+    }
 
-	}
+    public void init()
+    {
+        AudioPlayer.load();
 
-	public void render() 
-	{
-		BufferStrategy bs = getBufferStrategy();
+        AudioPlayer.getMusic("paladins").loop();
 
-		if(bs == null) 
-		{
-			createBufferStrategy(3);
+        explosiones = new ArrayList<>();
 
-			return;
-		}
+        rand = new Random();
+        tex = new Textures();
+        handler = new Handler();
+        hud = new HUD(this, handler);
+        spawn = new Spawn(handler, hud, tex);
+        shop = new Shop(handler, hud);
+        menu = new MainMenu(handler, hud, spawn, this, tex);
 
-		Graphics2D g =(Graphics2D) bs.getDrawGraphics();
+        handler.addObject(new Player(ANCHO / 2 - 32, ALTO / 2 - 32, ObjectId.Player1, handler, tex));
 
-		g.setColor(Color.black);
-		g.fillRect(0, 0, ANCHO, ALTO);
+        createBackground();
 
-		handler.render(g);
-		
-		for (ExplosionAnimation A : explosiones) 
-			A.render(g);
-		
-		if(gameState.equals(STATE.Game)) 
-			hud.render(g);
-		
-		else if(gameState.equals(STATE.Shop))
-			shop.render(g);
-		
-		else
-			menu.render(g);
+        requestFocus();
+        addKeyListener(new KeyInput(handler, (Player) handler.getObjects().get(0)));
+        addMouseListener(new MouseInput(menu, shop));
+    }
 
-		if(paused)
-			g.drawString("PAUSED", ANCHO/2 - 100, ALTO/2);
-			
-		g.dispose();
-		bs.show();
+    public void tick()
+    {
+        if (!(paused || gameState.equals(STATE.Shop)))
+        {
+            handler.tick();
 
-	}
-	
-	public void createBackground() 
-	{
-		for (int i = 0; i < 20; i++) 
-			if(i < 10)
-				handler.addObject(new MenuBackground(rand.nextInt(ANCHO/2 - 100), rand.nextInt(Game.ALTO - 50), ObjectId.MenuBackgroudParticle, handler, menu));
-		
-			else
-				handler.addObject(new MenuBackground(ANCHO/2 + 100 + rand.nextInt(100), rand.nextInt(Game.ALTO - 50), ObjectId.MenuBackgroudParticle, handler, menu));
-	}
+            for (ExplosionAnimation A : explosiones)
+            {
+                A.tick();
+            }
 
-	public static float clamp(float var, int max, int min) 
-	{
-		if(var > max)
-			return max;
+            if (gameState.equals(STATE.Game))
+            {
+                hud.tick();
+                spawn.tick();
 
-		else if(var < min)
-			return min;
+            } else if (gameState.equals(STATE.Menu) || gameState.equals(STATE.End))
+            {
+                menu.tick();
+            }
+        }
 
-		else 
-			return var; 
-	}
-	
-	public void addExplosion(ExplosionAnimation explosion) 
-	{
-		explosiones.add(explosion);
-	}
-	
-	public ArrayList<ExplosionAnimation> getExplosion() 
-	{
-		return explosiones;
-	}
+    }
+
+    public void render()
+    {
+        BufferStrategy bs = getBufferStrategy();
+
+        if (bs == null)
+        {
+            createBufferStrategy(3);
+
+            return;
+        }
+
+        Graphics2D g = (Graphics2D) bs.getDrawGraphics();
+
+        g.setColor(Color.black);
+        g.fillRect(0, 0, ANCHO, ALTO);
+
+        handler.render(g);
+
+        for (ExplosionAnimation A : explosiones)
+        {
+            A.render(g);
+        }
+
+        if (gameState.equals(STATE.Game))
+        {
+            hud.render(g);
+            
+        } else if (gameState.equals(STATE.Shop))
+        {
+            shop.render(g);
+            
+        } else
+        {
+            menu.render(g);
+        }
+
+        if (paused)
+        {
+            g.drawString("PAUSED", ANCHO / 2 - 100, ALTO / 2);
+        }
+
+        g.dispose();
+        bs.show();
+
+    }
+
+    public void createBackground()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            if (i < 10)
+            {
+                handler.addObject(new MenuBackground(rand.nextInt(ANCHO / 2 - 100), rand.nextInt(Game.ALTO - 50), ObjectId.MenuBackgroudParticle, handler, menu));
+                
+            } else
+            {
+                handler.addObject(new MenuBackground(ANCHO / 2 + 100 + rand.nextInt(100), rand.nextInt(Game.ALTO - 50), ObjectId.MenuBackgroudParticle, handler, menu));
+                
+            }
+        }
+    }
+
+    public static float clamp(float var, int max, int min)
+    {
+        if (var > max)
+        {
+            return max;
+        } else if (var < min)
+        {
+            return min;
+        } else
+        {
+            return var;
+        }
+    }
+
+    public void addExplosion(ExplosionAnimation explosion)
+    {
+        explosiones.add(explosion);
+    }
+
+    public ArrayList<ExplosionAnimation> getExplosion()
+    {
+        return explosiones;
+    }
 
 }
