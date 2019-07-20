@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;innerclass.PruebaParametros&apos; to &apos;Empleados&apos;&#x0D;&#x0A;- Original project: &apos;JavaDesdeCero&apos;&#x0D;&#x0A;- Original element: &apos;innerclass.PruebaParametros&apos;&#x0D;&#x0A;- Renamed element: &apos;innerclass.Empleados&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;PruebaParametros&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;innerclass{PruebaParametros.java[PruebaParametros" matchStrategy="1" name="Empleados" qualified="false" references="true" similarDeclarations="false" stamp="1560726770347" textual="false" version="1.0"/>
-</session>
