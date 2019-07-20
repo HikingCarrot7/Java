@@ -23,7 +23,7 @@ public class Game extends Canvas
     
     public static void main(String[] args) 
     {
-        new Window(ANCHO, ALTO, "Interconexión", new Game());
+        new Window(ANCHO, ALTO, "Interconexion", new Game());
     }
     
     public synchronized void start()
