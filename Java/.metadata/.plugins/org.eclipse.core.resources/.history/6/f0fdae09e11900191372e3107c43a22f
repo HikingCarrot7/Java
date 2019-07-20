@@ -1,0 +1,85 @@
+package aleatorio;
+
+public class MatrizAleatoria {
+
+	public static void main(String[] args) {
+		
+		int matriz[][] = new int [5][5];
+		
+		int[] numeros = generarNumerosAleatoriosSinRepetir(1, 100, matriz.length*matriz[0].length); 
+		
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				
+				matriz[i][j] = numeros[(matriz.length * i) + j];
+			}
+		}
+		
+		for (int i = 0; i < 5; i++) {
+			for (int j = 0; j < 5; j++) {
+				
+				System.out.print("[ " + matriz[i][j] + " ]");
+				
+				if (j == 4) {
+					System.out.printf("\n");
+				}		
+			}
+		}
+	}
+	
+	public static int[] generarNumerosAleatoriosSinRepetir(int minimo, int maximo, int longitud) {
+		
+		if (minimo > maximo) {
+			
+			int aux = minimo;
+			maximo = minimo;
+			maximo = aux;	
+		}
+		
+		if ((maximo - minimo) >= (longitud - 1)) {
+			
+			int numero_elementos = 0;
+			int numeros[] = new int [longitud];
+			boolean encontrado = false;
+			int aleatorio;
+			
+
+			while (numero_elementos < longitud) {
+				
+				aleatorio = generaNumerosAleatorios(minimo - 1, maximo + 1);
+				
+				encontrado = false;
+				
+				for (int i = 0; i < numeros.length && !encontrado; i++) {
+					
+					if (aleatorio == numeros[i]) {
+						encontrado = true;
+					}
+				}
+				
+				if (!encontrado) {
+					
+					numeros[numero_elementos++] = aleatorio;		
+				} 
+			}
+			
+			return numeros;
+			
+		} else {
+			
+			System.out.printf("No se puede proceder");
+			
+			return null;
+		}
+		
+	}
+	
+	public static int generaNumerosAleatorios(int minimo, int maximo) {
+		
+		int num = (int)Math.floor(Math.random()*(minimo - maximo + 1) + (maximo));
+		
+		return num;
+	}
+	
+}
+
