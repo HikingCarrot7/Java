@@ -14,215 +14,213 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class LaminaMaestro extends JPanel{
+public class LaminaMaestro extends JPanel
+{
 
-	private static final long serialVersionUID = 1L;
-	
-	private JScrollPane scrollAlumnos;
-	
-	private Login login;
-	
-	protected static JTextArea mostrarAlumnos;
-	
-	protected static JButton anadirAlumno, borrarAlumno, califAlumno, administrador, maestro;
-	
-	protected static JComboBox<String> listaAlumnos;
-	
-	protected static ArrayList<ArrayList<Alumno>> alumnosInstancias;
-	
-	protected static ArrayList<Maestro> maestrosInstanciados;
-	
-	protected static JLabel infoMaestro;
-	
-	public LaminaMaestro() 
-	{
-		
-		iniciarElementos();
-		
-		ponerElementos();
-		
-		anadirElementos();
-		
-	}
-	
-	private class AccionBotones extends AbstractAction
-	{
-		private static final long serialVersionUID = 1L;
-		
-		public AccionBotones(String titulo, String descripcion) 
-		{
-			putValue(Action.NAME, titulo);
-			putValue(Action.SHORT_DESCRIPTION, descripcion);
-			
-		}
+    private static final long serialVersionUID = 1L;
 
-		@Override
-		public void actionPerformed(ActionEvent e) 
-		{
-			if(e.getSource() == anadirAlumno) 
-			{
-				new CapturarAlumno();
-				
-			}else if(e.getSource() == borrarAlumno) 
-			{
-				int opcion = Generales.alerta("Se perderán los datos del alumno. ¿Estás seguro?", "!Se perderán datos!");
-				
-				if(opcion == 0) 
-				{
-					alumnosInstancias.get(Login.indiceMaestro).remove(listaAlumnos.getSelectedIndex());
-					
-					LeerDatos.actualizarListaAlumnos();
-					
-					Generales.actualizarTextoAlumnos();
-					
-					listaAlumnos.removeItemAt(listaAlumnos.getSelectedIndex());
-					
-					borrarAlumno.setEnabled(listaAlumnos.getItemCount() < 1 ? false : true);
-					
-					califAlumno.setEnabled(listaAlumnos.getItemCount() < 1 ? false : true);
-				}
+    private JScrollPane scrollAlumnos;
 
-			}else if(e.getSource() == califAlumno) 
-			{
-				String calif = ".";
-				
-				if(listaAlumnos.getItemCount() > 0) 
-				{
-					
-					try 
-					{
-						while(true) 
-						{
-							calif = JOptionPane.showInputDialog(null, "Inserta la nueva calificación para: " + listaAlumnos.getSelectedItem(), "Nueva calificación", JOptionPane.DEFAULT_OPTION).trim();
-							
-							if(Double.parseDouble(calif) >= 0 && Double.parseDouble(calif) <= 100) 
-							{
-								
-								alumnosInstancias.get(Login.indiceMaestro).get(listaAlumnos.getSelectedIndex()).cambiarCalif(Double.parseDouble(calif));
-								
-								Generales.actualizarTextoAlumnos();
-								
-								break;
-								
-							}else 
-							{
-								error("La calificación es demasiado grande!");
+    private Login login;
 
-							}
-						}
-						
-						
-					}catch(Exception E) 
-					{
-						error("No insertaste un dato correcto!");
-						
-					}
-					
-				}
-				
-			}else if(e.getSource() == maestro)
-			{
-				updatePantalla("Iniciar sesión como maestro", "Maestro: ", false, true);
-				
-				Login.maestro.setEnabled(false);
-				
-				
-			}else 
-			{
-				
-				updatePantalla("Iniciar sesión como administrador", "Admin: ", true, false);
-				
-			}
-			
-		}
-		
-	}
-	
-	public void iniciarElementos() 
-	{
-		setLayout(null);
-		
-		alumnosInstancias = new ArrayList<>();
-		
-		maestrosInstanciados = new ArrayList<>();
-		
-		mostrarAlumnos = new JTextArea();
-		
-		infoMaestro = new JLabel();
-		
-		scrollAlumnos = new JScrollPane(mostrarAlumnos);
-		
-		anadirAlumno = new JButton(new AccionBotones("Añadir a un alumno", "Añadirás a un alumno"));
-		anadirAlumno.setEnabled(false);
-		
-		borrarAlumno = new JButton(new AccionBotones("Borrar a un alumno", "Se borrará al alumno que está seleccionado actualmente"));
-		borrarAlumno.setEnabled(false);
-		
-		califAlumno = new JButton(new AccionBotones("Poner calificación", "Establecer calificación al alumno seleccionado actualmente"));
-		califAlumno.setEnabled(false);
-		
-		administrador = new JButton(new AccionBotones("ADMINISTRADOR", "Iniciar sesión como administrador"));
-		administrador.setEnabled(true);
-		
-		maestro = new JButton(new AccionBotones("MAESTRO", "Iniciar sesión como maestro"));
-		maestro.setEnabled(maestrosInstanciados.size() > 0 ? true : false);
-		
-		listaAlumnos = new JComboBox<>();
-		
+    protected static JTextArea mostrarAlumnos;
 
-	
-	}
-	
-	public void ponerElementos() 
-	{
-		listaAlumnos.setBounds(100, 5, 600, 30);
-		
-		scrollAlumnos.setBounds(5, 50, 400, 600);
-		
-		anadirAlumno.setBounds(450, 100, 300, 25);
-		
-		borrarAlumno.setBounds(450, 150, 300, 25);
-		
-		califAlumno.setBounds(450, 200, 300, 25);
-		
-		administrador.setBounds(655, 740, 130, 25);
-		
-		maestro.setBounds(500, 740, 130, 25);
-		
-		infoMaestro.setBounds(5, 750, 525, 25);
-		
-	}
-	
-	public void anadirElementos() 
-	{
-		add(scrollAlumnos);
-		add(listaAlumnos);
-		add(anadirAlumno);
-		add(borrarAlumno);
-		add(califAlumno);
-		add(administrador);
-		add(maestro);
-		add(infoMaestro);
-	}
-	
-	public void updatePantalla(String info, String roll, boolean admin, boolean botonadmin) 
-	{
-		login = new Login();
-		
-		login.setTitle(info);
-		
-		Login.infoUser.setText(roll);
-		
-		Login.administrador = admin;
-		
-		Login.admin.setEnabled(botonadmin);
-	}
-	
-	public void error(String infoMensaje) 
-	{
-		Toolkit.getDefaultToolkit().beep();
-		
-		JOptionPane.showMessageDialog(null, infoMensaje, "Datos no válidos!", JOptionPane.ERROR_MESSAGE);
-	}
-	
+    protected static JButton anadirAlumno, borrarAlumno, califAlumno, administrador, maestro;
+
+    protected static JComboBox<String> listaAlumnos;
+
+    protected static ArrayList<ArrayList<Alumno>> alumnosInstancias;
+
+    protected static ArrayList<Maestro> maestrosInstanciados;
+
+    protected static JLabel infoMaestro;
+
+    public LaminaMaestro()
+    {
+
+        iniciarElementos();
+
+        ponerElementos();
+
+        anadirElementos();
+
+    }
+
+    private class AccionBotones extends AbstractAction
+    {
+
+        private static final long serialVersionUID = 1L;
+
+        public AccionBotones(String titulo, String descripcion)
+        {
+            putValue(Action.NAME, titulo);
+            putValue(Action.SHORT_DESCRIPTION, descripcion);
+
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if (e.getSource() == anadirAlumno)
+            {
+                new CapturarAlumno();
+
+            } else if (e.getSource() == borrarAlumno)
+            {
+                int opcion = Generales.alerta("Se perderï¿½n los datos del alumno. ï¿½Estï¿½s seguro?", "!Se perderï¿½n datos!");
+
+                if (opcion == 0)
+                {
+                    alumnosInstancias.get(Login.indiceMaestro).remove(listaAlumnos.getSelectedIndex());
+
+                    LeerDatos.actualizarListaAlumnos();
+
+                    Generales.actualizarTextoAlumnos();
+
+                    listaAlumnos.removeItemAt(listaAlumnos.getSelectedIndex());
+
+                    borrarAlumno.setEnabled(listaAlumnos.getItemCount() < 1 ? false : true);
+
+                    califAlumno.setEnabled(listaAlumnos.getItemCount() < 1 ? false : true);
+                }
+
+            } else if (e.getSource() == califAlumno)
+            {
+                String calif = ".";
+
+                if (listaAlumnos.getItemCount() > 0)
+                {
+
+                    try
+                    {
+                        while (true)
+                        {
+                            calif = JOptionPane.showInputDialog(null, "Inserta la nueva calificaciï¿½n para: " + listaAlumnos.getSelectedItem(), "Nueva calificaciï¿½n", JOptionPane.DEFAULT_OPTION).trim();
+
+                            if (Double.parseDouble(calif) >= 0 && Double.parseDouble(calif) <= 100)
+                            {
+
+                                alumnosInstancias.get(Login.indiceMaestro).get(listaAlumnos.getSelectedIndex()).cambiarCalif(Double.parseDouble(calif));
+
+                                Generales.actualizarTextoAlumnos();
+
+                                break;
+
+                            } else
+                            {
+                                error("La calificaciï¿½n es demasiado grande!");
+
+                            }
+                        }
+
+                    } catch (Exception E)
+                    {
+                        error("No insertaste un dato correcto!");
+
+                    }
+
+                }
+
+            } else if (e.getSource() == maestro)
+            {
+                updatePantalla("Iniciar sesiï¿½n como maestro", "Maestro: ", false, true);
+
+                Login.maestro.setEnabled(false);
+
+            } else
+            {
+
+                updatePantalla("Iniciar sesiï¿½n como administrador", "Admin: ", true, false);
+
+            }
+
+        }
+
+    }
+
+    public void iniciarElementos()
+    {
+        setLayout(null);
+
+        alumnosInstancias = new ArrayList<>();
+
+        maestrosInstanciados = new ArrayList<>();
+
+        mostrarAlumnos = new JTextArea();
+
+        infoMaestro = new JLabel();
+
+        scrollAlumnos = new JScrollPane(mostrarAlumnos);
+
+        anadirAlumno = new JButton(new AccionBotones("Aï¿½adir a un alumno", "Aï¿½adirï¿½s a un alumno"));
+        anadirAlumno.setEnabled(false);
+
+        borrarAlumno = new JButton(new AccionBotones("Borrar a un alumno", "Se borrarï¿½ al alumno que estï¿½ seleccionado actualmente"));
+        borrarAlumno.setEnabled(false);
+
+        califAlumno = new JButton(new AccionBotones("Poner calificaciï¿½n", "Establecer calificaciï¿½n al alumno seleccionado actualmente"));
+        califAlumno.setEnabled(false);
+
+        administrador = new JButton(new AccionBotones("ADMINISTRADOR", "Iniciar sesiï¿½n como administrador"));
+        administrador.setEnabled(true);
+
+        maestro = new JButton(new AccionBotones("MAESTRO", "Iniciar sesiï¿½n como maestro"));
+        maestro.setEnabled(maestrosInstanciados.size() > 0);
+
+        listaAlumnos = new JComboBox<>();
+
+    }
+
+    public void ponerElementos()
+    {
+        listaAlumnos.setBounds(100, 5, 600, 30);
+
+        scrollAlumnos.setBounds(5, 50, 400, 600);
+
+        anadirAlumno.setBounds(450, 100, 300, 25);
+
+        borrarAlumno.setBounds(450, 150, 300, 25);
+
+        califAlumno.setBounds(450, 200, 300, 25);
+
+        administrador.setBounds(655, 740, 130, 25);
+
+        maestro.setBounds(500, 740, 130, 25);
+
+        infoMaestro.setBounds(5, 750, 525, 25);
+
+    }
+
+    public void anadirElementos()
+    {
+        add(scrollAlumnos);
+        add(listaAlumnos);
+        add(anadirAlumno);
+        add(borrarAlumno);
+        add(califAlumno);
+        add(administrador);
+        add(maestro);
+        add(infoMaestro);
+    }
+
+    public void updatePantalla(String info, String roll, boolean admin, boolean botonadmin)
+    {
+        login = new Login();
+
+        login.setTitle(info);
+
+        Login.infoUser.setText(roll);
+
+        Login.administrador = admin;
+
+        Login.admin.setEnabled(botonadmin);
+    }
+
+    public void error(String infoMensaje)
+    {
+        Toolkit.getDefaultToolkit().beep();
+
+        JOptionPane.showMessageDialog(null, infoMensaje, "Datos no vï¿½lidos!", JOptionPane.ERROR_MESSAGE);
+    }
+
 }

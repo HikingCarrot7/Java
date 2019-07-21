@@ -1,67 +1,68 @@
 package excepcionbasica;
 
-public class UsoDeExcepciones 
+public class UsoDeExcepciones
 {
-	public static void main(String[] args)
-	{
-		try 
-		{
-			LanzaExcepciones();
-			
-		}catch(IndexOutOfBoundsException e) 
-		{
-			System.out.println("Atrapé la excepción en método main");	
-		}
-		
-		noLanzaExcepcion();
-	}
-	
-	public static void LanzaExcepciones() throws IndexOutOfBoundsException 
-	{
-		try 
-		{
-			System.out.println("Método lanza excepción");
-			
-			throw new IndexOutOfBoundsException();
-			
-		}catch(IndexOutOfBoundsException a) 
-		{	
-			System.out.println("La Excepcion ha sido manejada");
-			
-			throw a;
-			
-		}finally 
-		{
-			System.out.println("Se ejecutó el finally xd");
-		}
-	}
-	
-	public static void noLanzaExcepcion()
-	{
-		try 
-		{
-			System.out.println("No lanzaré una excepción esta vez");
-			
-		}catch(Exception e)
-		{
-			System.out.println("No entraré aquí");
-			
-		}finally 
-		{
-			System.out.println("Adiós!");
-		}
-	}
+
+    public static void main(String[] args)
+    {
+        try
+        {
+            LanzaExcepciones();
+
+        } catch (IndexOutOfBoundsException e)
+        {
+            System.out.println("Atrapï¿½ la excepciï¿½n en mï¿½todo main");
+        }
+
+        noLanzaExcepcion();
+    }
+
+    public static void LanzaExcepciones() throws IndexOutOfBoundsException
+    {
+        try
+        {
+            System.out.println("Mï¿½todo lanza excepciï¿½n");
+
+            throw new IndexOutOfBoundsException();
+
+        } catch (IndexOutOfBoundsException a)
+        {
+            System.out.println("La Excepcion ha sido manejada");
+
+            throw a;
+
+        } finally
+        {
+            System.out.println("Se ejecutï¿½ el finally xd");
+        }
+    }
+
+    public static void noLanzaExcepcion()
+    {
+        try
+        {
+            System.out.println("No lanzarï¿½ una excepciï¿½n esta vez");
+
+        } catch (Exception e)
+        {
+            System.out.println("No entrarï¿½ aquï¿½");
+
+        } finally
+        {
+            System.out.println("Adiï¿½s!");
+        }
+    }
 }
 
 /*class PruebaException extends Exception
-{
-	private static final long serialVersionUID = 1L;
+ {
+ private static final long serialVersionUID = 1L;
 
-	public PruebaException() {};
+ public PruebaException() {};
 	
-	public PruebaException(String mensaje) 
-	{
-		super(mensaje);
-	};
+ public PruebaException(String mensaje) 
+ {
+ super(mensaje);
+ };
 
-}*/
+ }*/

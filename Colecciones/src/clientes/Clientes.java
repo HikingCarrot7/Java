@@ -2,81 +2,91 @@ package clientes;
 
 public class Clientes
 {
-	
-	private String nombre, numCuenta;
-	private double sueldo;
-	
-	public Clientes(String nombre, String numCuenta, double sueldo) 
-	{
-		this.nombre = nombre;
-		this.numCuenta = numCuenta;
-		this.sueldo = sueldo;
-	}
 
-	public String getNombre() 
-	{
-		return nombre;
-	}
+    private String nombre, numCuenta;
+    private double sueldo;
 
-	public void setNombre(String nombre)
-	{
-		this.nombre = nombre;
-	}
+    public Clientes(String nombre, String numCuenta, double sueldo)
+    {
+        this.nombre = nombre;
+        this.numCuenta = numCuenta;
+        this.sueldo = sueldo;
+    }
 
-	public String getNumCuenta()
-	{
-		return numCuenta;
-	}
+    public String getNombre()
+    {
+        return nombre;
+    }
 
-	public void setNumCuenta(String numCuenta)
-	{
-		this.numCuenta = numCuenta;
-	}
+    public void setNombre(String nombre)
+    {
+        this.nombre = nombre;
+    }
 
-	public double getSueldo() 
-	{
-		return sueldo;
-	}
+    public String getNumCuenta()
+    {
+        return numCuenta;
+    }
 
-	public void setSueldo(double sueldo) 
-	{
-		this.sueldo = sueldo;
-	}
+    public void setNumCuenta(String numCuenta)
+    {
+        this.numCuenta = numCuenta;
+    }
 
-	@Override
-	public int hashCode() 
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((numCuenta == null) ? 0 : numCuenta.hashCode());
-		return result;
-	}
+    public double getSueldo()
+    {
+        return sueldo;
+    }
 
-	@Override
-	public boolean equals(Object obj) 
-	{
-		if (this == obj)
-			return true;
-		
-		if (obj == null)
-			return false;
-		
-		if (getClass() != obj.getClass())
-			return false;
-		
-		Clientes other = (Clientes) obj;
-		
-		if (numCuenta == null)
-		{
-			if (other.numCuenta != null)
-				return false;
-			
-		} else if (!numCuenta.equals(other.numCuenta))
-			return false;
-		
-		return true;
-	}
-	
+    public void setSueldo(double sueldo)
+    {
+        this.sueldo = sueldo;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((numCuenta == null) ? 0 : numCuenta.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+
+        if (obj == null)
+        {
+            return false;
+        }
+
+        if (getClass() != obj.getClass())
+        {
+            return false;
+        }
+
+        Clientes other = (Clientes) obj;
+
+        if (numCuenta == null)
+        {
+            if (other.numCuenta != null)
+            {
+                return false;
+            }
+
+        } else if (!numCuenta.equals(other.numCuenta))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
 //	@Override
 //	public boolean equals(Object obj) 
 //	{
@@ -88,5 +98,4 @@ public class Clientes
 //		
 //		return false;
 //	}
-	
 }

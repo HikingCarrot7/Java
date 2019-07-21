@@ -1,32 +1,31 @@
 package pilas;
 
-public class Nodo<T> 
+public class Nodo<T>
 {
-	private T elemento;
-	
-	private Nodo<T> siguiente;
-	
-	public Nodo(T elemento, Nodo<T> siguiente) 
-	{
-		this.elemento = elemento;
-		this.siguiente = siguiente;
-	}
 
-	public T getElemento() 
-	{
-		return elemento;
-	}
+    private final T elemento;
+    private final Nodo<T> siguiente;
 
-	public Nodo<T> getSiguiente() 
-	{
-		return siguiente;
-	}
+    public Nodo(T elemento, Nodo<T> siguiente)
+    {
+        this.elemento = elemento;
+        this.siguiente = siguiente;
+    }
 
-	@Override
-	public String toString() 
-	{
-		return elemento + "\n";
-	}
-	
+    public T getElemento()
+    {
+        return elemento;
+    }
+
+    public Nodo<T> getSiguiente()
+    {
+        return siguiente;
+    }
+
+    @Override
+    public String toString()
+    {
+        return elemento + "\n";
+    }
 
 }

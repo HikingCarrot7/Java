@@ -1,10 +1,10 @@
 package administracion;
 
-public interface InicioSesion 
+public interface InicioSesion
 {
-	
-	public String getUsuario();
-	
-	public String getContrasena();
+
+    public String getUsuario();
+
+    public String getContrasena();
 
 }
