@@ -8,8 +8,9 @@ import java.io.Serializable;
  */
 public class Mensaje implements Serializable
 {
-
-    private String nick, ip, mensaje;
+	private static final long serialVersionUID = 1L;
+	
+	private String nick, ip, mensaje;
 
     public String getNick() 
     {

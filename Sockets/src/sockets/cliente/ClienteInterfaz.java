@@ -1,4 +1,4 @@
-package sockets.cliente;
+﻿package sockets.cliente;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -60,6 +60,7 @@ public class ClienteInterfaz extends JPanel implements Runnable
 
         ip = new JTextField("192.168.0.14");
 
+
         ip.addFocusListener(new FocusListener()
         {
 
@@ -106,7 +107,7 @@ public class ClienteInterfaz extends JPanel implements Runnable
             try
             {
                 //Socket para establecer una conexión con el servidor principal
-                Socket miSocket = new Socket("192.168.0.2", 9999);
+                Socket miSocket = new Socket("192.168.0.14", 9999);
 
                 //Se crea un objeto datos
                 Mensaje datos = new Mensaje();
