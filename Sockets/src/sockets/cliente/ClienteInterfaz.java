@@ -135,7 +135,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
 
                 //Se establecen los valores al objeto datos
                 datos.setNick(nombreUser.getText());
-                datos.setIp(" "/*usersOnline.getSelectedItem().toString()*/);
+                datos.setIp(usersOnline.getSelectedItem().toString());
                 datos.setMensaje(texto.getText());
 
                 //Flujo de salida para los datos(objeto datos)
