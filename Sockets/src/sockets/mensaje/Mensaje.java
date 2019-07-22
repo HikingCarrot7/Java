@@ -8,16 +8,17 @@ import java.io.Serializable;
  */
 public class Mensaje implements Serializable
 {
-	private static final long serialVersionUID = 1L;
-	
-	private String nick, ip, mensaje;
 
-    public String getNick() 
+    private static final long serialVersionUID = 1L;
+
+    private String nick, ip, mensaje;
+
+    public String getNick()
     {
         return nick;
     }
 
-    public void setNick(String nick) 
+    public void setNick(String nick)
     {
         this.nick = nick;
     }
@@ -37,7 +38,7 @@ public class Mensaje implements Serializable
         return mensaje;
     }
 
-    public void setMensaje(String mensaje) 
+    public void setMensaje(String mensaje)
     {
         this.mensaje = mensaje;
     }

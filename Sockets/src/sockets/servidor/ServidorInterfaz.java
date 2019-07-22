@@ -70,6 +70,7 @@ public final class ServidorInterfaz extends JPanel
                     paqueteReenvio.writeObject(paqueteDatos);
                     
                     //Cerramos los sockets
+                    paqueteReenvio.close();
                     destinatario.close();
                     miSocket.close();
                 }

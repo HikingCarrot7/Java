@@ -1,4 +1,4 @@
-﻿package sockets.cliente;
+package sockets.cliente;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -9,6 +9,7 @@ import java.awt.event.FocusListener;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -107,7 +108,7 @@ public class ClienteInterfaz extends JPanel implements Runnable
             try
             {
                 //Socket para establecer una conexión con el servidor principal
-                Socket miSocket = new Socket("192.168.0.14", 9999);
+                Socket miSocket = new Socket(InetAddress.getLocalHost().getHostAddress(), 9999);
 
                 //Se crea un objeto datos
                 Mensaje datos = new Mensaje();
@@ -162,6 +163,8 @@ public class ClienteInterfaz extends JPanel implements Runnable
                 
                 //Mostramos el mensaje en el área de texto
                 areaTexto.append(paqueteRecibido.getNick() + "says: " + paqueteRecibido.getMensaje());
+                
+                in.close();
                 
             }
             
