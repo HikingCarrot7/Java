@@ -18,109 +18,118 @@ import com.game.src.objects.Wizard;
 
 public class Game extends Canvas
 {
-	private static final long serialVersionUID = 1L;
-	
-	public static int ANCHO = 1000, ALTO = 563;
-	public boolean running = false;
-	
-	private Handler handler;
-	private Camera camera;
-	private BufferedImageLoader loader;
 
-	public static void main(String[] args) 
-	{
-		new Window(ANCHO, ALTO, "Wizard course", new Game());
-	}
+    private static final long serialVersionUID = 1L;
 
-	public synchronized void start() 
-	{
-		if(!running)
-			running = true;
-	}
+    public static int ANCHO = 1000, ALTO = 563;
+    public boolean running = false;
 
-	public synchronized void stop() 
-	{
-		System.exit(1);
-	}
-	
-	public void init() 
-	{
-		loader = new BufferedImageLoader();
-		handler = new Handler();
-		camera = new Camera(0, -700);
-		
-		LoadImageLevel(loader.loadImage("/map.png"));
-		
-		addMouseListener(new MouseInput(handler, camera));
-		addKeyListener(new KeyInput(handler));
-		requestFocus();
-		
-	}
-	
-	public void tick() 
-	{
-		
-		handler.tick();
-		for (GameObject O : handler.getObjects())
-			if(O.getId().equals(ObjectId.Player)) 
-			{
-				camera.tick((Wizard) O);
-				
-				break;
-			}
-		
-	}
+    private Handler handler;
+    private Camera camera;
+    private BufferedImageLoader loader;
 
-	public void render() 
-	{
-		BufferStrategy bs = getBufferStrategy();
+    public static void main(String[] args)
+    {
+        new Window(ANCHO, ALTO, "Wizard course", new Game());
+    }
 
-		if(bs == null) 
-		{
-			createBufferStrategy(3);
+    public synchronized void start()
+    {
+        if (!running)
+        {
+            running = true;
+        }
+    }
 
-			return;
-		}
+    public synchronized void stop()
+    {
+        System.exit(1);
+    }
 
-		Graphics2D g =(Graphics2D) bs.getDrawGraphics();
+    public void init()
+    {
+        loader = new BufferedImageLoader();
+        handler = new Handler();
+        camera = new Camera(0, -700);
 
-		g.setColor(Color.black);
-		g.fillRect(0, 0, ANCHO, ALTO);
-		
-		g.translate((int)camera.getX(), (int) camera.getY());
-		
-		handler.render(g);
-		
-		g.translate((int) - camera.getX(),(int) - camera.getY());
-		
-		g.dispose();
-		bs.show();
-	}
-	
-	public void LoadImageLevel(BufferedImage image) 
-	{
-		for (int j = 0; j < image.getWidth(); j++) 
-			for (int i = 0; i < image.getHeight(); i++) 
-			{
-				int pixel = image.getRGB(i, j);
-				
-				int red = (pixel >> 16) & 0xff;
-				int green = (pixel >> 8) & 0xff;
-				int blue = (pixel) & 0xff;
-				
-				if(red == 255 && green == 0 && blue == 0)
-					handler.addObject(new Block(i * 32, j * 32, ObjectId.Block));
-				
-				else if(red ==255 && green == 255)
-					handler.addObject(new Enemy(i * 32, j * 32, ObjectId.Enemy, handler));
-				
-				else if(blue == 255)
-					handler.addObject(new Wizard(i * 32, j * 32, ObjectId.Player, handler));
-				
-				else if(green == 255)
-					handler.addObject(new Crate(i * 32, j * 32, ObjectId.Crate, handler));
-				
-			}
-	}
-	
+        LoadImageLevel(loader.loadImage("/map.png"));
+
+        addMouseListener(new MouseInput(handler, camera));
+        addKeyListener(new KeyInput(handler));
+        requestFocus();
+
+    }
+
+    public void tick()
+    {
+
+        handler.tick();
+        for (GameObject O : handler.getObjects())
+        {
+            if (O.getId().equals(ObjectId.Player))
+            {
+                camera.tick((Wizard) O);
+
+                break;
+            }
+        }
+
+    }
+
+    public void render()
+    {
+        BufferStrategy bs = getBufferStrategy();
+
+        if (bs == null)
+        {
+            createBufferStrategy(3);
+
+            return;
+        }
+
+        Graphics2D g = (Graphics2D) bs.getDrawGraphics();
+
+        g.setColor(Color.black);
+        g.fillRect(0, 0, ANCHO, ALTO);
+
+        g.translate((int) camera.getX(), (int) camera.getY());
+
+        handler.render(g);
+
+        g.translate((int) -camera.getX(), (int) -camera.getY());
+
+        g.dispose();
+        bs.show();
+    }
+
+    public void LoadImageLevel(BufferedImage image)
+    {
+        for (int j = 0; j < image.getWidth(); j++)
+        {
+            for (int i = 0; i < image.getHeight(); i++)
+            {
+                int pixel = image.getRGB(i, j);
+
+                int red = (pixel >> 16) & 0xff;
+                int green = (pixel >> 8) & 0xff;
+                int blue = (pixel) & 0xff;
+
+                if (red == 255 && green == 0 && blue == 0)
+                {
+                    handler.addObject(new Block(i * 32, j * 32, ObjectId.Block));
+                } else if (red == 255 && green == 255)
+                {
+                    handler.addObject(new Enemy(i * 32, j * 32, ObjectId.Enemy, handler));
+                } else if (blue == 255)
+                {
+                    handler.addObject(new Wizard(i * 32, j * 32, ObjectId.Player, handler));
+                } else if (green == 255)
+                {
+                    handler.addObject(new Crate(i * 32, j * 32, ObjectId.Crate, handler));
+                }
+
+            }
+        }
+    }
+
 }

@@ -3,7 +3,7 @@ package colas;
 public class Nodo<T>
 {
 
-    private T elemento;
+    private final T elemento;
     private Nodo<T> siguiente;
 
     public Nodo(T elemento, Nodo<T> siguiente)

@@ -1,8 +1,8 @@
 package unpocodetodo;
 
-public interface Prueba 
+public interface Prueba
 {
-	
-	public void obtener();
+
+    public void obtener();
 
 }

@@ -2,58 +2,69 @@ package cosas;
 
 import java.util.LinkedList;
 
-public class Prueba {
-	private String nombre;
+public class Prueba
+{
 
-	private int edad;
+    private String nombre;
 
-	public static void main(String[] args) {
-		nombre("Estrella");
-	}
+    private int edad;
 
-	private static void nombre(String estrella) {
-		System.out.println(Math.E);
+    public static void main(String[] args)
+    {
+        nombre("Estrella");
+    }
 
-		Prueba obj = new Prueba("Nicolás");
+    private static void nombre(String estrella)
+    {
+        System.out.println(Math.E);
 
-		LinkedList<Integer> lista = new LinkedList<Integer>();
+        Prueba obj = new Prueba("Nicolï¿½s");
 
-		lista.add(6);
+        LinkedList<Integer> lista = new LinkedList<>();
 
-		System.out.println(obj);
+        lista.add(6);
 
-	}
+        System.out.println(obj);
 
-	public Prueba(String nombre, int edad) {
-		this.nombre = nombre;
-		this.edad = edad;
-	}
+    }
 
-	public Prueba(String nombre) {
-		this.nombre = nombre;
+    public Prueba(String nombre, int edad)
+    {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
 
-	}
+    public Prueba(String nombre)
+    {
+        this.nombre = nombre;
 
-	public String getnombre() {
-		return nombre;
-	}
+    }
 
-	public void setnombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public String getnombre()
+    {
+        return nombre;
+    }
 
-	public int getEdad() {
+    public void setnombre(String nombre)
+    {
+        this.nombre = nombre;
+    }
 
-		return edad;
-	}
+    public int getEdad()
+    {
 
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
+        return edad;
+    }
 
-	@Override
-	public String toString() {
-		return "nombre " + nombre + ", edad=" + edad;
-	}
+    public void setEdad(int edad)
+    {
+        this.edad = edad;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "nombre " + nombre + ", edad=" + edad;
+    }
 
 }

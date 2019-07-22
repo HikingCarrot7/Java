@@ -35,13 +35,7 @@ public class Trees
 
         ordenaNombres.removeIf((Persona p) ->
         {
-            if (p.getNombre().equals("Fernando"))
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
+            return p.getNombre().equals("Fernando");
         });
 
         for (Persona S : ordenaNombres)
