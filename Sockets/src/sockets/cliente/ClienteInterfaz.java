@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -64,9 +65,9 @@ public final class ClienteInterfaz extends JPanel implements Runnable
 
         nombreUser = new JLabel("User: " + nick);
         nombreUser.setBorder(new TitledBorder(new EtchedBorder()));
-        
+
         usersOnline = new JComboBox<>();
-        
+
         accionBoton();
 
     }
@@ -177,13 +178,29 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                 //Entrada del paquete enviado desde el servidor principal
                 ObjectInputStream in = new ObjectInputStream(cliente.getInputStream());
 
-                //Leemos el objeto que llega desde el servidor principal
-                paqueteRecibido = (Mensaje) in.readObject();
+                //Revisamos si tenemos que actualizar los combo
+                if (in.readObject() instanceof ArrayList)
+                {
+                    usersOnline.removeAllItems();
 
-                //Mostramos el mensaje en el área de texto
-                areaTexto.append(paqueteRecibido.getNick() + " says: " + paqueteRecibido.getMensaje() + "\n");
+                    ArrayList<String> ips = (ArrayList) in.readObject();
 
-                in.close();
+                    for (int i = 0; i < ips.size(); i++)
+                    {
+                        usersOnline.addItem(ips.get(i));
+                    }
+
+                } else
+                {
+                    //Leemos el objeto que llega desde el servidor principal
+                    paqueteRecibido = (Mensaje) in.readObject();
+
+                    //Mostramos el mensaje en el área de texto
+                    areaTexto.append(paqueteRecibido.getNick() + " says: " + paqueteRecibido.getMensaje() + "\n");
+
+                    in.close();
+
+                }
 
             }
 
