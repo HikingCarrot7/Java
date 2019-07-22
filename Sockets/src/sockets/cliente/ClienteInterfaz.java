@@ -58,7 +58,7 @@ public class ClienteInterfaz extends JPanel implements Runnable
         nombreUser = new JTextField("User: 1");
         nombreUser.setEditable(false);
 
-        ip = new JTextField("Inserte la IP (¿?)");
+        ip = new JTextField("192.168.0.2");
 
         ip.addFocusListener(new FocusListener()
         {
@@ -106,7 +106,7 @@ public class ClienteInterfaz extends JPanel implements Runnable
             try
             {
                 //Socket para establecer una conexión con el servidor principal
-                Socket miSocket = new Socket("192.168.0.2", 9999);
+                Socket miSocket = new Socket("192.168.0.14", 9999);
 
                 //Se crea un objeto datos
                 Mensaje datos = new Mensaje();
