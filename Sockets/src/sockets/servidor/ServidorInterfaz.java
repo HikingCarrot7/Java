@@ -67,7 +67,7 @@ public final class ServidorInterfaz extends JPanel
                     ObjectOutputStream paqueteReenvio = new ObjectOutputStream(destinatario.getOutputStream());
                     
                     //Enviamos el paquete recibido al destinatario
-                    paqueteReenvio.writeObject(paqueteDatos);
+                    paqueteReenvio.writeObject(paqueteRecibido);
                     
                     //Cerramos los sockets
                     paqueteReenvio.close();
