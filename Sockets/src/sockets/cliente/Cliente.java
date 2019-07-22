@@ -1,14 +1,16 @@
 package sockets.cliente;
 
 import javax.swing.JFrame;
+import sockets.mensaje.EnvioOnline;
 
-public class Cliente extends JFrame {
+public class Cliente extends JFrame
+{
 
     private static final long serialVersionUID = 1L;
 
     private ClienteInterfaz interfaz;
 
-    public Cliente() 
+    public Cliente()
     {
         interfaz = new ClienteInterfaz();
 
@@ -18,11 +20,12 @@ public class Cliente extends JFrame {
         setAlwaysOnTop(true);
         setTitle("Cliente");
         add(interfaz);
+        addWindowListener(new EnvioOnline());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
         new Cliente();
     }

@@ -45,7 +45,12 @@ public final class ServidorInterfaz extends JPanel
                 {
                     //El socket del cliente que envió el mensaje
                     Socket miSocket = servidor.accept();
-
+                    
+                    //-----DETECTA ONLINE-----------------
+                    
+                    System.out.println(miSocket.getInetAddress().getHostAddress());
+                    
+                    //-------------------------------------
                     //Canal de entrada del socket
                     ObjectInputStream paqueteDatos = new ObjectInputStream(miSocket.getInputStream());
 

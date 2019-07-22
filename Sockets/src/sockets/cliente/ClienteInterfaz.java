@@ -3,9 +3,8 @@ package sockets.cliente;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -14,32 +13,39 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 import sockets.mensaje.Mensaje;
 
-public class ClienteInterfaz extends JPanel implements Runnable
+public final class ClienteInterfaz extends JPanel implements Runnable
 {
 
     private static final long serialVersionUID = 1L;
 
-    private JLabel info;
+    private JLabel info, nombreUser;
     private JButton enviar;
-    private JTextField texto, nombreUser, ip;
+    private JTextField texto;
     private JTextArea areaTexto;
     private JPanel soporteTexto, soporteEnvio, soporteDatos;
-    
+    private String nick;
+    private JComboBox<String> usersOnline;
+
     public ClienteInterfaz()
     {
+        pedirNick();
         iniciarElementos();
         anadirElementos();
-        
+
         //Thread para ejecutar el método run
         new Thread(this).start();
-        
+
     }
 
     private void iniciarElementos()
@@ -56,29 +62,11 @@ public class ClienteInterfaz extends JPanel implements Runnable
 
         texto = new JTextField(28);
 
-        nombreUser = new JTextField("");
-        nombreUser.setEditable(true);
-
-        ip = new JTextField("192.168.0.14");
-
-
-        ip.addFocusListener(new FocusListener()
-        {
-
-            @Override
-            public void focusGained(FocusEvent e)
-            {
-                ip.selectAll();
-            }
-
-            @Override
-            public void focusLost(FocusEvent e)
-            {
-                ip.setText(ip.getText());
-            }
-
-        });
-
+        nombreUser = new JLabel("User: " + nick);
+        nombreUser.setBorder(new TitledBorder(new EtchedBorder()));
+        
+        usersOnline = new JComboBox<>();
+        
         accionBoton();
 
     }
@@ -86,10 +74,10 @@ public class ClienteInterfaz extends JPanel implements Runnable
     private void anadirElementos()
     {
         //Se añaden todos los elementos Swing a sus correspondientes JPanels
-        soporteDatos.add(nombreUser); 
+        soporteDatos.add(nombreUser);
         soporteDatos.add(info);
-        soporteDatos.add(ip);
-        
+        soporteDatos.add(usersOnline);
+
         areaTexto.setEditable(false);
         soporteTexto.add(areaTexto, BorderLayout.CENTER);
 
@@ -101,12 +89,43 @@ public class ClienteInterfaz extends JPanel implements Runnable
         add(soporteEnvio, BorderLayout.SOUTH);
     }
 
+    //Validacion del nick del nuevo usuario
+    public void pedirNick()
+    {
+        boolean validar = false;
+
+        while (!validar)
+        {
+            nick = JOptionPane.showInputDialog(null, "Inserta tu nick", "New user", JOptionPane.PLAIN_MESSAGE);
+
+            if (nick == null)
+            {
+                System.exit(1);
+            }
+
+            if (nick.length() <= 6)
+            {
+                validar = false;
+
+                Toolkit.getDefaultToolkit().beep();
+
+                JOptionPane.showMessageDialog(null, "User NO válido. Debe contener al menos 7 caracteres", "User inválido", JOptionPane.ERROR_MESSAGE);
+
+            } else
+            {
+                validar = true;
+            }
+        }
+
+    }
+
     private void accionBoton()
     {
         enviar.addActionListener((ActionEvent e) ->
         {
             try
             {
+
                 //Socket para establecer una conexión con el servidor principal
                 Socket miSocket = new Socket(InetAddress.getLocalHost().getHostAddress(), 9999);
 
@@ -115,15 +134,15 @@ public class ClienteInterfaz extends JPanel implements Runnable
 
                 //Se establecen los valores al objeto datos
                 datos.setNick(nombreUser.getText());
-                datos.setIp(ip.getText());
+                datos.setIp(" "/*usersOnline.getSelectedItem().toString()*/);
                 datos.setMensaje(texto.getText());
-                
+
                 //Flujo de salida para los datos(objeto datos)
                 ObjectOutputStream salidaPaquete = new ObjectOutputStream(miSocket.getOutputStream());
-                
+
                 //Se envían los datos
                 salidaPaquete.writeObject(datos);
-                
+
                 //Se cierra el socket para evitar "fugas de recursos"
                 miSocket.close();
 
@@ -143,37 +162,36 @@ public class ClienteInterfaz extends JPanel implements Runnable
         {
             //El cliente también actuará como un servidor(recibirá los datos del servidor principal)
             ServerSocket server = new ServerSocket(10000);
-            
+
             //Socket para establecer la conexión con el servidor principal
             Socket cliente;
-            
+
             //El mensaje recibido
             Mensaje paqueteRecibido;
-            
-            while(true)
+
+            while (true)
             {
                 //Espera hasta aceptar los datos del servidor principal
                 cliente = server.accept();
-                
+
                 //Entrada del paquete enviado desde el servidor principal
                 ObjectInputStream in = new ObjectInputStream(cliente.getInputStream());
-                
+
                 //Leemos el objeto que llega desde el servidor principal
                 paqueteRecibido = (Mensaje) in.readObject();
-                
+
                 //Mostramos el mensaje en el área de texto
                 areaTexto.append(paqueteRecibido.getNick() + " says: " + paqueteRecibido.getMensaje() + "\n");
-                
+
                 in.close();
-                
+
             }
-            
-        }catch(IOException | ClassNotFoundException e)
+
+        } catch (IOException | ClassNotFoundException e)
         {
             //Se imprime un mensaje en consola en caso de que las cosas salgan mal
             System.out.println(e.getMessage());
-            
+
         }
     }
-
 }
