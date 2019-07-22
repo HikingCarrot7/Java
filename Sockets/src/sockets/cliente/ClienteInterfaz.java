@@ -58,7 +58,7 @@ public class ClienteInterfaz extends JPanel implements Runnable
         nombreUser = new JTextField("User: 1");
         nombreUser.setEditable(false);
 
-        ip = new JTextField("Inserte la IP (¿?)");
+        ip = new JTextField("192.168.0.14");
 
         ip.addFocusListener(new FocusListener()
         {
