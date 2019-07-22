@@ -6,8 +6,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 import javax.swing.JButton;
@@ -18,7 +19,7 @@ import javax.swing.JTextField;
 
 import sockets.mensaje.Mensaje;
 
-public class ClienteInterfaz extends JPanel 
+public class ClienteInterfaz extends JPanel implements Runnable
 {
 
     private static final long serialVersionUID = 1L;
@@ -29,13 +30,13 @@ public class ClienteInterfaz extends JPanel
     private JTextArea areaTexto;
     private JPanel soporteTexto, soporteEnvio, soporteDatos;
 
-    public ClienteInterfaz() 
+    public ClienteInterfaz()
     {
         iniciarElementos();
         anadirElementos();
     }
 
-    private void iniciarElementos() 
+    private void iniciarElementos()
     {
         setLayout(new BorderLayout());
 
@@ -53,18 +54,18 @@ public class ClienteInterfaz extends JPanel
         nombreUser.setEditable(false);
 
         ip = new JTextField("Inserte la IP (¿?)");
-        
-        ip.addFocusListener(new FocusListener() 
+
+        ip.addFocusListener(new FocusListener()
         {
 
             @Override
-            public void focusGained(FocusEvent e) 
+            public void focusGained(FocusEvent e)
             {
                 ip.selectAll();
             }
 
             @Override
-            public void focusLost(FocusEvent e) 
+            public void focusLost(FocusEvent e)
             {
                 ip.setText(ip.getText());
             }
@@ -75,12 +76,13 @@ public class ClienteInterfaz extends JPanel
 
     }
 
-    private void anadirElementos() 
+    private void anadirElementos()
     {
         soporteDatos.add(nombreUser);
         soporteDatos.add(info);
         soporteDatos.add(ip);
-
+        
+        areaTexto.setEditable(false);
         soporteTexto.add(areaTexto, BorderLayout.CENTER);
 
         soporteEnvio.add(texto);
@@ -91,33 +93,46 @@ public class ClienteInterfaz extends JPanel
         add(soporteEnvio, BorderLayout.SOUTH);
     }
 
-    private void accionBoton() 
+    private void accionBoton()
     {
-        enviar.addActionListener((ActionEvent e) -> 
+        enviar.addActionListener((ActionEvent e) ->
         {
-            try 
+            try
             {
-                Socket miSocket = new Socket("192.168.0.9", 9999);
+                Socket miSocket = new Socket("192.168.0.2", 9999);
 
                 Mensaje datos = new Mensaje();
 
                 datos.setNick(nombreUser.getText());
                 datos.setIp(ip.getText());
                 datos.setMensaje(texto.getText());
-
-                DataOutputStream flujo = new DataOutputStream(miSocket.getOutputStream());
-
-                flujo.writeUTF(texto.getText());
-
-                flujo.close();
+                
+                ObjectOutputStream salidaPaquete = new ObjectOutputStream(miSocket.getOutputStream());
+                
+                salidaPaquete.writeObject(datos);
+                
                 miSocket.close();
 
-            } catch (IOException e1) 
+            } catch (IOException e1)
             {
                 System.out.println(e1.getMessage());
             }
 
         });
+    }
+
+    @Override
+    public void run()
+    {
+        try
+        {
+            ServerSocket server = new ServerSocket();
+            
+            
+            
+        }catch(IOException e)
+        {
+        }
     }
 
 }

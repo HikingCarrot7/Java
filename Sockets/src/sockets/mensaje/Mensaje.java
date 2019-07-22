@@ -1,6 +1,12 @@
 package sockets.mensaje;
 
-public class Mensaje 
+import java.io.Serializable;
+
+/**
+ *
+ * @author HikingCarrot
+ */
+public class Mensaje implements Serializable
 {
 
     private String nick, ip, mensaje;

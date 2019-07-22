@@ -1,54 +1,86 @@
 package sockets.servidor;
 
 import java.awt.BorderLayout;
-import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import sockets.mensaje.Mensaje;
 
-public class ServidorInterfaz extends JPanel 
+public final class ServidorInterfaz extends JPanel
 {
 
-    private static final long serialVersionUID = 1L;
-
-    private JTextArea texto;
+    private final JTextArea texto;
     private Thread thread;
+    private final int PUERTO = 9999;
 
-    public ServidorInterfaz() 
+    public ServidorInterfaz()
     {
         setLayout(new BorderLayout());
 
         texto = new JTextArea();
-        
-        thread = new Thread(() -> 
+
+        iniciarServer();
+
+        add(texto, BorderLayout.CENTER);
+
+    }
+
+    public void iniciarServer()
+    {
+        thread = new Thread(() ->
         {
-            while (true) 
+            try
             {
-                try 
+                String nick, ip, mensaje;
+                Mensaje paqueteRecibido;
+                ServerSocket servidor = new ServerSocket(PUERTO);
+
+                while (true)
                 {
-                    ServerSocket servidor = new ServerSocket(9999);
+                    //El socket del cliente que envió el mensaje
                     Socket miSocket = servidor.accept();
-                    DataInputStream flujoEntrada = new DataInputStream(miSocket.getInputStream());
 
-                    texto.append(flujoEntrada.readUTF() + "\n");
+                    //Canal de entrada del socket
+                    ObjectInputStream paqueteDatos = new ObjectInputStream(miSocket.getInputStream());
 
+                    //Leer el objeto SERIALIZADO del paquete
+                    paqueteRecibido = (Mensaje) paqueteDatos.readObject();
+                    
+                    //Leer los datos 
+                    nick = paqueteRecibido.getNick();
+                    ip = paqueteRecibido.getIp();
+                    mensaje = paqueteRecibido.getMensaje();
+                    
+                    //Ponerlos en el JTextArea
+                    texto.append("\n" + nick + ": " + mensaje + " para: " + ip);
+
+                    //Crear un nuevo socket para enviar los datos al destinatario (Es posible que el puerto falle)
+                    Socket destinatario = new Socket(ip, PUERTO);
+                    
+                    //Output stream para enviar los datos (obtener le output del socket que ya tiene la ip del destinatario)
+                    ObjectOutputStream paqueteReenvio = new ObjectOutputStream(destinatario.getOutputStream());
+                    
+                    //Enviamos el paquete recibido al destinatario
+                    paqueteReenvio.writeObject(paqueteDatos);
+                    
+                    //Cerramos los sockets
+                    destinatario.close();
                     miSocket.close();
-                    servidor.close();
-
-                } catch (IOException e) 
-                {
-                    e.printStackTrace();
                 }
+
+            } catch (IOException | ClassNotFoundException e)
+            {
+                System.out.println(e.getMessage());
+
             }
         });
 
         thread.start();
-
-        add(texto, BorderLayout.CENTER);
-
     }
 
 }
