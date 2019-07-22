@@ -140,7 +140,7 @@ public class ClienteInterfaz extends JPanel implements Runnable
         try
         {
             //El cliente también actuará como un servidor(recibirá los datos del servidor principal)
-            ServerSocket server = new ServerSocket(9999);
+            ServerSocket server = new ServerSocket(10000);
             
             //Socket para establecer la conexión con el servidor principal
             Socket cliente;

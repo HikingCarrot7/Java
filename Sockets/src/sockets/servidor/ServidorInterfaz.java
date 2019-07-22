@@ -17,6 +17,7 @@ public final class ServidorInterfaz extends JPanel
     private final JTextArea texto;
     private Thread thread;
     private final int PUERTO = 9999;
+    private final int PUERTO2 = 10000;
 
     public ServidorInterfaz()
     {
@@ -60,7 +61,7 @@ public final class ServidorInterfaz extends JPanel
                     texto.append("\n" + nick + ": " + mensaje + " para: " + ip);
 
                     //Crear un nuevo socket para enviar los datos al destinatario (Es posible que el puerto falle)
-                    Socket destinatario = new Socket(ip, PUERTO);
+                    Socket destinatario = new Socket(ip, PUERTO2);
                     
                     //Output stream para enviar los datos (obtener le output del socket que ya tiene la ip del destinatario)
                     ObjectOutputStream paqueteReenvio = new ObjectOutputStream(destinatario.getOutputStream());
