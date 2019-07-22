@@ -84,7 +84,7 @@ public class ClienteInterfaz extends JPanel implements Runnable
     private void anadirElementos()
     {
         //Se añaden todos los elementos Swing a sus correspondientes JPanels
-        soporteDatos.add(nombreUser);
+        soporteDatos.add(nombreUser); 
         soporteDatos.add(info);
         soporteDatos.add(ip);
         
