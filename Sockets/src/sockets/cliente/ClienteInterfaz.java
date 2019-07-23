@@ -137,7 +137,12 @@ public final class ClienteInterfaz extends JPanel implements Runnable
 
                 //Se establecen los valores al objeto datos
                 datos.setNick(nombreUser.getText());
-                datos.setIp(usersOnline.getSelectedItem().toString());
+                
+                //Cortamos los "()" del combo
+                String[] ip = usersOnline.getSelectedItem().toString().split("(");
+                String[] ipC = ip[1].split(")");
+                
+                datos.setIp(ipC[0]);
                 datos.setMensaje(texto.getText());
                 datos.setControl(true);
 
@@ -195,7 +200,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                     for (int i = 0; i < datos.size(); i++)
                     {
                         String nombreActual = nombres.next();
-                        
+
                         //si se trata de nuestra misma ip no la añadimos al combo
                         if (!InetAddress.getLocalHost().getHostAddress().equals(datos.get(nombreActual)))
                         {
