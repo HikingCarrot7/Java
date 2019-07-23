@@ -26,6 +26,7 @@ public class EnvioOnline extends WindowAdapter
             Mensaje salidaDatos = new Mensaje();
             
             salidaDatos.setMensaje("NEWUSER");
+            salidaDatos.setIp(InetAddress.getLocalHost().getHostAddress());
             
             salida.writeObject(salidaDatos);
 

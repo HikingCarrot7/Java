@@ -62,11 +62,12 @@ public final class ServidorInterfaz extends JPanel
                     mensaje = paqueteRecibido.getMensaje();
 
                     //-----DETECTA NEW USER ONLINE-----------------
-                    if (mensaje.equals("NEWUSER") && ip == null && nick == null)
+                    if (mensaje.equals("NEWUSER") && nick == null)
                     {
-                        ips.add(miSocket.getLocalAddress().getHostAddress());
+                        ips.add(ip);
                         
                         System.out.println("SE HA AÑADIDO A UN NUEVO USER");
+                        System.out.println(miSocket.getLocalAddress().getHostAddress());
 
                         updateUsers();
 
