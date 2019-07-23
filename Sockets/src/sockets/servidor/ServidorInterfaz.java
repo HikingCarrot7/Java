@@ -113,7 +113,7 @@ public final class ServidorInterfaz extends JPanel
 
     private void updateUsers()
     {
-        if (ips.size() > 1)
+        if (ips.size() > 0)
         {
             for (int i = 0; i < ips.size(); i++)
             {

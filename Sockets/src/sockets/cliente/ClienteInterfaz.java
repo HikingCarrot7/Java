@@ -137,6 +137,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                 datos.setNick(nombreUser.getText());
                 datos.setIp(usersOnline.getSelectedItem().toString());
                 datos.setMensaje(texto.getText());
+                datos.setControl(true);
 
                 //Flujo de salida para los datos(objeto datos)
                 ObjectOutputStream salidaPaquete = new ObjectOutputStream(miSocket.getOutputStream());
