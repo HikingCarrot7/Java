@@ -198,9 +198,9 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                     //Mostramos el mensaje en el área de texto
                     areaTexto.append(paqueteRecibido.getNick() + " says: " + paqueteRecibido.getMensaje() + "\n");
 
-                    in.close();
-
                 }
+
+                in.close();
 
             }
 

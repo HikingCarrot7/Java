@@ -65,6 +65,8 @@ public final class ServidorInterfaz extends JPanel
                     if (mensaje.equals("NEWUSER") && ip == null && nick == null)
                     {
                         ips.add(miSocket.getLocalAddress().getHostAddress());
+                        
+                        System.out.println("SE HA AÑADIDO A UN NUEVO USER");
 
                         updateUsers();
 
