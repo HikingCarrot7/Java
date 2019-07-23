@@ -187,7 +187,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
 
                     for (int i = 0; i < ips.size(); i++)
                     {
-                        usersOnline.addItem(ips.get(i));
+                        usersOnline.addItem("HOLA");
                     }
 
                 } else
