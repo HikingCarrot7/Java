@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import sockets.cliente.ClienteInterfaz;
 
 /**
  *
@@ -13,6 +14,13 @@ import java.net.Socket;
  */
 public class EnvioOnline extends WindowAdapter
 {
+    
+    private ClienteInterfaz cliente;
+    
+    public EnvioOnline(ClienteInterfaz cliente)
+    {
+        this.cliente = cliente;
+    }
 
     @Override
     public void windowOpened(WindowEvent e)
@@ -36,8 +44,9 @@ public class EnvioOnline extends WindowAdapter
             
             Mensaje salidaDatos = new Mensaje();
             
-            salidaDatos.setMensaje(id);
+            salidaDatos.setNick(cliente.getNick());
             salidaDatos.setIp(InetAddress.getLocalHost().getHostAddress());
+            salidaDatos.setMensaje(id);
             salidaDatos.setControl(control);
             
             salida.writeObject(salidaDatos);

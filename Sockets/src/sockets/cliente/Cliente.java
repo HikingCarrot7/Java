@@ -20,7 +20,7 @@ public class Cliente extends JFrame
         setAlwaysOnTop(true);
         setTitle("Cliente");
         add(interfaz);
-        addWindowListener(new EnvioOnline());
+        addWindowListener(new EnvioOnline(interfaz));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

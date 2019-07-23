@@ -12,6 +12,8 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -182,19 +184,24 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                 Object obj = in.readObject();
 
                 //Revisamos si tenemos que actualizar los combo
-                if (obj instanceof ArrayList)
+                if (obj instanceof HashMap)
                 {
                     usersOnline.removeAllItems();
 
-                    ArrayList<String> ips = (ArrayList<String>) obj;
+                    HashMap<String, String> datos = (HashMap<String, String>) obj;
 
-                    for (String ip : ips)
+                    Iterator<String> nombres = ((HashMap<String, String>) obj).keySet().iterator();
+
+                    for (int i = 0; i < datos.size(); i++)
                     {
+                        String nombreActual = nombres.next();
+                        
                         //si se trata de nuestra misma ip no la añadimos al combo
-                        if (!InetAddress.getLocalHost().getHostAddress().equals(ip))
+                        if (!InetAddress.getLocalHost().getHostAddress().equals(datos.get(nombreActual)))
                         {
-                            usersOnline.addItem(ip);
+                            usersOnline.addItem(datos.get(nombreActual) + "( " + nombreActual + ")");
                         }
+
                     }
 
                 } else
@@ -217,5 +224,10 @@ public final class ClienteInterfaz extends JPanel implements Runnable
             System.out.println(e.getMessage());
 
         }
+    }
+
+    public String getNick()
+    {
+        return nick;
     }
 }

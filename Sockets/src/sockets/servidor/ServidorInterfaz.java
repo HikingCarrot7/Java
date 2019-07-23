@@ -6,7 +6,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -14,19 +15,20 @@ import sockets.mensaje.Mensaje;
 
 public final class ServidorInterfaz extends JPanel
 {
-	private static final long serialVersionUID = 1L;
-	
-	private final JTextArea texto;
+
+    private static final long serialVersionUID = 1L;
+
+    private final JTextArea texto;
     private Thread thread;
     private final int PUERTO = 9999;
     private final int PUERTO2 = 10000;
-    private final ArrayList<String> ips;
+    private final HashMap<String, String> datos;
 
     public ServidorInterfaz()
     {
         setLayout(new BorderLayout());
 
-        ips = new ArrayList<>();
+        datos = new HashMap<>();
 
         texto = new JTextArea();
 
@@ -67,12 +69,13 @@ public final class ServidorInterfaz extends JPanel
                     {
                         if (mensaje.equals("NEWUSER"))
                         {
-                            ips.add(ip);
+
+                            datos.put(nick, ip);
                             System.out.println("SE HA AÑADIDO A UN NUEVO USER");
 
                         } else
                         {
-                            ips.remove(ip);
+                            datos.remove(nick);
                             System.out.println("SE HA ELIMINADO A UN USER");
                         }
 
@@ -114,23 +117,28 @@ public final class ServidorInterfaz extends JPanel
 
     private void updateUsers()
     {
-        if (ips.size() > 0)
+        if (datos.size() > 0)
         {
-            for (String ip : ips)
+            Iterator<String> nombres = datos.keySet().iterator();
+
+            for (int i = 0; i < datos.size(); i++)
             {
                 try
                 {
-                    Socket clienteActual = new Socket(ip, PUERTO2);
+
+                    Socket clienteActual = new Socket(nombres.next(), PUERTO2);
                     ObjectOutputStream out = new ObjectOutputStream(clienteActual.getOutputStream());
-                    out.writeObject(ips);
-                    
+                    out.writeObject(datos);
+
                     clienteActual.close();
 
                 } catch (IOException ex)
                 {
                     System.out.println(ex.getMessage());
                 }
+
             }
+
         }
     }
 
