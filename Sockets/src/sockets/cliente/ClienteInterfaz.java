@@ -181,6 +181,8 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                 //Revisamos si tenemos que actualizar los combo
                 if (in.readObject() instanceof ArrayList)
                 {
+                    System.out.println("UNA INSTANCIA DE LAS BUENAS");
+                    
                     usersOnline.removeAllItems();
 
                     ArrayList<String> ips = (ArrayList) in.readObject();
