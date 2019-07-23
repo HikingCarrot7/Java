@@ -126,7 +126,7 @@ public final class ServidorInterfaz extends JPanel
                 try
                 {
 
-                    Socket clienteActual = new Socket(nombres.next(), PUERTO2);
+                    Socket clienteActual = new Socket(datos.get(nombres.next()), PUERTO2);
                     ObjectOutputStream out = new ObjectOutputStream(clienteActual.getOutputStream());
                     out.writeObject(datos);
 
