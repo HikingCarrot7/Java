@@ -11,7 +11,6 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -39,7 +38,8 @@ public final class ClienteInterfaz extends JPanel implements Runnable
     private JPanel soporteTexto, soporteEnvio, soporteDatos;
     private String nick;
     private JComboBox<String> usersOnline;
-
+    private ServerSocket server;
+    
     public ClienteInterfaz()
     {
         pedirNick();
@@ -163,13 +163,14 @@ public final class ClienteInterfaz extends JPanel implements Runnable
         });
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public void run()
     {
         try
         {
             //El cliente también actuará como un servidor(recibirá los datos del servidor principal)
-            ServerSocket server = new ServerSocket(10000);
+            server = new ServerSocket(10000);
 
             //Socket para establecer la conexión con el servidor principal
             Socket cliente;
@@ -227,6 +228,16 @@ public final class ClienteInterfaz extends JPanel implements Runnable
             //Se imprime un mensaje en consola en caso de que las cosas salgan mal
             System.out.println(e.getMessage());
 
+        }finally 
+        {
+        	try
+			{
+				server.close();
+				
+			} catch (IOException e)
+			{
+				System.out.println(e.getMessage());
+			}
         }
     }
 
