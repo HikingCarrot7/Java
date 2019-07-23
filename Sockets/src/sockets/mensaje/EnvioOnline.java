@@ -17,6 +17,17 @@ public class EnvioOnline extends WindowAdapter
     @Override
     public void windowOpened(WindowEvent e)
     {
+        enviarMensaje("NEWUSER", false);
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e)
+    {
+        enviarMensaje("CLOSEDUSER", false);
+    }
+    
+    private void enviarMensaje(String id, boolean control)
+    {
         try
         {
             Socket miSocket = new Socket(InetAddress.getLocalHost().getHostName(), 9999);
@@ -25,7 +36,7 @@ public class EnvioOnline extends WindowAdapter
             
             Mensaje salidaDatos = new Mensaje();
             
-            salidaDatos.setMensaje("NEWUSER");
+            salidaDatos.setMensaje(id);
             salidaDatos.setIp(InetAddress.getLocalHost().getHostAddress());
             
             salida.writeObject(salidaDatos);

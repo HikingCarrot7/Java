@@ -60,15 +60,21 @@ public final class ServidorInterfaz extends JPanel
                     nick = paqueteRecibido.getNick();
                     ip = paqueteRecibido.getIp();
                     mensaje = paqueteRecibido.getMensaje();
-
-                    //-----DETECTA NEW USER ONLINE-----------------
-                    if (mensaje.equals("NEWUSER") && nick == null)
+                    
+                    //-----DETECTA NEW USER ONLINE O ELIMINA A UN USER-----------------
+                    if (!paqueteRecibido.isControl())
                     {
-                        ips.add(ip);
-                        
-                        System.out.println("SE HA AÑADIDO A UN NUEVO USER");
-                        System.out.println(miSocket.getLocalAddress().getHostAddress());
+                        if (mensaje.equals("NEWUSER"))
+                        {
+                            ips.add(ip);
+                            System.out.println("SE HA AÑADIDO A UN NUEVO USER");
 
+                        } else
+                        {
+                            ips.remove(ip);
+                            System.out.println("SE HA ELIMINADO A UN USER");
+                        }
+                        
                         updateUsers();
 
                         //-------------------------------------
@@ -114,11 +120,11 @@ public final class ServidorInterfaz extends JPanel
                 try
                 {
                     Socket clienteActual = new Socket(ips.get(i), PUERTO2);
-                    
+
                     ObjectOutputStream out = new ObjectOutputStream(clienteActual.getOutputStream());
-                    
+
                     out.writeObject(ips);
-                    
+
                 } catch (IOException ex)
                 {
                     System.out.println(ex.getMessage());

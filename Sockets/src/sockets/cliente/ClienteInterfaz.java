@@ -179,7 +179,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                 ObjectInputStream in = new ObjectInputStream(cliente.getInputStream());
 
                 Object obj = in.readObject();
-                
+
                 //Revisamos si tenemos que actualizar los combo
                 if (obj instanceof ArrayList)
                 {
@@ -189,7 +189,11 @@ public final class ClienteInterfaz extends JPanel implements Runnable
 
                     for (int i = 0; i < ips.size(); i++)
                     {
-                        usersOnline.addItem(ips.get(i));
+                        //si se trata de nuestra misma ip no la añadimos al combo
+                        if (!InetAddress.getLocalHost().getHostAddress().equals(ips.get(i)))
+                        {
+                            usersOnline.addItem(ips.get(i));
+                        }
                     }
 
                 } else

@@ -12,6 +12,8 @@ public class Mensaje implements Serializable
     private static final long serialVersionUID = 1L;
 
     private String nick, ip, mensaje;
+    private boolean control;
+
 
     public String getNick()
     {
@@ -41,5 +43,15 @@ public class Mensaje implements Serializable
     public void setMensaje(String mensaje)
     {
         this.mensaje = mensaje;
+    }
+    
+    public boolean isControl()
+    {
+        return control;
+    }
+
+    public void setControl(boolean control)
+    {
+        this.control = control;
     }
 }
