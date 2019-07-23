@@ -39,7 +39,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
     private String nick;
     private JComboBox<String> usersOnline;
     private ServerSocket server;
-    
+
     public ClienteInterfaz()
     {
         pedirNick();
@@ -137,10 +137,10 @@ public final class ClienteInterfaz extends JPanel implements Runnable
 
                 //Se establecen los valores al objeto datos
                 datos.setNick(nombreUser.getText());
-                
+
                 //Cortamos los "()" del combo
                 String[] ip = usersOnline.getSelectedItem().toString().split("-");
-                
+
                 datos.setIp(ip[1]);
                 datos.setMensaje(texto.getText());
                 datos.setControl(true);
@@ -164,7 +164,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
     }
 
     @SuppressWarnings("unchecked")
-	@Override
+    @Override
     public void run()
     {
         try
@@ -228,16 +228,16 @@ public final class ClienteInterfaz extends JPanel implements Runnable
             //Se imprime un mensaje en consola en caso de que las cosas salgan mal
             System.out.println(e.getMessage());
 
-        }finally 
+        } finally
         {
-        	try
-			{
-				server.close();
-				
-			} catch (IOException e)
-			{
-				System.out.println(e.getMessage());
-			}
+            try
+            {
+                server.close();
+
+            } catch (IOException e)
+            {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
