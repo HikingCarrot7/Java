@@ -139,7 +139,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                 datos.setNick(nombreUser.getText());
                 
                 //Cortamos los "()" del combo
-                String[] ip = usersOnline.getSelectedItem().toString().split("-");;
+                String[] ip = usersOnline.getSelectedItem().toString().split("-");
                 
                 datos.setIp(ip[1]);
                 datos.setMensaje(texto.getText());
