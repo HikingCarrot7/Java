@@ -199,7 +199,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                         //si se trata de nuestra misma ip no la añadimos al combo
                         if (!InetAddress.getLocalHost().getHostAddress().equals(datos.get(nombreActual)))
                         {
-                            usersOnline.addItem(datos.get(nombreActual) + "( " + nombreActual + ")");
+                            usersOnline.addItem(nombreActual + " ( " + datos.get(nombreActual) + ")");
                         }
 
                     }
