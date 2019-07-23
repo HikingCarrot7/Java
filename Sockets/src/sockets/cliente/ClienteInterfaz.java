@@ -188,12 +188,12 @@ public final class ClienteInterfaz extends JPanel implements Runnable
 
                     ArrayList<String> ips = (ArrayList) obj;
 
-                    for (int i = 0; i < ips.size(); i++)
+                    for (String ip : ips)
                     {
                         //si se trata de nuestra misma ip no la añadimos al combo
-                        if (!InetAddress.getLocalHost().getHostAddress().equals(ips.get(i)))
+                        if (!InetAddress.getLocalHost().getHostAddress().equals(ip))
                         {
-                            usersOnline.addItem(ips.get(i));
+                            usersOnline.addItem(ip);
                         }
                     }
 
