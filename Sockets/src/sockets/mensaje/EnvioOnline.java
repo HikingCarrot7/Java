@@ -21,7 +21,7 @@ public class EnvioOnline extends WindowAdapter
     }
 
     @Override
-    public void windowClosed(WindowEvent e)
+    public void windowClosing(WindowEvent e)
     {
         enviarMensaje("CLOSEDUSER", false);
     }
@@ -38,6 +38,7 @@ public class EnvioOnline extends WindowAdapter
             
             salidaDatos.setMensaje(id);
             salidaDatos.setIp(InetAddress.getLocalHost().getHostAddress());
+            salidaDatos.setControl(control);
             
             salida.writeObject(salidaDatos);
 
