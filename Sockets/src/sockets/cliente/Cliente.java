@@ -8,7 +8,7 @@ public class Cliente extends JFrame
 
     private static final long serialVersionUID = 1L;
 
-    private ClienteInterfaz interfaz;
+    private final ClienteInterfaz interfaz;
 
     public Cliente()
     {

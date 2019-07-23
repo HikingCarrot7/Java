@@ -43,6 +43,7 @@ public class EnvioOnline extends WindowAdapter
             salida.writeObject(salidaDatos);
 
             salida.close();
+            miSocket.close();
             
         }catch(IOException ex)
         {

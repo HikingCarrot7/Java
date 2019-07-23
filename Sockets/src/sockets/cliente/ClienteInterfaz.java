@@ -186,7 +186,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                 {
                     usersOnline.removeAllItems();
 
-                    ArrayList<String> ips = (ArrayList) obj;
+                    ArrayList<String> ips = (ArrayList<String>) obj;
 
                     for (String ip : ips)
                     {

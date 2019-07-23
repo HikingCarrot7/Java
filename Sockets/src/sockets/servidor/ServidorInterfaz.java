@@ -14,8 +14,9 @@ import sockets.mensaje.Mensaje;
 
 public final class ServidorInterfaz extends JPanel
 {
-
-    private final JTextArea texto;
+	private static final long serialVersionUID = 1L;
+	
+	private final JTextArea texto;
     private Thread thread;
     private final int PUERTO = 9999;
     private final int PUERTO2 = 10000;
@@ -122,6 +123,8 @@ public final class ServidorInterfaz extends JPanel
                     Socket clienteActual = new Socket(ip, PUERTO2);
                     ObjectOutputStream out = new ObjectOutputStream(clienteActual.getOutputStream());
                     out.writeObject(ips);
+                    
+                    clienteActual.close();
 
                 } catch (IOException ex)
                 {
