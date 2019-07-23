@@ -178,24 +178,28 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                 //Entrada del paquete enviado desde el servidor principal
                 ObjectInputStream in = new ObjectInputStream(cliente.getInputStream());
 
+                Object obj = in.readObject();
+                
                 //Revisamos si tenemos que actualizar los combo
-                if (in.readObject() instanceof ArrayList)
+                if (obj instanceof ArrayList)
                 {
                     System.out.println("UNA INSTANCIA DE LAS BUENAS");
                     
                     usersOnline.removeAllItems();
 
-                    ArrayList<String> ips = (ArrayList) in.readObject();
+                    ArrayList<String> ips = (ArrayList) obj;
+                    System.out.println("sdsd");
+                    
 
                     for (int i = 0; i < ips.size(); i++)
                     {
-                        usersOnline.addItem("HOLA");
+                        usersOnline.addItem("Hola");
                     }
 
                 } else
                 {
                     //Leemos el objeto que llega desde el servidor principal
-                    paqueteRecibido = (Mensaje) in.readObject();
+                    paqueteRecibido = (Mensaje) obj;
 
                     //Mostramos el mensaje en el área de texto
                     areaTexto.append(paqueteRecibido.getNick() + " says: " + paqueteRecibido.getMensaje() + "\n");
