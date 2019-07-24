@@ -10,7 +10,7 @@ public class RandomLayout
 {
 
     private final Random rand;
-    private int[][] tempTablero;
+    private final int[][] tempTablero;
     private int[][] tablero;
 
     public RandomLayout()
@@ -26,8 +26,6 @@ public class RandomLayout
         int longitud = 2, barcos = 0, fila, columna;
         boolean filaValida;
 
-        tempTablero = copiarAlTemp(tablero);
-
         do
         {
 
@@ -36,7 +34,7 @@ public class RandomLayout
                 filaValida = true;
 
                 columna = rand.nextInt(19 - longitud) + 1;
-                fila = rand.nextInt(9) + 1;
+                fila = rand.nextInt(10) + 1;
 
                 for (int j = columna; j < columna + longitud; j++)
                 {
@@ -57,7 +55,7 @@ public class RandomLayout
                         tempTablero[fila][j] = 1;
 
                     }
-                    
+
                 }
 
             } while (!filaValida);
@@ -66,35 +64,38 @@ public class RandomLayout
             barcos++;
 
         } while (barcos < 5);
+        
+        //imprimirTablero();
 
-        tablero = copiarAlTablero(tempTablero, tablero);
-
-        return tablero;
+        return copiarTableros(tablero, tempTablero, 1, -1);
     }
 
-    private int[][] copiarAlTemp(int[][] tablero)
+    private int[][] copiarTableros(int[][] tablero, int[][] tablero2, int inicio, int desface)
     {
-        for (int i = 0; i < tablero.length; i++)
+        for (int i = inicio; i < tablero2.length + desface; i++)
         {
-            for (int j = 0; j < tablero[i].length; j++)
+            for (int j = inicio; j < tablero2[i].length + desface; j++)
             {
-                tempTablero[i + 1][j + 1] = tablero[i][j];
-            }
-        }
-
-        return tempTablero;
-    }
-
-    private int[][] copiarAlTablero(int[][] tempMatriz, int[][] tablero)
-    {
-        for (int i = 1; i < tempMatriz.length - 1; i++)
-        {
-            for (int j = 1; j < tempMatriz[i].length - 1; j++)
-            {
-                tablero[i - 1][j - 1] = tempMatriz[i][j];
+                tablero[i + desface][j + desface] = tablero2[i][j];
             }
         }
 
         return tablero;
+    }
+    
+    private void imprimirTablero()
+    {
+        for (int i = 0; i < tempTablero.length; i++)
+        {
+            for (int j = 0; j < tempTablero[i].length; j++)
+            {
+                System.out.print(tempTablero[i][j]);
+            }
+            
+            System.out.println("");
+        }
+        
+        System.exit(1);
     }
 }
+
