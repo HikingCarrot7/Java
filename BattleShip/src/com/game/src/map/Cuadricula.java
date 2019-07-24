@@ -23,6 +23,7 @@ public final class Cuadricula implements Drawable
 
         mapa = new int[ALTOMAPA][ANCHOMAPA];
 
+        iniciarMapa();
     }
 
     @Override
@@ -43,10 +44,10 @@ public final class Cuadricula implements Drawable
         {
             for (int j = 0; j < mapa[i].length; j++)
             {
-
-                g.setColor(mapa[i][j] == 1 ? Color.red : Color.white);
+                g.setColor(mapa[i][j] == 1 ? Color.green : Color.white);
                 g.setStroke(new BasicStroke(2));
                 g.drawRect(j * (LADOCUADRO) + INICIOX, i * (LADOCUADRO) + INICIOY, LADOCUADRO, LADOCUADRO);
+                g.setColor(Color.white);
 
             }
         }
@@ -78,4 +79,48 @@ public final class Cuadricula implements Drawable
         }
     }
 
+    public void confirmarShip(int x, int y, int length, boolean horizontal)
+    {
+        int LIMITE = horizontal ? ANCHOMAPA : ALTOMAPA;
+
+        if (x < ALTOMAPA && x >= 0 && y < ANCHOMAPA && y >= 0)
+        {
+            for (int i = 0; i < (horizontal ? ALTOMAPA : ANCHOMAPA); i++)
+            {
+                for (int j = 0; j < (horizontal ? ANCHOMAPA : ALTOMAPA); j++)
+                {
+                    if ((horizontal ? y : x) + length - 1 < LIMITE)
+                    {
+                        if (horizontal)
+                        {
+                            mapa[i][j] = j >= y && j < y + length && i == x ? 1 : 0;
+                            
+                        } else
+                        {
+                            mapa[j][i] = j >= x && j < x + length && i == y ? 1 : 0;
+                        }
+
+                    } else
+                    {
+                        iniciarMapa();
+                    }
+                }
+            }
+
+        } else
+        {
+            iniciarMapa();
+        }
+    }
+
+    public void iniciarMapa()
+    {
+        for (int[] I : mapa)
+        {
+            for (int i = 0; i < I.length; i++)
+            {
+                I[i] = 0;
+            }
+        }
+    }
 }

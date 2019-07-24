@@ -39,7 +39,7 @@ public class Cliente implements Drawable, Listener
     @Override
     public void mousePressed(MouseEvent e)
     {
-        enemigo.modificarTablero((e.getY() - 400) / 24, (e.getX() - 80) / 24, 1);
+        //enemigo.modificarTablero((e.getY() - 400) / 24, (e.getX() - 80) / 24, 1);
         
     }
 

@@ -16,15 +16,18 @@ import java.awt.event.MouseEvent;
 public class PlacingShips implements Drawable, Listener
 {
 
-    private Cuadricula cuadricula;
     private final Rectangle[] barcosHorizontales, barcosVerticales;
-    private Rectangle barcoSeleccionado;
+    private final Cuadricula cuadricula;
+    private final int LADOCUADRO = 24;
     private int timer = 10, COORDENADAX, COORDENADAY;
+    private boolean orientacionBarcoActual = false;
+    private Rectangle barcoSeleccionado;
 
     public PlacingShips()
     {
         barcosHorizontales = new Rectangle[5];
         barcosVerticales = new Rectangle[3];
+        cuadricula = new Cuadricula(25, 105);
     }
 
     @Override
@@ -35,6 +38,7 @@ public class PlacingShips implements Drawable, Listener
             colocandoBarcos(g);
             barcoSeleccionado(g);
             dibujarBarcoSeleccionado(g);
+            confirmarShip();
         }
     }
 
@@ -49,11 +53,10 @@ public class PlacingShips implements Drawable, Listener
 
     public void colocandoBarcos(Graphics2D g)
     {
-        cuadricula = new Cuadricula(25, 105);
         cuadricula.render(g);
 
-        colocarBarcosSeleccion(g, barcosHorizontales, true, 580, 70, 24);
-        colocarBarcosSeleccion(g, barcosVerticales, false, 580, 260, 24);
+        colocarBarcosSeleccion(g, barcosHorizontales, true, 580, 70, LADOCUADRO);
+        colocarBarcosSeleccion(g, barcosVerticales, false, 580, 260, LADOCUADRO);
     }
 
     //False para una orientacion vertical, true para una horizontal
@@ -99,6 +102,18 @@ public class PlacingShips implements Drawable, Listener
 
     }
 
+    public void confirmarShip()
+    {
+        if (barcoSeleccionado != null)
+        {
+            cuadricula.confirmarShip(
+                    (COORDENADAY - 105) / LADOCUADRO,
+                    (COORDENADAX - 25) / LADOCUADRO,
+                    (orientacionBarcoActual ? barcoSeleccionado.width : barcoSeleccionado.height) / LADOCUADRO,
+                    orientacionBarcoActual);
+        }
+    }
+
     @Override
     public void mousePressed(MouseEvent e)
     {
@@ -112,6 +127,8 @@ public class PlacingShips implements Drawable, Listener
                 {
                     barcoSeleccionado = barcoHorizontal;
 
+                    orientacionBarcoActual = true;
+
                     return;
                 }
             }
@@ -121,6 +138,8 @@ public class PlacingShips implements Drawable, Listener
                 if (r.intersects(barcoVertical))
                 {
                     barcoSeleccionado = barcoVertical;
+
+                    orientacionBarcoActual = false;
 
                     return;
                 }
