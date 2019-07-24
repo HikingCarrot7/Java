@@ -48,6 +48,11 @@ public class Cliente implements Drawable, Listener
     {
         
     }
+    
+    public void setBarcos(int[][] tablero)
+    {
+        barcos.recibirTablero(tablero);
+    }
 
 
 }

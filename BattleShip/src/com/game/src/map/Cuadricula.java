@@ -12,8 +12,8 @@ import java.awt.Graphics2D;
 public final class Cuadricula implements Drawable
 {
 
-    private final int INICIOX, INICIOY, ANCHOMAPA = 20, ALTOMAPA = 10;
-    private final int[][] mapa;
+    private final int INICIOX, INICIOY, ANCHOTABLERO = 20, ALTOTABLERO = 10;
+    private int[][] tablero;
     private final int LADOCUADRO = 24;
 
     public Cuadricula(int INICIOX, int INICIOY)
@@ -21,7 +21,7 @@ public final class Cuadricula implements Drawable
         this.INICIOX = INICIOX;
         this.INICIOY = INICIOY;
 
-        mapa = new int[ALTOMAPA][ANCHOMAPA];
+        tablero = new int[ALTOTABLERO][ANCHOTABLERO];
 
         iniciarMapa();
     }
@@ -40,11 +40,13 @@ public final class Cuadricula implements Drawable
 
     public void dibujarMapa(Graphics2D g)
     {
-        for (int i = 0; i < mapa.length; i++)
+        for (int i = 0; i < tablero.length; i++)
         {
-            for (int j = 0; j < mapa[i].length; j++)
+            for (int j = 0; j < tablero[i].length; j++)
             {
-                g.setColor(mapa[i][j] == 1 ? Color.green : Color.white);
+                g.setColor(tablero[i][j] == 1 ? Color.green : Color.white);
+                g.fillRect(j * (LADOCUADRO) + INICIOX, i * (LADOCUADRO) + INICIOY, LADOCUADRO, LADOCUADRO);
+                g.setColor(Color.black);
                 g.setStroke(new BasicStroke(2));
                 g.drawRect(j * (LADOCUADRO) + INICIOX, i * (LADOCUADRO) + INICIOY, LADOCUADRO, LADOCUADRO);
                 g.setColor(Color.white);
@@ -73,31 +75,31 @@ public final class Cuadricula implements Drawable
 
     public void modificarTablero(int i, int j, int cambio)
     {
-        if (i < ALTOMAPA && i >= 0 && j < ANCHOMAPA && j >= 0)
+        if (i < ALTOTABLERO && i >= 0 && j < ANCHOTABLERO && j >= 0)
         {
-            mapa[i][j] = cambio;
+            tablero[i][j] = cambio;
         }
     }
 
     public void confirmarShip(int x, int y, int length, boolean horizontal)
     {
-        int LIMITE = horizontal ? ANCHOMAPA : ALTOMAPA;
+        int LIMITE = horizontal ? ANCHOTABLERO : ALTOTABLERO;
 
-        if (x < ALTOMAPA && x >= 0 && y < ANCHOMAPA && y >= 0)
+        if (x < ALTOTABLERO && x >= 0 && y < ANCHOTABLERO && y >= 0)
         {
-            for (int i = 0; i < (horizontal ? ALTOMAPA : ANCHOMAPA); i++)
+            for (int i = 0; i < (horizontal ? ALTOTABLERO : ANCHOTABLERO); i++)
             {
-                for (int j = 0; j < (horizontal ? ANCHOMAPA : ALTOMAPA); j++)
+                for (int j = 0; j < (horizontal ? ANCHOTABLERO : ALTOTABLERO); j++)
                 {
                     if ((horizontal ? y : x) + length - 1 < LIMITE)
                     {
                         if (horizontal)
                         {
-                            mapa[i][j] = j >= y && j < y + length && i == x ? 1 : 0;
+                            tablero[i][j] = j >= y && j < y + length && i == x ? 1 : 0;
                             
                         } else
                         {
-                            mapa[j][i] = j >= x && j < x + length && i == y ? 1 : 0;
+                            tablero[j][i] = j >= x && j < x + length && i == y ? 1 : 0;
                         }
 
                     } else
@@ -112,10 +114,15 @@ public final class Cuadricula implements Drawable
             iniciarMapa();
         }
     }
+    
+    public void recibirTablero(int[][] tablero)
+    {
+        this.tablero = tablero;
+    }
 
     public void iniciarMapa()
     {
-        for (int[] I : mapa)
+        for (int[] I : tablero)
         {
             for (int i = 0; i < I.length; i++)
             {

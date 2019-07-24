@@ -1,9 +1,11 @@
 package com.game.src.UI;
 
+import com.game.src.cliente.Cliente;
 import com.game.src.graphics.Drawable;
 import com.game.src.input.Listener;
 import com.game.src.main.Main;
 import com.game.src.map.Cuadricula;
+import com.game.src.map.RandomLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -20,9 +22,11 @@ public class Menu implements Drawable, Listener
     private final Rectangle play, connect, random, manual;
     private final Font title, buttonText, text;
     private final PlacingShips placingShips;
+    private final Cliente cliente;
+    private final RandomLayout randomLayout;
     private Cuadricula cuadricula;
 
-    public Menu(PlacingShips placingShips)
+    public Menu(PlacingShips placingShips, Cliente cliente)
     {
         play = new Rectangle(Main.ANCHO / 2 - 210, 200, 200, 60);
         connect = new Rectangle(Main.ANCHO / 2 - 210, 300, 200, 60);
@@ -33,7 +37,10 @@ public class Menu implements Drawable, Listener
         text = new Font("serif", Font.BOLD, 20);
         buttonText = new Font("serif", Font.BOLD, 45);
 
+        randomLayout = new RandomLayout();
+        
         this.placingShips = placingShips;
+        this.cliente = cliente;
 
     }
 
@@ -134,6 +141,13 @@ public class Menu implements Drawable, Listener
         } else if (r.intersects(manual) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
         {
             Main.GAMESTATE = Main.STATE.ColocandoBarcos;
+
+        } else if (r.intersects(random) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
+        {
+            cliente.setBarcos(randomLayout.generarTablero());
+            
+            Main.GAMESTATE = Main.STATE.Jugando;
+            
         }
 
     }

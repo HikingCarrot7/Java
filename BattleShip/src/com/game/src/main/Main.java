@@ -27,7 +27,7 @@ public class Main extends Canvas
         SelectingMode,
         ConnectingToServer,
         ColocandoBarcos,
-        Jugado,
+        Jugando,
     };
 
     public static STATE GAMESTATE = STATE.Menu;
@@ -47,8 +47,8 @@ public class Main extends Canvas
         createBufferStrategy(3);
 
         placingShips = new PlacingShips();
-        menu = new Menu(placingShips);
         cliente = new Cliente();
+        menu = new Menu(placingShips, cliente);
 
         addMouseListener(new MouseInput(cliente, menu));
         addMouseMotionListener(new MouseMotionInput(menu));
@@ -57,17 +57,36 @@ public class Main extends Canvas
 
     public void tick()
     {
-        if (GAMESTATE.equals(STATE.ColocandoBarcos))
+
+        switch (GAMESTATE)
         {
-            if (CAMBIOX <= 750)
-            {
-                window.setSize(CAMBIOX += 3, CAMBIOY -= 2);
+            case ColocandoBarcos:
 
-            } else
-            {
-                menu.tick();
+                if (CAMBIOX <= 750)
+                {
+                    window.setSize(CAMBIOX += 3, CAMBIOY -= 2);
 
-            }
+                } else
+                {
+                    menu.tick();
+
+                }
+
+                break;
+
+            case Jugando:
+
+                if (CAMBIOX <= 750)
+                {
+                    window.setSize(CAMBIOX += 3, CAMBIOY);
+                }
+
+                if (CAMBIOY <= 700)
+                {
+                    window.setSize(CAMBIOX, CAMBIOY += 3);  
+                }
+
+                break;
 
         }
     }
@@ -82,7 +101,7 @@ public class Main extends Canvas
 
         switch (GAMESTATE)
         {
-            case Jugado:
+            case Jugando:
 
                 cliente.render(g);
 
