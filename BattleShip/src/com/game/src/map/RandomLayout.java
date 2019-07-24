@@ -23,51 +23,78 @@ public class RandomLayout
 
     public int[][] generarTablero()
     {
-        int longitud = 2, barcos = 0, fila, columna;
-        boolean filaValida;
+
+        rellenarTablero(true, 5, 2);
+        System.out.println("Hola");
+        rellenarTablero(false, 3, 3);
+
+        //imprimirTablero();
+        return copiarTableros(tablero, tempTablero, 1, -1);
+    }
+
+    private void rellenarTablero(boolean horizontal, int MAXBARCOS, int LONGBARCOACTUAL)
+    {
+        int barcos = 0, columna, fila, posicionJ, posicionI;
+        boolean posicionValida;
 
         do
         {
 
             do
             {
-                filaValida = true;
+                posicionValida = true;
 
-                columna = rand.nextInt(19 - longitud) + 1;
-                fila = rand.nextInt(10) + 1;
+                columna = horizontal ? rand.nextInt(19 - LONGBARCOACTUAL) + 1 : rand.nextInt(10 - LONGBARCOACTUAL) + 1;
+                fila = horizontal ? rand.nextInt(10) + 1 : rand.nextInt(19) + 1;
 
-                for (int j = columna; j < columna + longitud; j++)
+                posicionJ = horizontal ? columna : fila;
+                posicionI = horizontal ? fila : columna;
+
+                for (int i = posicionI, j = posicionJ; (horizontal ? j : i) < (horizontal ? posicionJ : posicionI) + LONGBARCOACTUAL;)
                 {
-
-                    if (tempTablero[fila][j] == 1 || tempTablero[fila][j - 1] == 1 || tempTablero[fila - 1][j] == 1 || tempTablero[fila][j + 1] == 1 || tempTablero[fila + 1][j] == 1)
+                    if (tempTablero[i][j] == 1 || tempTablero[i][j - 1] == 1 || tempTablero[i - 1][j] == 1 || tempTablero[i][j + 1] == 1 || tempTablero[i + 1][j] == 1)
                     {
-                        filaValida = false;
+                        posicionValida = false;
 
                         break;
                     }
 
+                    if (horizontal)
+                    {
+                        j++;
+
+                    } else
+                    {
+                        i++;
+                    }
+
                 }
 
-                if (filaValida)
+                if (posicionValida)
                 {
-                    for (int j = columna; j < columna + longitud; j++)
+                    for (int i = posicionI, j = posicionJ; (horizontal ? j : i) < (horizontal ? posicionJ : posicionI) + LONGBARCOACTUAL;)
                     {
-                        tempTablero[fila][j] = 1;
+                        tempTablero[i][j] = 1;
+
+                        if (horizontal)
+                        {
+                            j++;
+                            
+                        } else
+                        {
+                            i++;
+                        }
 
                     }
 
                 }
 
-            } while (!filaValida);
+            } while (!posicionValida);
 
-            longitud++;
+            LONGBARCOACTUAL++;
             barcos++;
 
-        } while (barcos < 5);
-        
-        //imprimirTablero();
-
-        return copiarTableros(tablero, tempTablero, 1, -1);
+        } while (barcos < MAXBARCOS);
     }
 
     private int[][] copiarTableros(int[][] tablero, int[][] tablero2, int inicio, int desface)
@@ -82,7 +109,7 @@ public class RandomLayout
 
         return tablero;
     }
-    
+
     private void imprimirTablero()
     {
         for (int i = 0; i < tempTablero.length; i++)
@@ -91,11 +118,10 @@ public class RandomLayout
             {
                 System.out.print(tempTablero[i][j]);
             }
-            
+
             System.out.println("");
         }
-        
+
         System.exit(1);
     }
 }
-
