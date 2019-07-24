@@ -87,11 +87,11 @@ public final class ServidorInterfaz extends JPanel
                         // Ponerlos en el JTextArea
                         texto.append("\n" + nick + ": " + mensaje + " para: " + ip);
 
-						// Crear un nuevo socket para enviar los datos al destinatario (Es posible que
+                        // Crear un nuevo socket para enviar los datos al destinatario (Es posible que
                         // el puerto falle)
                         Socket destinatario = new Socket(ip, PUERTO2);
 
-						// Output stream para enviar los datos (obtener le output del socket que ya
+                        // Output stream para enviar los datos (obtener le output del socket que ya
                         // tiene la ip del destinatario)
                         ObjectOutputStream paqueteReenvio = new ObjectOutputStream(destinatario.getOutputStream());
 

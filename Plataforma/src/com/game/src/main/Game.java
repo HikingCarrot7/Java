@@ -15,8 +15,9 @@ import com.game.src.objects.Flag;
 import com.game.src.objects.Handler;
 import com.game.src.objects.Player;
 
-public class Game extends Canvas 
+public class Game extends Canvas
 {
+
     private static final long serialVersionUID = 1L;
 
     protected boolean running = false;
@@ -38,13 +39,15 @@ public class Game extends Canvas
         new Window(800, 600, "Plataforma", new Game());
     }
 
-    public synchronized void start() 
+    public synchronized void start()
     {
-        if (!running) 
+        if (!running)
+        {
             running = true;
+        }
     }
 
-    public synchronized void stop() 
+    public synchronized void stop()
     {
         System.exit(1);
     }
@@ -75,9 +78,9 @@ public class Game extends Canvas
     {
         handler.tick();
 
-        for (int i = 0; i < handler.getObjects().size(); i++) 
+        for (int i = 0; i < handler.getObjects().size(); i++)
         {
-            if (handler.getObjects().get(i).getId().equals(ObjectId.Player)) 
+            if (handler.getObjects().get(i).getId().equals(ObjectId.Player))
             {
                 camera.tick(handler.getObjects().get(i));
             }
@@ -85,11 +88,11 @@ public class Game extends Canvas
 
     }
 
-    public void render() 
+    public void render()
     {
         BufferStrategy bs = getBufferStrategy();
 
-        if (bs == null) 
+        if (bs == null)
         {
             createBufferStrategy(3);
 
@@ -105,7 +108,8 @@ public class Game extends Canvas
 
         g.translate((int) camera.getX(), (int) camera.getY());
 
-        for (int i = 0; i < clouds.getWidth() * 7; i += clouds.getWidth() + 100) {
+        for (int i = 0; i < clouds.getWidth() * 7; i += clouds.getWidth() + 100)
+        {
             g.drawImage(clouds, i, LEVEL * 900 + 20, this);
         }
 
@@ -118,11 +122,11 @@ public class Game extends Canvas
 
     }
 
-    public void LoadImageLevel(BufferedImage image) 
+    public void LoadImageLevel(BufferedImage image)
     {
         for (int j = LEVEL == 0 ? LEVEL * 30 : LEVEL * 30 - 20; j < LEVEL * 30 + 30; j++)
         {
-            for (int i = 0; i < 100; i++) 
+            for (int i = 0; i < 100; i++)
             {
                 int pixel = image.getRGB(i, j);
 
@@ -130,22 +134,26 @@ public class Game extends Canvas
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
 
-                if (red == 255 && green == 255 && blue == 255) {
+                if (red == 255 && green == 255 && blue == 255)
+                {
                     handler.addObject(new Block(i * 32, j * 32, 0, ObjectId.Block));
-                } else if (red == 128 && green == 128 && blue == 128) {
+                } else if (red == 128 && green == 128 && blue == 128)
+                {
                     handler.addObject(new Block(i * 32, j * 32, 1, ObjectId.Block));
-                } else if (red == 0 && green == 0 && blue == 255) {
+                } else if (red == 0 && green == 0 && blue == 255)
+                {
                     handler.addObject(new Player(i * 32, j * 32, ObjectId.Player, handler, camera));
-                } else if (red == 255 && green == 255 && blue == 0) {
+                } else if (red == 255 && green == 255 && blue == 0)
+                {
                     handler.addObject(new Flag(i * 32, j * 32, ObjectId.Flag));
                 }
             }
         }
     }
 
-    public static Textures getTexture() 
+    public static Textures getTexture()
     {
         return tex;
     }
-    
+
 }

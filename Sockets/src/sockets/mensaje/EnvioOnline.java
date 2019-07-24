@@ -14,9 +14,9 @@ import sockets.cliente.ClienteInterfaz;
  */
 public class EnvioOnline extends WindowAdapter
 {
-    
+
     private ClienteInterfaz cliente;
-    
+
     public EnvioOnline(ClienteInterfaz cliente)
     {
         this.cliente = cliente;
@@ -33,31 +33,31 @@ public class EnvioOnline extends WindowAdapter
     {
         enviarMensaje("CLOSEDUSER", false);
     }
-    
+
     private void enviarMensaje(String id, boolean control)
     {
         try
         {
             Socket miSocket = new Socket(InetAddress.getLocalHost().getHostName(), 9999);
-            
+
             ObjectOutputStream salida = new ObjectOutputStream(miSocket.getOutputStream());
-            
+
             Mensaje salidaDatos = new Mensaje();
-            
+
             salidaDatos.setNick(cliente.getNick());
             salidaDatos.setIp(InetAddress.getLocalHost().getHostAddress());
             salidaDatos.setMensaje(id);
             salidaDatos.setControl(control);
-            
+
             salida.writeObject(salidaDatos);
 
             salida.close();
             miSocket.close();
-            
-        }catch(IOException ex)
+
+        } catch (IOException ex)
         {
             System.out.println(ex.getMessage());
         }
     }
-    
+
 }

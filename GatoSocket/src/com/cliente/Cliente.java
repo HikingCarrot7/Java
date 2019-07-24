@@ -35,7 +35,8 @@ public final class Cliente extends JFrame implements Runnable
     private Socket conexion;
     private Scanner in;
     private Formatter out;
-    private String host, miMarca;
+    private String miMarca;
+    private final String host;
     private final String MARCA_X = "X", MARCA_O = "O";
     private boolean miTurno;
 
@@ -152,7 +153,7 @@ public final class Cliente extends JFrame implements Runnable
                 in.nextLine();
                 int fila = ubicacion / 3;
                 int columna = ubicacion % 3;
-                establecerMarca(tablero[fila][columna], (miMarca.equals(MARCA_X) ? MARCA_O : MARCA_X));
+                establecerMarca(tablero[fila][columna], miMarca.equals(MARCA_X) ? MARCA_O : MARCA_X);
                 mostrarMensaje("El oponenete hizo un movimiento. Ahora es su turno.\n");
                 miTurno = true;
                 break;

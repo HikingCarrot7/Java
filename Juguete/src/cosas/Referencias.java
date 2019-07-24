@@ -4,110 +4,112 @@ import java.util.Arrays;
 
 public class Referencias
 {
-	private String[] nombres =
-	{ "Nicolas", "Javier" };
 
-	private int i = 0;
+    private String[] nombres =
+    {
+        "Nicolas", "Javier"
+    };
 
-	public Referencias(int i)
-	{
-		this.i = i;
-	}
+    private int i = 0;
 
-	private interface Saludar
-	{
-		public void saludar();
-	}
+    public Referencias(int i)
+    {
+        this.i = i;
+    }
 
-	private interface IDPersona
-	{
-		public Referencias crear(int i);
-	}
+    private interface Saludar
+    {
 
-	public void operar()
-	{
+        public void saludar();
+    }
 
-		Saludar s = Referencias::ReferenciaMetodoStatic;
+    private interface IDPersona
+    {
 
-		/*
-		 * Saludar s = new Saludar() {
-		 * 
-		 * @Override public void saludar() { Referencias.ReferenciaMetodoStatic();
-		 * 
-		 * }
-		 * 
-		 * };
-		 */
+        public Referencias crear(int i);
+    }
 
-		/*
-		 * Saludar s1 = () -> { Referencias.ReferenciaMetodoStatic(); };
-		 */
+    public void operar()
+    {
 
-		s.saludar();
-	}
+        Saludar s = Referencias::ReferenciaMetodoStatic;
 
-	public void ReferenciaConstructor()
-	{
-		/*
-		 * IDPersona iper = new IDPersona() {
-		 * 
-		 * @Override public Referencias crear(int i) { return new Referencias(i); }
-		 * 
-		 * };
-		 * 
-		 * iper.crear(5);
-		 */
+        /*
+         * Saludar s = new Saludar() {
+         * 
+         * @Override public void saludar() { Referencias.ReferenciaMetodoStatic();
+         * 
+         * }
+         * 
+         * };
+         */
 
-		/*
-		 * IDPersona iper = (i) -> new Referencias(i);
-		 * 
-		 * iper.crear(5);
-		 */
+        /*
+         * Saludar s1 = () -> { Referencias.ReferenciaMetodoStatic(); };
+         */
+        s.saludar();
+    }
 
-		IDPersona iper = Referencias::new;
+    public void ReferenciaConstructor()
+    {
+        /*
+         * IDPersona iper = new IDPersona() {
+         * 
+         * @Override public Referencias crear(int i) { return new Referencias(i); }
+         * 
+         * };
+         * 
+         * iper.crear(5);
+         */
 
-		iper.crear(5);
+        /*
+         * IDPersona iper = (i) -> new Referencias(i);
+         * 
+         * iper.crear(5);
+         */
+        IDPersona iper = Referencias::new;
 
-	}
+        iper.crear(5);
 
-	public void ReferenciaMetodoInstancia()
-	{
-		/*
-		 * Arrays.sort(nombres, new Comparator<String>() {
-		 * 
-		 * @Override public int compare(String arg0, String arg1) {
-		 * 
-		 * return arg0.compareTo(arg1); }
-		 * 
-		 * });
-		 */
+    }
+
+    public void ReferenciaMetodoInstancia()
+    {
+        /*
+         * Arrays.sort(nombres, new Comparator<String>() {
+         * 
+         * @Override public int compare(String arg0, String arg1) {
+         * 
+         * return arg0.compareTo(arg1); }
+         * 
+         * });
+         */
 
 		// Arrays.sort(nombres, (p1, p2) -> p1.compareTo(p2));
+        Arrays.sort(nombres, String::compareTo);
 
-		Arrays.sort(nombres, String::compareTo);
+        System.out.println(Arrays.toString(nombres));
 
-		System.out.println(Arrays.toString(nombres));
+    }
 
-	}
+    public void ReferenciaMetodoInstanciaParticular()
+    {
+        System.out.println(i);
+    }
 
-	public void ReferenciaMetodoInstanciaParticular()
-	{
-		System.out.println(i);
-	}
+    public static void ReferenciaMetodoStatic()
+    {
+        System.out.println("Esta es una referencia a un mï¿½todo static");
+    }
 
-	public static void ReferenciaMetodoStatic()
-	{
-		System.out.println("Esta es una referencia a un método static");
-	}
+    public static void main(String[] args)
+    {
+        Referencias r1 = new Referencias(1);
+        Referencias r2 = new Referencias(2);
 
-	public static void main(String[] args)
-	{
-		Referencias r1 = new Referencias(1);
-		Referencias r2 = new Referencias(2);
+        Saludar s = r2::ReferenciaMetodoInstanciaParticular;
 
-		Saludar s = r2::ReferenciaMetodoInstanciaParticular;
-
-		s.saludar();
-	}
+        s.saludar();
+    }
 
 }

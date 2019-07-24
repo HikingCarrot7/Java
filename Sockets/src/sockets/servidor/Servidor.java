@@ -2,14 +2,14 @@ package sockets.servidor;
 
 import javax.swing.JFrame;
 
-public class Servidor extends JFrame 
+public class Servidor extends JFrame
 {
 
     private static final long serialVersionUID = 1L;
 
     private ServidorInterfaz interfaz;
 
-    public Servidor() 
+    public Servidor()
     {
         interfaz = new ServidorInterfaz();
 
@@ -23,7 +23,7 @@ public class Servidor extends JFrame
         setVisible(true);
     }
 
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
         new Servidor();
     }

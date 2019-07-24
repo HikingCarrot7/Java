@@ -14,10 +14,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class UsoThreads 
+public class UsoThreads
 {
 
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 
 		JFrame marco = new MarcoRebote();
@@ -30,78 +30,84 @@ public class UsoThreads
 
 }
 
-class PelotaHilos implements Runnable 
+class PelotaHilos implements Runnable
 {
 
 	private Container lamina;
 
 	private Pelota pelota;
 
-	public PelotaHilos(Container lamina, Pelota pelota) 
+	public PelotaHilos(Container lamina, Pelota pelota)
 	{
 		this.lamina = lamina;
 		this.pelota = pelota;
 	}
 
 	@Override
-	public void run() 
+	public void run()
 	{
 
-		//System.out.println(Thread.currentThread().isInterrupted());
+		// System.out.println(Thread.currentThread().isInterrupted());
 
-		while (!Thread.interrupted()) 
-			try 
+		while (!Thread.interrupted())
+			try
 			{
 				Thread.sleep(4);
-				
+
 				pelota.mueve_pelota(lamina.getBounds());
-				
+
 				lamina.paint(lamina.getGraphics());
-				
-			}catch (InterruptedException e) 
+
+			} catch (InterruptedException e)
 			{
 				Thread.currentThread().interrupt();
 			}
 
-		//System.out.println(Thread.currentThread().isInterrupted());
+		// System.out.println(Thread.currentThread().isInterrupted());
 	}
 
 }
 
 //Movimiento de la pelota-----------------------------------------------------------------------------------------
 
-class Pelota {
+class Pelota
+{
 
 	// Mueve la pelota invirtiendo posición si choca con límites
 
-	public void mueve_pelota(Rectangle2D limites) {
+	public void mueve_pelota(Rectangle2D limites)
+	{
 
 		x += dx;
 
 		y += dy;
 
-		if (x < limites.getMinX()) {
+		if (x < limites.getMinX())
+		{
 
 			x = limites.getMinX();
 
 			dx = -dx;
 		}
 
-		if (x + TAMX >= limites.getMaxX()) {
+		if (x + TAMX >= limites.getMaxX())
+		{
 
 			x = limites.getMaxX() - TAMX;
 
 			dx = -dx;
 		}
 
-		if (y < limites.getMinY()) {
+		if (y < limites.getMinY())
+		{
 
 			y = limites.getMinY();
 
 			dy = -dy;
 		}
 
-		if (y + TAMY >= limites.getMaxY()) {
+		if (y + TAMY >= limites.getMaxY())
+		{
 
 			y = limites.getMaxY() - TAMY;
 
@@ -113,7 +119,8 @@ class Pelota {
 
 	// Forma de la pelota en su posición inicial
 
-	public Ellipse2D getShape() {
+	public Ellipse2D getShape()
+	{
 
 		return new Ellipse2D.Double(x, y, TAMX, TAMY);
 	}
@@ -134,18 +141,21 @@ class Pelota {
 
 // Lámina que dibuja las pelotas----------------------------------------------------------------------
 
-class LaminaPelota extends JPanel {
+class LaminaPelota extends JPanel
+{
 
 	// Añadimos pelota a la lámina
 
 	private static final long serialVersionUID = 1L;
 
-	public void add(Pelota b) {
+	public void add(Pelota b)
+	{
 
 		pelotas.add(b);
 	}
 
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g)
+	{
 
 		super.paintComponent(g);
 
@@ -160,11 +170,13 @@ class LaminaPelota extends JPanel {
 
 //Marco con lámina y botones------------------------------------------------------------------------------
 
-class MarcoRebote extends JFrame {
+class MarcoRebote extends JFrame
+{
 
 	private static final long serialVersionUID = 1L;
 
-	public MarcoRebote() {
+	public MarcoRebote()
+	{
 
 		setBounds(600, 300, 400, 350);
 
@@ -176,18 +188,22 @@ class MarcoRebote extends JFrame {
 
 		JPanel laminaBotones = new JPanel();
 
-		ponerBoton(laminaBotones, "Dale!", new ActionListener() {
+		ponerBoton(laminaBotones, "Dale!", new ActionListener()
+		{
 
-			public void actionPerformed(ActionEvent evento) {
+			public void actionPerformed(ActionEvent evento)
+			{
 
 				comienza_el_juego();
 			}
 
 		});
 
-		ponerBoton(laminaBotones, "Salir", new ActionListener() {
+		ponerBoton(laminaBotones, "Salir", new ActionListener()
+		{
 
-			public void actionPerformed(ActionEvent evento) {
+			public void actionPerformed(ActionEvent evento)
+			{
 
 				System.exit(0);
 
@@ -195,9 +211,11 @@ class MarcoRebote extends JFrame {
 
 		});
 
-		ponerBoton(laminaBotones, "Detener", new ActionListener() {
+		ponerBoton(laminaBotones, "Detener", new ActionListener()
+		{
 
-			public void actionPerformed(ActionEvent evento) {
+			public void actionPerformed(ActionEvent evento)
+			{
 
 				detener();
 
@@ -210,7 +228,8 @@ class MarcoRebote extends JFrame {
 
 	// Ponemos botones
 
-	public void ponerBoton(Container c, String titulo, ActionListener oyente) {
+	public void ponerBoton(Container c, String titulo, ActionListener oyente)
+	{
 
 		JButton boton = new JButton(titulo);
 
@@ -222,7 +241,8 @@ class MarcoRebote extends JFrame {
 
 	// Añade pelota y la bota 1000 veces
 
-	public void comienza_el_juego() {
+	public void comienza_el_juego()
+	{
 
 		Pelota pelota = new Pelota();
 
@@ -233,7 +253,8 @@ class MarcoRebote extends JFrame {
 		t.start();
 	}
 
-	public void detener() {
+	public void detener()
+	{
 		t.interrupt();
 	}
 
