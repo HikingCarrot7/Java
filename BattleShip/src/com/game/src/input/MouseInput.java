@@ -1,7 +1,7 @@
 package com.game.src.input;
 
 import com.game.src.UI.Menu;
-import com.game.src.cliente.Cliente;
+import com.game.src.net.Cliente;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 

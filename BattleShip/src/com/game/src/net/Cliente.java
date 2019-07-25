@@ -1,8 +1,8 @@
-package com.game.src.cliente;
+package com.game.src.net;
 
 import com.game.src.map.Cuadricula;
 import com.game.src.graphics.Drawable;
-import com.game.src.input.Listener;
+import com.game.src.input.InputListener;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
  *
  * @author HikingCarrot7
  */
-public class Cliente implements Drawable, Listener
+public class Cliente implements Drawable, InputListener
 {
 
     private final Cuadricula barcos, enemigo;

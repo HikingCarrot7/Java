@@ -1,8 +1,8 @@
 package com.game.src.UI;
 
-import com.game.src.cliente.Cliente;
+import com.game.src.net.Cliente;
 import com.game.src.graphics.Drawable;
-import com.game.src.input.Listener;
+import com.game.src.input.InputListener;
 import com.game.src.main.Main;
 import com.game.src.map.Cuadricula;
 import com.game.src.map.RandomLayout;
@@ -16,7 +16,7 @@ import java.awt.event.MouseEvent;
  *
  * @author HikingCarrot7
  */
-public class Menu implements Drawable, Listener
+public class Menu implements Drawable, InputListener
 {
 
     private final Rectangle play, connect, random, manual;
@@ -26,7 +26,7 @@ public class Menu implements Drawable, Listener
     private final RandomLayout randomLayout;
     private Cuadricula cuadricula;
 
-    public Menu(PlacingShips placingShips, Cliente cliente)
+    public Menu(PlacingShips placingShips, Cliente cliente, RandomLayout randomLayout)
     {
         play = new Rectangle(Main.ANCHO / 2 - 210, 200, 200, 60);
         connect = new Rectangle(Main.ANCHO / 2 - 210, 300, 200, 60);
@@ -37,8 +37,7 @@ public class Menu implements Drawable, Listener
         text = new Font("serif", Font.BOLD, 20);
         buttonText = new Font("serif", Font.BOLD, 45);
 
-        randomLayout = new RandomLayout();
-        
+        this.randomLayout = randomLayout;
         this.placingShips = placingShips;
         this.cliente = cliente;
 

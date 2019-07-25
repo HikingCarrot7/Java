@@ -11,7 +11,7 @@ public class RandomLayout
 
     private final Random rand;
     private final int[][] tempTablero;
-    private int[][] tablero;
+    private final int[][] tablero;
 
     public RandomLayout()
     {
@@ -25,13 +25,12 @@ public class RandomLayout
     {
 
         rellenarTablero(true, 5, 2);
-        System.out.println("Hola");
         rellenarTablero(false, 3, 3);
 
-        //imprimirTablero();
-        return copiarTableros(tablero, tempTablero, 1, -1);
+        return copiarTableros(tablero, tempTablero, 1, -1, -1);
     }
 
+    //Rellena de el tablero de manera aleatoria
     private void rellenarTablero(boolean horizontal, int MAXBARCOS, int LONGBARCOACTUAL)
     {
         int barcos = 0, columna, fila, posicionJ, posicionI;
@@ -52,7 +51,7 @@ public class RandomLayout
 
                 for (int i = posicionI, j = posicionJ; (horizontal ? j : i) < (horizontal ? posicionJ : posicionI) + LONGBARCOACTUAL;)
                 {
-                    if (tempTablero[i][j] == 1 || tempTablero[i][j - 1] == 1 || tempTablero[i - 1][j] == 1 || tempTablero[i][j + 1] == 1 || tempTablero[i + 1][j] == 1)
+                    if (tempTablero[i][j] == 2 || tempTablero[i][j - 1] == 2 || tempTablero[i - 1][j] == 2 || tempTablero[i][j + 1] == 2 || tempTablero[i + 1][j] == 2)
                     {
                         posicionValida = false;
 
@@ -74,12 +73,12 @@ public class RandomLayout
                 {
                     for (int i = posicionI, j = posicionJ; (horizontal ? j : i) < (horizontal ? posicionJ : posicionI) + LONGBARCOACTUAL;)
                     {
-                        tempTablero[i][j] = 1;
-
+                        tempTablero[i][j] = 2;
+ 
                         if (horizontal)
                         {
                             j++;
-                            
+
                         } else
                         {
                             i++;
@@ -97,11 +96,11 @@ public class RandomLayout
         } while (barcos < MAXBARCOS);
     }
 
-    private int[][] copiarTableros(int[][] tablero, int[][] tablero2, int inicio, int desface)
+    public int[][] copiarTableros(int[][] tablero, int[][] tablero2, int inicio, int desface, int desfaceCiclo)
     {
-        for (int i = inicio; i < tablero2.length + desface; i++)
+        for (int i = inicio; i < tablero2.length + desfaceCiclo; i++)
         {
-            for (int j = inicio; j < tablero2[i].length + desface; j++)
+            for (int j = inicio; j < tablero2[i].length + desfaceCiclo; j++)
             {
                 tablero[i + desface][j + desface] = tablero2[i][j];
             }

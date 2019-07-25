@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
  *
  * @author HikingCarrot7
  */
-public interface Listener
+public interface InputListener
 {
     public void mousePressed(MouseEvent e);
     

@@ -3,8 +3,10 @@ package com.game.src.main;
 import com.game.src.UI.Menu;
 import com.game.src.UI.PlacingShips;
 import com.game.src.input.MouseInput;
-import com.game.src.cliente.Cliente;
+import com.game.src.net.Cliente;
 import com.game.src.input.MouseMotionInput;
+import com.game.src.map.RandomLayout;
+import com.game.src.net.Server;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -18,7 +20,9 @@ public class Main extends Canvas
 {
 
     public static int ANCHO = 800, ALTO = 700;
+
     private int CAMBIOX = 600, CAMBIOY = 500;
+    private boolean moving = false;
 
     public static enum STATE
     {
@@ -35,7 +39,9 @@ public class Main extends Canvas
     private static Window window;
     private Cliente cliente;
     private Menu menu;
+    private Server server;
     private PlacingShips placingShips;
+    private RandomLayout randomLayout;
 
     public static void main(String[] args)
     {
@@ -46,9 +52,11 @@ public class Main extends Canvas
     {
         createBufferStrategy(3);
 
-        placingShips = new PlacingShips();
+        randomLayout = new RandomLayout();
         cliente = new Cliente();
-        menu = new Menu(placingShips, cliente);
+        server = new Server();
+        placingShips = new PlacingShips(randomLayout);
+        menu = new Menu(placingShips, cliente, randomLayout);
 
         addMouseListener(new MouseInput(cliente, menu));
         addMouseMotionListener(new MouseMotionInput(menu));
@@ -66,10 +74,13 @@ public class Main extends Canvas
                 {
                     window.setSize(CAMBIOX += 3, CAMBIOY -= 2);
 
+                    moving = true;
+
                 } else
                 {
                     menu.tick();
 
+                    moving = false;
                 }
 
                 break;
@@ -79,11 +90,23 @@ public class Main extends Canvas
                 if (CAMBIOX <= 750)
                 {
                     window.setSize(CAMBIOX += 3, CAMBIOY);
+
+                    moving = true;
+                    
+                } else
+                {
+                    moving = false;
                 }
 
                 if (CAMBIOY <= 700)
                 {
-                    window.setSize(CAMBIOX, CAMBIOY += 3);  
+                    window.setSize(CAMBIOX, CAMBIOY += 3);
+
+                    moving = true;
+
+                } else
+                {
+                    moving = false;
                 }
 
                 break;
@@ -96,37 +119,40 @@ public class Main extends Canvas
         BufferStrategy bs = getBufferStrategy();
         Graphics2D g = (Graphics2D) bs.getDrawGraphics();
 
-        g.setColor(Color.black);
-        g.fillRect(0, 0, ANCHO, ALTO);
-
-        switch (GAMESTATE)
+        if (!moving)
         {
-            case Jugando:
+            g.setColor(Color.black);
+            g.fillRect(0, 0, ANCHO, ALTO);
 
-                cliente.render(g);
+            switch (GAMESTATE)
+            {
+                case Jugando:
 
-                break;
+                    cliente.render(g);
 
-            case Menu:
-            case SelectingMode:
-            case ConnectingToServer:
+                    break;
 
-                window.setSize(600, 500);
+                case Menu:
+                case SelectingMode:
+                case ConnectingToServer:
 
-                menu.render(g);
+                    window.setSize(600, 500);
 
-                break;
+                    menu.render(g);
 
-            case ColocandoBarcos:
+                    break;
 
-                menu.render(g);
+                case ColocandoBarcos:
 
-                break;
+                    menu.render(g);
 
-            default:
+                    break;
 
-                break;
+                default:
 
+                    break;
+
+            }
         }
 
         g.dispose();
