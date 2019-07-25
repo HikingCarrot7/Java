@@ -3,6 +3,7 @@ package com.game.src.map;
 import com.game.src.graphics.Drawable;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 
 /**
@@ -92,6 +93,8 @@ public final class Cuadricula implements Drawable
     public void dibujarEtiquetas(Graphics2D g, int INICIOX, int INICIOY, int OFFSET)
     {
         char letra = 'A';
+        
+        g.setFont(new Font("serif", Font.BOLD, 15));
 
         for (int i = 0; i < ALTOTABLERO; i++)
         {

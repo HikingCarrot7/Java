@@ -19,7 +19,9 @@ import java.awt.image.BufferStrategy;
 public class Main extends Canvas
 {
 
-    public static int ANCHO = 800, ALTO = 700;
+	private static final long serialVersionUID = 1L;
+
+	public static int ANCHO = 800, ALTO = 700;
 
     private int CAMBIOX = 600, CAMBIOY = 500;
     private boolean moving = false;
@@ -110,6 +112,10 @@ public class Main extends Canvas
                 }
 
                 break;
+                
+            default:
+            	
+            	break;
 
         }
     }

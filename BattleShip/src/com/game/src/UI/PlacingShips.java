@@ -6,6 +6,7 @@ import com.game.src.main.Main;
 import com.game.src.map.Cuadricula;
 import com.game.src.map.RandomLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
@@ -22,15 +23,19 @@ public class PlacingShips implements Drawable, InputListener
     private final int LADOCUADRO = 24;
     private final int ANCHOTABLERO = 20, ALTOTABLERO = 10;
     private final RandomLayout randomLayout;
+    private final Rectangle continuar;
+    private final boolean[] barcosColocados;
+    private Rectangle barcoSeleccionado;
     private int timer = 10, COORDENADAX, COORDENADAY;
     private boolean orientacionBarcoActual = false;
-    private Rectangle barcoSeleccionado;
 
     public PlacingShips(RandomLayout randomLayout)
     {
         barcosHorizontales = new Rectangle[5];
         barcosVerticales = new Rectangle[3];
         cuadricula = new Cuadricula(25, 105);
+        continuar = new Rectangle(670, 5, 70, 25);
+        barcosColocados = new boolean[8];
 
         this.randomLayout = randomLayout;
     }
@@ -50,6 +55,7 @@ public class PlacingShips implements Drawable, InputListener
         if (timer <= 0)
         {
 
+            dibujarHUD(g);
             colocandoBarcos(g);
             barcoSeleccionado(g);
             barcoSeleccionadoMouse(g);
@@ -68,20 +74,27 @@ public class PlacingShips implements Drawable, InputListener
 
         } else
         {
-            for (Rectangle B : barcosHorizontales)
+
+            for (int i = 0; i < barcosHorizontales.length; i++)
             {
-                g.draw(B);
+                if (!barcosColocados[i])
+                {
+                    g.draw(barcosHorizontales[i]);
+                }
             }
 
-            for (Rectangle B : barcosVerticales)
+            for (int i = 0; i < barcosVerticales.length; i++)
             {
-                g.draw(B);
+                if (!barcosColocados[i + 5])
+                {
+                    g.draw(barcosVerticales[i]);
+                }
             }
         }
     }
 
-    //False para una orientacion vertical, true para una horizontal
-    //Coloca los barcos para su seleccion en las parte de la derecha
+    // False para una orientacion vertical, true para una horizontal
+    // Coloca los barcos para su seleccion en las parte de la derecha
     public void colocarBarcosSeleccion(Graphics2D g, Rectangle[] barcos, boolean orientacion, int INICIOX, int INICIOY, int LADOCUADRO)
     {
 
@@ -105,7 +118,7 @@ public class PlacingShips implements Drawable, InputListener
         }
     }
 
-    //Pinta de color azul el barco seleccionado
+    // Pinta de color azul el barco seleccionado
     public void barcoSeleccionado(Graphics2D g)
     {
         if (barcoSeleccionado != null)
@@ -116,7 +129,7 @@ public class PlacingShips implements Drawable, InputListener
         }
     }
 
-    //Pinta el un rectangulo que sigue al mouse mientras se coloca en el tablero
+    // Pinta el un rectangulo que sigue al mouse mientras se coloca en el tablero
     public void barcoSeleccionadoMouse(Graphics2D g)
     {
         if (barcoSeleccionado != null)
@@ -138,13 +151,14 @@ public class PlacingShips implements Drawable, InputListener
         }
     }
 
-    //Checamos el tablero al arrastrar (antes de hacer clic)
+    // Checamos el tablero al arrastrar (antes de hacer clic)
     public void checarTableroAlArrastrar(int fila, int columna, int length, boolean horizontal)
     {
         if (fila < ALTOTABLERO && fila >= 0 && columna < ANCHOTABLERO && columna >= 0)
         {
 
-            if (validarUbicacionBarco(orientacionBarcoActual, fila, columna, cuadricula.obtenerTablero(), barcoSeleccionado))
+            if (validarUbicacionBarco(orientacionBarcoActual, fila, columna, cuadricula.obtenerTablero(),
+                    barcoSeleccionado))
             {
                 cuadricula.iniciarTablero();
 
@@ -163,7 +177,7 @@ public class PlacingShips implements Drawable, InputListener
         }
     }
 
-    //Checamos el tablero al colocar el barco (cuando se hace click)
+    // Checamos el tablero al colocar el barco (cuando se hace click)
     public void checarTableroAlColocar(int fila, int columna)
     {
         if (fila < ALTOTABLERO && fila >= 0 && columna < ANCHOTABLERO && columna >= 0 && barcoSeleccionado != null)
@@ -171,9 +185,11 @@ public class PlacingShips implements Drawable, InputListener
 
             if (validarUbicacionBarco(orientacionBarcoActual, fila, columna, cuadricula.obtenerTablero(), barcoSeleccionado))
             {
-                int length = orientacionBarcoActual ? barcoSeleccionado.width / LADOCUADRO : barcoSeleccionado.height / LADOCUADRO;
+                int length = (orientacionBarcoActual ? barcoSeleccionado.width : barcoSeleccionado.height) / LADOCUADRO;
 
                 pintarBarco(fila, columna, length, 2);
+
+                barcosColocados[orientacionBarcoActual ? length - 2 : length + 3] = true;
 
                 barcoSeleccionado = null;
 
@@ -183,7 +199,7 @@ public class PlacingShips implements Drawable, InputListener
 
     }
 
-    //Pintamos el barco de acuerdo al color que le pasemos
+    // Pintamos el barco de acuerdo al color que le pasemos
     public void pintarBarco(int fila, int columna, int length, int color)
     {
         for (int i = fila, j = columna; (orientacionBarcoActual ? j : i) < (orientacionBarcoActual ? columna : fila) + length;)
@@ -202,7 +218,7 @@ public class PlacingShips implements Drawable, InputListener
         }
     }
 
-    //true corresponde para horizontal, false para vertical
+    // true corresponde para horizontal, false para vertical
     public boolean validarUbicacionBarco(boolean orientacion, int fila, int columna, int[][] tablero, Rectangle barco)
     {
         int length = (orientacion ? barco.width : barco.height) / LADOCUADRO;
@@ -220,7 +236,8 @@ public class PlacingShips implements Drawable, InputListener
         for (int i = fila + 1, j = columna + 1; (orientacion ? j : i) < (orientacion ? columna : fila) + length + 1;)
         {
 
-            if (tempTablero[i][j] == 2 || tempTablero[i][j - 1] == 2 || tempTablero[i][j + 1] == 2 || tempTablero[i + 1][j] == 2 || tempTablero[i - 1][j] == 2)
+            if (tempTablero[i][j] == 2 || tempTablero[i][j - 1] == 2 || tempTablero[i][j + 1] == 2
+                    || tempTablero[i + 1][j] == 2 || tempTablero[i - 1][j] == 2)
             {
                 return false;
             }
@@ -238,6 +255,27 @@ public class PlacingShips implements Drawable, InputListener
         return true;
     }
 
+    public void dibujarHUD(Graphics2D g)
+    {
+        Font title = new Font("serif", Font.BOLD, 30), text = new Font("serif", Font.BOLD, 15), instrucciones = new Font("serif", Font.BOLD, 13);
+
+        g.draw(continuar);
+
+        g.setFont(title);
+        g.drawString("�Coloca tus barcos!", Main.ANCHO / 2 - 170, 30);
+
+        g.setFont(text);
+        g.drawString("Barcos horizontales:", Main.ANCHO - 225, 60);
+        g.drawString("Barcos verticales: ", Main.ANCHO - 225, 250);
+
+        g.setFont(instrucciones);
+        g.drawString("> Da clic derecho sobre un barco y colócalo en el tablero.", 15, 55);
+        g.drawString("> Da clic izquierdo sobre un barco para borrarlo del tablero.", 15, 75);
+
+        g.drawString("> Para continuar, debes esperar a que otro jugador se conecte.", 15, 360);
+
+    }
+
     @Override
     public void mousePressed(MouseEvent e)
     {
@@ -245,11 +283,11 @@ public class PlacingShips implements Drawable, InputListener
         {
             Rectangle r = new Rectangle(e.getX(), e.getY(), 1, 1);
 
-            for (Rectangle barcoHorizontal : barcosHorizontales)
+            for (int i = 0; i < barcosHorizontales.length; i++)
             {
-                if (r.intersects(barcoHorizontal))
+                if (r.intersects(barcosHorizontales[i]) && !barcosColocados[i])
                 {
-                    barcoSeleccionado = barcoHorizontal;
+                    barcoSeleccionado = barcosHorizontales[i];
 
                     orientacionBarcoActual = true;
 
@@ -257,17 +295,19 @@ public class PlacingShips implements Drawable, InputListener
                 }
             }
 
-            for (Rectangle barcoVertical : barcosVerticales)
+            for (int i = 0; i < barcosVerticales.length; i++)
             {
-                if (r.intersects(barcoVertical))
+                if (r.intersects(barcosVerticales[i]) && !barcosColocados[i + 5])
                 {
-                    barcoSeleccionado = barcoVertical;
+                    barcoSeleccionado = barcosVerticales[i];
 
                     orientacionBarcoActual = false;
 
                     return;
                 }
+
             }
+
         }
 
         checarTableroAlColocar((e.getY() - 105) / LADOCUADRO, (e.getX() - 25) / LADOCUADRO);

@@ -101,7 +101,7 @@ public class Menu implements Drawable, InputListener
     public void dibujarSelectingMode(Graphics2D g)
     {
         g.setFont(text);
-        g.drawString("¿Cómo deseas generar tu tablero?", Main.ANCHO / 2 - 250, Main.ALTO / 2 - 180);
+        g.drawString("¿Como deseas generar tu tablero?", Main.ANCHO / 2 - 250, Main.ALTO / 2 - 180);
 
         g.setFont(buttonText);
         g.drawString("Random", random.x + 20, random.y + 45);
