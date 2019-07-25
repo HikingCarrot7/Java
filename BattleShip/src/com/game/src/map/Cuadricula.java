@@ -66,9 +66,9 @@ public final class Cuadricula implements Drawable
                         g.setColor(Color.cyan);
 
                         break;
-                        
+
                     case 3:
-                        
+
                         g.setColor(Color.red);
 
                     default:
@@ -93,7 +93,7 @@ public final class Cuadricula implements Drawable
     public void dibujarEtiquetas(Graphics2D g, int INICIOX, int INICIOY, int OFFSET)
     {
         char letra = 'A';
-        
+
         g.setFont(new Font("serif", Font.BOLD, 15));
 
         for (int i = 0; i < ALTOTABLERO; i++)
@@ -107,14 +107,16 @@ public final class Cuadricula implements Drawable
         }
     }
 
-    public void modificarTablero(int i, int j, int cambio)
+    public void modificarTablero(int i, int j, int cambio, boolean eliminar)
     {
         if (i < ALTOTABLERO && i >= 0 && j < ANCHOTABLERO && j >= 0)
         {
-            if (tablero[i][j] != 2)
+
+            if (tablero[i][j] != 2 || eliminar)
             {
                 tablero[i][j] = cambio;
             }
+
         }
     }
 
