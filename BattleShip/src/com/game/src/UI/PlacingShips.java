@@ -36,6 +36,15 @@ public class PlacingShips implements Drawable, InputListener
     }
 
     @Override
+    public void tick()
+    {
+        if (timer > 0)
+        {
+            timer--;
+        }
+    }
+
+    @Override
     public void render(Graphics2D g)
     {
         if (timer <= 0)
@@ -44,16 +53,7 @@ public class PlacingShips implements Drawable, InputListener
             colocandoBarcos(g);
             barcoSeleccionado(g);
             barcoSeleccionadoMouse(g);
-            confirmarShip();
-        }
-    }
-
-    @Override
-    public void tick()
-    {
-        if (timer > 0)
-        {
-            timer--;
+            confirmarBarcoMientrasArrastre();
         }
     }
 
@@ -105,6 +105,7 @@ public class PlacingShips implements Drawable, InputListener
         }
     }
 
+    //Pinta de color azul el barco seleccionado
     public void barcoSeleccionado(Graphics2D g)
     {
         if (barcoSeleccionado != null)
@@ -115,6 +116,7 @@ public class PlacingShips implements Drawable, InputListener
         }
     }
 
+    //Pinta el un rectangulo que sigue al mouse mientras se coloca en el tablero
     public void barcoSeleccionadoMouse(Graphics2D g)
     {
         if (barcoSeleccionado != null)
@@ -124,7 +126,7 @@ public class PlacingShips implements Drawable, InputListener
 
     }
 
-    public void confirmarShip()
+    public void confirmarBarcoMientrasArrastre()
     {
         if (barcoSeleccionado != null)
         {
@@ -151,7 +153,7 @@ public class PlacingShips implements Drawable, InputListener
             } else
             {
                 cuadricula.iniciarTablero();
-                
+
                 pintarBarco(fila, columna, length, 3);
             }
 
