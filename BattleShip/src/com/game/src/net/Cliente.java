@@ -90,6 +90,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
         out.writeObject(mensajeEnvio);
 
         mensaje = (MensajeEnviar) in.readObject();
+        
+        System.out.println("He recibido los primeros datos del servidor");
 
         miMarca = mensaje.getMiMarca();
 
@@ -120,11 +122,9 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
                 mensajeRecibido = (MensajeEnviar) in.readObject();
 
-                if (mensaje.getFila() == -1)
+                if (mensajeRecibido.getFila() == -1)
                 {
                     otroJugadorConectado = true;
-
-                    System.out.println("Hey");
 
                 } else
                 {
