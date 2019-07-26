@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -89,7 +91,6 @@ public final class Server
 
                     out.writeObject(mensaje);
 
-                    envio.close();
                 }
 
             }
@@ -103,12 +104,13 @@ public final class Server
             try
             {
                 server.close();
-
+                
             } catch (IOException ex)
             {
                 System.out.println(ex.getMessage());
             }
         }
+        
     }
 
 }
