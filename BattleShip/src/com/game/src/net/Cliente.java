@@ -75,7 +75,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
         } catch (IOException | ClassNotFoundException ex)
         {
-            System.out.println(ex.getMessage() + "Aqui me quede");
+            System.out.println(ex.getMessage());
 
         }
     }
@@ -84,10 +84,13 @@ public final class Cliente implements Drawable, InputListener, Runnable
     {
 
         out = new ObjectOutputStream(cliente.getOutputStream());
+        
         in = new ObjectInputStream(cliente.getInputStream());
 
         MensajeEnviar mensajeEnvio = new MensajeEnviar(0, 0, 0, 2, true, InetAddress.getLocalHost().getHostAddress());
         out.writeObject(mensajeEnvio);
+        
+        System.out.println("Esperando los datos del server");
 
         mensaje = (MensajeEnviar) in.readObject();
         
