@@ -3,7 +3,9 @@ package com.game.src.net;
 import com.game.src.UI.Menu;
 import com.game.src.map.Cuadricula;
 import com.game.src.graphics.Drawable;
+import com.game.src.graphics.Explosion;
 import com.game.src.input.InputListener;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -14,6 +16,7 @@ import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  *
@@ -28,8 +31,9 @@ public final class Cliente implements Drawable, InputListener, Runnable
     private final String host;
     private String miIp;
     private final Cuadricula barcos, enemigo;
+    private final Menu menu;
+    private final ArrayList<Explosion> explosiones;
     private MensajeEnviar mensaje;
-    private Menu menu;
     private ObjectOutputStream out;
     private ObjectInputStream in;
     private Socket cliente;
@@ -40,7 +44,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
     {
         barcos = new Cuadricula(130, 80);
         enemigo = new Cuadricula(130, 420);
-
+        explosiones = new ArrayList<>();
+        
         this.host = host;
         this.menu = menu;
 
@@ -51,7 +56,10 @@ public final class Cliente implements Drawable, InputListener, Runnable
     @Override
     public void tick()
     {
-
+        for (Explosion e : explosiones)
+        {
+            e.tick();
+        }
     }
 
     @Override
@@ -61,6 +69,11 @@ public final class Cliente implements Drawable, InputListener, Runnable
         enemigo.render(g);
 
         dibujarHUD(g);
+        
+        for (Explosion e : explosiones)
+        {
+            e.render(g);
+        }
 
     }
 
@@ -172,6 +185,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
                 Socket envioDatos = new Socket(host, 9999);
 
                 enemigo.modificarTablero(fila, columna, 3, false);
+                
+                explosiones.add(new Explosion(fila, columna,Color.white));
 
                 out = new ObjectOutputStream(envioDatos.getOutputStream());
 
@@ -228,9 +243,6 @@ public final class Cliente implements Drawable, InputListener, Runnable
     }
 
     @Override
-    public void keyPressed(KeyEvent e)
-    {
-        
-    }
+    public void keyPressed(KeyEvent e){}
 
 }
