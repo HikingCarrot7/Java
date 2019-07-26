@@ -53,6 +53,8 @@ public class Explosion implements Drawable
             {
                 particula.remove();
             }
+            
+            next.tick();
 
         }
     }

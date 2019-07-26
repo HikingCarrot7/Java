@@ -186,7 +186,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
                 enemigo.modificarTablero(fila, columna, 3, false);
                 
-                explosiones.add(new Explosion(fila, columna,Color.red));
+                explosiones.add(new Explosion(fila * 24 + 130, columna * 24 + 420,Color.red));
 
                 out = new ObjectOutputStream(envioDatos.getOutputStream());
 
