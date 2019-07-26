@@ -11,6 +11,10 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,9 +23,9 @@ import java.awt.image.BufferStrategy;
 public class Main extends Canvas
 {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public static int ANCHO = 800, ALTO = 700;
+    public static int ANCHO = 800, ALTO = 700;
 
     private int CAMBIOX = 600, CAMBIOY = 500;
     private boolean moving = false;
@@ -55,10 +59,8 @@ public class Main extends Canvas
         createBufferStrategy(3);
 
         randomLayout = new RandomLayout();
-        cliente = new Cliente();
-        server = new Server();
-        placingShips = new PlacingShips(randomLayout);
-        menu = new Menu(placingShips, cliente, randomLayout);
+        placingShips = new PlacingShips(randomLayout, cliente);
+        menu = new Menu(placingShips, cliente, randomLayout, this);
 
         addMouseListener(new MouseInput(cliente, menu));
         addMouseMotionListener(new MouseMotionInput(menu));
@@ -94,7 +96,7 @@ public class Main extends Canvas
                     window.setSize(CAMBIOX += 3, CAMBIOY);
 
                     moving = true;
-                    
+
                 } else
                 {
                     moving = false;
@@ -112,10 +114,10 @@ public class Main extends Canvas
                 }
 
                 break;
-                
+
             default:
-            	
-            	break;
+
+                break;
 
         }
     }
@@ -163,6 +165,26 @@ public class Main extends Canvas
 
         g.dispose();
         bs.show();
+    }
+
+    public void crearClienteYServidor()
+    {
+        try
+        {
+            cliente = new Cliente(InetAddress.getLocalHost().getHostAddress());
+
+            server = new Server();
+
+        } catch (UnknownHostException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void crearCliente(String host)
+    {
+        cliente = new Cliente(host);
+
     }
 
 }

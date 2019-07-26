@@ -1,5 +1,7 @@
 package com.game.src.main;
 
+import java.net.UnknownHostException;
+
 /**
  *
  * @author HikingCarrot7
@@ -7,8 +9,8 @@ package com.game.src.main;
 public final class Ticker implements Runnable
 {
 
-    private Main main;
-    private Thread thread;
+    private final Main main;
+    private final Thread thread;
 
     public Ticker(Main main)
     {
@@ -22,6 +24,7 @@ public final class Ticker implements Runnable
     @Override
     public void run()
     {
+
         main.init();
 
         long lastTime = System.nanoTime();
@@ -61,4 +64,3 @@ public final class Ticker implements Runnable
     }
 
 }
-

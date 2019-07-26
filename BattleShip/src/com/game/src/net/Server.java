@@ -1,6 +1,8 @@
 package com.game.src.net;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -17,12 +19,14 @@ public final class Server
 {
 
     private Player[] players;
-    private final int PLAYER1 = 0, PLAYER2 = 1;
-    private int jugadorActual = 0;
+    private final int PLAYER1 = 0;
+    private int jugadorActual = 1;
     private ServerSocket server;
     private ExecutorService ejecutarJuego;
     private Lock bloqueoJuego;
     private Condition turnoOtroJugador, otroJugadorConectado;
+    private ObjectOutputStream out;
+    private ObjectInputStream in;
 
     public Server()
     {
@@ -60,31 +64,26 @@ public final class Server
         {
             try
             {
-                players[i] = new Player(server.accept(), i);
+                Socket SOCKETPLAYER1 = server.accept();
+                Socket SOCKETPLAYER2 = server.accept();
 
-                ejecutarJuego.execute(players[i]);
+                players[0] = new Player(SOCKETPLAYER1, SOCKETPLAYER2, i);
+                ejecutarJuego.execute(players[0]);
+
+                players[1] = new Player(SOCKETPLAYER2, SOCKETPLAYER1, i);
+
+                ejecutarJuego.execute(players[1]);
 
             } catch (IOException e)
             {
                 System.out.println(e.getMessage());
             }
+
         }
 
-        bloqueoJuego.lock();
-
-        try
-        {
-            players[PLAYER1].establecerSuspendido(false);
-
-            otroJugadorConectado.signal();
-
-        } finally
-        {
-            bloqueoJuego.unlock();
-        }
     }
 
-    public boolean validarMovimiento(int x, int y, int jugador)
+    public void validarTurno(int jugador)
     {
         while (jugador != jugadorActual)
         {
@@ -104,32 +103,6 @@ public final class Server
             }
         }
 
-        if (!estaOcupado())
-        {
-            jugadorActual = (jugadorActual + 1) % 2;
-
-            bloqueoJuego.lock();
-
-            try
-            {
-                turnoOtroJugador.signal();
-
-            } finally
-            {
-                bloqueoJuego.unlock();
-            }
-
-            return true;
-        }
-
-        return false;
-
-    }
-
-    //Ya habia disparado en esta posicion el jugador anteriormente?
-    private boolean estaOcupado()
-    {
-        return false;
     }
 
     //Validar aqui el tablero del jugador actual 
@@ -141,14 +114,25 @@ public final class Server
     private class Player implements Runnable
     {
 
-        private final Socket socket;
+        private final Socket miSocket, enemigoSocket;
         private final int numeroJugador;
-        private boolean suspendido = true;
-
-        public Player(Socket socket, int numeroJugador)
+        
+        public Player(Socket miSocket, Socket enemigoSocket, int numeroJugador)
         {
-            this.socket = socket;
+            this.miSocket = miSocket;
+            this.enemigoSocket = enemigoSocket;
             this.numeroJugador = numeroJugador;
+
+            try
+            {
+                in = new ObjectInputStream(enemigoSocket.getInputStream());
+                out = new ObjectOutputStream(miSocket.getOutputStream());
+
+            } catch (IOException ex)
+            {
+                System.out.println(ex.getMessage());
+            }
+
         }
 
         @Override
@@ -156,48 +140,45 @@ public final class Server
         {
             try
             {
-                if (numeroJugador == PLAYER1)
+                out.writeObject(new MensajeEnviar(0, 0, numeroJugador));
+
+                while (!seTerminoJuego())
                 {
+                    validarTurno(numeroJugador);
+
+                    out.writeObject(in.readObject());
+
+                    jugadorActual = (jugadorActual + 1) % 2;
+
                     bloqueoJuego.lock();
 
                     try
                     {
-                        while (suspendido)
-                        {
-                            otroJugadorConectado.await();
-                        }
-
-                    } catch (InterruptedException e)
-                    {
-                        System.out.println(e.getMessage());
+                        turnoOtroJugador.signal();
 
                     } finally
                     {
                         bloqueoJuego.unlock();
                     }
+
                 }
-                
-                while(!seTerminoJuego())
-                {
-                    
-                }
+
+            } catch (IOException | ClassNotFoundException ex)
+            {
+                System.out.println(ex.getMessage());
 
             } finally
             {
                 try
                 {
-                    socket.close();
+                    miSocket.close();
+                    enemigoSocket.close();
 
                 } catch (IOException ex)
                 {
                     System.out.println(ex.getMessage());
                 }
             }
-        }
-
-        public void establecerSuspendido(boolean suspendido)
-        {
-            this.suspendido = suspendido;
         }
 
     }

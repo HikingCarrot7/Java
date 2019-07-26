@@ -24,9 +24,10 @@ public class Menu implements Drawable, InputListener
     private final PlacingShips placingShips;
     private final Cliente cliente;
     private final RandomLayout randomLayout;
+    private final Main main;
     private Cuadricula cuadricula;
 
-    public Menu(PlacingShips placingShips, Cliente cliente, RandomLayout randomLayout)
+    public Menu(PlacingShips placingShips, Cliente cliente, RandomLayout randomLayout, Main main)
     {
         play = new Rectangle(Main.ANCHO / 2 - 210, 200, 200, 60);
         connect = new Rectangle(Main.ANCHO / 2 - 210, 300, 200, 60);
@@ -39,6 +40,7 @@ public class Menu implements Drawable, InputListener
 
         this.randomLayout = randomLayout;
         this.placingShips = placingShips;
+        this.main = main;
         this.cliente = cliente;
 
     }
@@ -132,10 +134,14 @@ public class Menu implements Drawable, InputListener
         if (r.intersects(play) && Main.GAMESTATE.equals(Main.STATE.Menu))
         {
             Main.GAMESTATE = Main.STATE.SelectingMode;
+            
+            main.crearClienteYServidor();
 
         } else if (r.intersects(connect) && Main.GAMESTATE.equals(Main.STATE.Menu))
         {
             Main.GAMESTATE = Main.STATE.ConnectingToServer;
+            
+            main.crearCliente("192.168.0.2");
 
         } else if (r.intersects(manual) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
         {
