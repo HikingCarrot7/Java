@@ -131,13 +131,13 @@ public class Menu implements Drawable, InputListener
 
         if (r.intersects(play) && Main.GAMESTATE.equals(Main.STATE.Menu))
         {
-            main.crearClienteYServer("192.168.0.2");
+            main.crearClienteYServer("192.168.0.4");
             
             Main.GAMESTATE = Main.STATE.SelectingMode;
 
         } else if (r.intersects(connect) && Main.GAMESTATE.equals(Main.STATE.Menu))
         {
-            main.crearCliente("192.168.0.2");
+            main.crearCliente("192.168.0.4");
             
             Main.GAMESTATE = Main.STATE.Jugando;
 
