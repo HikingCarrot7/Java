@@ -22,7 +22,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
     private final int PLAYER1 = 0;
     private int miMarca;
-    private boolean miTurno, otroJugadorConectado;
+    private volatile boolean miTurno, otroJugadorConectado;
     private final String host;
     private String miIp;
     private final Cuadricula barcos, enemigo;
@@ -114,6 +114,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
             {
                 otroJugador = serverSocket.accept();
 
+                System.out.println("Acepte una solicitud");
+
                 in = new ObjectInputStream(otroJugador.getInputStream());
 
                 mensajeRecibido = (MensajeEnviar) in.readObject();
@@ -121,6 +123,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
                 if (mensaje.getFila() == -1)
                 {
                     otroJugadorConectado = true;
+
+                    System.out.println("Hey");
 
                 } else
                 {
@@ -199,12 +203,12 @@ public final class Cliente implements Drawable, InputListener, Runnable
         if (otroJugadorConectado)
         {
             g.drawString(miTurno ? ">Es su turno, dispare!" : ">Debe esperar su turno para disparar!", 10, 20);
-            
-        }else
+
+        } else
         {
             g.drawString(">Esperando la conexion del otro jugador...", 10, 20);
         }
-        
+
         g.drawString(">Su direccion IP es: " + miIp, 10, 40);
 
     }

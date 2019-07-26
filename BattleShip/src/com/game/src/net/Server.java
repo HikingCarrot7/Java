@@ -56,8 +56,13 @@ public final class Server
                         Socket socket = new Socket(ips.get(0), 10000);
 
                         out = new ObjectOutputStream(socket.getOutputStream());
+                        
+                        MensajeEnviar mensajeAvisarConexion = new MensajeEnviar(-1, 0, 0, 2, false, ips.get(0));
 
-                        out.writeObject(new MensajeEnviar(-1, 0, 0, 2, false, ips.get(0)));
+                        out.writeObject(mensajeAvisarConexion);
+                        
+                        System.out.println("Le avise al jugador 1");
+                        
                     }
 
                     ips.add(mensaje.getIp());
