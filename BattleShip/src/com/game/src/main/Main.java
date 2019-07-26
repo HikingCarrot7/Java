@@ -11,10 +11,6 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  *
@@ -45,11 +41,10 @@ public class Main extends Canvas implements Runnable
     private static Window window;
     private Cliente cliente;
     private Menu menu;
-    private Server server;
     private PlacingShips placingShips;
     private RandomLayout randomLayout;
     private MouseInput mouseInput;
-    private ExecutorService thread;
+    private Thread thread;
 
     public static void main(String[] args)
     {
@@ -60,7 +55,7 @@ public class Main extends Canvas implements Runnable
     {
         createBufferStrategy(3);
 
-        thread = Executors.newCachedThreadPool();
+        thread = new Thread(this);
         randomLayout = new RandomLayout();
         placingShips = new PlacingShips(randomLayout);
         menu = new Menu(placingShips, randomLayout, this);
@@ -171,23 +166,15 @@ public class Main extends Canvas implements Runnable
         bs.show();
     }
 
-    public void crearClienteYServidor()
+    public void crearClienteYServer(String host)
     {
-        try
-        {
-            thread.execute(this);
-            
-            cliente = new Cliente(InetAddress.getLocalHost().getHostAddress());
-            
-            System.out.println("Cliente");
+        thread.start();
+        
+        cliente = new Cliente(host);
 
-            mouseInput.setCliente(cliente);
-            menu.setCliente(cliente);
+        mouseInput.setCliente(cliente);
+        menu.setCliente(cliente);
 
-        } catch (UnknownHostException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
     }
 
     public void crearCliente(String host)
@@ -202,8 +189,7 @@ public class Main extends Canvas implements Runnable
     @Override
     public void run()
     {
-        server = new Server();
-        server.execute();
+        new Server();
     }
 
 }

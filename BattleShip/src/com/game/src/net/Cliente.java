@@ -9,9 +9,9 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  *
@@ -26,9 +26,10 @@ public final class Cliente implements Drawable, InputListener, Runnable
     private ObjectOutputStream out;
     private ObjectInputStream in;
     private Socket cliente;
+    private ServerSocket serverSocket;
     private boolean miTurno;
-    private volatile boolean disparo;
     private MensajeEnviar mensaje;
+    private Thread thread;
 
     public Cliente(String host)
     {
@@ -37,25 +38,6 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
         iniciarCliente(host);
 
-    }
-
-    public void iniciarCliente(String host)
-    {
-        try
-        {
-            cliente = new Socket(host, 9999);
-
-            in = new ObjectInputStream(cliente.getInputStream());
-            out = new ObjectOutputStream(cliente.getOutputStream());
-
-            ExecutorService thread = Executors.newFixedThreadPool(1);
-
-            thread.execute(this);
-
-        } catch (IOException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
     }
 
     @Override
@@ -74,22 +56,39 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
     }
 
-    public void dibujarHUD(Graphics2D g)
+    public void iniciarCliente(String host)
     {
-        Font title = new Font("serif", Font.BOLD, 25), instrucciones = new Font("serif", Font.BOLD, 15);
+        try
+        {
+            cliente = new Socket(host, 9999);
 
-        g.setFont(title);
-        g.drawString("SU TABLERO", 300, 30);
-        g.drawString("TABLERO ENEMIGO", 250, 360);
+            contactaServidor();
 
-        g.setFont(instrucciones);
-        g.drawString(">Debe esperar su turno para disparar!", 10, 20);
+            thread = new Thread(this);
+            thread.start();
 
+        } catch (IOException | ClassNotFoundException ex)
+        {
+            System.out.println(ex.getMessage());
+
+        }
     }
 
-    public void setBarcos(int[][] tablero)
+    private void contactaServidor() throws IOException, ClassNotFoundException
     {
-        barcos.recibirTablero(tablero);
+
+        out = new ObjectOutputStream(cliente.getOutputStream());
+        in = new ObjectInputStream(cliente.getInputStream());
+
+        MensajeEnviar mensajeEnvio = new MensajeEnviar(0, 0, 0, true, InetAddress.getLocalHost().getHostAddress());
+        out.writeObject(mensajeEnvio);
+
+        mensaje = (MensajeEnviar) in.readObject();
+
+        miMarca = mensaje.getMiMarca();
+
+        miTurno = miMarca == 0;
+
     }
 
     @Override
@@ -97,25 +96,21 @@ public final class Cliente implements Drawable, InputListener, Runnable
     {
         try
         {
-            mensaje = (MensajeEnviar) in.readObject();
+            serverSocket = new ServerSocket(10000);
 
-            miMarca = mensaje.getMiMarca();
+            Socket otroJugador;
 
-            miTurno = miMarca == 0;
+            MensajeEnviar mensajeRecibido;
 
             while (true)
             {
-                if (disparo)
-                {
-                    out.writeObject(mensaje);
-                    miTurno = false;
-                    disparo = false;
-                }
+                otroJugador = serverSocket.accept();
 
-                mensaje = (MensajeEnviar) in.readObject();
-                barcos.modificarTablero(mensaje.getFila(), mensaje.getColumna(), 3, true);
+                in = new ObjectInputStream(otroJugador.getInputStream());
 
-                miTurno = true;
+                mensajeRecibido = (MensajeEnviar) in.readObject();
+
+                modificarTableroAliado(mensajeRecibido);
 
             }
 
@@ -126,16 +121,37 @@ public final class Cliente implements Drawable, InputListener, Runnable
         }
     }
 
+    private void modificarTableroAliado(MensajeEnviar mensaje)
+    {
+        barcos.modificarTablero(mensaje.getFila(), mensaje.getColumna(), 3, true);
+
+        miTurno = true;
+
+    }
+
     @Override
     public void mousePressed(MouseEvent e)
     {
-        if (miTurno)
+        int fila = (e.getY() - 420) / 24, columna = (e.getX() - 130) / 24;
+        
+        if (fila < 10 && fila >= 0 && columna < 20 && columna >= 0 && miTurno)
         {
-            enemigo.modificarTablero((e.getY() - 420) / 24, (e.getX() - 130) / 24, 3, false);
+            try
+            {
+                System.out.println("Envie el paquete");
 
-            disparo = true;
+                enemigo.modificarTablero(fila, columna, 3, false);
+                mensaje = new MensajeEnviar(fila, columna, miMarca, false, InetAddress.getLocalHost().getHostAddress());
 
-            mensaje = new MensajeEnviar((e.getY() - 420) / 24, (e.getX() - 130) / 24, miMarca);
+                out.writeObject(mensaje);
+
+                miTurno = false;
+
+            } catch (IOException ex)
+            {
+                System.out.println(ex.getMessage());
+
+            }
 
         }
 
@@ -145,6 +161,24 @@ public final class Cliente implements Drawable, InputListener, Runnable
     public void mouseMoved(MouseEvent e)
     {
 
+    }
+
+    public void dibujarHUD(Graphics2D g)
+    {
+        Font title = new Font("serif", Font.BOLD, 25), instrucciones = new Font("serif", Font.BOLD, 15);
+
+        g.setFont(title);
+        g.drawString("SU TABLERO", 300, 30);
+        g.drawString("TABLERO ENEMIGO", 250, 360);
+
+        g.setFont(instrucciones);
+        g.drawString(miTurno ? ">Es su turno, dispare!" : ">Debe esperar su turno para disparar!", 10, 20);
+
+    }
+
+    public void setBarcos(int[][] tablero)
+    {
+        barcos.recibirTablero(tablero);
     }
 
 }
