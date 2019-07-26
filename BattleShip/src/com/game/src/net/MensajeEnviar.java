@@ -9,15 +9,16 @@ import java.io.Serializable;
 public final class MensajeEnviar implements Serializable
 {
 
-    private final int fila, columna, miMarca;
+    private final int fila, columna, miMarca, jugadoresConectados;
     private final boolean nuevo;
     private final String ip;
 
-    public MensajeEnviar(int fila, int columna, int miMarca, boolean nuevo, String ip)
+    public MensajeEnviar(int fila, int columna, int miMarca, int jugadoresConectados, boolean nuevo, String ip)
     {
         this.fila = fila;
         this.columna = columna;
         this.miMarca = miMarca;
+        this.jugadoresConectados = jugadoresConectados;
         this.nuevo = nuevo;
         this.ip = ip;
     }
@@ -35,6 +36,11 @@ public final class MensajeEnviar implements Serializable
     public int getMiMarca()
     {
         return miMarca;
+    }
+
+    public int getJugadoresConectados()
+    {
+        return jugadoresConectados;
     }
 
     public boolean isNuevo()

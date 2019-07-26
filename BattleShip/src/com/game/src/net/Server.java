@@ -50,9 +50,19 @@ public final class Server
                 {
                     System.out.println("Se detecto a un nuevo jugador");
 
+                    //Avisamos al jugador 1 que ya se conecto el jugador 2
+                    if (ips.size() > 0)
+                    {
+                        Socket socket = new Socket(ips.get(0), 10000);
+
+                        out = new ObjectOutputStream(socket.getOutputStream());
+
+                        out.writeObject(new MensajeEnviar(-1, 0, 0, 2, false, ips.get(0)));
+                    }
+
                     ips.add(mensaje.getIp());
 
-                    mensaje = new MensajeEnviar(0, 0, contPlayer++, false, null);
+                    mensaje = new MensajeEnviar(0, 0, contPlayer++, ips.size(), false, null);
 
                     out.writeObject(mensaje);
 

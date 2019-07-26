@@ -20,17 +20,18 @@ import java.net.Socket;
 public final class Cliente implements Drawable, InputListener, Runnable
 {
 
-    private final Cuadricula barcos, enemigo;
-    private final int PLAYER1 = 0, PLAYER2 = 1;
+    private final int PLAYER1 = 0;
     private int miMarca;
+    private boolean miTurno, otroJugadorConectado;
+    private final String host;
+    private String miIp;
+    private final Cuadricula barcos, enemigo;
+    private MensajeEnviar mensaje;
     private ObjectOutputStream out;
     private ObjectInputStream in;
     private Socket cliente;
     private ServerSocket serverSocket;
-    private boolean miTurno;
-    private MensajeEnviar mensaje;
     private Thread thread;
-    private final String host;
 
     public Cliente(String host)
     {
@@ -70,6 +71,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
             thread = new Thread(this);
             thread.start();
 
+            miIp = InetAddress.getLocalHost().getHostAddress();
+
         } catch (IOException | ClassNotFoundException ex)
         {
             System.out.println(ex.getMessage());
@@ -83,14 +86,16 @@ public final class Cliente implements Drawable, InputListener, Runnable
         out = new ObjectOutputStream(cliente.getOutputStream());
         in = new ObjectInputStream(cliente.getInputStream());
 
-        MensajeEnviar mensajeEnvio = new MensajeEnviar(0, 0, 0, true, InetAddress.getLocalHost().getHostAddress());
+        MensajeEnviar mensajeEnvio = new MensajeEnviar(0, 0, 0, 2, true, InetAddress.getLocalHost().getHostAddress());
         out.writeObject(mensajeEnvio);
 
         mensaje = (MensajeEnviar) in.readObject();
 
         miMarca = mensaje.getMiMarca();
 
-        miTurno = miMarca == 0;
+        miTurno = miMarca == PLAYER1;
+
+        otroJugadorConectado = mensaje.getJugadoresConectados() == 2;
 
     }
 
@@ -113,7 +118,14 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
                 mensajeRecibido = (MensajeEnviar) in.readObject();
 
-                modificarTableroAliado(mensajeRecibido);
+                if (mensaje.getFila() == -1)
+                {
+                    otroJugadorConectado = true;
+
+                } else
+                {
+                    modificarTableroAliado(mensajeRecibido);
+                }
 
             }
 
@@ -148,12 +160,12 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
                 out = new ObjectOutputStream(envioDatos.getOutputStream());
 
-                mensaje = new MensajeEnviar(fila, columna, miMarca, false, InetAddress.getLocalHost().getHostAddress());
+                mensaje = new MensajeEnviar(fila, columna, miMarca, 2, false, InetAddress.getLocalHost().getHostAddress());
 
                 out.writeObject(mensaje);
 
                 System.out.println("Envie el paquete");
-                
+
                 miTurno = false;
 
                 envioDatos.close();
@@ -183,7 +195,17 @@ public final class Cliente implements Drawable, InputListener, Runnable
         g.drawString("TABLERO ENEMIGO", 250, 360);
 
         g.setFont(instrucciones);
-        g.drawString(miTurno ? ">Es su turno, dispare!" : ">Debe esperar su turno para disparar!", 10, 20);
+
+        if (otroJugadorConectado)
+        {
+            g.drawString(miTurno ? ">Es su turno, dispare!" : ">Debe esperar su turno para disparar!", 10, 20);
+            
+        }else
+        {
+            g.drawString(">Debe esperar a que otro jugador se conecte", 10, 20);
+        }
+        
+        g.drawString(">Su direccion IP es: " + miIp, 10, 40);
 
     }
 
