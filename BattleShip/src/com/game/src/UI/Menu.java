@@ -195,7 +195,7 @@ public class Menu implements Drawable, InputListener
 
             if (ipValida)
             {
-                Main.GAMESTATE = Main.STATE.Jugando;
+                Main.GAMESTATE = Main.STATE.SelectingMode;
             }
         }
 

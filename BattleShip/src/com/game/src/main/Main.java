@@ -176,6 +176,7 @@ public class Main extends Canvas implements Runnable
 
         mouseInput.setCliente(cliente);
         menu.setCliente(cliente);
+        placingShips.setCliente(cliente);
 
     }
 
@@ -185,6 +186,7 @@ public class Main extends Canvas implements Runnable
 
         mouseInput.setCliente(cliente);
         menu.setCliente(cliente);
+        placingShips.setCliente(cliente);
 
     }
 

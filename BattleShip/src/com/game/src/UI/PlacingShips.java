@@ -354,9 +354,9 @@ public class PlacingShips implements Drawable, InputListener
         } else if (Main.GAMESTATE.equals(Main.STATE.ColocandoBarcos) && e.getButton() == MouseEvent.BUTTON1 && CONTBARCOSCOLOCADOS == 8 && r.intersects(continuar))
         {
             
-            Main.GAMESTATE = Main.STATE.Jugando;
-            
             cliente.setBarcos(cuadricula.obtenerTablero());
+            
+            Main.GAMESTATE = Main.STATE.Jugando;
 
         } else if (e.getButton() == MouseEvent.BUTTON3)
         {
