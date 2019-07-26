@@ -71,7 +71,7 @@ public final class Server
 
                     out.writeObject(mensaje);
 
-                    System.out.println("He enviado los datos");
+                    System.out.println("He enviado los datos al jugador " + contPlayer);
 
                 } else
                 {

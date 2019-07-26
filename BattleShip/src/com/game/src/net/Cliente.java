@@ -75,7 +75,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
         } catch (IOException | ClassNotFoundException ex)
         {
-            System.out.println(ex.getMessage());
+            System.out.println(ex.getMessage() + "Aqui me quede");
 
         }
     }
