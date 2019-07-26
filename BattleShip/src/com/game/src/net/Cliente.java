@@ -45,7 +45,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
         barcos = new Cuadricula(130, 80);
         enemigo = new Cuadricula(130, 420);
         explosiones = new ArrayList<>();
-        
+
         this.host = host;
         this.menu = menu;
 
@@ -69,7 +69,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
         enemigo.render(g);
 
         dibujarHUD(g);
-        
+
         for (Explosion e : explosiones)
         {
             e.render(g);
@@ -93,7 +93,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
         } catch (IOException | ClassNotFoundException ex)
         {
             System.out.println(ex.getMessage());
-            
+
             menu.setIpValida(false);
 
         }
@@ -103,16 +103,16 @@ public final class Cliente implements Drawable, InputListener, Runnable
     {
 
         out = new ObjectOutputStream(cliente.getOutputStream());
-        
+
         in = new ObjectInputStream(cliente.getInputStream());
 
         MensajeEnviar mensajeEnvio = new MensajeEnviar(0, 0, 0, 2, true, InetAddress.getLocalHost().getHostAddress());
         out.writeObject(mensajeEnvio);
-        
+
         System.out.println("Esperando los datos del server");
 
         mensaje = (MensajeEnviar) in.readObject();
-        
+
         System.out.println("He recibido los primeros datos del servidor");
 
         miMarca = mensaje.getMiMarca();
@@ -120,7 +120,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
         miTurno = miMarca == PLAYER1;
 
         otroJugadorConectado = mensaje.getJugadoresConectados() == 2;
-        
+
         menu.setIpValida(true);
 
     }
@@ -185,8 +185,10 @@ public final class Cliente implements Drawable, InputListener, Runnable
                 Socket envioDatos = new Socket(host, 9999);
 
                 enemigo.modificarTablero(fila, columna, 3, false);
-                
-                explosiones.add(new Explosion(fila * 24 + 130, columna * 24 + 420,Color.red));
+
+                System.out.println(fila + " . " + columna);
+
+                explosiones.add(new Explosion(fila * 24 + 420, columna * 24 + 130, Color.red));
 
                 out = new ObjectOutputStream(envioDatos.getOutputStream());
 
@@ -243,6 +245,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
     }
 
     @Override
-    public void keyPressed(KeyEvent e){}
+    public void keyPressed(KeyEvent e)
+    {
+    }
 
 }
