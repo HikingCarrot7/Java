@@ -10,6 +10,8 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  *
@@ -131,7 +133,14 @@ public class Menu implements Drawable, InputListener
 
         if (r.intersects(play) && Main.GAMESTATE.equals(Main.STATE.Menu))
         {
-            main.crearClienteYServer("192.168.0.4");
+            try
+            {
+                main.crearClienteYServer(InetAddress.getLocalHost().getHostAddress());
+                
+            } catch (UnknownHostException ex)
+            {
+                System.out.println(ex.getMessage());
+            }
             
             Main.GAMESTATE = Main.STATE.SelectingMode;
 
