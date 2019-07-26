@@ -188,7 +188,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
                 System.out.println(fila + " . " + columna);
 
-                explosiones.add(new Explosion(fila * 24 + 420, columna * 24 + 130, Color.red));
+                explosiones.add(new Explosion(columna * 24 + 130, fila * 24 + 420, Color.red));
 
                 out = new ObjectOutputStream(envioDatos.getOutputStream());
 

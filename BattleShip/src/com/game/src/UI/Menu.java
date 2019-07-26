@@ -11,7 +11,9 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.InetAddress;
+import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
@@ -26,7 +28,7 @@ public class Menu implements Drawable, InputListener
     private final PlacingShips placingShips;
     private final RandomLayout randomLayout;
     private final Main main;
-    private boolean ipValida = true;
+    private boolean ipValida = true, connecting = false;
     private String ip = "";
     private Cliente cliente;
 
@@ -89,6 +91,10 @@ public class Menu implements Drawable, InputListener
             case ConnectingToServer:
 
                 leyendoIP(g);
+
+                break;
+
+            default:
 
                 break;
         }
@@ -179,19 +185,37 @@ public class Menu implements Drawable, InputListener
         {
             Main.GAMESTATE = Main.STATE.ConnectingToServer;
 
+            connecting = true;
+
         } else if (r.intersects(manual) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
         {
             Main.GAMESTATE = Main.STATE.ColocandoBarcos;
 
         } else if (r.intersects(random) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
         {
+            if (connecting)
+            {
+                main.crearCliente(ip.trim());
+            }
+
             cliente.setBarcos(randomLayout.generarTablero());
 
             Main.GAMESTATE = Main.STATE.Jugando;
 
         } else if (r.intersects(continuar) && Main.GAMESTATE.equals(Main.STATE.ConnectingToServer))
         {
-            main.crearCliente(ip.trim());
+            try
+            {
+                new Socket(ip.trim(), 9999);
+
+                ipValida = true;
+
+            } catch (IOException ex)
+            {
+                System.out.println(ex.getMessage());
+
+                ipValida = false;
+            }
 
             if (ipValida)
             {
