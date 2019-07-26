@@ -67,10 +67,10 @@ public final class Server
             Socket SOCKETPLAYER1 = server.accept();
             Socket SOCKETPLAYER2 = server.accept();
 
-            players[0] = new Player(SOCKETPLAYER1, SOCKETPLAYER2, i++);
+            players[0] = new Player(SOCKETPLAYER1, SOCKETPLAYER2, i);
             ejecutarJuego.execute(players[0]);
 
-            players[1] = new Player(SOCKETPLAYER2, SOCKETPLAYER1, i);
+            players[1] = new Player(SOCKETPLAYER2, SOCKETPLAYER1, ++i);
 
             ejecutarJuego.execute(players[1]);
 
