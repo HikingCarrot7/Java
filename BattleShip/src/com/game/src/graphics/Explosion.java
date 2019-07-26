@@ -21,6 +21,8 @@ public class Explosion implements Drawable
     {
         rand = new Random();
         particulas = new ArrayList<>();
+        
+        System.out.println(x + " . " + y);
 
         for (int i = 0; i < 25; i++)
         {
@@ -49,10 +51,10 @@ public class Explosion implements Drawable
         {
             Particles next = particula.next();
 
-            if (next.x < 0 || next.x > Main.ANCHO || next.y > 0 || next.y < Main.ALTO)
+            /*if (next.x < 0 || next.x > Main.ANCHO || next.y > 0 || next.y < Main.ALTO)
             {
                 particula.remove();
-            }
+            }*/
             
             next.tick();
 
