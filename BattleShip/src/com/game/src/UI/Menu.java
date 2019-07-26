@@ -4,7 +4,6 @@ import com.game.src.net.Cliente;
 import com.game.src.graphics.Drawable;
 import com.game.src.input.InputListener;
 import com.game.src.main.Main;
-import com.game.src.map.Cuadricula;
 import com.game.src.map.RandomLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -22,12 +21,12 @@ public class Menu implements Drawable, InputListener
     private final Rectangle play, connect, random, manual;
     private final Font title, buttonText, text;
     private final PlacingShips placingShips;
-    private final Cliente cliente;
     private final RandomLayout randomLayout;
     private final Main main;
-    private Cuadricula cuadricula;
+    private Cliente cliente;
 
-    public Menu(PlacingShips placingShips, Cliente cliente, RandomLayout randomLayout, Main main)
+
+    public Menu(PlacingShips placingShips, RandomLayout randomLayout, Main main)
     {
         play = new Rectangle(Main.ANCHO / 2 - 210, 200, 200, 60);
         connect = new Rectangle(Main.ANCHO / 2 - 210, 300, 200, 60);
@@ -41,7 +40,6 @@ public class Menu implements Drawable, InputListener
         this.randomLayout = randomLayout;
         this.placingShips = placingShips;
         this.main = main;
-        this.cliente = cliente;
 
     }
 
@@ -133,9 +131,9 @@ public class Menu implements Drawable, InputListener
 
         if (r.intersects(play) && Main.GAMESTATE.equals(Main.STATE.Menu))
         {
-            Main.GAMESTATE = Main.STATE.SelectingMode;
-            
             main.crearClienteYServidor();
+            
+            Main.GAMESTATE = Main.STATE.SelectingMode;
 
         } else if (r.intersects(connect) && Main.GAMESTATE.equals(Main.STATE.Menu))
         {
@@ -155,6 +153,11 @@ public class Menu implements Drawable, InputListener
             
         }
 
+    }
+    
+    public void setCliente(Cliente cliente)
+    {
+        this.cliente = cliente;
     }
 
 }

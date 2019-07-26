@@ -64,9 +64,12 @@ public final class Server
         {
             try
             {
+                System.out.println("Server");
                 Socket SOCKETPLAYER1 = server.accept();
+                System.out.println("Server");
                 Socket SOCKETPLAYER2 = server.accept();
-
+                System.out.println("Server");
+                
                 players[0] = new Player(SOCKETPLAYER1, SOCKETPLAYER2, i);
                 ejecutarJuego.execute(players[0]);
 

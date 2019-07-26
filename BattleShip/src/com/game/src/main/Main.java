@@ -13,14 +13,14 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  *
  * @author HikingCarrot7
  */
-public class Main extends Canvas
+public class Main extends Canvas implements Runnable
 {
 
     private static final long serialVersionUID = 1L;
@@ -48,6 +48,8 @@ public class Main extends Canvas
     private Server server;
     private PlacingShips placingShips;
     private RandomLayout randomLayout;
+    private MouseInput mouseInput;
+    private ExecutorService thread;
 
     public static void main(String[] args)
     {
@@ -58,11 +60,13 @@ public class Main extends Canvas
     {
         createBufferStrategy(3);
 
+        thread = Executors.newCachedThreadPool();
         randomLayout = new RandomLayout();
         placingShips = new PlacingShips(randomLayout, cliente);
-        menu = new Menu(placingShips, cliente, randomLayout, this);
+        menu = new Menu(placingShips, randomLayout, this);
+        mouseInput = new MouseInput(menu);
 
-        addMouseListener(new MouseInput(cliente, menu));
+        addMouseListener(mouseInput);
         addMouseMotionListener(new MouseMotionInput(menu));
 
     }
@@ -171,9 +175,14 @@ public class Main extends Canvas
     {
         try
         {
+            thread.execute(this);
+            
             cliente = new Cliente(InetAddress.getLocalHost().getHostAddress());
+            
+            System.out.println("Cliente");
 
-            server = new Server();
+            mouseInput.setCliente(cliente);
+            menu.setCliente(cliente);
 
         } catch (UnknownHostException ex)
         {
@@ -185,6 +194,16 @@ public class Main extends Canvas
     {
         cliente = new Cliente(host);
 
+        mouseInput.setCliente(cliente);
+        menu.setCliente(cliente);
+
+    }
+
+    @Override
+    public void run()
+    {
+        server = new Server();
+        server.execute();
     }
 
 }

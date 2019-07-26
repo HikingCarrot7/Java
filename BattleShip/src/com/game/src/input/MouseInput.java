@@ -12,21 +12,28 @@ import java.awt.event.MouseEvent;
 public class MouseInput extends MouseAdapter
 {
 
-    private final Cliente cliente;
     private final Menu menu;
+    private Cliente cliente;
 
-    public MouseInput(Cliente cliente, Menu menu)
+    public MouseInput(Menu menu)
     {
-        this.cliente = cliente;
         this.menu = menu;
     }
 
     @Override
     public void mousePressed(MouseEvent e)
     {
-        cliente.mousePressed(e);
+        if (cliente != null)
+        {
+            cliente.mousePressed(e);
+        }
         menu.mousePressed(e);
 
+    }
+    
+    public void setCliente(Cliente cliente)
+    {
+        this.cliente = cliente;
     }
 
 }
