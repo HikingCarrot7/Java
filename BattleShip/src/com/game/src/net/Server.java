@@ -55,12 +55,13 @@ public final class Server
                     {
                         Socket socket = new Socket(ips.get(0), 10000);
 
-                        out = new ObjectOutputStream(socket.getOutputStream());
+                        ObjectOutputStream out2 = new ObjectOutputStream(socket.getOutputStream());
 
                         MensajeEnviar mensajeAvisarConexion = new MensajeEnviar(-1, 0, 0, 2, false, ips.get(0));
 
-                        out.writeObject(mensajeAvisarConexion);
+                        out2.writeObject(mensajeAvisarConexion);
                         
+                        out2.close();
                         socket.close();
 
                         System.out.println("Le avise al jugador 1");
@@ -70,8 +71,6 @@ public final class Server
                     ips.add(mensaje.getIp());
 
                     System.out.println(ips);
-                    
-                    out = new ObjectOutputStream(jugador.getOutputStream());
 
                     mensaje = new MensajeEnviar(0, 0, contPlayer++, ips.size(), false, null);
 
@@ -79,7 +78,6 @@ public final class Server
 
                     System.out.println("He enviado los datos al jugador " + contPlayer);
                     
-                    jugador.close();
 
                 } else
                 {
