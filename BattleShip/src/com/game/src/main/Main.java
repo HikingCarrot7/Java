@@ -121,6 +121,9 @@ public class Main extends Canvas implements Runnable
                 break;
 
         }
+        
+        cliente.tick();
+        
     }
 
     public void render()
