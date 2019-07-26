@@ -93,7 +93,7 @@ public class Explosion implements Drawable
         public void render(Graphics2D g)
         {
             g.setColor(color);
-            g.drawRect(x, y, 8, 8);
+            g.fillRect(x, y, 4, 4);
         }
 
     }
