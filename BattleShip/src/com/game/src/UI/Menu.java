@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -20,13 +21,14 @@ import java.net.UnknownHostException;
 public class Menu implements Drawable, InputListener
 {
 
-    private final Rectangle play, connect, random, manual;
+    private final Rectangle play, connect, random, manual, continuar;
     private final Font title, buttonText, text;
     private final PlacingShips placingShips;
     private final RandomLayout randomLayout;
     private final Main main;
+    private boolean ipValida = true;
+    private String ip = "";
     private Cliente cliente;
-
 
     public Menu(PlacingShips placingShips, RandomLayout randomLayout, Main main)
     {
@@ -34,6 +36,7 @@ public class Menu implements Drawable, InputListener
         connect = new Rectangle(Main.ANCHO / 2 - 210, 300, 200, 60);
         random = new Rectangle(80, 200, 200, 60);
         manual = new Rectangle(Main.ANCHO - 480, 200, 200, 60);
+        continuar = new Rectangle(Main.ANCHO / 2 - 210, 350, 200, 60);
 
         title = new Font("serif", Font.BOLD, 50);
         text = new Font("serif", Font.BOLD, 20);
@@ -82,11 +85,17 @@ public class Menu implements Drawable, InputListener
                 placingShips.render(g);
 
                 break;
+
+            case ConnectingToServer:
+
+                leyendoIP(g);
+
+                break;
         }
 
     }
 
-    public void dibujarMenuPrincipal(Graphics2D g)
+    private void dibujarMenuPrincipal(Graphics2D g)
     {
         g.setFont(title);
         g.drawString("BATTLESHIP!", Main.ANCHO / 2 - 270, 80);
@@ -100,7 +109,7 @@ public class Menu implements Drawable, InputListener
 
     }
 
-    public void dibujarSelectingMode(Graphics2D g)
+    private void dibujarSelectingMode(Graphics2D g)
     {
         g.setFont(text);
         g.drawString("¿Como deseas generar tu tablero?", Main.ANCHO / 2 - 250, Main.ALTO / 2 - 180);
@@ -111,6 +120,28 @@ public class Menu implements Drawable, InputListener
 
         g.drawString("Manual", manual.x + 25, manual.y + 45);
         g.draw(manual);
+    }
+
+    private void leyendoIP(Graphics2D g)
+    {
+        Font title1 = new Font("serif", Font.BOLD, 30), title2 = new Font("serif", Font.BOLD, 60);
+
+        g.setFont(title1);
+        g.drawString("Inserta la IP del servidor", Main.ANCHO / 2 - 270, 60);
+
+        g.setFont(title2);
+        g.drawString("IP: " + ip, 40, 180);
+        g.draw(continuar);
+
+        g.setFont(buttonText);
+        g.drawString("Continuar", continuar.x + 2, continuar.y + 45);
+
+        if (!ipValida)
+        {
+            g.setFont(text);
+            g.drawString("IP NO valida!", continuar.x + 40, continuar.y + 100);
+        }
+
     }
 
     @Override
@@ -136,19 +167,17 @@ public class Menu implements Drawable, InputListener
             try
             {
                 main.crearClienteYServer(InetAddress.getLocalHost().getHostAddress());
-                
+
             } catch (UnknownHostException ex)
             {
                 System.out.println(ex.getMessage());
             }
-            
+
             Main.GAMESTATE = Main.STATE.SelectingMode;
 
         } else if (r.intersects(connect) && Main.GAMESTATE.equals(Main.STATE.Menu))
         {
-            main.crearCliente("192.168.0.4");
-            
-            Main.GAMESTATE = Main.STATE.Jugando;
+            Main.GAMESTATE = Main.STATE.ConnectingToServer;
 
         } else if (r.intersects(manual) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
         {
@@ -157,16 +186,46 @@ public class Menu implements Drawable, InputListener
         } else if (r.intersects(random) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
         {
             cliente.setBarcos(randomLayout.generarTablero());
-            
+
             Main.GAMESTATE = Main.STATE.Jugando;
-            
+
+        } else if (r.intersects(continuar) && Main.GAMESTATE.equals(Main.STATE.ConnectingToServer))
+        {
+            main.crearCliente(ip.trim());
+
+            if (ipValida)
+            {
+                Main.GAMESTATE = Main.STATE.Jugando;
+            }
         }
 
     }
-    
+
     public void setCliente(Cliente cliente)
     {
         this.cliente = cliente;
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e)
+    {
+        if (e.getKeyCode() == 8)
+        {
+            if (ip.length() > 0)
+            {
+                ip = ip.substring(0, ip.length() - 1);
+            }
+
+        } else if (ip.length() < 16)
+        {
+            ip += e.getKeyChar();
+        }
+
+    }
+
+    public void setIpValida(boolean ipValida)
+    {
+        this.ipValida = ipValida;
     }
 
 }

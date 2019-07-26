@@ -27,10 +27,11 @@ public class MouseInput extends MouseAdapter
         {
             cliente.mousePressed(e);
         }
+
         menu.mousePressed(e);
 
     }
-    
+
     public void setCliente(Cliente cliente)
     {
         this.cliente = cliente;

@@ -2,6 +2,7 @@ package com.game.src.main;
 
 import com.game.src.UI.Menu;
 import com.game.src.UI.PlacingShips;
+import com.game.src.input.KeyInput;
 import com.game.src.input.MouseInput;
 import com.game.src.net.Cliente;
 import com.game.src.input.MouseMotionInput;
@@ -63,6 +64,7 @@ public class Main extends Canvas implements Runnable
 
         addMouseListener(mouseInput);
         addMouseMotionListener(new MouseMotionInput(menu));
+        addKeyListener(new KeyInput(menu));
 
     }
 
@@ -170,7 +172,7 @@ public class Main extends Canvas implements Runnable
     {
         thread.start();
         
-        cliente = new Cliente(host);
+        cliente = new Cliente(host, menu);
 
         mouseInput.setCliente(cliente);
         menu.setCliente(cliente);
@@ -179,7 +181,7 @@ public class Main extends Canvas implements Runnable
 
     public void crearCliente(String host)
     {
-        cliente = new Cliente(host);
+        cliente = new Cliente(host, menu);
 
         mouseInput.setCliente(cliente);
         menu.setCliente(cliente);

@@ -1,10 +1,12 @@
 package com.game.src.net;
 
+import com.game.src.UI.Menu;
 import com.game.src.map.Cuadricula;
 import com.game.src.graphics.Drawable;
 import com.game.src.input.InputListener;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -27,18 +29,20 @@ public final class Cliente implements Drawable, InputListener, Runnable
     private String miIp;
     private final Cuadricula barcos, enemigo;
     private MensajeEnviar mensaje;
+    private Menu menu;
     private ObjectOutputStream out;
     private ObjectInputStream in;
     private Socket cliente;
     private ServerSocket serverSocket;
     private Thread thread;
 
-    public Cliente(String host)
+    public Cliente(String host, Menu menu)
     {
         barcos = new Cuadricula(130, 80);
         enemigo = new Cuadricula(130, 420);
 
         this.host = host;
+        this.menu = menu;
 
         iniciarCliente(host);
 
@@ -76,6 +80,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
         } catch (IOException | ClassNotFoundException ex)
         {
             System.out.println(ex.getMessage());
+            
+            menu.setIpValida(false);
 
         }
     }
@@ -101,6 +107,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
         miTurno = miMarca == PLAYER1;
 
         otroJugadorConectado = mensaje.getJugadoresConectados() == 2;
+        
+        menu.setIpValida(true);
 
     }
 
@@ -217,6 +225,12 @@ public final class Cliente implements Drawable, InputListener, Runnable
     public void setBarcos(int[][] tablero)
     {
         barcos.recibirTablero(tablero);
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e)
+    {
+        
     }
 
 }
