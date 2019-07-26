@@ -149,7 +149,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
     {
         int fila = (e.getY() - 420) / 24, columna = (e.getX() - 130) / 24;
 
-        if (fila < 10 && fila >= 0 && columna < 20 && columna >= 0 && miTurno)
+        if (fila < 10 && fila >= 0 && columna < 20 && columna >= 0 && miTurno && otroJugadorConectado)
         {
             try
             {
@@ -202,7 +202,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
             
         }else
         {
-            g.drawString(">Debe esperar a que otro jugador se conecte", 10, 20);
+            g.drawString(">Esperando la conexion del otro jugador...", 10, 20);
         }
         
         g.drawString(">Su direccion IP es: " + miIp, 10, 40);
