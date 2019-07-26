@@ -30,11 +30,14 @@ public final class Cliente implements Drawable, InputListener, Runnable
     private boolean miTurno;
     private MensajeEnviar mensaje;
     private Thread thread;
+    private final String host;
 
     public Cliente(String host)
     {
         barcos = new Cuadricula(130, 80);
         enemigo = new Cuadricula(130, 420);
+
+        this.host = host;
 
         iniciarCliente(host);
 
@@ -133,19 +136,27 @@ public final class Cliente implements Drawable, InputListener, Runnable
     public void mousePressed(MouseEvent e)
     {
         int fila = (e.getY() - 420) / 24, columna = (e.getX() - 130) / 24;
-        
+
         if (fila < 10 && fila >= 0 && columna < 20 && columna >= 0 && miTurno)
         {
             try
             {
-                System.out.println("Envie el paquete");
+
+                Socket envioDatos = new Socket(host, 9999);
 
                 enemigo.modificarTablero(fila, columna, 3, false);
+
+                out = new ObjectOutputStream(envioDatos.getOutputStream());
+
                 mensaje = new MensajeEnviar(fila, columna, miMarca, false, InetAddress.getLocalHost().getHostAddress());
 
                 out.writeObject(mensaje);
 
+                System.out.println("Envie el paquete");
+                
                 miTurno = false;
+
+                envioDatos.close();
 
             } catch (IOException ex)
             {

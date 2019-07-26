@@ -35,7 +35,6 @@ public final class Server
 
             while (true)
             {
-
                 Socket jugador = server.accept();
 
                 System.out.println("Se ha conectado un jugador");
@@ -50,7 +49,7 @@ public final class Server
                 if (mensaje.isNuevo())
                 {
                     System.out.println("Se detecto a un nuevo jugador");
-                    
+
                     ips.add(mensaje.getIp());
 
                     mensaje = new MensajeEnviar(0, 0, contPlayer++, false, null);
@@ -61,7 +60,10 @@ public final class Server
 
                 } else
                 {
+                    System.out.println(mensaje.getMiMarca());
+
                     Socket envio = new Socket(mensaje.getMiMarca() == 0 ? ips.get(1) : ips.get(0), 10000);
+
                     out = new ObjectOutputStream(envio.getOutputStream());
 
                     out.writeObject(mensaje);
