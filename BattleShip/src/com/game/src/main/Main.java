@@ -121,9 +121,12 @@ public class Main extends Canvas implements Runnable
                 break;
 
         }
-        
-        cliente.tick();
-        
+
+        if (cliente != null)
+        {
+            cliente.tick();
+        }
+
     }
 
     public void render()
@@ -174,7 +177,7 @@ public class Main extends Canvas implements Runnable
     public void crearClienteYServer(String host)
     {
         thread.start();
-        
+
         cliente = new Cliente(host, menu);
 
         mouseInput.setCliente(cliente);

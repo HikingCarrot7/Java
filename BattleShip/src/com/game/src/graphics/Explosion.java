@@ -1,6 +1,5 @@
 package com.game.src.graphics;
 
-import com.game.src.main.Main;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
