@@ -68,6 +68,8 @@ public final class Server
                     ips.add(mensaje.getIp());
                     
                     System.out.println(ips);
+                    
+                    out = new ObjectOutputStream(jugador.getOutputStream());
 
                     mensaje = new MensajeEnviar(0, 0, contPlayer++, ips.size(), false, null);
 
