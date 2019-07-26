@@ -60,28 +60,23 @@ public final class Server
 
     public void execute()
     {
-        for (int i = 0; i < players.length; i++)
+        int i = 0;
+        
+        try
         {
-            try
-            {
-                System.out.println("Server");
-                Socket SOCKETPLAYER1 = server.accept();
-                System.out.println("Server");
-                Socket SOCKETPLAYER2 = server.accept();
-                System.out.println("Server");
-                
-                players[0] = new Player(SOCKETPLAYER1, SOCKETPLAYER2, i);
-                ejecutarJuego.execute(players[0]);
+            Socket SOCKETPLAYER1 = server.accept();
+            Socket SOCKETPLAYER2 = server.accept();
 
-                players[1] = new Player(SOCKETPLAYER2, SOCKETPLAYER1, i);
+            players[0] = new Player(SOCKETPLAYER1, SOCKETPLAYER2, i++);
+            ejecutarJuego.execute(players[0]);
 
-                ejecutarJuego.execute(players[1]);
+            players[1] = new Player(SOCKETPLAYER2, SOCKETPLAYER1, i);
 
-            } catch (IOException e)
-            {
-                System.out.println(e.getMessage());
-            }
+            ejecutarJuego.execute(players[1]);
 
+        } catch (IOException e)
+        {
+            System.out.println(e.getMessage());
         }
 
     }
@@ -119,7 +114,7 @@ public final class Server
 
         private final Socket miSocket, enemigoSocket;
         private final int numeroJugador;
-        
+
         public Player(Socket miSocket, Socket enemigoSocket, int numeroJugador)
         {
             this.miSocket = miSocket;
