@@ -62,7 +62,7 @@ public class Main extends Canvas implements Runnable
 
         thread = Executors.newCachedThreadPool();
         randomLayout = new RandomLayout();
-        placingShips = new PlacingShips(randomLayout, cliente);
+        placingShips = new PlacingShips(randomLayout);
         menu = new Menu(placingShips, randomLayout, this);
         mouseInput = new MouseInput(menu);
 

@@ -21,17 +21,17 @@ public class PlacingShips implements Drawable, InputListener
 
     private final Rectangle[] barcosHorizontales, barcosVerticales;
     private final Cuadricula cuadricula;
-    private final Cliente cliente;
     private final int LADOCUADRO = 24;
     private final int ANCHOTABLERO = 20, ALTOTABLERO = 10;
     private final RandomLayout randomLayout;
     private final Rectangle continuar;
     private final boolean[] barcosColocados;
+    private Cliente cliente;
     private Rectangle barcoSeleccionado;
     private int timer = 10, COORDENADAX, COORDENADAY, CONTBARCOSCOLOCADOS = 0;
     private boolean orientacionBarcoActual = false;
 
-    public PlacingShips(RandomLayout randomLayout, Cliente cliente)
+    public PlacingShips(RandomLayout randomLayout)
     {
         barcosHorizontales = new Rectangle[5];
         barcosVerticales = new Rectangle[3];
@@ -39,7 +39,6 @@ public class PlacingShips implements Drawable, InputListener
         continuar = new Rectangle(670, 5, 70, 25);
         barcosColocados = new boolean[8];
         
-        this.cliente = cliente;
         this.randomLayout = randomLayout;
     }
 
@@ -394,6 +393,11 @@ public class PlacingShips implements Drawable, InputListener
 
         g.drawString("> Para continuar, debes esperar a que otro jugador se conecte.", 15, 360);
 
+    }
+    
+    public void setCliente(Cliente cliente)
+    {
+        this.cliente = cliente;
     }
 
 }
