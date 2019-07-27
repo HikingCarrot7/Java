@@ -171,6 +171,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
     private void modificarTableroAliado(MensajeEnviar mensaje)
     {
+        boolean acerto = barcos.obtenerTablero()[mensaje.getFila()][mensaje.getColumna()] == 2;
+        
         barcos.modificarTablero(mensaje.getFila(), mensaje.getColumna(), 3, true);
 
         explosiones.add(new Explosion(mensaje.getColumna() * 24 + 130, mensaje.getFila() * 24 + 80, Color.cyan));
@@ -182,7 +184,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
             out = new ObjectOutputStream(socketEnvio.getOutputStream());
 
-            boolean acerto = barcos.obtenerTablero()[mensaje.getFila()][mensaje.getColumna()] == 2;
+            System.out.println(acertado);
 
             MensajeEnviar mensajeEnvio = new MensajeEnviar(mensaje.getFila(), mensaje.getColumna(), miMarca, 2, false, acerto, "-1");
 
@@ -257,8 +259,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
         {
             g.drawString(">Eres un server!", 630, 20);
         }
-        
-        if(acertado)
+
+        if (acertado)
         {
             g.drawString(">Le diste a un barco enemigo en las coordenadas: ", 5, 45);
         }
