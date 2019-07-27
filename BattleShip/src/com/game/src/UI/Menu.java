@@ -31,7 +31,7 @@ public class Menu implements Drawable, InputListener
     private final RandomLayout randomLayout;
     private final Main main;
     private boolean ipValida = true, connecting = false, soyServer;
-    private String ip = "";
+    private String ip = "192.168.0.4";
     private Cliente cliente;
 
     public Menu(PlacingShips placingShips, RandomLayout randomLayout, Main main)
