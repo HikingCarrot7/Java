@@ -30,7 +30,7 @@ public class Menu implements Drawable, InputListener
     private final PlacingShips placingShips;
     private final RandomLayout randomLayout;
     private final Main main;
-    private boolean ipValida = true, connecting = false;
+    private boolean ipValida = true, connecting = false, soyServer;
     private String ip = "";
     private Cliente cliente;
 
@@ -172,17 +172,6 @@ public class Menu implements Drawable, InputListener
 
         if (r.intersects(play) && Main.GAMESTATE.equals(Main.STATE.Menu))
         {
-            try
-            {
-                main.crearClienteYServer(InetAddress.getLocalHost().getHostAddress());
-
-                cliente.setServer(true);
-
-            } catch (UnknownHostException ex)
-            {
-                System.out.println(ex.getMessage());
-            }
-
             Main.GAMESTATE = Main.STATE.SelectingMode;
 
         } else if (r.intersects(connect) && Main.GAMESTATE.equals(Main.STATE.Menu))
@@ -193,6 +182,9 @@ public class Menu implements Drawable, InputListener
 
         } else if (r.intersects(manual) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
         {
+
+            crearServer();
+
             Main.GAMESTATE = Main.STATE.ColocandoBarcos;
 
         } else if (r.intersects(random) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
@@ -200,6 +192,10 @@ public class Menu implements Drawable, InputListener
             if (connecting)
             {
                 main.crearCliente(ip.trim());
+
+            } else
+            {
+                crearServer();
             }
 
             cliente.setBarcos(randomLayout.generarTablero());
@@ -235,6 +231,20 @@ public class Menu implements Drawable, InputListener
 
     }
 
+    private void crearServer()
+    {
+        try
+        {
+            main.crearClienteYServer(InetAddress.getLocalHost().getHostAddress());
+
+            setServer(true);
+
+        } catch (UnknownHostException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public void setCliente(Cliente cliente)
     {
         this.cliente = cliente;
@@ -265,6 +275,16 @@ public class Menu implements Drawable, InputListener
     public void crearCliente()
     {
         main.crearCliente(ip.trim());
+    }
+
+    public void setServer(boolean soyServer)
+    {
+        this.soyServer = soyServer;
+    }
+
+    public boolean getServer()
+    {
+        return soyServer;
     }
 
 }

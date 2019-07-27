@@ -28,7 +28,6 @@ public final class Cliente implements Drawable, InputListener, Runnable
     private final int PLAYER1 = 0;
     private int miMarca;
     private volatile boolean miTurno, otroJugadorConectado;
-    private boolean soyServer;
     private final String host;
     private String miIp;
     private final Cuadricula barcos, enemigo;
@@ -232,7 +231,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
         g.drawString(">Su direccion IP es: " + miIp, 10, 40);
         
-        if(soyServer)
+        if(menu.getServer())
         {
             g.drawString(">Eres un server!", 630, 20);
         }
@@ -242,16 +241,6 @@ public final class Cliente implements Drawable, InputListener, Runnable
     public void setBarcos(int[][] tablero)
     {
         barcos.recibirTablero(tablero);
-    }
-    
-    public void setServer(boolean soyServer)
-    {
-        this.soyServer = soyServer;
-    }
-    
-    public boolean getServer()
-    {
-        return soyServer;
     }
 
     @Override
