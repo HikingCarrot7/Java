@@ -179,6 +179,8 @@ public class Menu implements Drawable, InputListener
             Main.GAMESTATE = Main.STATE.ConnectingToServer;
 
             connecting = true;
+            
+            soyServer = false;
 
         } else if (r.intersects(manual) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
         {
