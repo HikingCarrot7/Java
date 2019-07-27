@@ -27,6 +27,7 @@ public class PlacingShips implements Drawable, InputListener
     private final RandomLayout randomLayout;
     private final Rectangle continuar;
     private final boolean[] barcosColocados;
+    private Menu menu;
     private Cliente cliente;
     private Rectangle barcoSeleccionado;
     private int timer = 10, COORDENADAX, COORDENADAY, CONTBARCOSCOLOCADOS = 0;
@@ -39,7 +40,7 @@ public class PlacingShips implements Drawable, InputListener
         cuadricula = new Cuadricula(25, 105);
         continuar = new Rectangle(670, 5, 70, 25);
         barcosColocados = new boolean[8];
-        
+
         this.randomLayout = randomLayout;
     }
 
@@ -320,7 +321,7 @@ public class PlacingShips implements Drawable, InputListener
     {
         int fila = (e.getY() - 105) / LADOCUADRO, columna = (e.getX() - 25) / LADOCUADRO;
         Rectangle r = new Rectangle(e.getX(), e.getY(), 1, 1);
-        
+
         if (Main.GAMESTATE.equals(Main.STATE.ColocandoBarcos) && timer <= 0 && e.getButton() == MouseEvent.BUTTON1 && CONTBARCOSCOLOCADOS != 8)
         {
 
@@ -353,9 +354,14 @@ public class PlacingShips implements Drawable, InputListener
 
         } else if (Main.GAMESTATE.equals(Main.STATE.ColocandoBarcos) && e.getButton() == MouseEvent.BUTTON1 && CONTBARCOSCOLOCADOS == 8 && r.intersects(continuar))
         {
-            
+
             cliente.setBarcos(cuadricula.obtenerTablero());
-            
+
+            if (!cliente.getServer())
+            {
+                menu.crearCliente();
+            }
+
             Main.GAMESTATE = Main.STATE.Jugando;
 
         } else if (e.getButton() == MouseEvent.BUTTON3)
@@ -395,16 +401,21 @@ public class PlacingShips implements Drawable, InputListener
         g.drawString("> Para continuar, debes esperar a que otro jugador se conecte.", 15, 360);
 
     }
-    
+
     public void setCliente(Cliente cliente)
     {
         this.cliente = cliente;
     }
 
+    public void setMenu(Menu menu)
+    {
+        this.menu = menu;
+    }
+
     @Override
     public void keyPressed(KeyEvent e)
     {
-        
+
     }
 
 }

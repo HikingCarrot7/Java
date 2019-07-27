@@ -28,6 +28,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
     private final int PLAYER1 = 0;
     private int miMarca;
     private volatile boolean miTurno, otroJugadorConectado;
+    private boolean soyServer;
     private final String host;
     private String miIp;
     private final Cuadricula barcos, enemigo;
@@ -140,8 +141,6 @@ public final class Cliente implements Drawable, InputListener, Runnable
             {
                 otroJugador = serverSocket.accept();
 
-                System.out.println("Acepte una solicitud");
-
                 in = new ObjectInputStream(otroJugador.getInputStream());
 
                 mensajeRecibido = (MensajeEnviar) in.readObject();
@@ -186,8 +185,6 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
                 enemigo.modificarTablero(fila, columna, 3, false);
 
-                System.out.println(fila + " . " + columna);
-
                 explosiones.add(new Explosion(columna * 24 + 130, fila * 24 + 420, Color.red));
 
                 out = new ObjectOutputStream(envioDatos.getOutputStream());
@@ -195,8 +192,6 @@ public final class Cliente implements Drawable, InputListener, Runnable
                 mensaje = new MensajeEnviar(fila, columna, miMarca, 2, false, InetAddress.getLocalHost().getHostAddress());
 
                 out.writeObject(mensaje);
-
-                System.out.println("Envie el paquete");
 
                 miTurno = false;
 
@@ -236,12 +231,27 @@ public final class Cliente implements Drawable, InputListener, Runnable
         }
 
         g.drawString(">Su direccion IP es: " + miIp, 10, 40);
+        
+        if(soyServer)
+        {
+            g.drawString(">Eres un server!", 630, 20);
+        }
 
     }
 
     public void setBarcos(int[][] tablero)
     {
         barcos.recibirTablero(tablero);
+    }
+    
+    public void setServer(boolean soyServer)
+    {
+        this.soyServer = soyServer;
+    }
+    
+    public boolean getServer()
+    {
+        return soyServer;
     }
 
     @Override

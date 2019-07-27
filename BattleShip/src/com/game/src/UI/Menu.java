@@ -176,6 +176,8 @@ public class Menu implements Drawable, InputListener
             {
                 main.crearClienteYServer(InetAddress.getLocalHost().getHostAddress());
 
+                cliente.setServer(true);
+
             } catch (UnknownHostException ex)
             {
                 System.out.println(ex.getMessage());
@@ -209,11 +211,11 @@ public class Menu implements Drawable, InputListener
             try
             {
                 Socket socket = new Socket(ip.trim(), 9999);
-                
+
                 ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-                
+
                 out.writeObject(new MensajeEnviar(-2, 0, 0, 0, false, null));
-                
+
                 out.close();
 
                 ipValida = true;
@@ -258,6 +260,11 @@ public class Menu implements Drawable, InputListener
     public void setIpValida(boolean ipValida)
     {
         this.ipValida = ipValida;
+    }
+
+    public void crearCliente()
+    {
+        main.crearCliente(ip.trim());
     }
 
 }

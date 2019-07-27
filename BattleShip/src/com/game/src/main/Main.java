@@ -61,6 +61,8 @@ public class Main extends Canvas implements Runnable
         placingShips = new PlacingShips(randomLayout);
         menu = new Menu(placingShips, randomLayout, this);
         mouseInput = new MouseInput(menu);
+        
+        placingShips.setMenu(menu);
 
         addMouseListener(mouseInput);
         addMouseMotionListener(new MouseMotionInput(menu));
