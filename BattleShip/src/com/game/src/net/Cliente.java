@@ -262,7 +262,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
         if (acertado)
         {
-            g.drawString(">Le diste a un barco enemigo en las coordenadas: " + (char) (65 + filaAMostrar) + columnaAMostrar, 5, 45);
+            g.drawString(">Le diste a un barco enemigo en las coordenadas: " + (char) (65 + filaAMostrar) + (columnaAMostrar + 1), 5, 45);
         }
 
     }
