@@ -183,7 +183,14 @@ public class Menu implements Drawable, InputListener
         } else if (r.intersects(manual) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
         {
 
-            crearServer();
+            if (connecting)
+            {
+                main.crearCliente(ip.trim());
+
+            } else
+            {
+                crearServer(); 
+            }
 
             Main.GAMESTATE = Main.STATE.ColocandoBarcos;
 
