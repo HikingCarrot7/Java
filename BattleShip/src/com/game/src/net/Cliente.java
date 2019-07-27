@@ -166,7 +166,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
     {
         barcos.modificarTablero(mensaje.getFila(), mensaje.getColumna(), 3, true);
         
-        explosiones.add(new Explosion(mensaje.getColumna() * 24 + 130, mensaje.getFila() * 24 + 420, Color.cyan));
+        explosiones.add(new Explosion(mensaje.getColumna() * 24 + 130, mensaje.getFila() * 24 + 80, Color.cyan));
 
         miTurno = true;
 
