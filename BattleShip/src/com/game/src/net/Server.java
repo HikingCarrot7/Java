@@ -46,49 +46,51 @@ public final class Server
                 MensajeEnviar mensaje = (MensajeEnviar) in.readObject();
 
                 //Detectamos si es nuevo el usuario
-                if (mensaje.isNuevo())
+                if (mensaje.getFila() != -2)
                 {
-                    System.out.println("Se detecto a un nuevo jugador");
-
-                    //Avisamos al jugador 1 que ya se conecto el jugador 2
-                    if (ips.size() > 0)
+                    if (mensaje.isNuevo())
                     {
-                        Socket socket = new Socket(ips.get(0), 10000);
+                        System.out.println("Se detecto a un nuevo jugador");
 
-                        ObjectOutputStream out2 = new ObjectOutputStream(socket.getOutputStream());
+                        //Avisamos al jugador 1 que ya se conecto el jugador 2
+                        if (ips.size() > 0)
+                        {
+                            Socket socket = new Socket(ips.get(0), 10000);
 
-                        MensajeEnviar mensajeAvisarConexion = new MensajeEnviar(-1, 0, 0, 2, false, ips.get(0));
+                            ObjectOutputStream out2 = new ObjectOutputStream(socket.getOutputStream());
 
-                        out2.writeObject(mensajeAvisarConexion);
-                        
-                        out2.close();
-                        socket.close();
+                            MensajeEnviar mensajeAvisarConexion = new MensajeEnviar(-1, 0, 0, 2, false, ips.get(0));
 
-                        System.out.println("Le avise al jugador 1");
+                            out2.writeObject(mensajeAvisarConexion);
+
+                            out2.close();
+                            socket.close();
+
+                            System.out.println("Le avise al jugador 1");
+
+                        }
+
+                        ips.add(mensaje.getIp());
+
+                        System.out.println(ips);
+
+                        mensaje = new MensajeEnviar(0, 0, contPlayer++, ips.size(), false, null);
+
+                        out.writeObject(mensaje);
+
+                        System.out.println("He enviado los datos al jugador " + contPlayer);
+
+                    } else
+                    {
+                        System.out.println(mensaje.getMiMarca());
+
+                        Socket envio = new Socket(mensaje.getMiMarca() == 0 ? ips.get(1) : ips.get(0), 10000);
+
+                        out = new ObjectOutputStream(envio.getOutputStream());
+
+                        out.writeObject(mensaje);
 
                     }
-
-                    ips.add(mensaje.getIp());
-
-                    System.out.println(ips);
-
-                    mensaje = new MensajeEnviar(0, 0, contPlayer++, ips.size(), false, null);
-
-                    out.writeObject(mensaje);
-
-                    System.out.println("He enviado los datos al jugador " + contPlayer);
-                    
-
-                } else
-                {
-                    System.out.println(mensaje.getMiMarca());
-
-                    Socket envio = new Socket(mensaje.getMiMarca() == 0 ? ips.get(1) : ips.get(0), 10000);
-
-                    out = new ObjectOutputStream(envio.getOutputStream());
-
-                    out.writeObject(mensaje);
-
                 }
 
             }
@@ -102,13 +104,13 @@ public final class Server
             try
             {
                 server.close();
-                
+
             } catch (IOException ex)
             {
                 System.out.println(ex.getMessage());
             }
         }
-        
+
     }
 
 }

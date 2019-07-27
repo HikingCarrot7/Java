@@ -5,6 +5,7 @@ import com.game.src.graphics.Drawable;
 import com.game.src.input.InputListener;
 import com.game.src.main.Main;
 import com.game.src.map.RandomLayout;
+import com.game.src.net.MensajeEnviar;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -12,6 +13,7 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -206,7 +208,13 @@ public class Menu implements Drawable, InputListener
         {
             try
             {
-                new Socket(ip.trim(), 9999);
+                Socket socket = new Socket(ip.trim(), 9999);
+                
+                ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+                
+                out.writeObject(new MensajeEnviar(-2, 0, 0, 0, false, null));
+                
+                out.close();
 
                 ipValida = true;
 
