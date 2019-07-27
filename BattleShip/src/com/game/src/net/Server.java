@@ -59,7 +59,7 @@ public final class Server
 
                             ObjectOutputStream out2 = new ObjectOutputStream(socket.getOutputStream());
 
-                            MensajeEnviar mensajeAvisarConexion = new MensajeEnviar(-1, 0, 0, 2, false, ips.get(0));
+                            MensajeEnviar mensajeAvisarConexion = new MensajeEnviar(-1, 0, 0, 2, false, false, ips.get(0));
 
                             out2.writeObject(mensajeAvisarConexion);
 
@@ -74,7 +74,7 @@ public final class Server
 
                         System.out.println(ips);
 
-                        mensaje = new MensajeEnviar(0, 0, contPlayer++, ips.size(), false, null);
+                        mensaje = new MensajeEnviar(0, 0, contPlayer++, ips.size(), false, false, null);
 
                         out.writeObject(mensaje);
 

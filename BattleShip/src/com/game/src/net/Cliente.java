@@ -26,8 +26,9 @@ public final class Cliente implements Drawable, InputListener, Runnable
 {
 
     private final int PLAYER1 = 0;
-    private int miMarca;
+    private int miMarca, filaAMostrar, columnaAMostrar;
     private volatile boolean miTurno, otroJugadorConectado;
+    private boolean acertado;
     private final String host;
     private String miIp;
     private final Cuadricula barcos, enemigo;
@@ -56,10 +57,11 @@ public final class Cliente implements Drawable, InputListener, Runnable
     @Override
     public void tick()
     {
-        for (Explosion e : explosiones)
+        explosiones.stream().forEach((e) ->
         {
             e.tick();
-        }
+
+        });
     }
 
     @Override
@@ -70,10 +72,11 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
         dibujarHUD(g);
 
-        for (Explosion e : explosiones)
+        explosiones.stream().forEach((e) ->
         {
             e.render(g);
-        }
+
+        });
 
     }
 
@@ -106,7 +109,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
         in = new ObjectInputStream(cliente.getInputStream());
 
-        MensajeEnviar mensajeEnvio = new MensajeEnviar(0, 0, 0, 2, true, InetAddress.getLocalHost().getHostAddress());
+        MensajeEnviar mensajeEnvio = new MensajeEnviar(0, 0, 0, 2, true, false, InetAddress.getLocalHost().getHostAddress());
         out.writeObject(mensajeEnvio);
 
         System.out.println("Esperando los datos del server");
@@ -144,11 +147,15 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
                 mensajeRecibido = (MensajeEnviar) in.readObject();
 
+                acertado = mensajeRecibido.getAcertado();
+                filaAMostrar = mensajeRecibido.getFila();
+                columnaAMostrar = mensajeRecibido.getColumna();
+
                 if (mensajeRecibido.getFila() == -1)
                 {
                     otroJugadorConectado = true;
 
-                } else
+                } else if (!mensajeRecibido.getIp().equals("-1"))
                 {
                     modificarTableroAliado(mensajeRecibido);
                 }
@@ -165,8 +172,27 @@ public final class Cliente implements Drawable, InputListener, Runnable
     private void modificarTableroAliado(MensajeEnviar mensaje)
     {
         barcos.modificarTablero(mensaje.getFila(), mensaje.getColumna(), 3, true);
-        
+
         explosiones.add(new Explosion(mensaje.getColumna() * 24 + 130, mensaje.getFila() * 24 + 80, Color.cyan));
+
+        //Avisar si el enemigo le dio a uno de mis barcos aliados
+        try
+        {
+            Socket socketEnvio = new Socket(host, 9999);
+
+            out = new ObjectOutputStream(socketEnvio.getOutputStream());
+
+            boolean acerto = barcos.obtenerTablero()[mensaje.getFila()][mensaje.getColumna()] == 2;
+
+            MensajeEnviar mensajeEnvio = new MensajeEnviar(mensaje.getFila(), mensaje.getColumna(), miMarca, 2, false, acerto, "-1");
+
+            out.writeObject(mensajeEnvio);
+
+        } catch (IOException ex)
+        {
+            System.out.println(ex.getMessage());
+
+        }
 
         miTurno = true;
 
@@ -190,7 +216,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
                 out = new ObjectOutputStream(envioDatos.getOutputStream());
 
-                mensaje = new MensajeEnviar(fila, columna, miMarca, 2, false, InetAddress.getLocalHost().getHostAddress());
+                mensaje = new MensajeEnviar(fila, columna, miMarca, 2, false, false, InetAddress.getLocalHost().getHostAddress());
 
                 out.writeObject(mensaje);
 
@@ -206,15 +232,9 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
     }
 
-    @Override
-    public void mouseMoved(MouseEvent e)
-    {
-
-    }
-
     public void dibujarHUD(Graphics2D g)
     {
-        Font title = new Font("serif", Font.BOLD, 25), instrucciones = new Font("serif", Font.BOLD, 15);
+        Font title = new Font("serif", Font.BOLD, 25), instrucciones = new Font("serif", Font.BOLD, 13);
 
         g.setFont(title);
         g.drawString("SU TABLERO", 300, 30);
@@ -224,18 +244,23 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
         if (otroJugadorConectado)
         {
-            g.drawString(miTurno ? ">Es su turno, dispare!" : ">Debe esperar su turno para disparar!", 10, 20);
+            g.drawString(miTurno ? ">Es su turno, dispare!" : ">Debe esperar su turno para disparar!", 5, 15);
 
         } else
         {
-            g.drawString(">Esperando la conexion del otro jugador...", 10, 20);
+            g.drawString(">Esperando la conexion del otro jugador...", 5, 15);
         }
 
-        g.drawString(">Su direccion IP es: " + miIp, 10, 40);
-        
-        if(menu.getServer())
+        g.drawString(">Su direccion IP es: " + miIp, 5, 30);
+
+        if (menu.getServer())
         {
             g.drawString(">Eres un server!", 630, 20);
+        }
+        
+        if(acertado)
+        {
+            g.drawString(">Le diste a un barco enemigo en las coordenadas: ", 5, 45);
         }
 
     }
@@ -243,6 +268,11 @@ public final class Cliente implements Drawable, InputListener, Runnable
     public void setBarcos(int[][] tablero)
     {
         barcos.recibirTablero(tablero);
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e)
+    {
     }
 
     @Override

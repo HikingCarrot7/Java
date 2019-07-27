@@ -53,7 +53,7 @@ public class Explosion implements Drawable
             {
                 particula.remove();
             }
-            
+
             next.tick();
 
         }
@@ -62,10 +62,11 @@ public class Explosion implements Drawable
     @Override
     public void render(Graphics2D g)
     {
-        for (Particles particula : particulas)
+        particulas.stream().forEach((p) ->
         {
-            particula.render(g);
-        }
+            p.render(g);
+
+        });
     }
 
     private class Particles implements Drawable

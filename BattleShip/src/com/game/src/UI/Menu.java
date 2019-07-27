@@ -25,7 +25,7 @@ import java.net.UnknownHostException;
 public class Menu implements Drawable, InputListener
 {
 
-    private final Rectangle play, connect, random, manual, continuar;
+    private final Rectangle play, connect, random, manual, continuar, back;
     private final Font title, buttonText, text;
     private final PlacingShips placingShips;
     private final RandomLayout randomLayout;
@@ -41,6 +41,7 @@ public class Menu implements Drawable, InputListener
         random = new Rectangle(80, 200, 200, 60);
         manual = new Rectangle(Main.ANCHO - 480, 200, 200, 60);
         continuar = new Rectangle(Main.ANCHO / 2 - 210, 350, 200, 60);
+        back = new Rectangle(20, 10, 70, 25);
 
         title = new Font("serif", Font.BOLD, 50);
         text = new Font("serif", Font.BOLD, 20);
@@ -122,12 +123,16 @@ public class Menu implements Drawable, InputListener
         g.setFont(text);
         g.drawString("¿Como deseas generar tu tablero?", Main.ANCHO / 2 - 250, Main.ALTO / 2 - 180);
 
+        g.drawString("Back", back.x + 15, back.y + 19);
+        g.draw(back);
+
         g.setFont(buttonText);
         g.drawString("Random", random.x + 20, random.y + 45);
         g.draw(random);
 
         g.drawString("Manual", manual.x + 25, manual.y + 45);
         g.draw(manual);
+
     }
 
     private void leyendoIP(Graphics2D g)
@@ -140,13 +145,16 @@ public class Menu implements Drawable, InputListener
         g.setFont(title2);
         g.drawString("IP: " + ip, 40, 180);
         g.draw(continuar);
-
+        
         g.setFont(buttonText);
         g.drawString("Continuar", continuar.x + 2, continuar.y + 45);
+        
+        g.setFont(text);
+        g.drawString("Back", back.x + 15, back.y + 19);
+        g.draw(back);
 
         if (!ipValida)
         {
-            g.setFont(text);
             g.drawString("IP NO valida!", continuar.x + 40, continuar.y + 100);
         }
 
@@ -156,14 +164,15 @@ public class Menu implements Drawable, InputListener
     public void mouseMoved(MouseEvent e)
     {
         placingShips.mouseMoved(e);
+
     }
 
     @Override
     public void mousePressed(MouseEvent e)
     {
-        detectarRectangle(e);
-
         placingShips.mousePressed(e);
+
+        detectarRectangle(e);
     }
 
     public void detectarRectangle(MouseEvent e)
@@ -215,7 +224,7 @@ public class Menu implements Drawable, InputListener
 
                 ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 
-                out.writeObject(new MensajeEnviar(-2, 0, 0, 0, false, null));
+                out.writeObject(new MensajeEnviar(-2, 0, 0, 0, false, false, null));
 
                 out.close();
 
@@ -232,6 +241,13 @@ public class Menu implements Drawable, InputListener
             {
                 Main.GAMESTATE = Main.STATE.SelectingMode;
             }
+            
+        }else if(r.intersects(back) && (Main.GAMESTATE.equals(Main.STATE.SelectingMode) ||  Main.GAMESTATE.equals(Main.STATE.ConnectingToServer)))
+        {
+            Main.GAMESTATE = Main.STATE.Menu;
+            
+            connecting = false;
+            
         }
 
     }
