@@ -1,5 +1,6 @@
 package com.game.src.graphics;
 
+import com.game.src.main.Main;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -48,10 +49,10 @@ public class Explosion implements Drawable
         {
             Particles next = particula.next();
 
-            /*if (next.x < 0 || next.x > Main.ANCHO || next.y > 0 || next.y < Main.ALTO)
-             {
-             particula.remove();
-             }*/
+            if (next.x < 0 || next.x > Main.ANCHO || next.y > 0 || next.y < Main.ALTO)
+            {
+                particula.remove();
+            }
             next.tick();
 
         }
