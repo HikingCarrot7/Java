@@ -109,18 +109,4 @@ public class RandomLayout
         return tablero;
     }
 
-    private void imprimirTablero()
-    {
-        for (int i = 0; i < tempTablero.length; i++)
-        {
-            for (int j = 0; j < tempTablero[i].length; j++)
-            {
-                System.out.print(tempTablero[i][j]);
-            }
-
-            System.out.println("");
-        }
-
-        System.exit(1);
-    }
 }

@@ -36,6 +36,7 @@ public class Menu implements Drawable, InputListener
 
     public Menu(PlacingShips placingShips, RandomLayout randomLayout, Main main)
     {
+
         play = new Rectangle(Main.ANCHO / 2 - 210, 200, 200, 60);
         connect = new Rectangle(Main.ANCHO / 2 - 210, 300, 200, 60);
         random = new Rectangle(80, 200, 200, 60);
@@ -145,10 +146,10 @@ public class Menu implements Drawable, InputListener
         g.setFont(title2);
         g.drawString("IP: " + ip, 40, 180);
         g.draw(continuar);
-        
+
         g.setFont(buttonText);
         g.drawString("Continuar", continuar.x + 2, continuar.y + 45);
-        
+
         g.setFont(text);
         g.drawString("Back", back.x + 15, back.y + 19);
         g.draw(back);
@@ -226,7 +227,7 @@ public class Menu implements Drawable, InputListener
 
                 out.writeObject(new MensajeEnviar(-2, 0, 0, 0, false, false, null));
 
-                out.close();
+                socket.close();
 
                 ipValida = true;
 
@@ -241,13 +242,13 @@ public class Menu implements Drawable, InputListener
             {
                 Main.GAMESTATE = Main.STATE.SelectingMode;
             }
-            
-        }else if(r.intersects(back) && (Main.GAMESTATE.equals(Main.STATE.SelectingMode) ||  Main.GAMESTATE.equals(Main.STATE.ConnectingToServer)))
+
+        } else if (r.intersects(back) && (Main.GAMESTATE.equals(Main.STATE.SelectingMode) || Main.GAMESTATE.equals(Main.STATE.ConnectingToServer)))
         {
             Main.GAMESTATE = Main.STATE.Menu;
-            
+
             connecting = false;
-            
+
         }
 
     }

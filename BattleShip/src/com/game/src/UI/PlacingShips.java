@@ -358,7 +358,7 @@ public class PlacingShips implements Drawable, InputListener
             {
                 menu.crearCliente();
             }
-            
+
             cliente.setBarcos(cuadricula.obtenerTablero());
 
             Main.GAMESTATE = Main.STATE.Jugando;
@@ -414,7 +414,6 @@ public class PlacingShips implements Drawable, InputListener
     @Override
     public void keyPressed(KeyEvent e)
     {
-
     }
 
 }

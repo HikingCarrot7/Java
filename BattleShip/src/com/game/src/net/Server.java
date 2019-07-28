@@ -89,6 +89,8 @@ public final class Server
                         out = new ObjectOutputStream(envio.getOutputStream());
 
                         out.writeObject(mensaje);
+                        
+                        envio.close();
 
                     }
                 }

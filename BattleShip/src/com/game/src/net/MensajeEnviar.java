@@ -9,7 +9,9 @@ import java.io.Serializable;
 public final class MensajeEnviar implements Serializable
 {
 
-    private final int fila, columna, miMarca, jugadoresConectados;
+	private static final long serialVersionUID = 1L;
+	
+	private final int fila, columna, miMarca, jugadoresConectados;
     private final boolean nuevo, acertado;
     private final String ip;
 

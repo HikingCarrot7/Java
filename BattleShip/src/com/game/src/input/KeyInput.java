@@ -10,9 +10,9 @@ import java.awt.event.KeyEvent;
  */
 public class KeyInput extends KeyAdapter
 {
-    
+
     private final Menu menu;
-    
+
     public KeyInput(Menu menu)
     {
         this.menu = menu;
@@ -23,5 +23,5 @@ public class KeyInput extends KeyAdapter
     {
         menu.keyPressed(e);
     }
-    
+
 }

@@ -1,7 +1,5 @@
 package com.game.src.main;
 
-import java.net.UnknownHostException;
-
 /**
  *
  * @author HikingCarrot7
@@ -54,7 +52,7 @@ public final class Ticker implements Runnable
 
             if (System.currentTimeMillis() - timer > 1000)
             {
-                //System.out.println("TICKS: " + update + " FPS: " + frames);
+                System.out.println("TICKS: " + update + " FPS: " + frames);
                 timer += 1000;
                 update = 0;
                 frames = 0;

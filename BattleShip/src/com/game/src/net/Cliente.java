@@ -57,6 +57,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
     @Override
     public void tick()
     {
+
         explosiones.stream().forEach((e) ->
         {
             e.tick();
@@ -190,6 +191,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
             out.writeObject(mensajeEnvio);
 
+            socketEnvio.close();
+
         } catch (IOException ex)
         {
             System.out.println(ex.getMessage());
@@ -211,7 +214,7 @@ public final class Cliente implements Drawable, InputListener, Runnable
             {
 
                 Socket envioDatos = new Socket(host, 9999);
-
+                
                 enemigo.modificarTablero(fila, columna, 3, false);
 
                 explosiones.add(new Explosion(columna * 24 + 130, fila * 24 + 420, Color.red));
@@ -223,6 +226,8 @@ public final class Cliente implements Drawable, InputListener, Runnable
                 out.writeObject(mensaje);
 
                 miTurno = false;
+                
+                envioDatos.close();
 
             } catch (IOException ex)
             {
