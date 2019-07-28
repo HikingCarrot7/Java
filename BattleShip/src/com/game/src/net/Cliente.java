@@ -76,7 +76,6 @@ public final class Cliente implements Drawable, InputListener, Runnable
         explosiones.stream().forEach((e) ->
         {
             e.render(g);
-
         });
 
     }
@@ -191,8 +190,6 @@ public final class Cliente implements Drawable, InputListener, Runnable
 
             out.writeObject(mensajeEnvio);
 
-            socketEnvio.close();
-
         } catch (IOException ex)
         {
             System.out.println(ex.getMessage());
@@ -226,8 +223,6 @@ public final class Cliente implements Drawable, InputListener, Runnable
                 out.writeObject(mensaje);
 
                 miTurno = false;
-                
-                envioDatos.close();
 
             } catch (IOException ex)
             {
