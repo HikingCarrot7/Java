@@ -21,7 +21,7 @@ public class Explosion implements Drawable
     {
         rand = new Random();
         particulas = new ArrayList<>();
-
+        
         for (int i = 0; i < 25; i++)
         {
             int velX = rand.nextInt(11) - 5;
@@ -67,8 +67,12 @@ public class Explosion implements Drawable
             p.render(g);
 
         });
+        
+        
+        
     }
 
+    //Clase de las particulas 
     private class Particles implements Drawable
     {
 

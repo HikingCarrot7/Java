@@ -22,7 +22,7 @@ public final class Cuadricula implements Drawable
     {
         this.INICIOX = INICIOX;
         this.INICIOY = INICIOY;
-
+        
         tablero = new int[ALTOTABLERO][ANCHOTABLERO];
 
         iniciarTablero();
@@ -31,7 +31,7 @@ public final class Cuadricula implements Drawable
     @Override
     public void tick()
     {
-
+        
     }
 
     @Override
@@ -42,6 +42,7 @@ public final class Cuadricula implements Drawable
 
     public void dibujarMapa(Graphics2D g)
     {
+
         for (int i = 0; i < tablero.length; i++)
         {
             for (int j = 0; j < tablero[i].length; j++)
@@ -111,7 +112,6 @@ public final class Cuadricula implements Drawable
     {
         if (i < ALTOTABLERO && i >= 0 && j < ANCHOTABLERO && j >= 0)
         {
-
             if (tablero[i][j] != 2 || eliminar)
             {
                 tablero[i][j] = cambio;
