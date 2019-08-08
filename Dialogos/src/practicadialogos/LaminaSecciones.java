@@ -42,3 +42,6 @@ public class LaminaSecciones extends JPanel
 		return grupos.getSelection().getActionCommand();
 	}
 }
+
+
+

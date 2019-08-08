@@ -7,6 +7,8 @@ package pruebas;
 
 import java.util.Scanner;
 
+import javax.swing.Timer;
+
 /**
  *
  * @author HikingCarrot7
@@ -18,11 +20,31 @@ public class Pruebas2
     {
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Inserte un número");
-        int i = in.nextInt();
+        new Pruebas2().iniciar();
 
-        assert (i < 10);
+        try
+        {
 
+            System.out.println("Inserte un numero");
+            int i = in.nextInt();
+
+            System.out.println("Insertaste el numero: " + i);
+
+        } finally
+        {
+            in.close();
+        }
+
+    }
+
+    private void iniciar()
+    {
+        Timer timer = new Timer(1000, (e) ->
+        {
+            System.out.println("Hola desde la clase interna anonima");
+        });
+
+        timer.start();
     }
 
 }
