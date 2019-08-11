@@ -63,7 +63,7 @@ public class Main extends Canvas implements Runnable
         mouseInput = new MouseInput(menu);
         
         placingShips.setMenu(menu);
-
+        
         addMouseListener(mouseInput);
         addMouseMotionListener(new MouseMotionInput(menu));
         addKeyListener(new KeyInput(menu));

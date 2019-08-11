@@ -47,14 +47,14 @@ public class Explosion implements Drawable
     {
         for (Iterator<Particles> particula = particulas.iterator(); particula.hasNext();)
         {
-            Particles next = particula.next();
+            Particles currentParticle = particula.next();
 
-            if (next.x < 0 || next.x > Main.ANCHO || next.y < 0 || next.y > Main.ALTO)
+            if (currentParticle.x < 0 || currentParticle.x > Main.ANCHO || currentParticle.y < 0 || currentParticle.y > Main.ALTO)
             {
                 particula.remove();
             }
 
-            next.tick();
+            currentParticle.tick();
 
         }
     }
@@ -67,8 +67,6 @@ public class Explosion implements Drawable
             p.render(g);
 
         });
-        
-        
         
     }
 

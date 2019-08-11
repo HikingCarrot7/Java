@@ -22,7 +22,7 @@ import java.util.ArrayList;
  *
  * @author HikingCarrot7
  */
-public final class Cliente implements Drawable, InputListener, Runnable
+public final class Cliente extends Object implements Drawable, InputListener, Runnable
 {
 
     private final int PLAYER1 = 0;
