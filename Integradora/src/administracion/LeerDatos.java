@@ -37,7 +37,7 @@ public class LeerDatos
         {
             entrada = new Scanner(new File("Maestros.txt"));
 
-			//LaminaMaestro.maestrosInstanciados.clear();
+            //LaminaMaestro.maestrosInstanciados.clear();
             while (entrada.hasNext())
             {
                 entrada.nextLine();
@@ -80,7 +80,7 @@ public class LeerDatos
         {
             entrada = new Scanner(new File("Alumnos.txt"));
 
-			//LaminaMaestro.maestrosInstanciados.clear();
+            //LaminaMaestro.maestrosInstanciados.clear();
             while (entrada.hasNext())
             {
                 entrada.nextLine();
@@ -104,10 +104,10 @@ public class LeerDatos
         {
             salida = new Formatter(new FileWriter("Maestros.txt"));
 
-            for (Maestro M : LaminaMaestro.maestrosInstanciados)
+            LaminaMaestro.maestrosInstanciados.stream().forEach((M) ->
             {
                 escrituraDatosMaestros(M);
-            }
+            });
 
             salida.close();
 

@@ -83,18 +83,12 @@ public class Primos extends JPanel
 
             calculadora = new CalculadoraPrimos(numero, mostrarPrimos, obtenerPrimos, cancelar, estado);
 
-            calculadora.addPropertyChangeListener(new PropertyChangeListener()
+            calculadora.addPropertyChangeListener((PropertyChangeEvent p) ->
             {
-
-                @Override
-                public void propertyChange(PropertyChangeEvent p)
+                if (p.getPropertyName().equals("progress"))
                 {
-                    if (p.getPropertyName().equals("progress"))
-                    {
-                        progreso.setValue((Integer) p.getNewValue());
-                    }
+                    progreso.setValue((Integer) p.getNewValue());
                 }
-
             });
 
             obtenerPrimos.setEnabled(false);

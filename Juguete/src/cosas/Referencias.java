@@ -85,7 +85,7 @@ public class Referencias
          * });
          */
 
-		// Arrays.sort(nombres, (p1, p2) -> p1.compareTo(p2));
+        // Arrays.sort(nombres, (p1, p2) -> p1.compareTo(p2));
         Arrays.sort(nombres, String::compareTo);
 
         System.out.println(Arrays.toString(nombres));
