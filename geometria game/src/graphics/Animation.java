@@ -7,11 +7,11 @@ import math.Vector2D;
 public class Animation
 {
 
-    private BufferedImage[] frames;
-    private int velocity;
+    private final BufferedImage[] frames;
+    private final Vector2D position;
+    private final int velocity;
     private int index;
     private boolean running;
-    private Vector2D position;
     private long time, lastTime;
 
     public Animation(BufferedImage[] frames, int velocity, Vector2D position)
@@ -19,6 +19,7 @@ public class Animation
         this.frames = frames;
         this.velocity = velocity;
         this.position = position;
+        
         index = 0;
         running = true;
         time = 0;
@@ -36,6 +37,7 @@ public class Animation
         {
             time = 0;
             index++;
+            
             if (index >= frames.length)
             {
                 running = false;
@@ -56,7 +58,6 @@ public class Animation
     public BufferedImage getCurrentFrame()
     {
         return frames[index];
-
     }
 
 }

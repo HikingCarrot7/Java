@@ -19,7 +19,6 @@ public abstract class GameObject
     }
 
     //al ser metodos abstractos no es necesario definirlos aqui
-
     public abstract void update();
 
     public abstract void draw(Graphics g);

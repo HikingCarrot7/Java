@@ -19,9 +19,9 @@ import math.Vector2D;
 public class GameState
 {
 
-    private Player player;
-    private ArrayList<MovingObject> movingObjects = new ArrayList<MovingObject>();
-    private ArrayList< Animation> explosions = new ArrayList< Animation>();
+    private final Player player;
+    private final ArrayList<MovingObject> movingObjects = new ArrayList<>();
+    private final ArrayList<Animation> explosions = new ArrayList<>();
 
     private int score = 0;//puntaje del jugador
 
@@ -131,7 +131,7 @@ public class GameState
         double x = rand == 0 ? (Math.random() * Constants.WIDTH) : 0;
         double y = rand == 0 ? 0 : (Math.random() * Constants.HEIGHT);
 
-        ArrayList<Vector2D> path = new ArrayList<Vector2D>();
+        ArrayList<Vector2D> path = new ArrayList<>();
 
         double posX, posY;
 
@@ -160,9 +160,9 @@ public class GameState
 
     public void update()
     {
-        for (int i = 0; i < movingObjects.size(); i++)
+        for (MovingObject movingObject : movingObjects)
         {
-            movingObjects.get(i).update();
+            movingObject.update();
         }
 
         for (int i = 0; i < explosions.size(); i++)
@@ -175,9 +175,10 @@ public class GameState
             }
 
         }
-        for (int i = 0; i < movingObjects.size(); i++)
+        
+        for (MovingObject movingObject : movingObjects)
         {
-            if (movingObjects.get(i) instanceof Meteor)
+            if (movingObject instanceof Meteor)
             {
                 return;
             }
@@ -189,19 +190,17 @@ public class GameState
     public void draw(Graphics g)
 
     {
-
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 
-        for (int i = 0; i < movingObjects.size(); i++)
+        for (MovingObject movingObject : movingObjects)
         {
-            movingObjects.get(i).draw(g);
+            movingObject.draw(g);
         }
 
-        for (int i = 0; i < explosions.size(); i++)
+        for (Animation anim : explosions)
         {
-            Animation anim = explosions.get(i);
             g2d.drawImage(anim.getCurrentFrame(), (int) anim.getPosition().getX(), (int) anim.getPosition().getY(), null);
         }
 
@@ -248,6 +247,7 @@ public class GameState
             {
                 break;
             }
+            
             g.drawImage(Assets.numbers[number],
                     (int) pos.getX() + 60, (int) pos.getY() + 5, null);
             pos.setX(pos.getX() + 20);

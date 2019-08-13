@@ -27,6 +27,7 @@ public class Player extends MovingObject
     public Player(Vector2D position, Vector2D velocity, double maxVel, BufferedImage texture, GameState gameState)
     {
         super(position, velocity, maxVel, texture, gameState);//constructor de objeto movible
+        
         heading = new Vector2D(0, 1);
         acceleration = new Vector2D();
         fireRate = new cronometro();
@@ -37,7 +38,6 @@ public class Player extends MovingObject
 
     @Override
     public void update()
-
     {
 
         if (!spawnTime.isRunning())
@@ -127,7 +127,7 @@ public class Player extends MovingObject
         flickerTime.update();
         collidesWith();
 
-		//---------------------------------------------
+        //---------------------------------------------
     }
 
     @Override

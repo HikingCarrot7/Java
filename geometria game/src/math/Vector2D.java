@@ -2,7 +2,6 @@ package math;
 
 public class Vector2D
 {
-
     //permite interactuar con otros vectores, angulos
 
     private double x, y;
@@ -41,11 +40,11 @@ public class Vector2D
         {
             return this.normalize().scale(value);
         }
+        
         return this;
     }
 
     public Vector2D normalize()
-
     {
         double Magnitude = getMagnitude();
         return new Vector2D(x / Magnitude, y / Magnitude);
@@ -57,7 +56,6 @@ public class Vector2D
     }
 
     public Vector2D setDirection(double angle)//devolvera las coordenadas en (x,y)
-
     {
         double Magnitude = getMagnitude();
 

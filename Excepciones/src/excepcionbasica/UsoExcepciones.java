@@ -1,3 +1,4 @@
+
 package excepcionbasica;
 
 public class UsoExcepciones
@@ -35,7 +36,7 @@ public class UsoExcepciones
 
         } catch (Exception e)
         {
-            throw new Exception("Caus� otra excepci�n en el m�todo 1", e);
+            throw new miPropiaExc("Caus� otra excepci�n en el m�todo 1", e);
         }
     }
 
@@ -47,13 +48,31 @@ public class UsoExcepciones
 
         } catch (Exception e)
         {
-            throw new Exception("Caus� otra excepci�n en el m�todo 2", e);
+            throw new miPropiaExc("Caus� otra excepci�n en el m�todo 2", e);
         }
     }
 
     public static void metodo3() throws Exception
     {
-        throw new Exception("Caus� una excepci�n en el m�todo 3");
+        throw new miPropiaExc("Caus� una excepci�n en el m�todo 3");
     }
 
+}
+
+class miPropiaExc extends Exception
+{
+    public miPropiaExc()
+    {
+        this("");
+    }
+    
+    public miPropiaExc(String mensaje)
+    {
+        super(mensaje);
+    }
+    
+    public miPropiaExc(String mensaje, Throwable cause)
+    {
+        super(mensaje, cause);
+    }
 }

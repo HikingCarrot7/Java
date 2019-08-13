@@ -7,13 +7,14 @@ import javax.imageio.ImageIO;
 
 public class carga
 {
-	//seccion de carga de imagenes,audio,etc
+    //seccion de carga de imagenes,audio,etc
 
     public static BufferedImage imageloader(String path)
     {
         try
         {
             return ImageIO.read(carga.class.getResource(path));
+
         } catch (IOException e)
         {
             e.printStackTrace();

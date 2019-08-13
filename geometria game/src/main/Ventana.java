@@ -16,30 +16,29 @@ import states.GameState;
 public class Ventana extends JFrame implements Runnable
 {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
     public static final int WIDHT = 1000, HEIGHT = 600;
+
     //ajustamos el tama�o de la ventana
-    private Canvas canvas;
+    private final Canvas canvas;
+
     // esta nueva clase nos permitira empezar a dibujar
     private Thread thread;
     private boolean running = false;
-	//controlador del ciclo while
 
-	//objetos para dibujar
+	//controlador del ciclo while
+    //objetos para dibujar
     private BufferStrategy bs;
     private Graphics g;
     //
     private final int FPS = 60;
-    private double TARGETTIME = 1000000000 / FPS;//ajuste del tiempo de los objetivos
+    private final double TARGETTIME = 1000000000 / FPS;//ajuste del tiempo de los objetivos
     private double delta = 0;//variable que almacenara el tiempo transcurrido
     private int AVERAGEFPS = FPS;
 
-	//estado del juego
+    //estado del juego
     private GameState gameState;
-	//vista de la ventana
+    //vista de la ventana
 
     private KeyBoard keyBoard;
 
@@ -61,7 +60,7 @@ public class Ventana extends JFrame implements Runnable
         canvas.setMinimumSize(new Dimension(Constants.WIDTH, Constants.HEIGHT));
         canvas.setFocusable(true);//permite recibir instrucciones del teclado
 
-	    //agregamos el canvas a la ventana
+        //agregamos el canvas a la ventana
         add(canvas);
         canvas.addKeyListener(keyBoard);
         //permite que la ventana se despliegue en el centro de la pantalla al ejecutar
@@ -94,7 +93,7 @@ public class Ventana extends JFrame implements Runnable
 
         g = bs.getDrawGraphics();
 
-		//-----------------------------------
+        //-----------------------------------
         g.setColor(Color.DARK_GRAY);
 
         g.fillRect(0, 0, WIDHT, HEIGHT);
@@ -103,7 +102,7 @@ public class Ventana extends JFrame implements Runnable
 
         g.drawString("" + AVERAGEFPS, 10, 20);
 
-		//-----------------------------------
+        //-----------------------------------
         g.dispose();
         bs.show();
     }
@@ -120,7 +119,7 @@ public class Ventana extends JFrame implements Runnable
     public void run()
     {
 
-		//el ciclo permitira actualizar la posicion de los items
+        //el ciclo permitira actualizar la posicion de los items
         //restringimos la velocidad del ciclo para ajustarlo a los FPS
         long now = 0; //registro del tiempo
         long LastTime = System.nanoTime();//hora actual del sistema
@@ -154,7 +153,7 @@ public class Ventana extends JFrame implements Runnable
         }
         stop();
     }
-	//control de ejecucion
+    //control de ejecucion
 
     private void start()
     {//inicio
@@ -170,9 +169,11 @@ public class Ventana extends JFrame implements Runnable
         try
         {
             thread.join();
+
         } catch (InterruptedException e)
         {
             e.printStackTrace();
+
             running = false;//indicara al ciclo que ha terminado la ejecucion del juego
         }
 

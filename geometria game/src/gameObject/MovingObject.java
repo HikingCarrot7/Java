@@ -35,11 +35,8 @@ public abstract class MovingObject extends GameObject
 
         ArrayList<MovingObject> movingObjects = gameState.getMovingObjects();
 
-        for (int i = 0; i < movingObjects.size(); i++)
+        for (MovingObject m : movingObjects)
         {
-
-            MovingObject m = movingObjects.get(i);
-
             if (m.equals(this))
             {
                 continue;
