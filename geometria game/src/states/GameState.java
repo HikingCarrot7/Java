@@ -52,7 +52,7 @@ public class GameState
 
         BufferedImage[] textures = size.textures;
 
-        Size newSize = null;
+        Size newSize;
 
         switch (size)
         {//saber que tama�o tiene el meteoro y saber de este modo en que textura se dividira

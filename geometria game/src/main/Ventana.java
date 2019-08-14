@@ -40,11 +40,11 @@ public class Ventana extends JFrame implements Runnable
     private GameState gameState;
     //vista de la ventana
 
-    private KeyBoard keyBoard;
+    private final KeyBoard keyBoard;
 
     public Ventana()
     {
-        setTitle("Game_space");//nombre de la ventana
+        super("Game_space");//nombre de la ventana
         setSize(Constants.WIDTH, Constants.HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*permitira que el programa se pueda cerrar y no se siga ejecutando */

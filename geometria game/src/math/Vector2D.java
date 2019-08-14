@@ -15,8 +15,7 @@ public class Vector2D
 
     public Vector2D()
     {
-        x = 0;
-        y = 0;
+        this(0,0);
     }
 
     public Vector2D add(Vector2D v)//realizamos una suma de vectores
@@ -38,7 +37,7 @@ public class Vector2D
     {
         if (getMagnitude() > value)
         {
-            return this.normalize().scale(value);
+            return normalize().scale(value);
         }
         
         return this;
