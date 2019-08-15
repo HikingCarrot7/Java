@@ -1,13 +1,13 @@
 package gameObject;
 
-public class cronometro
+public class Cronometro
 {
 
     private long delta, LastTime;
     private long time;
     private boolean running;
 
-    public cronometro()
+    public Cronometro()
     {
         delta = 0;
         LastTime = 0;

@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class carga
+public class Carga
 {
     //seccion de carga de imagenes,audio,etc
 
@@ -13,7 +13,7 @@ public class carga
     {
         try
         {
-            return ImageIO.read(carga.class.getResource(path));
+            return ImageIO.read(Carga.class.getResource(path));
 
         } catch (IOException e)
         {

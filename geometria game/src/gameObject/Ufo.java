@@ -21,7 +21,7 @@ public class Ufo extends MovingObject
 
     private boolean following;
 
-    private cronometro fireRate;
+    private Cronometro fireRate;
 
     public Ufo(Vector2D position, Vector2D velocity, double maxVel, BufferedImage texture,
             ArrayList<Vector2D> path, GameState gameState)
@@ -30,7 +30,7 @@ public class Ufo extends MovingObject
         this.path = path;
         index = 0;
         following = true;
-        fireRate = new cronometro();
+        fireRate = new Cronometro();
         fireRate.run(Constants.UFO_FIRERATE);
 
     }

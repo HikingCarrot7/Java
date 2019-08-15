@@ -18,11 +18,11 @@ public class Player extends MovingObject
     private Vector2D acceleration;
 
     private boolean accelerating = false;
-    private cronometro fireRate;
+    private Cronometro fireRate;
 
     private boolean spawning, visible;
 
-    private cronometro spawnTime, flickerTime;
+    private Cronometro spawnTime, flickerTime;
 
     public Player(Vector2D position, Vector2D velocity, double maxVel, BufferedImage texture, GameState gameState)
     {
@@ -30,9 +30,9 @@ public class Player extends MovingObject
         
         heading = new Vector2D(0, 1);
         acceleration = new Vector2D();
-        fireRate = new cronometro();
-        spawnTime = new cronometro();
-        flickerTime = new cronometro();
+        fireRate = new Cronometro();
+        spawnTime = new Cronometro();
+        flickerTime = new Cronometro();
 
     }
 

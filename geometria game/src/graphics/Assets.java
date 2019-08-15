@@ -29,44 +29,44 @@ public class Assets
 
     public static void init()
     {
-        player = carga.imageloader("/naves1/player.png");
-        speeds = carga.imageloader("/effects/fire14.png");
-        blueLaser = carga.imageloader("/lasers/laserBlue01.png");
-        greenLaser = carga.imageloader("/lasers/laserGreen11.png");
-        redLaser = carga.imageloader("/lasers/laserRed01.png");
+        player = Carga.imageloader("/naves1/player.png");
+        speeds = Carga.imageloader("/effects/fire14.png");
+        blueLaser = Carga.imageloader("/lasers/laserBlue01.png");
+        greenLaser = Carga.imageloader("/lasers/laserGreen11.png");
+        redLaser = Carga.imageloader("/lasers/laserRed01.png");
 
         for (int i = 0; i < bigs.length; i++)
         {
-            bigs[i] = carga.imageloader("/meteors/meteorGrey_big" + (i + 1) + ".png");
+            bigs[i] = Carga.imageloader("/meteors/meteorGrey_big" + (i + 1) + ".png");
         }
 
         for (int i = 0; i < meds.length; i++)
         {
-            meds[i] = carga.imageloader("/meteors/meteorGrey_med" + (i + 1) + ".png");
+            meds[i] = Carga.imageloader("/meteors/meteorGrey_med" + (i + 1) + ".png");
         }
 
         for (int i = 0; i < smalls.length; i++)
         {
-            smalls[i] = carga.imageloader("/meteors/MeteorGrey_small" + (i + 1) + ".png");
+            smalls[i] = Carga.imageloader("/meteors/MeteorGrey_small" + (i + 1) + ".png");
         }
 
         for (int i = 0; i < tinies.length; i++)
         {
-            tinies[i] = carga.imageloader("/meteors/meteorGrey_tiny" + (i + 1) + ".png");
+            tinies[i] = Carga.imageloader("/meteors/meteorGrey_tiny" + (i + 1) + ".png");
         }
 
         for (int i = 0; i < exp.length; i++)
         {
-            exp[i] = carga.imageloader("/explosion/" + i + ".png");
+            exp[i] = Carga.imageloader("/explosion/" + i + ".png");
         }
 
-        ufo = carga.imageloader("/naves1/ufo.png");
+        ufo = Carga.imageloader("/naves1/ufo.png");
 
-        life = carga.imageloader("/vida/life.png");
+        life = Carga.imageloader("/vida/life.png");
 
         for (int i = 0; i < numbers.length; i++)
         {
-            numbers[i] = carga.imageloader("/vida/" + i + ".png");
+            numbers[i] = Carga.imageloader("/vida/" + i + ".png");
         }
 
     }

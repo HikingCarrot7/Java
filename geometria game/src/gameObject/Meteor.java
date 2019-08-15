@@ -11,11 +11,12 @@ import states.GameState;
 public class Meteor extends MovingObject
 {
 
-    private Size size;
+    private final Size size;
 
     public Meteor(Vector2D position, Vector2D velocity, double maxVel, BufferedImage texture, GameState gameState, Size size)
     {
         super(position, velocity, maxVel, texture, gameState);
+        
         this.size = size;
         this.velocity = velocity.scale(maxVel);
 
@@ -44,7 +45,7 @@ public class Meteor extends MovingObject
             position.setY(Constants.HEIGHT);
         }
 
-		//rotacion
+        //rotacion
         angle += Constants.DELTAANGLE / 2;
 
     }

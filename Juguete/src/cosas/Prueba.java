@@ -6,7 +6,6 @@ public class Prueba
 {
 
     private String nombre;
-
     private int edad;
 
     public static void main(String[] args)

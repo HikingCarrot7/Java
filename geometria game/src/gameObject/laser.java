@@ -14,6 +14,7 @@ public class laser extends MovingObject
     public laser(Vector2D position, Vector2D velocity, double maxVel, double angle, BufferedImage texture, GameState gameState)
     {
         super(position, velocity, maxVel, texture, gameState);
+        
         this.angle = angle;
         this.velocity = velocity.scale(maxVel); //modera la velocidad del laser
 
@@ -23,11 +24,11 @@ public class laser extends MovingObject
     public void update()
     {
         position = position.add(velocity);
-        if (position.getX() < 0 || position.getX() > Constants.WIDTH
-                || position.getY() < 0 || position.getY() > Constants.HEIGHT)
+        if (position.getX() < 0 || position.getX() > Constants.WIDTH || position.getY() < 0 || position.getY() > Constants.HEIGHT)
         {
             Destroy();//se eliminan los objetos del laser al salir de la ventana	
         }
+
         collidesWith();
 
     }
