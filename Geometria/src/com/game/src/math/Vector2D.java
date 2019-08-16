@@ -30,12 +30,12 @@ public class Vector2D
         return new Vector2D(x - v.getX(), y - v.getY());
     }
 
-    public Vector2D scale(float value)
+    public Vector2D scale(double value)
     {
         return new Vector2D(x * value, y * value);
     }
 
-    public Vector2D limit(float value)
+    public Vector2D limit(double value)
     {
         if (getMagnitude() > value)
         {
@@ -71,7 +71,7 @@ public class Vector2D
         return x;
     }
 
-    public void setX(float x)
+    public void setX(double x)
     {
         this.x = x;
     }
@@ -81,7 +81,7 @@ public class Vector2D
         return y;
     }
 
-    public void setY(float y)
+    public void setY(double y)
     {
         this.y = y;
     }

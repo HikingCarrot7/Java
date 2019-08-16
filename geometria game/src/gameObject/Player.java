@@ -30,6 +30,7 @@ public class Player extends MovingObject
         
         heading = new Vector2D(0, 1);
         acceleration = new Vector2D();
+        
         fireRate = new Cronometro();
         spawnTime = new Cronometro();
         flickerTime = new Cronometro();

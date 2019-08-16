@@ -19,15 +19,15 @@ public class Constants
     public static final double LASER_VEl = 15.0;
 
     //propiedades de los meteoros
-    public static final double METEOR_VEL = 2.0;
     public static final int METEOR_SCORE = 20;
+    public static final double METEOR_VEL = 2.0;
 
     //enemigo
     public static final double NODE_RADIUS = 160;
+    public static final int UFO_SCORE = 40;
     public static final double UFO_MASS = 60;
     public static final double UFO_MAX_VEL = 3;
+    public static final double UFO_ANGLE_RANGE = Math.PI / 2;
     public static final long UFO_FIRERATE = 1000;
-    public static double UFO_ANGLE_RANGE = Math.PI / 2;
-    public static final int UFO_SCORE = 40;
 
 }

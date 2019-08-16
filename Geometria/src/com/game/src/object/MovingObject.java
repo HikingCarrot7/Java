@@ -5,7 +5,6 @@ import com.game.src.math.Vector2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
@@ -39,42 +38,34 @@ public abstract class MovingObject extends GameObject
     {
         ArrayList<MovingObject> objects = gameState.getMovingObjects();
 
-        for (Iterator<MovingObject> ObjectIterator = objects.iterator(); ObjectIterator.hasNext();)
+        for (MovingObject currentObject : objects)
         {
-            MovingObject currentObject = ObjectIterator.next();
-
-            if (currentObject.equals(this))
+            
+            MovingObject tempObject = currentObject;
+            
+            if (tempObject.equals(this))
             {
                 continue;
             }
 
-            double distance = currentObject.getCenter().subtract(getCenter()).getMagnitude();
+            double distance = tempObject.getCenter().subtract(getCenter()).getMagnitude();
 
-            if (distance < currentObject.width / 2 + width / 2 && objects.contains(this))
+            if (distance < tempObject.width / 2 + width / 2 && objects.contains(this))
             {
-                if (ObjectCollision(currentObject, this))
+                if (ObjectCollision(tempObject, this))
                 {
-                    ObjectIterator.remove();
-
-                    for (Iterator<MovingObject> objectIterator = objects.iterator(); objectIterator.hasNext();)
-                    {
-                        if (objectIterator.next().equals(this))
-                        {
-                            objectIterator.remove();
-
-                            break;
-
-                        }
-
-                    }
+                    tempObject.Destroy();
+                    
+                    this.Destroy();
 
                 }
 
             }
-
         }
 
     }
+    
+    public abstract void Destroy();
 
     private boolean ObjectCollision(MovingObject a, MovingObject b)
     {

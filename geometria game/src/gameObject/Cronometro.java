@@ -32,6 +32,7 @@ public class Cronometro
             running = false;
             delta = 0;
         }
+
         LastTime = System.currentTimeMillis();
 
     }
