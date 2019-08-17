@@ -43,14 +43,14 @@ public class PruebaStrings extends Object
 		nombres.add("Nicolas");
 		
 		
-		long lastTime = System.currentTimeMillis();
+		long lastTime = System.nanoTime();
 		
-		for (long j = 0; j < 1000000000; j++)
+		for (long j = 0; j < 10000; j++)
 		{
 			nombres.get(5);
 		}
 		
-		System.out.println((System.currentTimeMillis() - lastTime) + " milliseconds");
+		System.out.println((System.nanoTime() - lastTime) + " nanoseconds");
 		
 		while(m.find()) 
 			System.out.println(m.group());

@@ -52,9 +52,19 @@ public class Main extends Canvas implements Runnable
         window = new Window(ANCHO, ALTO, "BATTLESHIP", new Main());
     }
 
+    /**
+     * 
+     * Inicia todos los elementos necesarios para que el juego comience.
+     * 
+     * @see Ticker#Ticker(Main)
+     * 
+     * 
+     */
     public void init()
     {
         createBufferStrategy(3);
+        
+        
 
         thread = new Thread(this);
         randomLayout = new RandomLayout();

@@ -1,8 +1,11 @@
 package com.game.src.main;
 
 /**
+ *Este es el corazón del juego, desde aquí se renderozan todas las imágenes y se actualizan las posiciones de todos los objectos.
+ *
  *
  * @author HikingCarrot7
+ * @since 1.0
  */
 public final class Ticker implements Runnable
 {
