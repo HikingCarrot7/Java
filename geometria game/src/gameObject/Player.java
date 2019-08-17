@@ -15,7 +15,7 @@ public class Player extends MovingObject
 
     private Vector2D heading;
 
-    private Vector2D acceleration ;
+    private Vector2D acceleration;
 
     private boolean accelerating = false;
     private Cronometro fireRate;
