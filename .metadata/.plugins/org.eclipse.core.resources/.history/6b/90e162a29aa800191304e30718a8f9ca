@@ -1,6 +1,0 @@
-package swingworker;
-
-public class NumerosFibonacci extends JPanel 
-{
-
-}

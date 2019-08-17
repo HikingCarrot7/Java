@@ -1,6 +1,0 @@
-package sockets.servidor;
-
-public class ServidorInterfaz extends JPanel
-{
-
-}

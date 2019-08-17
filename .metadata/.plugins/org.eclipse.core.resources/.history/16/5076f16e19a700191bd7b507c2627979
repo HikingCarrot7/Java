@@ -1,7 +1,0 @@
-package productorconsumidor;
-
-public interface Buffer 
-{
-	
-
-}

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename local variable &apos;player&apos; in &apos;com.game.src.main.KeyInput.KeyInput(...)&apos; to &apos;wizard&apos;&#x0D;&#x0A;- Original project: &apos;WizardCourse&apos;&#x0D;&#x0A;- Original element: &apos;com.game.src.main.KeyInput.KeyInput(Handler, Player).player&apos;&#x0D;&#x0A;- Renamed element: &apos;player&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;player&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;com.game.src.main{KeyInput.java[KeyInput~KeyInput~QHandler;~QPlayer;@player!426!438!433!438!QPlayer;!0!true" name="wizard" references="true" stamp="1562606769700" version="1.0"/>
-</session>
