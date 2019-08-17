@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Geometria">
+  <ClassDiagramComponents>
+    <Class name="Cronometro" package="com.game.src.control" visibility="public" xPosition="1236.0" yPosition="580.0">
+      <Fields>
+        <Field name="delta" type="long" visibility="private"/>
+        <Field name="running" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="run" returnType="void" visibility="public">
+          <Argument type="long" name="time"/>
+        </Method>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="isRunning" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GameState" package="com.game.src.gamestate" visibility="public" xPosition="410.0" yPosition="319.0">
+      <Fields>
+        <Field name="objects" type="ArrayList&lt;MovingObject&gt;" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getMovingObjects" returnType="ArrayList&lt;MovingObject&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="KeyInput" package="com.game.src.input" visibility="public" xPosition="621.0" yPosition="1194.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Main" package="com.game.src.main" visibility="public" xPosition="1505.0" yPosition="1277.0">
+      <Fields>
+        <Field name="ANCHO" type="int" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="init" returnType="void" visibility="public"/>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="render" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Ticker" package="com.game.src.main" visibility="public" xPosition="1803.0" yPosition="1306.0">
+      <Fields>
+        <Field name="main" type="Main" visibility="private" isFinal="true"/>
+        <Field name="thread" type="Thread" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Main" name="main"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Window" package="com.game.src.main" visibility="public" xPosition="499.0" yPosition="1000.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="titulo"/>
+          <Argument type="int" name="w"/>
+          <Argument type="int" name="h"/>
+          <Argument type="Main" name="main"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Vector2D" package="com.game.src.math" visibility="public" xPosition="1604.0" yPosition="319.0">
+      <Fields>
+        <Field name="x" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="x"/>
+          <Argument type="double" name="y"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="add" returnType="Vector2D" visibility="public">
+          <Argument type="Vector2D" name="v"/>
+        </Method>
+        <Method name="subtract" returnType="Vector2D" visibility="public">
+          <Argument type="Vector2D" name="v"/>
+        </Method>
+        <Method name="scale" returnType="Vector2D" visibility="public">
+          <Argument type="double" name="value"/>
+        </Method>
+        <Method name="limit" returnType="Vector2D" visibility="public">
+          <Argument type="double" name="value"/>
+        </Method>
+        <Method name="setDirection" returnType="Vector2D" visibility="public">
+          <Argument type="double" name="angle"/>
+        </Method>
+        <Method name="getAngle" returnType="double" visibility="public"/>
+        <Method name="normalize" returnType="Vector2D" visibility="public"/>
+        <Method name="getMagnitude" returnType="//La hipotenusa con respecto al origen double" visibility="public"/>
+        <Method name="getX" returnType="double" visibility="public"/>
+        <Method name="setX" returnType="void" visibility="public">
+          <Argument type="double" name="x"/>
+        </Method>
+        <Method name="getY" returnType="double" visibility="public"/>
+        <Method name="setY" returnType="void" visibility="public">
+          <Argument type="double" name="y"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GameObject" package="com.game.src.object" visibility="public" isAbstract="true" xPosition="1714.0" yPosition="1020.0">
+      <Fields>
+        <Field name="texture" type="BufferedImage" visibility="protected"/>
+        <Field name="posicion" type="Vector2D" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Vector2D" name="posicion"/>
+          <Argument type="BufferedImage" name="texture"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="tick" returnType="void" visibility="public" isAbstract="true"/>
+        <Method name="render" returnType="void" visibility="public" isAbstract="true">
+          <Argument type="Graphics2D" name="g"/>
+        </Method>
+        <Method name="getPosicion" returnType="Vector2D" visibility="public"/>
+        <Method name="setPosition" returnType="void" visibility="public">
+          <Argument type="Vector2D" name="posicion"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Meteor" package="com.game.src.object" visibility="public" xPosition="341.0" yPosition="758.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Vector2D" name="posicion"/>
+          <Argument type="Vector2D" name="velocity"/>
+          <Argument type="double" name="maxVel"/>
+          <Argument type="GameState" name="gameState"/>
+          <Argument type="BufferedImage" name="texture"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="render" returnType="void" visibility="public">
+          <Argument type="Graphics2D" name="g"/>
+        </Method>
+        <Method name="Destroy" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MovingObject" package="com.game.src.object" visibility="public" isAbstract="true" xPosition="815.0" yPosition="134.0">
+      <Fields>
+        <Field name="gameState" type="GameState" visibility="protected"/>
+        <Field name="velocity" type="Vector2D" visibility="protected"/>
+        <Field name="at" type="AffineTransform" visibility="protected"/>
+        <Field name="width" type="int" visibility="protected"/>
+        <Field name="angle" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Vector2D" name="posicion"/>
+          <Argument type="Vector2D" name="velocity"/>
+          <Argument type="double" name="maxVel"/>
+          <Argument type="GameState" name="gameState"/>
+          <Argument type="BufferedImage" name="texture"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="CollidesWith" returnType="void" visibility="protected"/>
+        <Method name="Destroy" returnType="void" visibility="public" isAbstract="true"/>
+        <Method name="ObjectCollision" returnType="boolean" visibility="private">
+          <Argument type="MovingObject" name="a"/>
+          <Argument type="MovingObject" name="b"/>
+        </Method>
+        <Method name="getCenter" returnType="Vector2D" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Player" package="com.game.src.object" visibility="public" xPosition="887.0" yPosition="953.0">
+      <Fields>
+        <Field name="heading" type="Vector2D" visibility="private" isFinal="true"/>
+        <Field name="fireRate" type="Cronometro" visibility="private" isFinal="true"/>
+        <Field name="playerSpawning" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Vector2D" name="posicion"/>
+          <Argument type="Vector2D" name="velocity"/>
+          <Argument type="double" name="maxVel"/>
+          <Argument type="GameState" name="gameState"/>
+          <Argument type="BufferedImage" name="texture"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isPlayerSpawning" returnType="boolean" visibility="public"/>
+        <Method name="setPlayerSpawning" returnType="void" visibility="public">
+          <Argument type="boolean" name="playerSpawning"/>
+        </Method>
+        <Method name="tick" returnType="void" visibility="public"/>
+        <Method name="render" returnType="void" visibility="public">
+          <Argument type="Graphics2D" name="g"/>
+        </Method>
+        <Method name="Destroy" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="com.game.src.object.Player" target="com.game.src.object.MovingObject"/>
+    <UseRelation source="com.game.src.math.Vector2D" target="com.game.src.math.Vector2D" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.game.src.gamestate.GameState" target="com.game.src.object.MovingObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.game.src.object.MovingObject" target="com.game.src.object.GameObject"/>
+    <IsRelation name="is" source="com.game.src.object.Meteor" target="com.game.src.object.MovingObject"/>
+    <UseRelation source="com.game.src.object.GameObject" target="com.game.src.math.Vector2D" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="main" source="com.game.src.main.Ticker" target="com.game.src.main.Main" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.game.src.object.MovingObject" target="com.game.src.object.MovingObject" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fireRate" source="com.game.src.object.Player" target="com.game.src.control.Cronometro" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.game.src.object.MovingObject" target="com.game.src.math.Vector2D" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gameState" source="com.game.src.object.MovingObject" target="com.game.src.gamestate.GameState" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="heading" source="com.game.src.object.Player" target="com.game.src.math.Vector2D" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="objects" source="com.game.src.gamestate.GameState" target="com.game.src.object.MovingObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;MovingObject&gt;"/>
+    <HasRelation name="velocity" source="com.game.src.object.MovingObject" target="com.game.src.math.Vector2D" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="posicion" source="com.game.src.object.GameObject" target="com.game.src.math.Vector2D" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

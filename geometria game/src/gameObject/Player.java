@@ -86,12 +86,14 @@ public class Player extends MovingObject
         {
             acceleration = heading.scale(Constants.ACC);
             accelerating = true;
+            
         } else
         {
             if (velocity.getMagnitude() != 0)
             {
                 acceleration = (velocity.scale(-1).normalize()).scale(Constants.ACC);
             }
+            
             accelerating = false;
         }
 

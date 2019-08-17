@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Integradora">
+  <ClassDiagramComponents>
+    <Class name="Administradores" package="administracion" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="usuario" type="String" visibility="private"/>
+        <Field name="contrasena" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="usuario"/>
+          <Argument type="String" name="contrasena"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getUsuario" returnType="String" visibility="public"/>
+        <Method name="getContrasena" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Alumno" package="administracion" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="licenciatura" type="String" visibility="private"/>
+        <Field name="calificacion" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="String" name="licenciatura"/>
+          <Argument type="double" name="calificacion"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="cambiarCalif" returnType="void" visibility="public">
+          <Argument type="double" name="calificacion"/>
+        </Method>
+        <Method name="obtenerLic" returnType="String" visibility="public"/>
+        <Method name="obtenerCalif" returnType="double" visibility="public"/>
+        <Method name="mostrarDatos" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CambiarSalario" package="administracion" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="cambiarsalario" type="Cambiarsalario" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="CapturarAlumno" package="administracion" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="datosAlumno" type="DatosAlumno" visibility="private"/>
+        <Field name="datosCorrectos" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="CapturarMaestro" package="administracion" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="datosAlumno" type="DatosAlumno" visibility="private" isFinal="true"/>
+        <Field name="datosCorrectos" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Generales" package="administracion" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="intentarValidarEntero" returnType="boolean" visibility="public" isStatic="true">
+          <Argument type="JTextField" name="campo"/>
+          <Argument type="JLabel" name="texto"/>
+        </Method>
+        <Method name="intentarValidarDouble" returnType="boolean" visibility="public" isStatic="true">
+          <Argument type="JTextField" name="campo"/>
+          <Argument type="JLabel" name="texto"/>
+          <Argument type="int" name="tope"/>
+        </Method>
+        <Method name="validarDatos" returnType="boolean" visibility="public" isStatic="true">
+          <Argument type="JTextField" name="texto"/>
+          <Argument type="JLabel" name="campo"/>
+        </Method>
+        <Method name="pasarAString" returnType="String" visibility="public" isStatic="true">
+          <Argument type="char[]" name="contra"/>
+        </Method>
+        <Method name="actualizarTextoMaestros" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="actualizarTextoAlumnos" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="alerta" returnType="int" visibility="public" isStatic="true">
+          <Argument type="String" name="info"/>
+          <Argument type="String" name="titulo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="InicioSesion" package="administracion" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Methods>
+        <Method name="getUsuario" returnType="String" visibility="public"/>
+        <Method name="getContrasena" returnType="String" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Class name="LaminaAdministrador" package="administracion" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="administrador" type="Administrador" visibility="private" isFinal="true"/>
+        <Field name="infoImport" type="JLabel" visibility="protected" isStatic="true"/>
+        <Field name="listaMaestros" type="JComboBox&lt;String&gt;" visibility="protected" isStatic="true"/>
+        <Field name="mostrar" type="JCheckBox" visibility="protected" isStatic="true"/>
+        <Field name="mostrarMaestros" type="JTextArea" visibility="protected" isStatic="true"/>
+        <Field name="anadirMaestro" type="JButton" visibility="protected" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="LaminaMaestro" package="administracion" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="scrollAlumnos" type="JScrollPane" visibility="private"/>
+        <Field name="login" type="Login" visibility="private"/>
+        <Field name="mostrarAlumnos" type="JTextArea" visibility="protected" isStatic="true"/>
+        <Field name="anadirAlumno" type="JButton" visibility="protected" isStatic="true"/>
+        <Field name="listaAlumnos" type="JComboBox&lt;String&gt;" visibility="protected" isStatic="true"/>
+        <Field name="alumnosInstancias" type="ArrayList&lt;ArrayList&lt;Alumno&gt;&gt;" visibility="protected" isStatic="true"/>
+        <Field name="maestrosInstanciados" type="ArrayList&lt;Maestro&gt;" visibility="protected" isStatic="true"/>
+        <Field name="infoMaestro" type="JLabel" visibility="protected" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="iniciarElementos" returnType="void" visibility="public"/>
+        <Method name="ponerElementos" returnType="void" visibility="public"/>
+        <Method name="anadirElementos" returnType="void" visibility="public"/>
+        <Method name="updatePantalla" returnType="void" visibility="public">
+          <Argument type="String" name="info"/>
+          <Argument type="String" name="roll"/>
+          <Argument type="boolean" name="admin"/>
+          <Argument type="boolean" name="botonadmin"/>
+        </Method>
+        <Method name="error" returnType="void" visibility="public">
+          <Argument type="String" name="infoMensaje"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="LeerDatos" package="administracion" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="salida" type="Formatter" visibility="private" isStatic="true"/>
+        <Field name="entrada" type="Scanner" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="anadirMaestros" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Maestro" name="maestro"/>
+        </Method>
+        <Method name="LeerMaestros" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="anadirAlumnos" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Alumno" name="alumno"/>
+        </Method>
+        <Method name="leerAlumnos" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="actualizarListaMaestros" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="actualizarListaAlumnos" returnType="void" visibility="public" isStatic="true"/>
+        <Method name="escrituraDatosMaestros" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Maestro" name="maestro"/>
+        </Method>
+        <Method name="escrituraDatosAlumnos" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Alumno" name="alumno"/>
+          <Argument type="int" name="index"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Login" package="administracion" visibility="public" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="laminaLogin" type="LaminaLogin" visibility="private"/>
+        <Field name="encontrado" type="boolean" visibility="private"/>
+        <Field name="administrador" type="boolean" visibility="protected" isStatic="true"/>
+        <Field name="indiceMaestro" type="int" visibility="protected" isStatic="true"/>
+        <Field name="admin" type="JButton" visibility="protected" isStatic="true"/>
+        <Field name="infoUser" type="JLabel" visibility="protected" isStatic="true"/>
+        <Field name="indice" type="int" visibility="private"/>
+        <Field name="administradores" type="ArrayList&lt;Administradores&gt;" visibility="protected" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Maestro" package="administracion" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields>
+        <Field name="asignatura" type="String" visibility="private"/>
+        <Field name="sueldo" type="double" visibility="private"/>
+        <Field name="usuario" type="String" visibility="private"/>
+        <Field name="contrasena" type="String" visibility="private"/>
+        <Field name="fechaAlta" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="String" name="asignatura"/>
+          <Argument type="double" name="sueldo"/>
+          <Argument type="String" name="usuario"/>
+          <Argument type="String" name="contrasena"/>
+          <Argument type="String" name="fechaAlta"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="cambiarSueldo" returnType="void" visibility="public">
+          <Argument type="double" name="sueldo"/>
+        </Method>
+        <Method name="getSueldo" returnType="double" visibility="public"/>
+        <Method name="getAsignatura" returnType="String" visibility="public"/>
+        <Method name="getFecha" returnType="String" visibility="public"/>
+        <Method name="getUsuario" returnType="String" visibility="public"/>
+        <Method name="getContrasena" returnType="String" visibility="public"/>
+        <Method name="infoPrivada" returnType="String" visibility="public"/>
+        <Method name="datosImportantes" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="mostrarDatos" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="administracion" visibility="public" isAbstract="true" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="edad" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="edad"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getEdad" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="mostrarDatos" returnType="String" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="Principal" package="administracion" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="laminaMaestro" type="LaminaMaestro" visibility="private" isFinal="true"/>
+        <Field name="principal" type="Principal" visibility="protected" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="administracion.LeerDatos" target="administracion.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="administracion.LeerDatos" target="administracion.Maestro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="administracion.Alumno" target="administracion.Persona"/>
+    <HasRelation name="alumnosInstancias" source="administracion.LaminaMaestro" target="administracion.Alumno" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;ArrayList&lt;Alumno&gt;&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="administracion.Administradores" target="administracion.InicioSesion"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="administracion.Maestro" target="administracion.InicioSesion"/>
+    <IsRelation name="is" source="administracion.Maestro" target="administracion.Persona"/>
+    <HasRelation name="principal" source="administracion.Principal" target="administracion.Principal" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="laminaMaestro" source="administracion.Principal" target="administracion.LaminaMaestro" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="administradores" source="administracion.Login" target="administracion.Administradores" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Administradores&gt;"/>
+    <HasRelation name="login" source="administracion.LaminaMaestro" target="administracion.Login" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="maestrosInstanciados" source="administracion.LaminaMaestro" target="administracion.Maestro" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Maestro&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

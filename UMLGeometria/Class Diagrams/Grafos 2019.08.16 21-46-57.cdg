@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Grafos">
+  <ClassDiagramComponents>
+    <Class name="Colores" package="grafos" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="coloresVert" type="int[]" visibility="protected" isStatic="true"/>
+        <Field name="adyacencia" type="int[][]" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="colores" returnType="void" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="DistanciasPuntos" package="grafos" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="mouseTocandoVert" returnType="int" visibility="public" isStatic="true">
+          <Argument type="int" name="mouseX"/>
+          <Argument type="int" name="mouseY"/>
+        </Method>
+        <Method name="distanciaPuntos" returnType="double" visibility="public" isStatic="true">
+          <Argument type="int" name="x1"/>
+          <Argument type="int" name="y1"/>
+          <Argument type="int" name="x2"/>
+          <Argument type="int" name="y2"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Lamina" package="grafos" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="timer" type="Timer" visibility="private"/>
+        <Field name="xPos" type="ArrayList&lt;Integer&gt;" visibility="protected" isStatic="true"/>
+        <Field name="matrizAdyacencia" type="int[][]" visibility="protected" isStatic="true"/>
+        <Field name="posicion" type="int" visibility="protected"/>
+        <Field name="moviendoVertice" type="boolean" visibility="protected"/>
+        <Field name="anadirArista" type="boolean" visibility="protected"/>
+        <Field name="borrandoArista" type="boolean" visibility="protected"/>
+        <Field name="controlPresionado" type="boolean" visibility="protected"/>
+        <Field name="background" type="ImageIcon" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="paint" returnType="void" visibility="public">
+          <Argument type="Graphics" name="g"/>
+        </Method>
+        <Method name="mouseClicked" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="mouseDragged" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="mousePressed" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="mouseReleased" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="mouseMoved" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="keyPressed" returnType="void" visibility="public">
+          <Argument type="KeyEvent" name="e"/>
+        </Method>
+        <Method name="keyReleased" returnType="void" visibility="public">
+          <Argument type="KeyEvent" name="e"/>
+        </Method>
+        <Method name="dibujarVertices" returnType="void" visibility="public">
+          <Argument type="Graphics2D" name="g"/>
+        </Method>
+        <Method name="pintarVertices" returnType="void" visibility="public">
+          <Argument type="Color" name="color"/>
+          <Argument type="int" name="i"/>
+          <Argument type="Graphics2D" name="g"/>
+        </Method>
+        <Method name="dibujarAristas" returnType="void" visibility="public">
+          <Argument type="Graphics2D" name="g"/>
+        </Method>
+        <Method name="dibujarEtiquetas" returnType="void" visibility="public">
+          <Argument type="Graphics2D" name="g"/>
+        </Method>
+        <Method name="dibujarLinea" returnType="void" visibility="public">
+          <Argument type="Graphics2D" name="g"/>
+        </Method>
+        <Method name="anadirVertice" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="moverVertice" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="anadirArista" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="borrarVertice" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="moverMatriz" returnType="void" visibility="public">
+          <Argument type="int" name="index"/>
+        </Method>
+        <Method name="borrarArista" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="mouseEntered" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="mouseExited" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="e"/>
+        </Method>
+        <Method name="keyTyped" returnType="void" visibility="public">
+          <Argument type="KeyEvent" name="e"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Principal" package="grafos" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="lamina" type="Lamina" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="lamina" source="grafos.Principal" target="grafos.Lamina" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

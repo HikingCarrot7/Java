@@ -22,6 +22,8 @@ public class Explosion implements Drawable
         rand = new Random();
         particulas = new ArrayList<>();
         
+        
+        
         for (int i = 0; i < 25; i++)
         {
             int velX = rand.nextInt(11) - 5;
@@ -75,8 +77,8 @@ public class Explosion implements Drawable
     {
 
         private final int velX, velY;
-        private final Color color;
         private int x, y;
+        private final Color color;
 
         public Particles(int x, int y, int velX, int velY, Color color)
         {
