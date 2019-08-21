@@ -1,4 +1,3 @@
-
 package excepcionbasica;
 
 public class UsoExcepciones
@@ -61,16 +60,17 @@ public class UsoExcepciones
 
 class miPropiaExc extends Exception
 {
+
     public miPropiaExc()
     {
         this("");
     }
-    
+
     public miPropiaExc(String mensaje)
     {
         super(mensaje);
     }
-    
+
     public miPropiaExc(String mensaje, Throwable cause)
     {
         super(mensaje, cause);

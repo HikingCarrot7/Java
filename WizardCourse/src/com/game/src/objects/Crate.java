@@ -10,29 +10,29 @@ import com.game.src.framework.ObjectId;
 public class Crate extends GameObject
 {
 
-	public Crate(float x, float y, ObjectId id, Handler handler) 
-	{
-		super(x, y, id);
-	}
+    public Crate(float x, float y, ObjectId id, Handler handler)
+    {
+        super(x, y, id);
+    }
 
-	@Override
-	public void tick() 
-	{
-		
-	}
+    @Override
+    public void tick()
+    {
 
-	@Override
-	public void render(Graphics2D g) 
-	{
-		g.setColor(Color.cyan);
-		g.fillRect((int) x, (int) y, 32, 32);
-		
-	}
+    }
 
-	@Override
-	public Rectangle getBounds() 
-	{
-		return new Rectangle((int) x, (int) y, 32, 32);
-	}
+    @Override
+    public void render(Graphics2D g)
+    {
+        g.setColor(Color.cyan);
+        g.fillRect((int) x, (int) y, 32, 32);
+
+    }
+
+    @Override
+    public Rectangle getBounds()
+    {
+        return new Rectangle((int) x, (int) y, 32, 32);
+    }
 
 }

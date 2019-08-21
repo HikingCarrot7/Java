@@ -7,12 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
- * Graphics is the abstract base class for all graphics contexts
- * which allow an application to draw onto components realized on
- * various devices or onto off-screen images.
- * A Graphics object encapsulates the state information needed
- * for the various rendering operations that Java supports.  This
- * state information includes:
+ * Graphics is the abstract base class for all graphics contexts which allow an application to draw onto components realized on various devices or onto off-screen images. A Graphics object encapsulates the state information needed for the various rendering operations that Java supports. This state information includes:
  * <ul>
  * <li>The Component to draw on
  * <li>A translation origin for rendering and clipping coordinates
@@ -20,14 +15,13 @@ import java.awt.image.BufferedImage;
  * <li>The current color
  * <li>The current font
  * <li>The current logical pixel operation function (XOR or Paint)
- * <li>The current XOR alternation color
- *     (see <a href="#setXORMode">setXORMode</a>)
+ * <li>The current XOR alternation color (see <a href="#setXORMode">setXORMode</a>)
  * </ul>
- * 
- * @author      Sami Shaio
- * @author      Arthur van Hoff
- * @version     %I%, %G%
- * @since       1.0
+ *
+ * @author Sami Shaio
+ * @author Arthur van Hoff
+ * @version %I%, %G%
+ * @since 1.0
  */
 public class Player extends MovingObject
 {
@@ -46,36 +40,31 @@ public class Player extends MovingObject
         fireRate = new Cronometro();
         spawnTime = new Cronometro();
         flickerTime = new Cronometro();
-        
-        
 
     }
 
     /**
-     * Retorna si el jugador está reapareciendo. 
-     * 
+     * Retorna si el jugador está reapareciendo.
+     *
      * @return if this <ul><li>Player</ul> está reapareciendo.
-     * 
+     *
      */
-
     public boolean isPlayerSpawning()
     {
         return playerSpawning;
     }
-    
-    /**
-     * @deprecated 
-     * Establece si el jugador está reapareciendo.
-     * 
-     * @param playerSpawning if this <code>Player</code> está reapareciendo.
-     * 
-     * 
-     * @see MovingObject#CollidesWith() 
-     * 
-     * @since 1.0
-     * 
-     */
 
+    /**
+     * @deprecated Establece si el jugador está reapareciendo.
+     *
+     * @param playerSpawning if this <code>Player</code> está reapareciendo.
+     *
+     *
+     * @see MovingObject#CollidesWith()
+     *
+     * @since 1.0
+     *
+     */
     public void setPlayerSpawning(boolean playerSpawning)
     {
         this.playerSpawning = playerSpawning;

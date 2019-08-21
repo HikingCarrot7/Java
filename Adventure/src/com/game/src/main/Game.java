@@ -96,7 +96,7 @@ public class Game extends Canvas
             flowerAnimations[i] = new AnimatedSprite(flowerSheet, 8, i * 50, 70);
         }
 
-		//SDK BUTTONS--------------------------
+        //SDK BUTTONS--------------------------
         //SDK
         buttons = new GUIButton[tiles.tiles()];
         tileSprite = tiles.getSprites();
@@ -119,12 +119,12 @@ public class Game extends Canvas
             }
         }
 
-		//inventory = new GUI(inventoryButtons, ANCHO/2 - 80, ALTO/2 - 80, true);
+        //inventory = new GUI(inventoryButtons, ANCHO/2 - 80, ALTO/2 - 80, true);
         //Objects
         objects = new GameObject[2];
         objects[0] = new Player(playerAnimation);
         objects[1] = gui;
-		//objects[2] = inventory;
+        //objects[2] = inventory;
 
         keyInput = new KeyInput(this);
         mouseInput = new MouseInput(this);

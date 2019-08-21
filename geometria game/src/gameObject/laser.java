@@ -14,7 +14,7 @@ public class laser extends MovingObject
     public laser(Vector2D position, Vector2D velocity, double maxVel, double angle, BufferedImage texture, GameState gameState)
     {
         super(position, velocity, maxVel, texture, gameState);
-        
+
         this.angle = angle;
         this.velocity = velocity.scale(maxVel); //modera la velocidad del laser
 

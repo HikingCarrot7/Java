@@ -8,126 +8,124 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Animation extends JFrame 
+public class Animation extends JFrame
 {
-	private static final long serialVersionUID = 1L;
 
-	private Lamina lamina;
+    private static final long serialVersionUID = 1L;
 
-	public Animation() 
-	{
-		lamina = new Lamina();
+    private Lamina lamina;
 
-		setBounds(0, 0, 500, 500);
-		setLocationRelativeTo(null);
-		setResizable(false);
-		setTitle("Animation");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		add(lamina);
-		setVisible(true);
-	}
+    public Animation()
+    {
+        lamina = new Lamina();
 
-	public static void main(String[] args) 
-	{
-		new Animation();
-	}
+        setBounds(0, 0, 500, 500);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("Animation");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(lamina);
+        setVisible(true);
+    }
+
+    public static void main(String[] args)
+    {
+        new Animation();
+    }
 }
 
 class Lamina extends JPanel implements Runnable
 {
-	private static final long serialVersionUID = 1L;
 
-	private Thread thread;
+    private static final long serialVersionUID = 1L;
 
-	private int ancho = 112, altura = 156, incremento = 0, mx = 0, my = 0;
-	
-	private Image ima;
+    private Thread thread;
 
-	private BufferedImage bi;
+    private int ancho = 112, altura = 156, incremento = 0, mx = 0, my = 0;
 
-	public Lamina() 
-	{
-		bi = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
+    private Image ima;
 
-		ima = Toolkit.getDefaultToolkit().getImage("src/sprite/persona.png");
+    private BufferedImage bi;
 
-		new Thread(new Runnable() 
-		{
+    public Lamina()
+    {
+        bi = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
 
-			@Override
-			public void run() 
-			{
-				try 
-				{
-					while(true) 
-					{
-						Thread.sleep(1500);
+        ima = Toolkit.getDefaultToolkit().getImage("src/sprite/persona.png");
 
-						System.out.println("Este hilo se encarga de mostrar en pantalla este mensaje cada 1500 milisegundos");	
-					}
+        new Thread(new Runnable()
+        {
 
-				} catch (InterruptedException e) 
-				{
+            @Override
+            public void run()
+            {
+                try
+                {
+                    while (true)
+                    {
+                        Thread.sleep(1500);
 
-				}
+                        System.out.println("Este hilo se encarga de mostrar en pantalla este mensaje cada 1500 milisegundos");
+                    }
 
+                } catch (InterruptedException e)
+                {
 
-			}
+                }
 
-		}).start();
+            }
 
-		thread = new Thread(this);
+        }).start();
 
-		thread.start();
-	}
+        thread = new Thread(this);
 
-	@Override
-	public void paint(Graphics g) 
-	{
-		super.paint(g);
+        thread.start();
+    }
 
-		//g.setColor(Color.black);
-		//g.fillRect(0, 0, getWidth(), getHeight());
+    @Override
+    public void paint(Graphics g)
+    {
+        super.paint(g);
 
-		g.drawImage(bi, 0, 0, this);
+        //g.setColor(Color.black);
+        //g.fillRect(0, 0, getWidth(), getHeight());
+        g.drawImage(bi, 0, 0, this);
 
-		g = bi.createGraphics();
+        g = bi.createGraphics();
 
-		g.fillRect(0, 0, getWidth(), getHeight());
+        g.fillRect(0, 0, getWidth(), getHeight());
 
-		mx = (incremento % 6) * ancho;
+        mx = (incremento % 6) * ancho;
 
-		//my = (incremento / 5) * altura;
+        //my = (incremento / 5) * altura;
+        g.drawImage(ima, getWidth() / 2 - ancho, getHeight() / 2 - altura, getWidth() / 2 + ancho, getHeight() / 2 + altura, mx, my, mx + ancho, my + altura, this);
 
-		g.drawImage(ima, getWidth()/2 - ancho, getHeight()/2 - altura, getWidth()/2 + ancho, getHeight()/2 + altura, mx, my, mx + ancho, my + altura, this);
+        //g.copyArea(getWidth()/2, getHeight()/2, ancho, altura, -200, -200);
+        repaint();
+    }
 
-		//g.copyArea(getWidth()/2, getHeight()/2, ancho, altura, -200, -200);
+    @Override
+    public void run()
+    {
+        while (true)
+        {
+            try
+            {
+                Thread.sleep(200);
 
-		repaint();
-	}
+            } catch (InterruptedException e)
+            {
 
-	@Override
-	public void run() 
-	{
-		while(true) 
-		{
-			try 
-			{
-				Thread.sleep(200);
+            }
 
-			} catch (InterruptedException e) 
-			{
+            if (incremento >= 6)
+            {
+                Thread.currentThread().interrupt();
 
-			}
+                incremento = 0;
+            }
 
-			if(incremento >= 6) 
-			{
-				Thread.currentThread().interrupt();
-
-				incremento = 0;
-			}
-
-			incremento++;		
-		}
-	}
+            incremento++;
+        }
+    }
 }

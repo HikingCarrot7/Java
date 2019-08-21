@@ -10,9 +10,9 @@ import java.awt.event.MouseMotionListener;
  */
 public class MouseMotionInput implements MouseMotionListener
 {
-    
+
     private final Menu menu;
-    
+
     public MouseMotionInput(Menu menu)
     {
         this.menu = menu;
@@ -21,7 +21,7 @@ public class MouseMotionInput implements MouseMotionListener
     @Override
     public void mouseDragged(MouseEvent e)
     {
-        
+
     }
 
     @Override
@@ -29,5 +29,5 @@ public class MouseMotionInput implements MouseMotionListener
     {
         menu.mouseMoved(e);
     }
-    
+
 }

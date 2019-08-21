@@ -11,34 +11,32 @@ import com.game.src.framework.ObjectId;
 public class Bullet extends GameObject
 {
 
-	public Bullet(float x, float y, ObjectId id, float velX, float velY) 
-	{
-		super(x, y, id);
-		
-		this.velX = velX;
-		this.velY = velY;
-	}
+    public Bullet(float x, float y, ObjectId id, float velX, float velY)
+    {
+        super(x, y, id);
 
-	@Override
-	public void tick(ArrayList<GameObject> object) 
-	{
-		x += velX;
-		y += velY;
-	}
+        this.velX = velX;
+        this.velY = velY;
+    }
 
-	@Override
-	public void render(Graphics2D g)
-	{
-		g.setColor(Color.red);
-		g.fillRect((int) x, (int) y, 16, 16);
-	}
+    @Override
+    public void tick(ArrayList<GameObject> object)
+    {
+        x += velX;
+        y += velY;
+    }
 
-	@Override
-	public Rectangle getBounds() 
-	{
-		return new Rectangle((int) x, (int) y, 16, 16);
-	}
-	
-	
+    @Override
+    public void render(Graphics2D g)
+    {
+        g.setColor(Color.red);
+        g.fillRect((int) x, (int) y, 16, 16);
+    }
+
+    @Override
+    public Rectangle getBounds()
+    {
+        return new Rectangle((int) x, (int) y, 16, 16);
+    }
 
 }

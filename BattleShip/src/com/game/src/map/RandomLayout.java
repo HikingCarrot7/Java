@@ -74,7 +74,7 @@ public class RandomLayout
                     for (int i = posicionI, j = posicionJ; (horizontal ? j : i) < (horizontal ? posicionJ : posicionI) + LONGBARCOACTUAL;)
                     {
                         tempTablero[i][j] = 2;
- 
+
                         if (horizontal)
                         {
                             j++;

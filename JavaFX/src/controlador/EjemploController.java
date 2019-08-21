@@ -17,6 +17,7 @@ import javafx.scene.control.ToolBar;
  */
 public class EjemploController implements Initializable
 {
+
     @FXML
     private Button enviar;
     @FXML
@@ -27,23 +28,22 @@ public class EjemploController implements Initializable
     private Button button;
     @FXML
     private ColorPicker colorpicker;
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        
-    }    
+
+    }
 
     @FXML
     private void click(ActionEvent event)
     {
-        
+
     }
 
     @FXML
     private void bo(ActionEvent event)
     {
-        
+
     }
 }

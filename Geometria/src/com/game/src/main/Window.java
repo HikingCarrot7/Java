@@ -9,10 +9,11 @@ import javax.swing.JFrame;
  */
 public class Window extends JFrame
 {
+
     public Window(String titulo, int w, int h, Main main)
     {
         super(titulo);
-        
+
         main.setPreferredSize(new Dimension(w, h));
         main.setMaximumSize(new Dimension(w, h));
         main.setMinimumSize(new Dimension(w, h));

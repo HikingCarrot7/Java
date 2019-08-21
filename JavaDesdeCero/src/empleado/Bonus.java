@@ -1,8 +1,8 @@
 package empleado;
 
-public interface Bonus 
+public interface Bonus
 {
-	
-	public static final double bonus = 500;
+
+    public static final double bonus = 500;
 
 }

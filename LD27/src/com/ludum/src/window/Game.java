@@ -73,8 +73,8 @@ public class Game extends Canvas implements Runnable
         block_sheet = loader.loadImage("/block_sheet.png");
         background = loader.loadImage("/background.png");
 
-		//AudioPlayer.init();
-	//	AudioPlayer.getMusic("soundtrack").loop();
+        //AudioPlayer.init();
+        //	AudioPlayer.getMusic("soundtrack").loop();
         //font loading
         try
         {
@@ -191,9 +191,9 @@ public class Game extends Canvas implements Runnable
 
                 chunk_size++;
 
-				//if(Time.LEVEL > 1)
+                //if(Time.LEVEL > 1)
                 //	chunk_length -= 1;
-				//if(chunk_length <= 0) chunk_length = 1;
+                //if(chunk_length <= 0) chunk_length = 1;
                 Time.LEVEL++;
                 time.time = 9;
                 time.timeMil = 9;

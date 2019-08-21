@@ -10,8 +10,8 @@ import com.game.src.objects.Player;
 public class KeyInput extends KeyAdapter
 {
 
-    private Handler handler;
-    private Player player;
+    private final Handler handler;
+    private final Player player;
 
     public KeyInput(Handler handler, Player player)
     {

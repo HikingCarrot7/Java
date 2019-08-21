@@ -4,7 +4,6 @@ public class Coche
 {
 
     //--Private-- para encapsular y evitar que estas variables sean modificadas en otras clases
-
     private int ruedas, largo, ancho, motor, peso_plataforma;
 
     private String color = "";

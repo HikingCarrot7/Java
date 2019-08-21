@@ -12,31 +12,29 @@ public class Main extends Canvas
 {
 
     public static int ANCHO = 600, ALTO = 500;
-    
+
     public static void main(String[] args)
     {
-       new Window("Geometría", ANCHO, ALTO, new Main());
+        new Window("Geometría", ANCHO, ALTO, new Main());
     }
-    
+
     public void init()
     {
         createBufferStrategy(3);
     }
-    
-    public void tick(){}
-    
+
+    public void tick()
+    {
+    }
+
     public void render()
     {
         BufferStrategy bs = getBufferStrategy();
-        
-        
 
         Graphics2D g = (Graphics2D) bs.getDrawGraphics();
 
         g.dispose();
         bs.show();
     }
-    
-    
-    
+
 }

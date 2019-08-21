@@ -17,249 +17,244 @@ import javax.swing.JPanel;
 public class UsoThreads
 {
 
-	public static void main(String[] args)
-	{
+    public static void main(String[] args)
+    {
 
-		JFrame marco = new MarcoRebote();
+        JFrame marco = new MarcoRebote();
 
-		marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		marco.setVisible(true);
+        marco.setVisible(true);
 
-	}
+    }
 
 }
 
 class PelotaHilos implements Runnable
 {
 
-	private Container lamina;
+    private Container lamina;
 
-	private Pelota pelota;
+    private Pelota pelota;
 
-	public PelotaHilos(Container lamina, Pelota pelota)
-	{
-		this.lamina = lamina;
-		this.pelota = pelota;
-	}
+    public PelotaHilos(Container lamina, Pelota pelota)
+    {
+        this.lamina = lamina;
+        this.pelota = pelota;
+    }
 
-	@Override
-	public void run()
-	{
+    @Override
+    public void run()
+    {
 
-		// System.out.println(Thread.currentThread().isInterrupted());
+        // System.out.println(Thread.currentThread().isInterrupted());
+        while (!Thread.interrupted())
+        {
+            try
+            {
+                Thread.sleep(4);
 
-		while (!Thread.interrupted())
-			try
-			{
-				Thread.sleep(4);
+                pelota.mueve_pelota(lamina.getBounds());
 
-				pelota.mueve_pelota(lamina.getBounds());
+                lamina.paint(lamina.getGraphics());
 
-				lamina.paint(lamina.getGraphics());
+            } catch (InterruptedException e)
+            {
+                Thread.currentThread().interrupt();
+            }
+        }
 
-			} catch (InterruptedException e)
-			{
-				Thread.currentThread().interrupt();
-			}
-
-		// System.out.println(Thread.currentThread().isInterrupted());
-	}
+        // System.out.println(Thread.currentThread().isInterrupted());
+    }
 
 }
 
 //Movimiento de la pelota-----------------------------------------------------------------------------------------
-
 class Pelota
 {
 
-	// Mueve la pelota invirtiendo posición si choca con límites
+    // Mueve la pelota invirtiendo posiciï¿½n si choca con lï¿½mites
+    public void mueve_pelota(Rectangle2D limites)
+    {
 
-	public void mueve_pelota(Rectangle2D limites)
-	{
+        x += dx;
 
-		x += dx;
+        y += dy;
 
-		y += dy;
+        if (x < limites.getMinX())
+        {
 
-		if (x < limites.getMinX())
-		{
+            x = limites.getMinX();
 
-			x = limites.getMinX();
+            dx = -dx;
+        }
 
-			dx = -dx;
-		}
+        if (x + TAMX >= limites.getMaxX())
+        {
 
-		if (x + TAMX >= limites.getMaxX())
-		{
+            x = limites.getMaxX() - TAMX;
 
-			x = limites.getMaxX() - TAMX;
+            dx = -dx;
+        }
 
-			dx = -dx;
-		}
+        if (y < limites.getMinY())
+        {
 
-		if (y < limites.getMinY())
-		{
+            y = limites.getMinY();
 
-			y = limites.getMinY();
+            dy = -dy;
+        }
 
-			dy = -dy;
-		}
+        if (y + TAMY >= limites.getMaxY())
+        {
 
-		if (y + TAMY >= limites.getMaxY())
-		{
+            y = limites.getMaxY() - TAMY;
 
-			y = limites.getMaxY() - TAMY;
+            dy = -dy;
 
-			dy = -dy;
+        }
 
-		}
+    }
 
-	}
+    // Forma de la pelota en su posiciï¿½n inicial
+    public Ellipse2D getShape()
+    {
 
-	// Forma de la pelota en su posición inicial
+        return new Ellipse2D.Double(x, y, TAMX, TAMY);
+    }
 
-	public Ellipse2D getShape()
-	{
+    private static final int TAMX = 15;
 
-		return new Ellipse2D.Double(x, y, TAMX, TAMY);
-	}
+    private static final int TAMY = 15;
 
-	private static final int TAMX = 15;
+    private double x = 0;
 
-	private static final int TAMY = 15;
+    private double y = 0;
 
-	private double x = 0;
+    private double dx = 1;
 
-	private double y = 0;
-
-	private double dx = 1;
-
-	private double dy = 1;
+    private double dy = 1;
 
 }
 
-// Lámina que dibuja las pelotas----------------------------------------------------------------------
-
+// Lï¿½mina que dibuja las pelotas----------------------------------------------------------------------
 class LaminaPelota extends JPanel
 {
 
-	// Añadimos pelota a la lámina
+    // Aï¿½adimos pelota a la lï¿½mina
+    private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 1L;
+    public void add(Pelota b)
+    {
 
-	public void add(Pelota b)
-	{
+        pelotas.add(b);
+    }
 
-		pelotas.add(b);
-	}
+    public void paintComponent(Graphics g)
+    {
 
-	public void paintComponent(Graphics g)
-	{
+        super.paintComponent(g);
 
-		super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
 
-		Graphics2D g2 = (Graphics2D) g;
+        for (Pelota b : pelotas)
+        {
+            g2.fill(b.getShape());
+        }
+    }
 
-		for (Pelota b : pelotas)
-			g2.fill(b.getShape());
-	}
-
-	private ArrayList<Pelota> pelotas = new ArrayList<Pelota>();
+    private ArrayList<Pelota> pelotas = new ArrayList<Pelota>();
 }
 
-//Marco con lámina y botones------------------------------------------------------------------------------
-
+//Marco con lï¿½mina y botones------------------------------------------------------------------------------
 class MarcoRebote extends JFrame
 {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public MarcoRebote()
-	{
+    public MarcoRebote()
+    {
 
-		setBounds(600, 300, 400, 350);
+        setBounds(600, 300, 400, 350);
 
-		setTitle("Rebotes");
+        setTitle("Rebotes");
 
-		lamina = new LaminaPelota();
+        lamina = new LaminaPelota();
 
-		add(lamina, BorderLayout.CENTER);
+        add(lamina, BorderLayout.CENTER);
 
-		JPanel laminaBotones = new JPanel();
+        JPanel laminaBotones = new JPanel();
 
-		ponerBoton(laminaBotones, "Dale!", new ActionListener()
-		{
+        ponerBoton(laminaBotones, "Dale!", new ActionListener()
+        {
 
-			public void actionPerformed(ActionEvent evento)
-			{
+            public void actionPerformed(ActionEvent evento)
+            {
 
-				comienza_el_juego();
-			}
+                comienza_el_juego();
+            }
 
-		});
+        });
 
-		ponerBoton(laminaBotones, "Salir", new ActionListener()
-		{
+        ponerBoton(laminaBotones, "Salir", new ActionListener()
+        {
 
-			public void actionPerformed(ActionEvent evento)
-			{
+            public void actionPerformed(ActionEvent evento)
+            {
 
-				System.exit(0);
+                System.exit(0);
 
-			}
+            }
 
-		});
+        });
 
-		ponerBoton(laminaBotones, "Detener", new ActionListener()
-		{
+        ponerBoton(laminaBotones, "Detener", new ActionListener()
+        {
 
-			public void actionPerformed(ActionEvent evento)
-			{
+            public void actionPerformed(ActionEvent evento)
+            {
 
-				detener();
+                detener();
 
-			}
+            }
 
-		});
+        });
 
-		add(laminaBotones, BorderLayout.SOUTH);
-	}
+        add(laminaBotones, BorderLayout.SOUTH);
+    }
 
-	// Ponemos botones
+    // Ponemos botones
+    public void ponerBoton(Container c, String titulo, ActionListener oyente)
+    {
 
-	public void ponerBoton(Container c, String titulo, ActionListener oyente)
-	{
+        JButton boton = new JButton(titulo);
 
-		JButton boton = new JButton(titulo);
+        c.add(boton);
 
-		c.add(boton);
+        boton.addActionListener(oyente);
 
-		boton.addActionListener(oyente);
+    }
 
-	}
+    // Aï¿½ade pelota y la bota 1000 veces
+    public void comienza_el_juego()
+    {
 
-	// Añade pelota y la bota 1000 veces
+        Pelota pelota = new Pelota();
 
-	public void comienza_el_juego()
-	{
+        lamina.add(pelota);
 
-		Pelota pelota = new Pelota();
+        t = new Thread(new PelotaHilos(lamina, pelota));
 
-		lamina.add(pelota);
+        t.start();
+    }
 
-		t = new Thread(new PelotaHilos(lamina, pelota));
+    public void detener()
+    {
+        t.interrupt();
+    }
 
-		t.start();
-	}
+    private LaminaPelota lamina;
 
-	public void detener()
-	{
-		t.interrupt();
-	}
-
-	private LaminaPelota lamina;
-
-	private Thread t;
+    private Thread t;
 
 }

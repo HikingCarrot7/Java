@@ -53,27 +53,25 @@ public class Main extends Canvas implements Runnable
     }
 
     /**
-     * 
+     *
      * Inicia todos los elementos necesarios para que el juego comience.
-     * 
+     *
      * @see Ticker#Ticker(Main)
-     * 
-     * 
+     *
+     *
      */
     public void init()
     {
         createBufferStrategy(3);
-        
-        
 
         thread = new Thread(this);
         randomLayout = new RandomLayout();
         placingShips = new PlacingShips(randomLayout);
         menu = new Menu(placingShips, randomLayout, this);
         mouseInput = new MouseInput(menu);
-        
+
         placingShips.setMenu(menu);
-        
+
         addMouseListener(mouseInput);
         addMouseMotionListener(new MouseMotionInput(menu));
         addKeyListener(new KeyInput(menu));

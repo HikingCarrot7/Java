@@ -28,7 +28,7 @@ public class KeyBoard implements KeyListener
 
     }
 
-	//interaccion con el teclado
+    //interaccion con el teclado
     @Override
     public void keyPressed(KeyEvent e)
     {//presion de la tecla

@@ -47,7 +47,7 @@ class XD implements Prueba
     @Override
     public void obtener()
     {
-		// TODO Auto-generated method stub
+        // TODO Auto-generated method stub
 
     }
 

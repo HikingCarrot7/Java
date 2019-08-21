@@ -40,9 +40,9 @@ public abstract class MovingObject extends GameObject
 
         for (MovingObject currentObject : objects)
         {
-            
+
             MovingObject tempObject = currentObject;
-            
+
             if (tempObject.equals(this))
             {
                 continue;
@@ -55,7 +55,7 @@ public abstract class MovingObject extends GameObject
                 if (ObjectCollision(tempObject, this))
                 {
                     tempObject.Destroy();
-                    
+
                     this.Destroy();
 
                 }
@@ -64,7 +64,7 @@ public abstract class MovingObject extends GameObject
         }
 
     }
-    
+
     public abstract void Destroy();
 
     private boolean ObjectCollision(MovingObject a, MovingObject b)

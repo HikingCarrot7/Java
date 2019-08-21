@@ -19,11 +19,11 @@ public abstract class MovingObject extends GameObject
     public MovingObject(Vector2D position, Vector2D velocity, double maxVel, BufferedImage texture, GameState gameState)
     {
         super(position, texture);
-        
+
         this.velocity = velocity;
         this.maxVel = maxVel;
         this.gameState = gameState;
-        
+
         width = texture.getWidth();
         height = texture.getHeight();
         angle = 0;

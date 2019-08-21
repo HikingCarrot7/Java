@@ -35,10 +35,10 @@ public final class Lamina extends JPanel
     {
         {
             new JMenuItem("Guardar"), new JMenuItem("Guardar como...")
-        }, 
+        },
         {
             new JMenuItem("Editar")
-        }, 
+        },
         {
             new JMenuItem("Copiar"), new JMenuItem("Pegar"), new JMenuItem("Cortar")
         }

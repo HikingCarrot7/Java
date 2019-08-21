@@ -18,8 +18,8 @@ public class HUD
 
     private int score = 0, level = 1;
 
-    private Game game;
-    private Handler handler;
+    private final Game game;
+    private final Handler handler;
 
     public HUD(Game game, Handler handler)
     {

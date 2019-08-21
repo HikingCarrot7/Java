@@ -14,7 +14,6 @@ public class Mensaje implements Serializable
     private String nick, ip, mensaje;
     private boolean control;
 
-
     public String getNick()
     {
         return nick;
@@ -44,7 +43,7 @@ public class Mensaje implements Serializable
     {
         this.mensaje = mensaje;
     }
-    
+
     public boolean isControl()
     {
         return control;

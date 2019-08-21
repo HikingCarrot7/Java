@@ -89,7 +89,7 @@ public class Ufo extends MovingObject
             Destroy();
         }
 
-		//disparo
+        //disparo
         if (!fireRate.isRunning())
         {
 

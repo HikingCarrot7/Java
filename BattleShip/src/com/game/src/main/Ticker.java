@@ -1,7 +1,7 @@
 package com.game.src.main;
 
 /**
- *Este es el corazón del juego, desde aquí se renderozan todas las imágenes y se actualizan las posiciones de todos los objectos.
+ * Este es el corazï¿½n del juego, desde aquï¿½ se renderozan todas las imï¿½genes y se actualizan las posiciones de todos los objectos.
  *
  *
  * @author HikingCarrot7

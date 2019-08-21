@@ -7,16 +7,20 @@ import javax.imageio.ImageIO;
 
 public class BufferedImageLoader
 {
-	public BufferedImage loadImage(String path) 
-	{
-		try 
-		{
-			return ImageIO.read(getClass().getResource(path));
-			
-		} catch (IOException e) {}
-		
-		return null;
-		
-	}
+
+    public BufferedImage loadImage(String path)
+    {
+        try
+        {
+            return ImageIO.read(getClass().getResource(path));
+
+        } catch (IOException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return null;
+
+    }
 
 }

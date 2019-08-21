@@ -1,20 +1,21 @@
 package alumos;
 
-public class Alumnos 
+public class Alumnos
 {
-	private String nombre;
-	private int edad;
-	
-	public Alumnos(String nombre, int edad) 
-	{
-		this.nombre = nombre;
-		this.edad = edad;
-	}
-	
-	@Override
-	public String toString() 
-	{
-		return String.format("%-20s %s", "Nombre: " + nombre, edad + " años.");
-	}
-	
+
+    private String nombre;
+    private int edad;
+
+    public Alumnos(String nombre, int edad)
+    {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    @Override
+    public String toString()
+    {
+        return String.format("%-20s %s", "Nombre: " + nombre, edad + " aï¿½os.");
+    }
+
 }

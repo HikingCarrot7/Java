@@ -175,7 +175,7 @@ public class GameState
             }
 
         }
-        
+
         for (MovingObject movingObject : movingObjects)
         {
             if (movingObject instanceof Meteor)
@@ -247,7 +247,7 @@ public class GameState
             {
                 break;
             }
-            
+
             g.drawImage(Assets.numbers[number],
                     (int) pos.getX() + 60, (int) pos.getY() + 5, null);
             pos.setX(pos.getX() + 20);

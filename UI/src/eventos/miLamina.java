@@ -149,28 +149,28 @@ class EventoMouse implements MouseListener, MouseMotionListener
     @Override
     public void mouseMoved(MouseEvent e)
     {
-		//System.out.println("Coordinates in X: " + e.getX() + " Y: " + e.getY());
+        //System.out.println("Coordinates in X: " + e.getX() + " Y: " + e.getY());
 
     }
 
     @Override
     public void mouseEntered(MouseEvent arg0)
     {
-		// TODO Auto-generated method stub
+        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void mouseExited(MouseEvent arg0)
     {
-		// TODO Auto-generated method stub
+        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void mouseReleased(MouseEvent arg0)
     {
-		// TODO Auto-generated method stub
+        // TODO Auto-generated method stub
 
     }
 

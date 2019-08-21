@@ -12,123 +12,130 @@ import com.ludum.src.interfaces.Texture;
 
 public class Lava extends Entity implements GameObject
 {
-	
-	private int speed = 5;
-	private float velX = 0, velY = 0;
-	
-	private Animation lava, lava_base;
-	
-	public Lava(int x, int y, Texture tex, ObjectId id) {
-		super(x, y, tex, id);
-	
-		lava = new Animation(14, tex.block[5], tex.block[6], tex.block[7]);
-		lava_base = new Animation(14, tex.block[8], tex.block[9], tex.block[10]);
-	}
 
-	
-	public void tick(LinkedList<GameObject> object) 
-	{
-		lava.runAnimation();
-		lava_base.runAnimation();
-	}
+    private int speed = 5;
+    private float velX = 0, velY = 0;
 
-	
-	public void render(Graphics g) 
-	{		
-		if(id == ObjectId.Lava)
-			lava.drawAnimation(g, x, y);
-		else if(id == ObjectId.LavaBase)
-			lava_base.drawAnimation(g, x, y);
-		
-		for(int yy = y + 32; yy < 512; yy += 32)
-		{
-			if(id == ObjectId.Lava)
-				lava_base.drawAnimation(g, x, yy);
-		}
-	}
+    private Animation lava, lava_base;
 
-	
-	public Rectangle getBounds() {
-		return new Rectangle(x, y, 32, 256);
-	}
+    public Lava(int x, int y, Texture tex, ObjectId id)
+    {
+        super(x, y, tex, id);
 
-	
-	public int getX() {
-		return x;
-	}
+        lava = new Animation(14, tex.block[5], tex.block[6], tex.block[7]);
+        lava_base = new Animation(14, tex.block[8], tex.block[9], tex.block[10]);
+    }
 
-	
-	public int getY() {
-		return y;
-	}
+    public void tick(LinkedList<GameObject> object)
+    {
+        lava.runAnimation();
+        lava_base.runAnimation();
+    }
 
-	
-	public void setX(int x) {
-		this.x = x;
-	}
+    public void render(Graphics g)
+    {
+        if (id == ObjectId.Lava)
+        {
+            lava.drawAnimation(g, x, y);
+        } else if (id == ObjectId.LavaBase)
+        {
+            lava_base.drawAnimation(g, x, y);
+        }
 
-	
-	public void setY(int y) {
-		this.y = y;
-	}
+        for (int yy = y + 32; yy < 512; yy += 32)
+        {
+            if (id == ObjectId.Lava)
+            {
+                lava_base.drawAnimation(g, x, yy);
+            }
+        }
+    }
 
-	
-	public float getVelX() {
-		return velX;
-	}
+    public Rectangle getBounds()
+    {
+        return new Rectangle(x, y, 32, 256);
+    }
 
-	
-	public float getVelY() {
-		return velY;
-	}
+    public int getX()
+    {
+        return x;
+    }
 
-	
-	public void setVelX(float velX) {
-		this.velX = velX;
-	}
+    public int getY()
+    {
+        return y;
+    }
 
-	
-	public void setVelY(float velY) {
-		this.velY = velY;
-	}
+    public void setX(int x)
+    {
+        this.x = x;
+    }
 
-	
-	public void setFallSpeed(float FallSpeed) {
-	}
+    public void setY(int y)
+    {
+        this.y = y;
+    }
 
-	
-	public float getFallSpeed() {
-		return 0;
-	}
+    public float getVelX()
+    {
+        return velX;
+    }
 
-	
-	public boolean getJumping() {
-		return false;
-	}
+    public float getVelY()
+    {
+        return velY;
+    }
 
-	
-	public void setJumping(boolean isJumping) {
-	}
+    public void setVelX(float velX)
+    {
+        this.velX = velX;
+    }
 
-	
-	public void setFalling(boolean isFalling) {
-	}
+    public void setVelY(float velY)
+    {
+        this.velY = velY;
+    }
 
-	public boolean getFalling() {
-		return false;
-	}
-	
-	public boolean getMove(){
-		return false;
-	}
-	
-	public int getSpeed() {
-		return speed;
-	}
+    public void setFallSpeed(float FallSpeed)
+    {
+    }
 
-	
-	public ObjectId getId() {
-		return id;
-	}
+    public float getFallSpeed()
+    {
+        return 0;
+    }
+
+    public boolean getJumping()
+    {
+        return false;
+    }
+
+    public void setJumping(boolean isJumping)
+    {
+    }
+
+    public void setFalling(boolean isFalling)
+    {
+    }
+
+    public boolean getFalling()
+    {
+        return false;
+    }
+
+    public boolean getMove()
+    {
+        return false;
+    }
+
+    public int getSpeed()
+    {
+        return speed;
+    }
+
+    public ObjectId getId()
+    {
+        return id;
+    }
 
 }

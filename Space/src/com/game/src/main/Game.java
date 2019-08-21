@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 
 import com.game.src.main.animations.ExplosionAnimation;
 
-public class Game extends Canvas implements Runnable 
+public class Game extends Canvas implements Runnable
 {
 
     private static final long serialVersionUID = 1L;
@@ -89,7 +89,7 @@ public class Game extends Canvas implements Runnable
 
     private synchronized void start()
     {
-        if (!running) 
+        if (!running)
         {
             running = true;
 
@@ -102,14 +102,15 @@ public class Game extends Canvas implements Runnable
 
     public synchronized void stop()
     {
-        if (running) {
+        if (running)
+        {
             running = false;
 
             System.exit(1);
         }
     }
 
-    public void init() 
+    public void init()
     {
         explosion = new ExplosionAnimation(false);
 
@@ -139,7 +140,7 @@ public class Game extends Canvas implements Runnable
     }
 
     @Override
-    public void run() 
+    public void run()
     {
         init();
 
@@ -152,7 +153,7 @@ public class Game extends Canvas implements Runnable
         frames = 0;
         timer = System.currentTimeMillis();
 
-        while (running) 
+        while (running)
         {
             long now = System.nanoTime();
 
@@ -160,7 +161,7 @@ public class Game extends Canvas implements Runnable
 
             lastTime = now;
 
-            if (delta >= 1) 
+            if (delta >= 1)
             {
                 tick();
                 update++;
@@ -175,7 +176,7 @@ public class Game extends Canvas implements Runnable
         stop();
     }
 
-    private void tick() 
+    private void tick()
     {
 
         if (state.equals(STATE.GAME))
@@ -205,14 +206,14 @@ public class Game extends Canvas implements Runnable
 
         g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
 
-        if (state.equals(STATE.GAME)) 
+        if (state.equals(STATE.GAME))
         {
-            if (VIDA > 0) 
+            if (VIDA > 0)
             {
                 player.render(g);
             }
 
-            if (player.getMuerte()) 
+            if (player.getMuerte())
             {
                 g.setColor(Color.white);
                 g.setFont(new Font("serif", Font.BOLD, 50));
@@ -221,7 +222,7 @@ public class Game extends Canvas implements Runnable
                 g.drawString("Reset", ANCHO / 2 + 70 + 40, reset.y + 42);
                 g.drawString("You died!", reset.x - 5, reset.y - 20);
 
-                if (reset.y >= LARGO) 
+                if (reset.y >= LARGO)
                 {
                     reset.y = LARGO;
                 }
@@ -239,7 +240,7 @@ public class Game extends Canvas implements Runnable
             g.setColor(Color.white);
             g.drawRect(5, 5, 200, 20);
 
-        } else 
+        } else
         {
             menu.render((Graphics2D) g);
         }
@@ -251,7 +252,7 @@ public class Game extends Canvas implements Runnable
 
     }
 
-    public void setCoordenadasExp(boolean iniciar, int x, int y) 
+    public void setCoordenadasExp(boolean iniciar, int x, int y)
     {
         explosion.setIniciar(iniciar);
         explosion.setX(x);
@@ -263,12 +264,12 @@ public class Game extends Canvas implements Runnable
         return enemigosDestruidos;
     }
 
-    public void setEnemigosDestruidos(int enemigosDestruidos) 
+    public void setEnemigosDestruidos(int enemigosDestruidos)
     {
         this.enemigosDestruidos = enemigosDestruidos;
     }
 
-    public Rectangle getReset() 
+    public Rectangle getReset()
     {
         return reset;
     }
@@ -300,7 +301,7 @@ public class Game extends Canvas implements Runnable
 
     }
 
-    public void dibujarFps(Graphics2D g) 
+    public void dibujarFps(Graphics2D g)
     {
 
         g.setColor(Color.white);
@@ -320,29 +321,29 @@ public class Game extends Canvas implements Runnable
         }
     }
 
-    public void keyPressed(KeyEvent e) 
+    public void keyPressed(KeyEvent e)
     {
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_RIGHT) 
+        if (key == KeyEvent.VK_RIGHT)
         {
             player.setVelX(5);
 
-        } else if (key == KeyEvent.VK_LEFT) 
+        } else if (key == KeyEvent.VK_LEFT)
         {
             player.setVelX(-5);
 
-        } else if (key == KeyEvent.VK_UP) 
+        } else if (key == KeyEvent.VK_UP)
         {
             player.setVelY(-5);
 
-        } else if (key == KeyEvent.VK_DOWN) 
+        } else if (key == KeyEvent.VK_DOWN)
         {
             player.setVelY(5);
 
-        } else if (key == KeyEvent.VK_ENTER && !player.getMuerte()) 
+        } else if (key == KeyEvent.VK_ENTER && !player.getMuerte())
         {
-            if (!disparando) 
+            if (!disparando)
             {
                 controller.addEntity(controller.obtenerEntidadesA(), new Bullet(player.getX() + player.anchoPlayer() / 2 - 5, player.getY() - player.largoPlayer() / 2 - 10));
             }
@@ -352,19 +353,19 @@ public class Game extends Canvas implements Runnable
         }
     }
 
-    public void keyReleased(KeyEvent e) 
+    public void keyReleased(KeyEvent e)
     {
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_RIGHT) 
+        if (key == KeyEvent.VK_RIGHT)
         {
             player.setVelX(0);
 
-        } else if (key == KeyEvent.VK_LEFT) 
+        } else if (key == KeyEvent.VK_LEFT)
         {
             player.setVelX(0);
 
-        } else if (key == KeyEvent.VK_UP) 
+        } else if (key == KeyEvent.VK_UP)
         {
             player.setVelY(0);
 
@@ -372,7 +373,7 @@ public class Game extends Canvas implements Runnable
         {
             player.setVelY(0);
 
-        } else if (key == KeyEvent.VK_ENTER) 
+        } else if (key == KeyEvent.VK_ENTER)
         {
             disparando = false;
         }

@@ -211,7 +211,7 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
             {
 
                 Socket envioDatos = new Socket(host, 9999);
-                
+
                 enemigo.modificarTablero(fila, columna, 3, false);
 
                 explosiones.add(new Explosion(columna * 24 + 130, fila * 24 + 420, Color.red));

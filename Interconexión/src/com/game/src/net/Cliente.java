@@ -12,8 +12,9 @@ import java.net.Socket;
  *
  * @author HikingCarrot
  */
-public final class Cliente 
+public final class Cliente
 {
+
     private Socket cliente;
     private DataOutputStream out;
     private DataInputStream in;
@@ -21,54 +22,53 @@ public final class Cliente
     private Thread thread;
     private String newUser = "newUser";
     private RenderHandler renderHandler;
-    
+
     public Cliente(RenderHandler renderHandler)
     {
         this.renderHandler = renderHandler;
-        
+
         iniciarCliente();
     }
-    
+
     public void iniciarCliente()
     {
-        thread = new Thread(()->
+        thread = new Thread(() ->
         {
-            while(true)
+            while (true)
             {
-                try 
+                try
                 {
                     Thread.sleep(1);
-                    
-                } catch (InterruptedException ex) 
+
+                } catch (InterruptedException ex)
                 {
                     System.out.println(ex.getMessage());
                 }
-                
-                while (renderHandler.getPlayer() == null ? true : renderHandler.getPlayer().isMoving()) 
+
+                while (renderHandler.getPlayer() == null ? true : renderHandler.getPlayer().isMoving())
                 {
-                    try 
+                    try
                     {
                         cliente = new Socket("192.168.0.9", 9999);
                         out = new DataOutputStream(cliente.getOutputStream());
                         in = new DataInputStream(cliente.getInputStream());
-                        
+
                         out.writeUTF(newUser);
-                        
-                        if(!newUser.equals("null"))
+
+                        if (!newUser.equals("null"))
                         {
                             currentPlayer = Integer.parseInt(in.readUTF());
                             renderHandler.addObject(new Player(currentPlayer * 50, 100, GameId.Player, currentPlayer));
                             newUser = "null";
                         }
-                        
+
                         out.writeUTF(currentPlayer + "");
-                        
+
                         out.writeUTF("X: " + renderHandler.getPlayer().getX() + " Y: " + renderHandler.getPlayer().getY());
-                        
+
                         /*cliente.close();
-                        out.close();*/
-                        
-                    } catch (IOException ex) 
+                         out.close();*/
+                    } catch (IOException ex)
                     {
                         System.out.println(ex.getMessage());
                     }
@@ -76,14 +76,14 @@ public final class Cliente
                 }
             }
         });
-        
+
         thread.start();
-    
+
     }
-    
+
     public int getCurrentPlayer()
     {
         return currentPlayer;
     }
-    
+
 }

@@ -11,27 +11,27 @@ import com.game.src.framework.ObjectId;
 public class Flag extends GameObject
 {
 
-	public Flag(float x, float y, ObjectId id) 
-	{
-		super(x, y, id);
-	}
+    public Flag(float x, float y, ObjectId id)
+    {
+        super(x, y, id);
+    }
 
-	@Override
-	public void tick(ArrayList<GameObject> object) 
-	{
-		
-	}
+    @Override
+    public void tick(ArrayList<GameObject> object)
+    {
 
-	@Override
-	public void render(Graphics2D g)
-	{
-		g.setColor(Color.yellow);
-		g.fillOval((int) x, (int) y, 32, 32);
-	}
+    }
 
-	@Override
-	public Rectangle getBounds() 
-	{
-		return new Rectangle((int) x, (int) y, 32, 32);
-	}
+    @Override
+    public void render(Graphics2D g)
+    {
+        g.setColor(Color.yellow);
+        g.fillOval((int) x, (int) y, 32, 32);
+    }
+
+    @Override
+    public Rectangle getBounds()
+    {
+        return new Rectangle((int) x, (int) y, 32, 32);
+    }
 }

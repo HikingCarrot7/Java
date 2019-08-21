@@ -10,14 +10,15 @@ import java.util.ArrayList;
  */
 public class GameState
 {
+
     private Player player;
     private final ArrayList<MovingObject> objects;
-    
+
     public GameState()
     {
         objects = new ArrayList<>();
     }
-    
+
     public ArrayList<MovingObject> getMovingObjects()
     {
         return objects;

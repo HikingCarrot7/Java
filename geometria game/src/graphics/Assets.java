@@ -9,19 +9,19 @@ public class Assets
     public static BufferedImage player;
     public static BufferedImage blueLaser, greenLaser, redLaser;
 
-	//enemigo
+    //enemigo
     public static BufferedImage ufo;
 
-	//vida 
+    //vida 
     public static BufferedImage life;
 
-	//puntaje
+    //puntaje
     public static BufferedImage[] numbers = new BufferedImage[11];
 
-	//efecto de exlosion
+    //efecto de exlosion
     public static BufferedImage[] exp = new BufferedImage[9];
 
-	//meteoros
+    //meteoros
     public static BufferedImage[] bigs = new BufferedImage[4];
     public static BufferedImage[] meds = new BufferedImage[2];
     public static BufferedImage[] smalls = new BufferedImage[2];

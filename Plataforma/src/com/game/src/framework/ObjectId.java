@@ -1,11 +1,11 @@
 package com.game.src.framework;
 
-public enum ObjectId 
+public enum ObjectId
 {
-	
-	Player(),
-	Block(),
-	Bullet(),
-	Flag();
+
+    Player(),
+    Block(),
+    Bullet(),
+    Flag();
 
 }

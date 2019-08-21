@@ -65,7 +65,7 @@ public class Map
                     {
                         MappedTile mappedTile = new MappedTile(Integer.parseInt(splitString[0]), Integer.parseInt(splitString[1]), Integer.parseInt(splitString[2]));
 
-						//se est� buscando el bloque que este m�s cerca y el que est� m�s alejado
+                        //se est� buscando el bloque que este m�s cerca y el que est� m�s alejado
                         if (mappedTile.x < minX)
                         {
                             minX = mappedTile.x;

@@ -17,7 +17,7 @@ public class PruebaCliente
         try
         {
             new Cliente(InetAddress.getLocalHost().getHostAddress());
-            
+
         } catch (UnknownHostException ex)
         {
             System.out.println(ex.getMessage());

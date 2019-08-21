@@ -14,11 +14,11 @@ public class Super
         ArrayList<C> lista = new ArrayList<>();
 
         C<E> c = new C<>();
-        
+
         B<D> b = new B<>();
 
         System.out.println(c.getStatus(b));
-        
+
         System.out.println(new C<>().getStatusC(new D()));
 
     }
@@ -31,12 +31,12 @@ class A<T>
     {
         return "Estoy dentro de la clase A";
     }
-    
+
     public String getStatusA()
     {
         return "Hola desde la clase A";
     }
-    
+
 }
 
 class B<T> extends A
@@ -47,17 +47,17 @@ class B<T> extends A
     {
         return "Estoy dentro de la clase B";
     }
-    
+
     public String getStatusB()
     {
         return "Hola desde la clase B";
     }
-    
+
     public void Saludar(T t)
     {
-        
+
     }
-    
+
 }
 
 class C<T extends D> extends B
@@ -65,15 +65,15 @@ class C<T extends D> extends B
 
     public String getStatus(B<? extends D> t)
     {
-        
+
         return t.getStatusB();
     }
-    
+
     public String getStatusC(T t)
     {
         return t.getStatusD();
     }
-    
+
 }
 
 class D<T>

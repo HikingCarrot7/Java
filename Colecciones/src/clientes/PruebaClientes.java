@@ -25,7 +25,7 @@ public class PruebaClientes
         clientes.add(c3);
         clientes.add(c4);
         clientes.add(c5);
-        
+
         for (Iterator<Clientes> cliente = clientes.iterator(); cliente.hasNext();)
         {
             System.out.println(cliente.next().getNombre());

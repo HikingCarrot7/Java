@@ -13,116 +13,120 @@ import com.ludum.src.window.Controller;
 
 public class Coin extends Entity implements GameObject
 {
-	
-	private int speed = 5;
-	private float velX = 0, velY = 0;
-	
-	private Animation coin;
-	Controller controller;
-	
-	public Coin(int x, int y, Texture tex, ObjectId id, Controller controller) {
-		super(x, y, tex, id);
-	
-		this.controller = controller;
-		
-		coin = new Animation(9, tex.coin[0], tex.coin[1], tex.coin[2], tex.coin[3], tex.coin[4], tex.coin[5], tex.coin[6], tex.coin[7], tex.coin[8]);
-	}
 
-	
-	public void tick(LinkedList<GameObject> object) 
-	{
-		coin.runAnimation();
-	}
+    private int speed = 5;
+    private float velX = 0, velY = 0;
 
-	
-	public void render(Graphics g) 
-	{		
-		if(id == ObjectId.Coin)
-			coin.drawAnimation(g, x, y);
-	}
+    private Animation coin;
+    Controller controller;
 
-	
-	public Rectangle getBounds() {
-		return new Rectangle(x, y, 32, 32);
-	}
+    public Coin(int x, int y, Texture tex, ObjectId id, Controller controller)
+    {
+        super(x, y, tex, id);
 
-	
-	public int getX() {
-		return x;
-	}
+        this.controller = controller;
 
-	
-	public int getY() {
-		return y;
-	}
+        coin = new Animation(9, tex.coin[0], tex.coin[1], tex.coin[2], tex.coin[3], tex.coin[4], tex.coin[5], tex.coin[6], tex.coin[7], tex.coin[8]);
+    }
 
-	
-	public void setX(int x) {
-		this.x = x;
-	}
+    public void tick(LinkedList<GameObject> object)
+    {
+        coin.runAnimation();
+    }
 
-	
-	public void setY(int y) {
-		this.y = y;
-	}
+    public void render(Graphics g)
+    {
+        if (id == ObjectId.Coin)
+        {
+            coin.drawAnimation(g, x, y);
+        }
+    }
 
-	
-	public float getVelX() {
-		return velX;
-	}
+    public Rectangle getBounds()
+    {
+        return new Rectangle(x, y, 32, 32);
+    }
 
-	
-	public float getVelY() {
-		return velY;
-	}
+    public int getX()
+    {
+        return x;
+    }
 
-	
-	public void setVelX(float velX) {
-		this.velX = velX;
-	}
+    public int getY()
+    {
+        return y;
+    }
 
-	
-	public void setVelY(float velY) {
-		this.velY = velY;
-	}
+    public void setX(int x)
+    {
+        this.x = x;
+    }
 
-	
-	public void setFallSpeed(float FallSpeed) {
-	}
+    public void setY(int y)
+    {
+        this.y = y;
+    }
 
-	
-	public float getFallSpeed() {
-		return 0;
-	}
+    public float getVelX()
+    {
+        return velX;
+    }
 
-	
-	public boolean getJumping() {
-		return false;
-	}
+    public float getVelY()
+    {
+        return velY;
+    }
 
-	
-	public void setJumping(boolean isJumping) {
-	}
+    public void setVelX(float velX)
+    {
+        this.velX = velX;
+    }
 
-	
-	public void setFalling(boolean isFalling) {
-	}
+    public void setVelY(float velY)
+    {
+        this.velY = velY;
+    }
 
-	public boolean getFalling() {
-		return false;
-	}
-	
-	public boolean getMove(){
-		return false;
-	}
-	
-	public int getSpeed() {
-		return speed;
-	}
+    public void setFallSpeed(float FallSpeed)
+    {
+    }
 
-	
-	public ObjectId getId() {
-		return id;
-	}
+    public float getFallSpeed()
+    {
+        return 0;
+    }
+
+    public boolean getJumping()
+    {
+        return false;
+    }
+
+    public void setJumping(boolean isJumping)
+    {
+    }
+
+    public void setFalling(boolean isFalling)
+    {
+    }
+
+    public boolean getFalling()
+    {
+        return false;
+    }
+
+    public boolean getMove()
+    {
+        return false;
+    }
+
+    public int getSpeed()
+    {
+        return speed;
+    }
+
+    public ObjectId getId()
+    {
+        return id;
+    }
 
 }

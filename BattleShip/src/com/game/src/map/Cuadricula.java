@@ -22,7 +22,7 @@ public final class Cuadricula implements Drawable
     {
         this.INICIOX = INICIOX;
         this.INICIOY = INICIOY;
-        
+
         tablero = new int[ALTOTABLERO][ANCHOTABLERO];
 
         iniciarTablero();
@@ -31,7 +31,7 @@ public final class Cuadricula implements Drawable
     @Override
     public void tick()
     {
-        
+
     }
 
     @Override

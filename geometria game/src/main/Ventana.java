@@ -26,7 +26,7 @@ public class Ventana extends JFrame implements Runnable
     private Thread thread;
     private boolean running = false;
 
-	//controlador del ciclo while
+    //controlador del ciclo while
     //objetos para dibujar
     private BufferStrategy bs;
     private Graphics g;

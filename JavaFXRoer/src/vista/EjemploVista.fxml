@@ -10,18 +10,18 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="416.0" prefWidth="574.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.EjemploController">
-   <children>
-      <Button fx:id="btnBoton" layoutX="167.0" layoutY="374.0" mnemonicParsing="false" onAction="#click" prefHeight="28.0" prefWidth="241.0" text="Sumar!" />
-      <TextField fx:id="numero1" layoutX="14.0" layoutY="67.0" />
-      <TextField fx:id="numero2" layoutX="411.0" layoutY="67.0" AnchorPane.bottomAnchor="324.0" AnchorPane.leftAnchor="411.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="67.0" />
-      <Label layoutX="219.0" layoutY="6.0" prefHeight="17.0" prefWidth="136.0" text="Suma de números" textAlignment="CENTER" textFill="RED">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="62.0" layoutY="39.0" text="Número 1" />
-      <Label layoutX="459.0" layoutY="39.0" text="Número 2" />
-      <Label layoutX="261.0" layoutY="285.0" text="Resultado" />
-      <TextField fx:id="resultado" editable="false" layoutX="213.0" layoutY="325.0" />
-   </children>
+    <children>
+        <Button fx:id="btnBoton" layoutX="167.0" layoutY="374.0" mnemonicParsing="false" onAction="#click" prefHeight="28.0" prefWidth="241.0" text="Sumar!" />
+        <TextField fx:id="numero1" layoutX="14.0" layoutY="67.0" />
+        <TextField fx:id="numero2" layoutX="411.0" layoutY="67.0" AnchorPane.bottomAnchor="324.0" AnchorPane.leftAnchor="411.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="67.0" />
+        <Label layoutX="219.0" layoutY="6.0" prefHeight="17.0" prefWidth="136.0" text="Suma de números" textAlignment="CENTER" textFill="RED">
+            <font>
+                <Font name="Arial" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="62.0" layoutY="39.0" text="Número 1" />
+        <Label layoutX="459.0" layoutY="39.0" text="Número 2" />
+        <Label layoutX="261.0" layoutY="285.0" text="Resultado" />
+        <TextField fx:id="resultado" editable="false" layoutX="213.0" layoutY="325.0" />
+    </children>
 </AnchorPane>

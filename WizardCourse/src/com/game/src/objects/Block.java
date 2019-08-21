@@ -10,31 +10,30 @@ import com.game.src.framework.ObjectId;
 public class Block extends GameObject
 {
 
-	public Block(float x, float y, ObjectId id)
-	{
-		super(x, y, id);
-		
-	}
+    public Block(float x, float y, ObjectId id)
+    {
+        super(x, y, id);
 
-	@Override
-	public void tick() 
-	{
-		
-		
-	}
+    }
 
-	@Override
-	public void render(Graphics2D g) 
-	{
-		g.setColor(Color.white);
-		g.drawRect((int)x, (int)y, 32, 32);
-		
-	}
+    @Override
+    public void tick()
+    {
 
-	@Override
-	public Rectangle getBounds() 
-	{
-		return new Rectangle((int) x, (int) y, 32, 32);
-	}
+    }
+
+    @Override
+    public void render(Graphics2D g)
+    {
+        g.setColor(Color.white);
+        g.drawRect((int) x, (int) y, 32, 32);
+
+    }
+
+    @Override
+    public Rectangle getBounds()
+    {
+        return new Rectangle((int) x, (int) y, 32, 32);
+    }
 
 }

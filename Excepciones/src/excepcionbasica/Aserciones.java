@@ -14,7 +14,7 @@ public class Aserciones
         {
             System.out.println("Escriba un numero entre 0 - 10");
             num = in.nextInt();
-            
+
             assert (num >= 0 && num <= 10) : "Numero incorrecto: " + num;
 
             System.out.println("Se escribio el numero: " + num);

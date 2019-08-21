@@ -1,12 +1,13 @@
 package paneles;
 
-public class UsandoPanel {
+public class UsandoPanel
+{
 
-	public static void main(String[] args) 
-	{
-		
-		new MiFrame();
-		
-	}
+    public static void main(String[] args)
+    {
+
+        new MiFrame();
+
+    }
 
 }

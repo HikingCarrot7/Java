@@ -15,56 +15,57 @@ import java.awt.image.BufferStrategy;
  */
 public class Game extends Canvas
 {
+
     public static int ANCHO = 600, ALTO = 500;
 
     private RenderHandler renderHandler;
     private Servidor server;
     private Cliente cliente;
-    
-    public static void main(String[] args) 
+
+    public static void main(String[] args)
     {
         new Window(ANCHO, ALTO, "Interconexion", new Game());
     }
-    
+
     public synchronized void start()
     {
-        
+
     }
-    
+
     public void init()
     {
         createBufferStrategy(3);
-        
+
         renderHandler = new RenderHandler();
-        
+
         server = new Servidor();
         cliente = new Cliente(renderHandler);
-        
+
         addKeyListener(new KeyInput(renderHandler));
         requestFocus();
-    
+
     }
-    
+
     public void tick()
     {
         renderHandler.tick();
-        
+
     }
-    
+
     public void render()
     {
         BufferStrategy bs = getBufferStrategy();
-        
+
         Graphics2D g = (Graphics2D) bs.getDrawGraphics();
-        
+
         g.setColor(Color.black);
         g.fillRect(0, 0, ANCHO, ALTO);
-        
+
         renderHandler.render(g);
-        
+
         g.dispose();
         bs.show();
-    
+
     }
-    
+
 }

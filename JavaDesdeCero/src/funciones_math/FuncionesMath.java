@@ -1,34 +1,27 @@
 package funciones_math;
 
-public class FuncionesMath {
+public class FuncionesMath
+{
 
-	public static void main(String[] args) 
-	{
-		
-		//Las funciones básicas de Math reciben el ángulo en radianes 
+    public static void main(String[] args)
+    {
+
+		//Las funciones bï¿½sicas de Math reciben el ï¿½ngulo en radianes 
 		/*Math.cos();, Math.sin();, Math.tan();, Math.atan();, Math.round();, Math.pow();, Math.sqrt();*/
+        /*Podemos consultar todos los mï¿½todos (aquï¿½ en eclipse poniendo cuando escribamos el Math.)*/
+        //Sufijo F para las variables de tipo float   ejem 5.56F
+        //Refundiciones
+        int base = 10;
+        int exponente = 2;
+
+        double resultado = Math.pow(base, exponente);
+
+        /*
+         numero = Math.sin(numero);
 		
-		
-		/*Podemos consultar todos los métodos (aquí en eclipse poniendo cuando escribamos el Math.)*/
-		
-		//Sufijo F para las variables de tipo float   ejem 5.56F
-		
-		//Refundiciones
-		
-		int base = 10;
-		int exponente = 2;
-		
-		
-		double resultado = Math.pow(base, exponente);
-		
-		
-		/*
-		numero = Math.sin(numero);
-		
-		numero = Math.toDegrees(numero);*/
-		
-		System.out.printf("El resultado de elevar %d a %d es: %.2f", base, exponente, resultado);
-		
-	}
+         numero = Math.toDegrees(numero);*/
+        System.out.printf("El resultado de elevar %d a %d es: %.2f", base, exponente, resultado);
+
+    }
 
 }

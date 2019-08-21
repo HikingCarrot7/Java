@@ -27,10 +27,10 @@ public class Player extends MovingObject
     public Player(Vector2D position, Vector2D velocity, double maxVel, BufferedImage texture, GameState gameState)
     {
         super(position, velocity, maxVel, texture, gameState);//constructor de objeto movible
-        
+
         heading = new Vector2D(0, 1);
         acceleration = new Vector2D();
-        
+
         fireRate = new Cronometro();
         spawnTime = new Cronometro();
         flickerTime = new Cronometro();
@@ -86,14 +86,14 @@ public class Player extends MovingObject
         {
             acceleration = heading.scale(Constants.ACC);
             accelerating = true;
-            
+
         } else
         {
             if (velocity.getMagnitude() != 0)
             {
                 acceleration = (velocity.scale(-1).normalize()).scale(Constants.ACC);
             }
-            
+
             accelerating = false;
         }
 

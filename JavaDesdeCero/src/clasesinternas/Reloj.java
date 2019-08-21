@@ -14,9 +14,9 @@ public class Reloj
         Timer miTemporizador = new Timer(intervalo, (e) ->
         {
             Date ahora = new Date();
-            
+
             System.out.println("La hora es: " + ahora);
-            
+
             if (sonido)
             {
                 Toolkit.getDefaultToolkit().beep();

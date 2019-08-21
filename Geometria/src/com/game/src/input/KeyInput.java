@@ -6,5 +6,5 @@ package com.game.src.input;
  */
 public class KeyInput
 {
-    
+
 }

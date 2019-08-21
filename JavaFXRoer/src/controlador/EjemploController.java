@@ -10,8 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import modelo.Suma;
 
-public class EjemploController implements Initializable 
+public class EjemploController implements Initializable
 {
+
     @FXML
     private Button btnBoton;
     @FXML
@@ -21,27 +22,26 @@ public class EjemploController implements Initializable
     @FXML
     private TextField resultado;
 
-    
     @Override
-    public void initialize(URL url, ResourceBundle rb) 
+    public void initialize(URL url, ResourceBundle rb)
     {
-        
-    }    
+
+    }
 
     @FXML
-    private void click(ActionEvent e) 
+    private void click(ActionEvent e)
     {
         try
         {
             double n1 = Double.parseDouble(numero1.getText());
             double n2 = Double.parseDouble(numero2.getText());
-            
+
             resultado.setText(new Suma(n1, n2).suma() + "");
-            
-        }catch(NumberFormatException ex)
+
+        } catch (NumberFormatException ex)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            
+
             alert.setHeaderText(null);
             alert.setTitle("Error");
             alert.setContentText("Formato incorrecto");

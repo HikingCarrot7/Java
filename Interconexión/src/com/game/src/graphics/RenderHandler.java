@@ -10,62 +10,65 @@ import java.util.ArrayList;
  *
  * @author HikingCarrot
  */
-public class RenderHandler 
+public class RenderHandler
 {
+
     private ArrayList<GameObject> objects;
-    
+
     public RenderHandler()
     {
         objects = new ArrayList<>();
     }
-    
+
     public void tick()
     {
-        for (int i = 0; i < objects.size(); i++) 
+        for (int i = 0; i < objects.size(); i++)
         {
             GameObject object = objects.get(i);
-            
+
             object.tick();
         }
-        
+
     }
-    
+
     public void render(Graphics2D g)
     {
-        for (int i = 0; i < objects.size(); i++) 
+        for (int i = 0; i < objects.size(); i++)
         {
             GameObject object = objects.get(i);
-            
+
             object.render(g);
         }
-        
+
     }
-    
-    public ArrayList<GameObject> getObjects() 
+
+    public ArrayList<GameObject> getObjects()
     {
         return objects;
     }
 
-    public void addObject(GameObject object) 
+    public void addObject(GameObject object)
     {
         objects.add(object);
     }
-    
-    public void removeObject(GameObject object) 
+
+    public void removeObject(GameObject object)
     {
         objects.remove(object);
     }
-    
+
     public Player getPlayer()
     {
-        for (int i = 0; i < objects.size(); i++) 
+        for (int i = 0; i < objects.size(); i++)
         {
             GameObject object = objects.get(i);
-            
-            if(object.getGameId().equals(GameId.Player))
+
+            if (object.getGameId().equals(GameId.Player))
+            {
                 return (Player) object;
+            }
         }
-        
+
         return null;
     }
 }

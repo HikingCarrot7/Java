@@ -4,107 +4,107 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-public abstract class GameObject 
+public abstract class GameObject
 {
-	
-	protected float x, y;
-	
-	protected ObjectId id;
-	
-	protected float velX = 0, velY = 0;
-	
-	protected boolean falling = true, jumping = true; 
-	
-	protected int facing = 1;
-	
-	public GameObject(float x, float y, ObjectId id) 
-	{
-		this.x = x;
-		this.y = y;
-		
-		this.id = id;
-		
-	}
-	
-	public abstract void tick(ArrayList<GameObject> object);
-	
-	public abstract void render(Graphics2D g);
-	
-	public abstract Rectangle getBounds();
-	
-	public float getX() 
-	{
-		return x;
-	}
 
-	public void setX(int x) 
-	{
-		this.x = x;
-	}
+    protected float x, y;
 
-	public float getY() 
-	{
-		return y;
-	}
+    protected ObjectId id;
 
-	public void setY(int y) 
-	{
-		this.y = y;
-	}
+    protected float velX = 0, velY = 0;
 
-	public float getVelX() 
-	{
-		return velX;
-	}
+    protected boolean falling = true, jumping = true;
 
-	public void setVelX(int velX)
-	{
-		this.velX = velX;
-	}
+    protected int facing = 1;
 
-	public float getVelY() 
-	{
-		return velY;
-	}
+    public GameObject(float x, float y, ObjectId id)
+    {
+        this.x = x;
+        this.y = y;
 
-	public void setVelY(int velY) 
-	{
-		this.velY = velY;
-	}
+        this.id = id;
 
-	public boolean isFalling() 
-	{
-		return falling;
-	}
+    }
 
-	public void setFalling(boolean falling) 
-	{
-		this.falling = falling;
-	}
+    public abstract void tick(ArrayList<GameObject> object);
 
-	public int getFacing() 
-	{
-		return facing;
-	}
+    public abstract void render(Graphics2D g);
 
-	public void setFacing(int facing) 
-	{
-		this.facing = facing;
-	}
+    public abstract Rectangle getBounds();
 
-	public boolean isJumping() 
-	{
-		return jumping;
-	}
+    public float getX()
+    {
+        return x;
+    }
 
-	public void setJumping(boolean jumping) 
-	{
-		this.jumping = jumping;
-	}
+    public void setX(int x)
+    {
+        this.x = x;
+    }
 
-	public ObjectId getId() 
-	{
-		return id;
-	}
-	
+    public float getY()
+    {
+        return y;
+    }
+
+    public void setY(int y)
+    {
+        this.y = y;
+    }
+
+    public float getVelX()
+    {
+        return velX;
+    }
+
+    public void setVelX(int velX)
+    {
+        this.velX = velX;
+    }
+
+    public float getVelY()
+    {
+        return velY;
+    }
+
+    public void setVelY(int velY)
+    {
+        this.velY = velY;
+    }
+
+    public boolean isFalling()
+    {
+        return falling;
+    }
+
+    public void setFalling(boolean falling)
+    {
+        this.falling = falling;
+    }
+
+    public int getFacing()
+    {
+        return facing;
+    }
+
+    public void setFacing(int facing)
+    {
+        this.facing = facing;
+    }
+
+    public boolean isJumping()
+    {
+        return jumping;
+    }
+
+    public void setJumping(boolean jumping)
+    {
+        this.jumping = jumping;
+    }
+
+    public ObjectId getId()
+    {
+        return id;
+    }
+
 }

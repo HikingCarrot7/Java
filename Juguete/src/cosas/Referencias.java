@@ -110,21 +110,21 @@ public class Referencias
         Saludar s = r2::ReferenciaMetodoInstanciaParticular;
 
         s.saludar();
-        
+
         int z = 0;
-        
-        z=z++;
-        
+
         z = z++;
-        
+
         z = z++;
-        
+
         z = z++;
-        
+
         z = z++;
-        
-        System.out.println(z  + " Hola");
-        
+
+        z = z++;
+
+        System.out.println(z + " Hola");
+
     }
 
 }

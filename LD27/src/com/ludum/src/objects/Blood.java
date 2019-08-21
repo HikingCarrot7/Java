@@ -16,140 +16,153 @@ import com.ludum.src.window.Controller;
 
 public class Blood extends Entity implements GameObject
 {
-	
-	private int speed = 5;
-	private float velX = 0, velY = 0;
-	
-	Controller controller;
-	
-	private float ALPHA = 1.0f;
-	
-	Random r = new Random();
-	
-	public Blood(int x, int y, Texture tex, ObjectId id, Controller controller) {
-		super(x, y, tex, id);
-	
-		this.controller = controller;
-		
-		int z = r.nextInt(2);
-		
-		if(z == 0) velX = r.nextInt(3);
-		else velX = -r.nextInt(3);
-		
-		velY = -r.nextInt(4) + -1;
-		
-	}
 
-	private AlphaComposite makeTransparent(float alpha){
-		int type = AlphaComposite.SRC_OVER;
-		return(AlphaComposite.getInstance(type, alpha));}
-	
-	public void tick(LinkedList<GameObject> object) 
-	{
-		x += velX;
-		y += velY;
-		
-		if(ALPHA >= 0.1)
-			ALPHA -= 0.01f;
-		else
-			controller.removeObject(this);
-	}
+    private int speed = 5;
+    private float velX = 0, velY = 0;
 
-	
-	public void render(Graphics g) 
-	{		
-		Graphics2D g2d = (Graphics2D) g;
-		
-		g2d.setComposite(makeTransparent(ALPHA));
-		
-		g.setColor(Color.red);
-		g.fillOval(x, y, 6, 6);
-		
-		g2d.setComposite(makeTransparent(1));
-	}
+    Controller controller;
 
-	
-	public Rectangle getBounds() {
-		return new Rectangle(x, y, 32, 32);
-	}
+    private float ALPHA = 1.0f;
 
-	
-	public int getX() {
-		return x;
-	}
+    Random r = new Random();
 
-	
-	public int getY() {
-		return y;
-	}
+    public Blood(int x, int y, Texture tex, ObjectId id, Controller controller)
+    {
+        super(x, y, tex, id);
 
-	
-	public void setX(int x) {
-		this.x = x;
-	}
+        this.controller = controller;
 
-	
-	public void setY(int y) {
-		this.y = y;
-	}
+        int z = r.nextInt(2);
 
-	
-	public float getVelX() {
-		return velX;
-	}
+        if (z == 0)
+        {
+            velX = r.nextInt(3);
+        } else
+        {
+            velX = -r.nextInt(3);
+        }
 
-	
-	public float getVelY() {
-		return velY;
-	}
+        velY = -r.nextInt(4) + -1;
 
-	
-	public void setVelX(float velX) {
-		this.velX = velX;
-	}
+    }
 
-	
-	public void setVelY(float velY) {
-		this.velY = velY;
-	}
+    private AlphaComposite makeTransparent(float alpha)
+    {
+        int type = AlphaComposite.SRC_OVER;
+        return (AlphaComposite.getInstance(type, alpha));
+    }
 
-	
-	public void setFallSpeed(float FallSpeed) {
-	}
+    public void tick(LinkedList<GameObject> object)
+    {
+        x += velX;
+        y += velY;
 
-	
-	public float getFallSpeed() {
-		return 0;
-	}
+        if (ALPHA >= 0.1)
+        {
+            ALPHA -= 0.01f;
+        } else
+        {
+            controller.removeObject(this);
+        }
+    }
 
-	
-	public boolean getJumping() {
-		return false;
-	}
+    public void render(Graphics g)
+    {
+        Graphics2D g2d = (Graphics2D) g;
 
-	
-	public void setJumping(boolean isJumping) {
-	}
+        g2d.setComposite(makeTransparent(ALPHA));
 
-	
-	public void setFalling(boolean isFalling) {
-	}
+        g.setColor(Color.red);
+        g.fillOval(x, y, 6, 6);
 
-	public boolean getFalling() {
-		return false;
-	}
-	
-	public boolean getMove(){
-		return false;
-	}
-	
-	public int getSpeed() {
-		return speed;
-	}
+        g2d.setComposite(makeTransparent(1));
+    }
 
-	
-	public ObjectId getId() {
-		return id;
-	}
+    public Rectangle getBounds()
+    {
+        return new Rectangle(x, y, 32, 32);
+    }
+
+    public int getX()
+    {
+        return x;
+    }
+
+    public int getY()
+    {
+        return y;
+    }
+
+    public void setX(int x)
+    {
+        this.x = x;
+    }
+
+    public void setY(int y)
+    {
+        this.y = y;
+    }
+
+    public float getVelX()
+    {
+        return velX;
+    }
+
+    public float getVelY()
+    {
+        return velY;
+    }
+
+    public void setVelX(float velX)
+    {
+        this.velX = velX;
+    }
+
+    public void setVelY(float velY)
+    {
+        this.velY = velY;
+    }
+
+    public void setFallSpeed(float FallSpeed)
+    {
+    }
+
+    public float getFallSpeed()
+    {
+        return 0;
+    }
+
+    public boolean getJumping()
+    {
+        return false;
+    }
+
+    public void setJumping(boolean isJumping)
+    {
+    }
+
+    public void setFalling(boolean isFalling)
+    {
+    }
+
+    public boolean getFalling()
+    {
+        return false;
+    }
+
+    public boolean getMove()
+    {
+        return false;
+    }
+
+    public int getSpeed()
+    {
+        return speed;
+    }
+
+    public ObjectId getId()
+    {
+        return id;
+    }
 
 }

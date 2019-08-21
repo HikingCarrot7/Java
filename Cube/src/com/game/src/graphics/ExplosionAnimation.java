@@ -8,7 +8,7 @@ import java.util.Random;
 public class ExplosionAnimation
 {
 
-    private ArrayList<Particles> particulas;
+    private final ArrayList<Particles> particulas;
 
     public ExplosionAnimation(float x, float y)
     {
@@ -22,10 +22,11 @@ public class ExplosionAnimation
 
     public void tick()
     {
-        for (Particles P : particulas)
+        particulas.stream().forEach((P) ->
         {
             P.tick();
-        }
+
+        });
     }
 
     public void render(Graphics2D g)
@@ -39,7 +40,7 @@ public class ExplosionAnimation
     private class Particles
     {
 
-        private Random rand;
+        private final Random rand;
 
         private float x, y, velX, velY;
 

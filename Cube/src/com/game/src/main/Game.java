@@ -147,11 +147,11 @@ public class Game extends Canvas
         if (gameState.equals(STATE.Game))
         {
             hud.render(g);
-            
+
         } else if (gameState.equals(STATE.Shop))
         {
             shop.render(g);
-            
+
         } else
         {
             menu.render(g);
@@ -174,11 +174,11 @@ public class Game extends Canvas
             if (i < 10)
             {
                 handler.addObject(new MenuBackground(rand.nextInt(ANCHO / 2 - 100), rand.nextInt(Game.ALTO - 50), ObjectId.MenuBackgroudParticle, handler, menu));
-                
+
             } else
             {
                 handler.addObject(new MenuBackground(ANCHO / 2 + 100 + rand.nextInt(100), rand.nextInt(Game.ALTO - 50), ObjectId.MenuBackgroudParticle, handler, menu));
-                
+
             }
         }
     }

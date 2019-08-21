@@ -7,7 +7,7 @@ public class UsoCoche
     {
         //Instanciar una clase (Nissan es una instancia de la clase Coche). Ejemplar de la clase Coche.
         Coche Nissan = new Coche();
-		//Busca la clase coche//Se invoca al constructor
+        //Busca la clase coche//Se invoca al constructor
 
         Nissan.establecerColor("Amarillo");
 

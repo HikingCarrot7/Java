@@ -21,7 +21,7 @@ public class EjecucionTransferencia implements Runnable
         {
             try
             {
-		//int origen = (int) (Math.random() * 100);
+                //int origen = (int) (Math.random() * 100);
 
                 int destino = (int) (Math.random() * 100);
 
