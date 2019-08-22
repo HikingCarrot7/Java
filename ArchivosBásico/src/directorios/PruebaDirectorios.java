@@ -10,7 +10,7 @@ public class PruebaDirectorios
 
     private static File carpetaDireccion, archivoDireccion;
 
-    private static String carpeta = "C:\\Archivos\\Estrella", archivo = "C:\\Archivos\\Estrella\\Nicol�s.txt";
+    private static final String carpeta = "C:\\Archivos\\Estrella", archivo = "C:\\Archivos\\Estrella\\Nicol�s.txt";
 
     public static void main(String[] args)
     {

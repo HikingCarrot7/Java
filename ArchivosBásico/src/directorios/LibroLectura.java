@@ -15,7 +15,7 @@ public class LibroLectura
 
     private static Scanner entrada;
 
-    private static String[] nombres =
+    private static final String[] nombres =
     {
         "Nicol�s", "Carlos", "Alejandro", "Luis", "Estrella", "Viviana"
     };
@@ -73,12 +73,9 @@ public class LibroLectura
                 System.out.println(entrada.next());
             }
 
-        } catch (NoSuchElementException e)
+        } catch (NoSuchElementException | IllegalStateException e)
         {
-
-        } catch (IllegalStateException e)
-        {
-
+            System.out.println(e.getMessage());
         }
     }
 }

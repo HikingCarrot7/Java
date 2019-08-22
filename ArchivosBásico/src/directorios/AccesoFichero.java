@@ -45,6 +45,7 @@ class Fichero
             do
             {
                 System.out.println(mibuffer.readLine());
+
             } while (mibuffer.readLine() != null);
 
             mibuffer.close();

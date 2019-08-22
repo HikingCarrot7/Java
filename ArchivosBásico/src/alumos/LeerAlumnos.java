@@ -42,9 +42,10 @@ public class LeerAlumnos
 
             while (entrada.hasNext())
             {
-                if (entrada.next().contentEquals("Matem�ticas"))
+                if (entrada.next().contentEquals("Matemáticas"))
                 {
                     PruebaAlumnos.matematicas.add(new Alumnos(entrada.next(), entrada.nextInt()));
+                    
                 } else
                 {
                     PruebaAlumnos.historia.add(new Alumnos(entrada.next(), entrada.nextInt()));
