@@ -1,4 +1,4 @@
-package cosas;
+package utilidades;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
