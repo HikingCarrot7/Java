@@ -10,10 +10,10 @@ import java.util.Scanner;
 
 import com.game.src.main.Game;
 
-public class ReadMap
+public final class ReadMap
 {
 
-    private BufferedImage mapa;
+    private final BufferedImage mapa;
     private Formatter salida;
     private Scanner in;
     private boolean mapLoaded = false;
@@ -64,13 +64,7 @@ public class ReadMap
         {
             in = new Scanner(new File("Map.txt"));
 
-            if (!in.hasNext())
-            {
-                mapLoaded = false;
-            } else
-            {
-                mapLoaded = true;
-            }
+            mapLoaded = in.hasNext();
 
         } catch (FileNotFoundException e)
         {

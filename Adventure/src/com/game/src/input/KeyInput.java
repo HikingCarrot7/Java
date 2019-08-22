@@ -10,8 +10,8 @@ import com.game.src.main.Game;
 public class KeyInput implements KeyListener, FocusListener
 {
 
-    private boolean[] keys;
-    private Game game;
+    private final boolean[] keys;
+    private final Game game;
 
     public KeyInput(Game game)
     {

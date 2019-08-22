@@ -9,7 +9,7 @@ import com.game.src.main.Game;
 public class MouseInput implements MouseListener, MouseMotionListener
 {
 
-    private Game game;
+    private final Game game;
 
     public MouseInput(Game game)
     {

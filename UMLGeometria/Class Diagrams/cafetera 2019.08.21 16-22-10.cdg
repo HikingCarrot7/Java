@@ -2,7 +2,7 @@
 
 <ClassDiagram name="cafetera">
   <ClassDiagramComponents>
-    <Class name="UsoCafetera" package="adas.ejemplos.main" visibility="public" xPosition="226.0" yPosition="87.0">
+    <Class name="UsoCafetera" package="adas.ejemplos.main" visibility="public" xPosition="20.0" yPosition="20.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -11,7 +11,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Cafetera" package="adas.ejemplos.maquina" visibility="public" xPosition="527.0" yPosition="60.0">
+    <Class name="Cafetera" package="adas.ejemplos.maquina" visibility="public" xPosition="482.0" yPosition="47.0">
       <Fields>
         <Field name="cliente" type="Cliente" visibility="private" isFinal="true"/>
         <Field name="contenedores" type="ArrayList&lt;ContenedorIngredientes&gt;" visibility="private" isFinal="true"/>
@@ -26,6 +26,7 @@
         </Constructor>
       </Constructors>
       <Methods>
+        <Method name="despacharCliente" returnType="void" visibility="public"/>
         <Method name="despacharCafe" returnType="void" visibility="public"/>
         <Method name="imprimirListaCafes" returnType="void" visibility="private"/>
         <Method name="validarCambio" returnType="boolean" visibility="private">
@@ -36,7 +37,6 @@
           <Argument type="int" name="moneda"/>
           <Argument type="int" name="valor"/>
         </Method>
-        <Method name="despacharCliente" returnType="void" visibility="public"/>
         <Method name="validarIngredientesNecesarios" returnType="boolean" visibility="private">
           <Argument type="int" name="index"/>
         </Method>
@@ -52,9 +52,10 @@
         </Method>
         <Method name="obtenerSaldoCafetera" returnType="int" visibility="public"/>
         <Method name="sinDinero" returnType="boolean" visibility="private"/>
+        <Method name="cafeteraDescompuesta" returnType="void" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="ContenedorIngredientes" package="adas.ejemplos.maquina" visibility="public" xPosition="60.0" yPosition="265.0">
+    <Class name="ContenedorIngredientes" package="adas.ejemplos.maquina" visibility="public" xPosition="20.0" yPosition="218.0">
       <Fields>
         <Field name="MAX_CAPACIDAD" type="float" visibility="private" isFinal="true"/>
         <Field name="contenidoActual" type="float" visibility="private"/>
@@ -77,7 +78,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Cliente" package="adas.ejemplos.usuario" visibility="public" xPosition="971.0" yPosition="49.0">
+    <Class name="Cliente" package="adas.ejemplos.usuario" visibility="public" xPosition="925.0" yPosition="122.0">
       <Fields>
         <Field name="in" type="Scanner" visibility="private" isFinal="true"/>
         <Field name="cafetera" type="Cafetera" visibility="private" isFinal="true"/>
@@ -94,7 +95,7 @@
         <Method name="obtenerNivelAzucar" returnType="int" visibility="public"/>
       </Methods>
     </Class>
-    <Enum name="TiposCafe" package="adas.ejemplos.productos" visibility="public" xPosition="27.0" yPosition="74.0">
+    <Enum name="TiposCafe" package="adas.ejemplos.productos" visibility="public" xPosition="252.0" yPosition="20.0">
       <Literals>
         <Literal name="CafeNegro"/>
         <Literal name="CafeCapuccino"/>
@@ -104,7 +105,7 @@
   </ClassDiagramComponents>
   <ClassDiagramRelations>
     <HasRelation name="cafetera" source="adas.ejemplos.usuario.Cliente" target="adas.ejemplos.maquina.Cafetera" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="contenedores" source="adas.ejemplos.maquina.Cafetera" target="adas.ejemplos.maquina.ContenedorIngredientes" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;ContenedorIngredientes&gt;"/>
     <HasRelation name="cliente" source="adas.ejemplos.maquina.Cafetera" target="adas.ejemplos.usuario.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="contenedores" source="adas.ejemplos.maquina.Cafetera" target="adas.ejemplos.maquina.ContenedorIngredientes" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;ContenedorIngredientes&gt;"/>
   </ClassDiagramRelations>
 </ClassDiagram>

@@ -21,16 +21,15 @@ public class PlacingShips implements Drawable, InputListener
 {
 
     private final Rectangle[] barcosHorizontales, barcosVerticales;
-    private final Cuadricula cuadricula;
-    private final int LADOCUADRO = 24;
-    private final int ANCHOTABLERO = 20, ALTOTABLERO = 10;
-    private final RandomLayout randomLayout;
     private final Rectangle continuar;
-    private final boolean[] barcosColocados;
+    private final Cuadricula cuadricula;
+    private final RandomLayout randomLayout;
     private Menu menu;
     private Cliente cliente;
     private Rectangle barcoSeleccionado;
+    private final int LADOCUADRO = 24, ANCHOTABLERO = 20, ALTOTABLERO = 10;
     private int timer = 10, COORDENADAX, COORDENADAY, CONTBARCOSCOLOCADOS = 0;
+    private final boolean[] barcosColocados;
     private boolean orientacionBarcoActual = false;
 
     public PlacingShips(RandomLayout randomLayout)
@@ -277,15 +276,7 @@ public class PlacingShips implements Drawable, InputListener
         if (tempTablero[fila][columna] == 2)
         {
 
-            if (tempTablero[fila][columna - 1] == 2 || tempTablero[fila][columna + 1] == 2)
-            {
-                eliminarBarco(true, fila, columna, tempTablero);
-
-            } else
-            {
-                eliminarBarco(false, fila, columna, tempTablero);
-
-            }
+            eliminarBarco(tempTablero[fila][columna - 1] == 2 || tempTablero[fila][columna + 1] == 2, fila, columna, tempTablero);
 
         }
 
