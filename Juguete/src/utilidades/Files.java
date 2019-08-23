@@ -47,7 +47,7 @@ public class Files
         if (!in.hasNext())
         {
             formatter.format("%-20s%-20s%s%4$s%4$s", "Nombres:", "Edades:", "Ahorros:", saltoLinea);
-            
+
             for (int i = 0; i < 50; i++)
             {
                 formatter.format("%-20s%-20s%s%s", nombres[rand.nextInt(nombres.length)], "Edad: " + rand.nextInt(50), String.format("Ahorros: $%.2f", Math.random() * 10000), saltoLinea);
@@ -67,9 +67,7 @@ public class Files
             System.out.println(currentLine);
 
             //String[] valores = currentLine.split("\\s+");
-
-           // System.out.println(Arrays.toString(valores));
-
+            // System.out.println(Arrays.toString(valores));
         }
 
     }

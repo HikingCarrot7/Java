@@ -1,12 +1,12 @@
 package pruebapolimorfismo;
 
-public class Polimosfismo
+public class Polimorfismo
 {
 
     public static void main(String[] args)
     {
 
-        Maestro maestro1 = new Maestro("Nicol�s", 19);
+        Maestro maestro1 = new Maestro("Nicolás", 19);
 
         Persona persona1 = new Maestro("Javier", 23);
 
@@ -21,8 +21,8 @@ public class Polimosfismo
 class Persona
 {
 
-    private String nombre;
-    private int edad;
+    private final String nombre;
+    private final int edad;
 
     public Persona(String nombre, int edad)
     {

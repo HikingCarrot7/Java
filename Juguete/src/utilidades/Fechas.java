@@ -12,6 +12,8 @@ public class Fechas
     public static void main(String[] args)
     {
         Calendar fechaHora = Calendar.getInstance();
+        
+        System.out.println(fechaHora.get(Calendar.MONTH));
 
         System.out.printf("%tc\n", fechaHora);// jue ago 22 18:10:44 CDT 2019
         System.out.printf("%tF\n", fechaHora);// 2019-08-22

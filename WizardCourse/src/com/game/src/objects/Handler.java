@@ -20,7 +20,7 @@ public class Handler
         for (int i = 0; i < objects.size(); i++)
         {
             GameObject tempObject = objects.get(i);
-            
+
             tempObject.tick();
         }
     }

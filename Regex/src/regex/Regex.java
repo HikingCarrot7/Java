@@ -6,12 +6,13 @@ package regex;
  */
 public class Regex
 {
+
     public static void main(String[] args)
     {
         System.out.printf("$%,.2f\n", 32498327498.6343);
-        
+
         System.out.printf("%s", String.valueOf(validarCadena3("(Nicolas)")));
-        
+
     }
 
     private static boolean validarCadena1(String cadena)

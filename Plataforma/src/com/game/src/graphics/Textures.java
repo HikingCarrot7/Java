@@ -7,7 +7,7 @@ import com.game.src.main.BufferedImageLoader;
 public class Textures
 {
 
-    private SpriteSheet bs, ps;
+    private final SpriteSheet bs, ps;
 
     public BufferedImage[] block;
 

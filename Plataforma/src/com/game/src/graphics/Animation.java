@@ -6,9 +6,10 @@ import java.awt.image.BufferedImage;
 public class Animation
 {
 
-    private int speed, frames, index = 0, count = 0;
+    private final int speed, frames;
+    private int index = 0, count = 0;
 
-    private BufferedImage[] images;
+    private final BufferedImage[] images;
 
     private BufferedImage currentImg;
 

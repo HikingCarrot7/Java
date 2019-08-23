@@ -13,7 +13,7 @@ public class PruebaEmpleado
 
         System.out.println(i);
 
-        misEmpleados[0] = new Empleados("Nicol�s", 45634);
+        misEmpleados[0] = new Empleados("Nicolás", 45634);
         misEmpleados[1] = new Empleados("Alexis", 54323);
 
         for (Empleados E : misEmpleados)

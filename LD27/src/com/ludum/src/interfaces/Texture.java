@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import com.ludum.src.gfx.SpriteSheet;
 import com.ludum.src.window.Game;
 
-public class Texture
+public final class Texture
 {
 
     private SpriteSheet ps, bs;

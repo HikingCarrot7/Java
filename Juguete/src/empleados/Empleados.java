@@ -3,8 +3,8 @@ package empleados;
 public class Empleados
 {
 
-    private String nombre;
-    private double sueldo;
+    private final String nombre;
+    private final double sueldo;
 
     public Empleados(String nombre, double sueldo)
     {

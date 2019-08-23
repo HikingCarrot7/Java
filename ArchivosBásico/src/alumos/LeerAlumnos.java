@@ -45,7 +45,7 @@ public class LeerAlumnos
                 if (entrada.next().contentEquals("Matemáticas"))
                 {
                     PruebaAlumnos.matematicas.add(new Alumnos(entrada.next(), entrada.nextInt()));
-                    
+
                 } else
                 {
                     PruebaAlumnos.historia.add(new Alumnos(entrada.next(), entrada.nextInt()));
