@@ -29,6 +29,7 @@ public class ControlCliente implements ActionListener
         this.vistaCliente.getjButton4().addActionListener(this);
     }
 
+    @Override
     public void actionPerformed(ActionEvent evento)
     {
         //Insertar Cliente
@@ -117,7 +118,7 @@ public class ControlCliente implements ActionListener
         //Consultar Cliente
         if (vistaCliente.getjButton3() == evento.getSource())
         {
-            ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+            ArrayList<Cliente> listaClientes = new ArrayList<>();
             int claveCliente;
             String condicion;
 

@@ -97,7 +97,9 @@ public class DAOCliente extends DAOGeneral<Cliente>
                 lista.add(e);
             }
         }
+        
         cerrarConeccion(con);
+        
         return lista;
     }
 }
