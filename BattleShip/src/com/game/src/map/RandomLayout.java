@@ -10,8 +10,7 @@ public class RandomLayout
 {
 
     private final Random rand;
-    private final int[][] tempTablero;
-    private final int[][] tablero;
+    private final int[][] tempTablero, tablero;
 
     public RandomLayout()
     {

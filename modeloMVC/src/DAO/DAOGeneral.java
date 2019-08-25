@@ -12,10 +12,10 @@ import java.util.ArrayList;
 public abstract class DAOGeneral<T>
 {
 
-    private String host = "localhost:3306";
-    private String bd = "ventas";
-    private String login = "root";
-    private String password = "root";
+    private final String host = "localhost:3306";
+    private final String bd = "ventas";
+    private final String login = "root";
+    private final String password = "root";
     private boolean cargadoDriver;
 
     public DAOGeneral()
@@ -23,7 +23,7 @@ public abstract class DAOGeneral<T>
         cargarDriver();
     }
 
-    public void cargarDriver()
+    public final void cargarDriver()
     {
         try
         {
@@ -31,8 +31,11 @@ public abstract class DAOGeneral<T>
             {
                 //Class.forName("org.postgresql.Driver");
                 Class.forName("com.mysql.jdbc.Driver");
+
                 cargadoDriver = true;
+
             }
+            
         } catch (Exception e)
         {
             e.printStackTrace();
@@ -47,12 +50,12 @@ public abstract class DAOGeneral<T>
         try
         {
             conexion = DriverManager.getConnection(urlConexion, login, password);
-            
+
         } catch (SQLException e)
         {
             e.printStackTrace();
         }
-        
+
         return conexion;
     }
 
@@ -72,7 +75,7 @@ public abstract class DAOGeneral<T>
                     con.close();
                 }
             }
-            
+
         } catch (SQLException e)
         {
             e.printStackTrace();
