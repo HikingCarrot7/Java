@@ -11,17 +11,16 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Cafetera" package="adas.ejemplos.maquina" visibility="public" xPosition="482.0" yPosition="47.0">
+    <Class name="Cafetera" package="adas.ejemplos.maquina" visibility="public" xPosition="566.0" yPosition="373.0">
       <Fields>
-        <Field name="cliente" type="Cliente" visibility="private" isFinal="true"/>
+        <Field name="usuario" type="Usuario" visibility="private" isFinal="true"/>
+        <Field name="saldoCafetera" type="ContenedorMonedas" visibility="private" isFinal="true"/>
         <Field name="contenedores" type="ArrayList&lt;ContenedorIngredientes&gt;" visibility="private" isFinal="true"/>
-        <Field name="n_billetes50" type="int" visibility="private" isFinal="true"/>
-        <Field name="saldoCliente" type="int" visibility="private"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public">
-          <Argument type="int" name="n_billetes50"/>
-          <Argument type="int" name="n_billetes20"/>
+          <Argument type="int" name="n_monedas50"/>
+          <Argument type="int" name="n_monedas20"/>
           <Argument type="int" name="n_monedas10"/>
         </Constructor>
       </Constructors>
@@ -30,9 +29,10 @@
         <Method name="despacharCafe" returnType="void" visibility="public"/>
         <Method name="imprimirListaCafes" returnType="void" visibility="private"/>
         <Method name="validarCambio" returnType="boolean" visibility="private">
+          <Argument type="ContenedorMonedas" name="contenedor"/>
           <Argument type="int" name="precio"/>
         </Method>
-        <Method name="comprobarPrecio" returnType="int" visibility="private">
+        <Method name="restarPrecio" returnType="int" visibility="private">
           <Argument type="int" name="precio"/>
           <Argument type="int" name="moneda"/>
           <Argument type="int" name="valor"/>
@@ -44,18 +44,20 @@
           <Argument type="int" name="nivelAzucar"/>
           <Argument type="int" name="index"/>
         </Method>
-        <Method name="retirarDinero" returnType="void" visibility="private">
+        <Method name="retirarDinero" returnType="void" visibility="public">
+          <Argument type="ContenedorMonedas" name="contenedor"/>
           <Argument type="int" name="dinero"/>
         </Method>
-        <Method name="setSaldoCliente" returnType="void" visibility="public">
-          <Argument type="int" name="saldoCliente"/>
+        <Method name="dineroDisponibleOrdenadoNomina" returnType="void" visibility="private">
+          <Argument type="String" name="text"/>
+          <Argument type="ContenedorMonedas" name="contenedor"/>
         </Method>
         <Method name="obtenerSaldoCafetera" returnType="int" visibility="public"/>
         <Method name="sinDinero" returnType="boolean" visibility="private"/>
-        <Method name="cafeteraDescompuesta" returnType="void" visibility="private"/>
+        <Method name="cafeteraDescompuesta" returnType="boolean" visibility="private"/>
       </Methods>
     </Class>
-    <Class name="ContenedorIngredientes" package="adas.ejemplos.maquina" visibility="public" xPosition="20.0" yPosition="218.0">
+    <Class name="ContenedorIngredientes" package="adas.ejemplos.maquina" visibility="public" xPosition="20.0" yPosition="525.0">
       <Fields>
         <Field name="MAX_CAPACIDAD" type="float" visibility="private" isFinal="true"/>
         <Field name="contenidoActual" type="float" visibility="private"/>
@@ -78,24 +80,59 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Cliente" package="adas.ejemplos.usuario" visibility="public" xPosition="925.0" yPosition="122.0">
+    <Class name="ContenedorMonedas" package="adas.ejemplos.maquina" visibility="public" xPosition="20.0" yPosition="175.0">
       <Fields>
+        <Field name="n_monedas50" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="n_monedas50"/>
+          <Argument type="int" name="n_monedas20"/>
+          <Argument type="int" name="n_monedas10"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getN_monedas50" returnType="int" visibility="public"/>
+        <Method name="setN_monedas50" returnType="void" visibility="public">
+          <Argument type="int" name="n_monedas50"/>
+        </Method>
+        <Method name="getN_monedas20" returnType="int" visibility="public"/>
+        <Method name="setN_monedas20" returnType="void" visibility="public">
+          <Argument type="int" name="n_monedas20"/>
+        </Method>
+        <Method name="getN_monedas10" returnType="int" visibility="public"/>
+        <Method name="setN_monedas10" returnType="void" visibility="public">
+          <Argument type="int" name="n_monedas10"/>
+        </Method>
+        <Method name="getTotal" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Usuario" package="adas.ejemplos.usuario" visibility="public" xPosition="538.0" yPosition="36.0">
+      <Fields>
+        <Field name="saldoCliente" type="int" visibility="private"/>
         <Field name="in" type="Scanner" visibility="private" isFinal="true"/>
         <Field name="cafetera" type="Cafetera" visibility="private" isFinal="true"/>
-        <Field name="dineroCliente" type="int" visibility="private"/>
+        <Field name="contenedorGanancias" type="ContenedorMonedas" visibility="private" isFinal="true"/>
       </Fields>
       <Constructors>
         <Constructor visibility="public">
           <Argument type="Cafetera" name="cafetera"/>
+          <Argument type="ContenedorMonedas" name="contenedorGanancias"/>
         </Constructor>
       </Constructors>
       <Methods>
         <Method name="InsertarDinero" returnType="void" visibility="public"/>
         <Method name="obtenerOpcionProducto" returnType="int" visibility="public"/>
         <Method name="obtenerNivelAzucar" returnType="int" visibility="public"/>
+        <Method name="getSaldoCliente" returnType="int" visibility="public"/>
+        <Method name="setSaldoCliente" returnType="void" visibility="public">
+          <Argument type="int" name="saldoCliente"/>
+        </Method>
       </Methods>
     </Class>
-    <Enum name="TiposCafe" package="adas.ejemplos.productos" visibility="public" xPosition="252.0" yPosition="20.0">
+    <Enum name="TiposCafe" package="adas.ejemplos.productos" visibility="public" xPosition="241.0" yPosition="20.0">
       <Literals>
         <Literal name="CafeNegro"/>
         <Literal name="CafeCapuccino"/>
@@ -104,8 +141,11 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="cafetera" source="adas.ejemplos.usuario.Cliente" target="adas.ejemplos.maquina.Cafetera" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="cliente" source="adas.ejemplos.maquina.Cafetera" target="adas.ejemplos.usuario.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuario" source="adas.ejemplos.maquina.Cafetera" target="adas.ejemplos.usuario.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="adas.ejemplos.maquina.Cafetera" target="adas.ejemplos.maquina.ContenedorMonedas" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="contenedores" source="adas.ejemplos.maquina.Cafetera" target="adas.ejemplos.maquina.ContenedorIngredientes" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;ContenedorIngredientes&gt;"/>
+    <HasRelation name="saldoCafetera" source="adas.ejemplos.maquina.Cafetera" target="adas.ejemplos.maquina.ContenedorMonedas" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cafetera" source="adas.ejemplos.usuario.Usuario" target="adas.ejemplos.maquina.Cafetera" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="contenedorGanancias" source="adas.ejemplos.usuario.Usuario" target="adas.ejemplos.maquina.ContenedorMonedas" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
