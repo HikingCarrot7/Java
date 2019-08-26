@@ -2,17 +2,19 @@ package dialog;
 
 import javax.swing.JOptionPane;
 
-public class DialogNombre {
+public class DialogNombre
+{
 
-	public static void main(String[] args) {
-		
-		String nombre = JOptionPane.showInputDialog("¿Cuál es su nombre?");
-		
-		String mensaje = 
-				String.format("Bienvenido, %s, a la programación en Java", nombre);
-		
-		JOptionPane.showMessageDialog(null, mensaje);
+    public static void main(String[] args)
+    {
 
-	}
+        String nombre = JOptionPane.showInputDialog("ï¿½Cuï¿½l es su nombre?");
+
+        String mensaje
+                = String.format("Bienvenido, %s, a la programaciï¿½n en Java", nombre);
+
+        JOptionPane.showMessageDialog(null, mensaje);
+
+    }
 
 }

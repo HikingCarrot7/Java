@@ -1,72 +1,76 @@
 package ciclos;
 
-public class PolizaAuto 
+public class PolizaAuto
 {
-	private int numeroCuenta;
-	private String marcaYModelo;
-	private String estado;
-	
-	//Constructor
-	public PolizaAuto(int numeroCuenta, String marcaYModelo, String estado) 
-	{
-		this.numeroCuenta = numeroCuenta;
-		this.marcaYModelo = marcaYModelo;
-		this.estado = estado;
-	}
-	
-	//Método establecerCuenta 
-	public void establecerNumeroCuenta(int numeroCuenta) 
-	{
-		this.numeroCuenta = numeroCuenta;
-	}
-	
-	//Método obtenerCuenta (Lo devolverá a quien lo solicite)
-	public int obtenerNumeroCuenta() 
-	{
-		return numeroCuenta;
-	}
-	
-	//Método establecer marca y modelo 
-	public void establecerMarcaYModelo(String marcaYModelo) 
-	{
-		this.marcaYModelo = marcaYModelo;
-	}
-	
-	//Método obtener marca y modelo (Lo devolverá a quien lo solicite)
-	public String obtenerMarcaYModelo() 
-	{
-		return marcaYModelo;
-	}
-	
-	//Método establecer estado
-	public void establecerEstado(String estado) 
-	{		
-		this.estado = estado;
-	}
-	
-	//Método obtener estado (Lo devolverá a quien lo solicite)	
-	public String obtenerEstado() 
-	{
-		return estado;			
-	}
-	
-	//Método predicado que devuelve sin el estado tienen seguro sin culpa
-	public boolean esEstadoSinCulpa() 
-	{
-		boolean estadoSinCulpa;
-		
-		switch (obtenerEstado()) 
-		{ //Invoca el valor de estado
-		
-		case "MA" : case "NJ" : case "NY" : case "PA":
-			estadoSinCulpa = true;
-			break;
-			
-		default: 
-			estadoSinCulpa = false;
-			break;
-		}
-		
-		return estadoSinCulpa;
-	}
+
+    private int numeroCuenta;
+    private String marcaYModelo;
+    private String estado;
+
+    //Constructor
+    public PolizaAuto(int numeroCuenta, String marcaYModelo, String estado)
+    {
+        this.numeroCuenta = numeroCuenta;
+        this.marcaYModelo = marcaYModelo;
+        this.estado = estado;
+    }
+
+    //Mï¿½todo establecerCuenta 
+    public void establecerNumeroCuenta(int numeroCuenta)
+    {
+        this.numeroCuenta = numeroCuenta;
+    }
+
+    //Mï¿½todo obtenerCuenta (Lo devolverï¿½ a quien lo solicite)
+    public int obtenerNumeroCuenta()
+    {
+        return numeroCuenta;
+    }
+
+    //Mï¿½todo establecer marca y modelo 
+    public void establecerMarcaYModelo(String marcaYModelo)
+    {
+        this.marcaYModelo = marcaYModelo;
+    }
+
+    //Mï¿½todo obtener marca y modelo (Lo devolverï¿½ a quien lo solicite)
+    public String obtenerMarcaYModelo()
+    {
+        return marcaYModelo;
+    }
+
+    //Mï¿½todo establecer estado
+    public void establecerEstado(String estado)
+    {
+        this.estado = estado;
+    }
+
+    //Mï¿½todo obtener estado (Lo devolverï¿½ a quien lo solicite)	
+    public String obtenerEstado()
+    {
+        return estado;
+    }
+
+    //Mï¿½todo predicado que devuelve sin el estado tienen seguro sin culpa
+    public boolean esEstadoSinCulpa()
+    {
+        boolean estadoSinCulpa;
+
+        switch (obtenerEstado())
+        { //Invoca el valor de estado
+
+            case "MA":
+            case "NJ":
+            case "NY":
+            case "PA":
+                estadoSinCulpa = true;
+                break;
+
+            default:
+                estadoSinCulpa = false;
+                break;
+        }
+
+        return estadoSinCulpa;
+    }
 }

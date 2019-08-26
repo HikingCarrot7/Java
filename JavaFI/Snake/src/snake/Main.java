@@ -4,21 +4,26 @@ import java.awt.Color;
 
 import javax.swing.JFrame;
 
-public class Main {
+public class Main extends JFrame
+{
 
-	public static void main(String[] args) {
-		
-		JFrame obj = new JFrame ();
-		Gameplay gameplay = new Gameplay();
-		
-		obj.setBounds(10, 10, 905, 700);
-		obj.setBackground(Color.DARK_GRAY);
-		obj.setTitle("Snake");
-		obj.setVisible(true);
-		obj.setResizable(false);
-		obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		obj.add(gameplay);
-		obj.addKeyListener(gameplay);
-	}
+    public Main()
+    {
+        Gameplay gameplay = new Gameplay();
+
+        setBounds(10, 10, 905, 700);
+        setBackground(Color.DARK_GRAY);
+        setTitle("Snake");
+        setVisible(true);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(gameplay);
+        addKeyListener(gameplay);
+    }
+
+    public static void main(String[] args)
+    {
+        new Main();
+    }
 
 }
