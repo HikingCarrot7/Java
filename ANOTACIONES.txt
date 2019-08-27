@@ -234,6 +234,16 @@ ALTER TABLE -> MODIFICAR LOS CAMPOS DE UNA TABLA
 
 5. ALTER TABLE PRUEBA ALTER COLUMN LUGARNACIMIENTO DROP DEFAULT -> BORRAR EL VALOR POR DEFAULT DEL CAMPO
 
+#--------------------------------------------------------------------------------------------------------------------------#
+
+CREATE TABLE PRUEBA (NOMBRE VARCHAR(20), APELLIDO VARCHAR(20), FECHA DATE, INCENTIVO BIT, EDAD TINYINT(100), PRIMARY KEY (NOMBRE))
+
+ALTER TABLE EJEMPLO ADD PRIMARY KEY (DNI) -> ESTABLECE EL CAMPO DNI COMO PRIMARIO
+
+
+
+#--------------------------------------------------------------------------------------------------------------------------#
+
 #======================================================ANOTACIONES EXTRAS======================================================#
 #--------------------------------------------------------------------------------------------------------------------------#
 VISTO EN ACCESS 

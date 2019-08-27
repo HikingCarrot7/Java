@@ -20,6 +20,10 @@ public class PrimeraConexión
     private final File file;
     private final Formatter out;
     private final String ruta = "res/Consultas.txt";
+    private final String user = "uxiuizeg2rftim08";
+    private final String password = "wlxehTl3kegqHF5ztqga";
+    private final String name = "bn72yv26h0nlpnscf1tt";
+    private final String host = "bn72yv26h0nlpnscf1tt-mysql.services.clever-cloud.com";
 
     public static void main(String[] args)
     {
@@ -54,7 +58,8 @@ public class PrimeraConexión
 
             //SHOW VARIABLES WHERE VARIABLE_NAME IN ('hostname', 'port')
             //1. Crear la conexión
-            Connection miConexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/sql?serverTimezone=UTC&useSSL=false", "root", "");
+            //Connection miConexion = DriverManager.getConnection("jdbc:mysql://" + host + ":3306/" + name + "?serverTimezone=UTC&useSSL=false", user, password);
+            Connection miConexion = DriverManager.getConnection("jdbc:mysql://uxiuizeg2rftim08:wlxehTl3kegqHF5ztqga@bn72yv26h0nlpnscf1tt-mysql.services.clever-cloud.com:3306/bn72yv26h0nlpnscf1tt?serverTimezone=UTC&useSSL=false");
 
             //2. Crear un objeto statement
             Statement miStatement = miConexion.createStatement();
@@ -73,7 +78,7 @@ public class PrimeraConexión
                 {
                     datos += "-";
                 }
-
+                
                 datos += lineSeparator;
 
                 System.out.printf(datos);
@@ -85,7 +90,7 @@ public class PrimeraConexión
         } catch (SQLException ex)
         {
             System.out.println(ex.getMessage());
-            
+
         } finally
         {
             out.close();
