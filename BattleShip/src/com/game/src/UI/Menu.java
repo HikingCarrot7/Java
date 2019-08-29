@@ -5,7 +5,7 @@ import com.game.src.graphics.Drawable;
 import com.game.src.input.InputListener;
 import com.game.src.main.Main;
 import com.game.src.map.RandomLayout;
-import com.game.src.net.MensajeEnviar;
+import com.game.src.net.Mensaje;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -225,7 +225,7 @@ public class Menu implements Drawable, InputListener
 
                 ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 
-                out.writeObject(new MensajeEnviar(-2, 0, 0, 0, false, false, null));
+                out.writeObject(new Mensaje(-2, 0, 0, 0, false, false, null));
 
                 socket.close();
 

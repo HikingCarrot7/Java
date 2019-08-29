@@ -94,6 +94,7 @@ public class Rectangle
         if (pixels != null)
         {
             return pixels;
+            
         } else
         {
             System.out.println("No se han generado los pixeles");

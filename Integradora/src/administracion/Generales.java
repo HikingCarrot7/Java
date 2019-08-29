@@ -116,10 +116,10 @@ public class Generales
     {
         LaminaMaestro.mostrarAlumnos.setText("");
 
-        for (Alumno A : LaminaMaestro.alumnosInstancias.get(Login.indiceMaestro))
+        LaminaMaestro.alumnosInstancias.get(Login.indiceMaestro).stream().forEach((A) ->
         {
             LaminaMaestro.mostrarAlumnos.append(A.mostrarDatos());
-        }
+        });
     }
 
     public static int alerta(String info, String titulo)

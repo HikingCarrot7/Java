@@ -23,7 +23,7 @@ public class Login extends JFrame
 
     private static final long serialVersionUID = 1L;
 
-    private LaminaLogin laminaLogin;
+    private final LaminaLogin laminaLogin;
 
     private boolean encontrado = false;
 

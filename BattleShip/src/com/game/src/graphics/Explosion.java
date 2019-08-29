@@ -15,7 +15,7 @@ public class Explosion implements Drawable
 {
 
     private final Random rand;
-    private final ArrayList<Particles> particulas;
+    private final ArrayList<Particle> particulas;
 
     public Explosion(int x, int y, Color color)
     {
@@ -37,7 +37,7 @@ public class Explosion implements Drawable
                 velY = rand.nextInt(6) + 1;
             }
 
-            particulas.add(new Particles(x + 12, y + 12, velX, velY, color));
+            particulas.add(new Particle(x + 12, y + 12, velX, velY, color));
         }
 
     }
@@ -45,9 +45,9 @@ public class Explosion implements Drawable
     @Override
     public void tick()
     {
-        for (Iterator<Particles> particula = particulas.iterator(); particula.hasNext();)
+        for (Iterator<Particle> particula = particulas.iterator(); particula.hasNext();)
         {
-            Particles currentParticle = particula.next();
+            Particle currentParticle = particula.next();
 
             if (currentParticle.x < 0 || currentParticle.x > Main.ANCHO || currentParticle.y < 0 || currentParticle.y > Main.ALTO)
             {
@@ -57,6 +57,7 @@ public class Explosion implements Drawable
             currentParticle.tick();
 
         }
+
     }
 
     @Override
@@ -71,14 +72,14 @@ public class Explosion implements Drawable
     }
 
     //Clase de las particulas 
-    private class Particles implements Drawable
+    private class Particle implements Drawable
     {
 
         private final int velX, velY;
         private int x, y;
         private final Color color;
 
-        public Particles(int x, int y, int velX, int velY, Color color)
+        public Particle(int x, int y, int velX, int velY, Color color)
         {
             this.x = x;
             this.y = y;

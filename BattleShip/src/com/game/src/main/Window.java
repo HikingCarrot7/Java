@@ -10,8 +10,6 @@ import javax.swing.JFrame;
 public class Window extends JFrame
 {
 
-    private static final long serialVersionUID = 1L;
-
     public Window(int w, int h, String title, Main main)
     {
         main.setPreferredSize(new Dimension(w, h));
@@ -27,7 +25,7 @@ public class Window extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
-        new Ticker(main);
+        new Ticker(main, this);
     }
 
 }

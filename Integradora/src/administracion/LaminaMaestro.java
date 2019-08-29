@@ -1,5 +1,6 @@
 package administracion;
 
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class LaminaMaestro extends JPanel
+public final class LaminaMaestro extends JPanel
 {
 
     private static final long serialVersionUID = 1L;
@@ -79,14 +80,14 @@ public class LaminaMaestro extends JPanel
 
                     listaAlumnos.removeItemAt(listaAlumnos.getSelectedIndex());
 
-                    borrarAlumno.setEnabled(listaAlumnos.getItemCount() < 1 ? false : true);
+                    borrarAlumno.setEnabled(listaAlumnos.getItemCount() < 1);
 
-                    califAlumno.setEnabled(listaAlumnos.getItemCount() < 1 ? false : true);
+                    califAlumno.setEnabled(listaAlumnos.getItemCount() < 1);
                 }
 
             } else if (e.getSource() == califAlumno)
             {
-                String calif = ".";
+                String calif;
 
                 if (listaAlumnos.getItemCount() > 0)
                 {
@@ -113,7 +114,7 @@ public class LaminaMaestro extends JPanel
                             }
                         }
 
-                    } catch (Exception E)
+                    } catch (HeadlessException | NumberFormatException E)
                     {
                         error("No insertaste un dato correcto!");
 

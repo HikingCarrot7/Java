@@ -4,7 +4,7 @@ package regex;
  *
  * @author HikingCarrot7
  */
-public class Regex
+public class Regex 
 {
 
     public static void main(String[] args)
@@ -32,6 +32,6 @@ public class Regex
 
     private static boolean validarCadena4(String cadena)
     {
-        return cadena.matches("(a+c)b");
+        return cadena.matches("(a-c)b");
     }
 }

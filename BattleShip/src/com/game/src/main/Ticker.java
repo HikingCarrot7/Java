@@ -11,11 +11,13 @@ public final class Ticker implements Runnable
 {
 
     private final Main main;
+    private final Window window;
     private final Thread thread;
 
-    public Ticker(Main main)
+    public Ticker(Main main, Window window)
     {
         this.main = main;
+        this.window = window;
 
         thread = new Thread(this);
 
@@ -55,7 +57,7 @@ public final class Ticker implements Runnable
 
             if (System.currentTimeMillis() - timer > 1000)
             {
-                System.out.println("TICKS: " + update + " FPS: " + frames);
+                window.setTitle("TICKS: " + update + " FPS: " + frames);
                 timer += 1000;
                 update = 0;
                 frames = 0;

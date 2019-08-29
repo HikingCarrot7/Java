@@ -34,7 +34,7 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
     private final Cuadricula barcos, enemigo;
     private final Menu menu;
     private final ArrayList<Explosion> explosiones;
-    private MensajeEnviar mensaje;
+    private Mensaje mensaje;
     private ObjectOutputStream out;
     private ObjectInputStream in;
     private Socket cliente;
@@ -109,12 +109,12 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
 
         in = new ObjectInputStream(cliente.getInputStream());
 
-        MensajeEnviar mensajeEnvio = new MensajeEnviar(0, 0, 0, 2, true, false, InetAddress.getLocalHost().getHostAddress());
+        Mensaje mensajeEnvio = new Mensaje(0, 0, 0, 2, true, false, InetAddress.getLocalHost().getHostAddress());
         out.writeObject(mensajeEnvio);
 
         System.out.println("Esperando los datos del server");
 
-        mensaje = (MensajeEnviar) in.readObject();
+        mensaje = (Mensaje) in.readObject();
 
         System.out.println("He recibido los primeros datos del servidor");
 
@@ -137,7 +137,7 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
 
             Socket otroJugador;
 
-            MensajeEnviar mensajeRecibido;
+            Mensaje mensajeRecibido;
 
             while (true)
             {
@@ -145,7 +145,7 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
 
                 in = new ObjectInputStream(otroJugador.getInputStream());
 
-                mensajeRecibido = (MensajeEnviar) in.readObject();
+                mensajeRecibido = (Mensaje) in.readObject();
 
                 acertado = mensajeRecibido.getAcertado();
                 filaAMostrar = mensajeRecibido.getFila();
@@ -169,7 +169,7 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
         }
     }
 
-    private void modificarTableroAliado(MensajeEnviar mensaje)
+    private void modificarTableroAliado(Mensaje mensaje)
     {
         boolean acerto = barcos.obtenerTablero()[mensaje.getFila()][mensaje.getColumna()] == 2;
 
@@ -186,7 +186,7 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
 
             System.out.println(acertado);
 
-            MensajeEnviar mensajeEnvio = new MensajeEnviar(mensaje.getFila(), mensaje.getColumna(), miMarca, 2, false, acerto, "-1");
+            Mensaje mensajeEnvio = new Mensaje(mensaje.getFila(), mensaje.getColumna(), miMarca, 2, false, acerto, "-1");
 
             out.writeObject(mensajeEnvio);
 
@@ -218,7 +218,7 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
 
                 out = new ObjectOutputStream(envioDatos.getOutputStream());
 
-                mensaje = new MensajeEnviar(fila, columna, miMarca, 2, false, false, InetAddress.getLocalHost().getHostAddress());
+                mensaje = new Mensaje(fila, columna, miMarca, 2, false, false, InetAddress.getLocalHost().getHostAddress());
 
                 out.writeObject(mensaje);
 

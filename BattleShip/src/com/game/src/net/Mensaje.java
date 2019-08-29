@@ -6,7 +6,7 @@ import java.io.Serializable;
  *
  * @author HikingCarrot7
  */
-public final class MensajeEnviar implements Serializable
+public final class Mensaje implements Serializable
 {
 
     private static final long serialVersionUID = 1L;
@@ -15,7 +15,7 @@ public final class MensajeEnviar implements Serializable
     private final boolean nuevo, acertado;
     private final String ip;
 
-    public MensajeEnviar(int fila, int columna, int miMarca, int jugadoresConectados, boolean nuevo, boolean acertado, String ip)
+    public Mensaje(int fila, int columna, int miMarca, int jugadoresConectados, boolean nuevo, boolean acertado, String ip)
     {
         this.fila = fila;
         this.columna = columna;

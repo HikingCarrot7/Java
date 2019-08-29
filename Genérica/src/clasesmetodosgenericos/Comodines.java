@@ -19,7 +19,7 @@ public class Comodines
 
     public static void main(String[] args)
     {
-        a = new Generica<>(new A("Nicol�s"));
+        a = new Generica<>(new A("Nicolás"));
 
         b = new Generica<>(new B("Javier", 23));
 
@@ -29,7 +29,7 @@ public class Comodines
 
         e = new Generica<>(new C("Carlos", 56, 3400));
 
-        f = new Generica<>(new JButton("Nicol�s es una..."));
+        f = new Generica<>(new JButton("Nicolás es una..."));
 
         Generica.imprimirValores(a);
 
@@ -43,7 +43,7 @@ public class Comodines
 
         Generica.imprimirTexto(f);
 
-        imprimirObjetos(new A("Nicol�s"));
+        imprimirObjetos(new A("Nicolás"));
 
     }
 
@@ -104,7 +104,7 @@ class A
 class B extends A
 {
 
-    private int edad;
+    private final int edad;
 
     public B(String nombre, int edad)
     {
@@ -123,7 +123,7 @@ class B extends A
 class C extends B
 {
 
-    private double sueldo;
+    private final double sueldo;
 
     public C(String nombre, int edad, double sueldo)
     {

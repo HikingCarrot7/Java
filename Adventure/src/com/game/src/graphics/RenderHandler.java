@@ -11,9 +11,9 @@ import com.game.src.main.Game;
 public class RenderHandler
 {
 
-    private BufferedImage view;
-    private Rectangle camera;
-    private int[] pixels;
+    private final BufferedImage view;
+    private final Rectangle camera;
+    private final int[] pixels;
     private int MaxScreenWidth = 0, MaxScreenHeight = 0;
 
     public RenderHandler(int w, int h)
@@ -21,16 +21,16 @@ public class RenderHandler
 
         GraphicsDevice[] graphicsDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
 
-        for (int i = 0; i < graphicsDevice.length; i++)
+        for (GraphicsDevice graphicsDevice1 : graphicsDevice)
         {
-            if (MaxScreenWidth < graphicsDevice[i].getDisplayMode().getWidth())
+            if (MaxScreenWidth < graphicsDevice1.getDisplayMode().getWidth())
             {
-                MaxScreenWidth = graphicsDevice[i].getDisplayMode().getWidth();
+                MaxScreenWidth = graphicsDevice1.getDisplayMode().getWidth();
             }
-
-            if (MaxScreenHeight < graphicsDevice[i].getDisplayMode().getHeight())
+            
+            if (MaxScreenHeight < graphicsDevice1.getDisplayMode().getHeight())
             {
-                MaxScreenHeight = graphicsDevice[i].getDisplayMode().getHeight();
+                MaxScreenHeight = graphicsDevice1.getDisplayMode().getHeight();
             }
         }
 

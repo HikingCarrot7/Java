@@ -3,8 +3,8 @@ package administracion;
 public class Administradores implements InicioSesion
 {
 
-    private String usuario;
-    private String contrasena;
+    private final String usuario;
+    private final String contrasena;
 
     public Administradores(String usuario, String contrasena)
     {
