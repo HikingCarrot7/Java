@@ -260,21 +260,20 @@ public class Map
 
             mapFile.createNewFile();
 
-            PrintWriter printWriter = new PrintWriter(mapFile);
-
-            if (fillTileID >= 0)
+            try (PrintWriter printWriter = new PrintWriter(mapFile))
             {
-                printWriter.printf("//Fill title for whole map%nFill:%d%n//TileID-X-Y%n", fillTileID);
+                if (fillTileID >= 0)
+                {
+                    printWriter.printf("//Fill title for whole map%nFill:%d%n//TileID-X-Y%n", fillTileID);
+                }
+                
+                for (int i = 0; i < mappedTiles.size(); i++)
+                {
+                    MappedTile mappedTile = mappedTiles.get(i);
+                    
+                    printWriter.println(mappedTile.id + "," + mappedTile.x + "," + mappedTile.y);
+                }
             }
-
-            for (int i = 0; i < mappedTiles.size(); i++)
-            {
-                MappedTile mappedTile = mappedTiles.get(i);
-
-                printWriter.println(mappedTile.id + "," + mappedTile.x + "," + mappedTile.y);
-            }
-
-            printWriter.close();
 
         } catch (IOException e)
         {
