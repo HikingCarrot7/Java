@@ -25,9 +25,7 @@ public class Test
         for (int i = 0; i < nombres.length; i++)
         {
             if (i % 2 == 0)
-            {
                 continue;
-            }
 
             System.out.println(nombres[i]);
 

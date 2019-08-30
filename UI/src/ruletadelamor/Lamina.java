@@ -33,9 +33,7 @@ public class Lamina extends JPanel
         botones[1].setEnabled(false);
 
         for (JButton B : botones)
-        {
             add(B);
-        }
 
         add(prueba);
     }
@@ -67,9 +65,7 @@ public class Lamina extends JPanel
         public void actionPerformed(ActionEvent e)
         {
             for (int i = 0; i < botones.length; i++)
-            {
                 botones[i].setEnabled(i != (int) getValue("i") ? true : false);
-            }
 
             if (!botones[0].isEnabled())
             {

@@ -76,14 +76,9 @@ public class Lamina extends JPanel implements ActionListener, MouseListener
         System.out.println(y); //Columna
 
         if (!turno)
-        {
             jugador2.modificarTableroEnemigo(1, x, y);
-
-        } else
-        {
+        else
             jugador1.modificarTableroEnemigo(1, x, y);
-
-        }
 
         turno = !turno;
 
@@ -195,21 +190,15 @@ public class Lamina extends JPanel implements ActionListener, MouseListener
                 text = contrasena.getPassword();
 
                 if (text.length < 8)
-                {
                     respuesta.setText("Contrase�a no v�lida");
-
-                } else
+                else
                 {
                     respuesta.setText("Contrase�a capturada");
 
                     if (!turno)
-                    {
                         copiarContrasena(text, contrasena1);
-
-                    } else
-                    {
+                    else
                         copiarContrasena(text, contrasena2);
-                    }
 
                 }
 
@@ -218,9 +207,7 @@ public class Lamina extends JPanel implements ActionListener, MouseListener
             public void copiarContrasena(char[] text, String contrasena)
             {
                 for (int i = 0; i < text.length; i++)
-                {
                     contrasena += text[i];
-                }
 
             }
 

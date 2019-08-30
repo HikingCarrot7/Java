@@ -17,9 +17,7 @@ public class PruebaEmpleado
         misEmpleados[1] = new Empleados("Alexis", 54323);
 
         for (Empleados E : misEmpleados)
-        {
             System.out.println(E);
-        }
 
     }
 

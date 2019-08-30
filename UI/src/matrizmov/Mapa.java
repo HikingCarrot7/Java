@@ -22,9 +22,7 @@ public class Mapa
     public void draw(Graphics2D g, int mov)
     {
         for (int i = 0; i < map.length; i++)
-        {
             for (int j = 0; j < map[0].length; j++)
-            {
                 if (map[i][j] > 0)
                 {
                     g.setColor(Color.black);
@@ -39,8 +37,6 @@ public class Mapa
                     g.setColor(Color.green);
                     g.fillRect(j * ladrilloLargo, i * ladrilloAlto + mov, ladrilloLargo, ladrilloAlto);
                 }
-            }
-        }
 
         g.dispose();
     }
@@ -48,12 +44,8 @@ public class Mapa
     public int[][] rellenarMatriz(int map[][])
     {
         for (int i = 0; i < map.length; i++)
-        {
             for (int j = 0; j < map[0].length; j++)
-            {
                 map[i][j] = 1;
-            }
-        }
 
         return map;
     }
@@ -61,8 +53,6 @@ public class Mapa
     public void modificarMapa(int x, int y)
     {
         if (x < 20 && x >= 0 && y < 10 && y >= 0)
-        {
             map[y][x] = 0;
-        }
     }
 }

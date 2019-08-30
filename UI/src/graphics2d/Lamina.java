@@ -68,13 +68,8 @@ public class Lamina extends JPanel
         g.drawImage(imagen, 0, 0, null);
 
         for (int i = 0; i < 18; i++)
-        {
             for (int j = 0; j < 32; j++)
-            {
                 g.copyArea(0, 0, imagen.getWidth(this), imagen.getHeight(this), imagen.getWidth(this) * j, imagen.getHeight(this) * i);
-            }
-
-        }
 
         int[] xPoints =
         {
@@ -96,10 +91,8 @@ public class Lamina extends JPanel
         g.drawPolygon(pol);
 
         for (int i = 0; i < 8; i++)
-        {
 
             g.drawArc(600 - (i * 20), 300 - (i * 20), 300 + (i * 40), 500 + (i * 40), 45, 90);
-        }
 
         g.drawChars(data, 0, 10, 50, 100);
 
@@ -110,9 +103,7 @@ public class Lamina extends JPanel
         g2.rotate(Math.toRadians(45), 500, 300);
 
         for (int i = 0; i < 6; i++)
-        {
             g2.drawRect(500 - (i * 30), 300 + (i * 30), 30, 30);
-        }
 
         g2.rotate(Math.toRadians(-45), 500, 300);
 

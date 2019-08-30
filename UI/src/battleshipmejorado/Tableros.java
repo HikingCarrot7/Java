@@ -39,9 +39,7 @@ public final class Tableros
     public void dibujarTableros(int[][] tablero, int desfaceHor, int desfaceVert, Graphics2D g)
     {
         for (int i = 1; i < tablero.length - 1; i++)
-        {
             for (int j = 1; j < tablero[0].length - 1; j++)
-            {
                 if (tablero[i][j] == 0)
                 {
                     g.setColor(Color.white);
@@ -58,20 +56,14 @@ public final class Tableros
                     g.setStroke(new BasicStroke(3));
                     g.drawRect(j * ladoCasilla + desfaceHor, i * ladoCasilla + desfaceVert, ladoCasilla, ladoCasilla);
                 }
-            }
-        }
     }
 
     public int[][] initTableros(int[][] tablero)
     {
 
         for (int i = 0; i < tablero.length; i++)
-        {
             for (int j = 0; j < tablero[0].length; j++)
-            {
                 tablero[i][j] = 0;
-            }
-        }
 
         return tablero;
     }

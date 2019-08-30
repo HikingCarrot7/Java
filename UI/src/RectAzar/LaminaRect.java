@@ -38,9 +38,7 @@ public class LaminaRect extends JPanel
         super.paintComponent(g);
 
         for (ObjetosRectangulo rectangulos : rectangulos)
-        {
             rectangulos.dibijarRect(g);
-        }
 
         g.drawString("Java is cool", 300, 300);
     }

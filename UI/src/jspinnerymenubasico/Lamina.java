@@ -117,9 +117,7 @@ public final class Lamina extends JPanel
     public void anadirItems(JMenu menu, JMenuItem[] items)
     {
         for (JMenuItem i : items)
-        {
             menu.add(i);
-        }
     }
 
 }

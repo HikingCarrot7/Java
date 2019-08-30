@@ -28,14 +28,10 @@ public class Explosion implements Drawable
             int velY = rand.nextInt(11) - 5;
 
             if (velX == 0)
-            {
                 velX = rand.nextInt(6) + 1;
-            }
 
             if (velY == 0)
-            {
                 velY = rand.nextInt(6) + 1;
-            }
 
             particulas.add(new Particle(x + 12, y + 12, velX, velY, color));
         }
@@ -50,9 +46,7 @@ public class Explosion implements Drawable
             Particle currentParticle = particula.next();
 
             if (currentParticle.x < 0 || currentParticle.x > Main.ANCHO || currentParticle.y < 0 || currentParticle.y > Main.ALTO)
-            {
                 particula.remove();
-            }
 
             currentParticle.tick();
 

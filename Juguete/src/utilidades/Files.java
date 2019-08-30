@@ -30,9 +30,7 @@ public class Files
         file = new File(ruta);
 
         if (!file.exists())
-        {
             file.createNewFile();
-        }
 
         formatter = new Formatter(new FileWriter(ruta, true));
         in = new Scanner(new FileReader(file));
@@ -49,9 +47,7 @@ public class Files
             formatter.format("%-20s%-20s%s%4$s%4$s", "Nombres:", "Edades:", "Ahorros:", saltoLinea);
 
             for (int i = 0; i < 50; i++)
-            {
                 formatter.format("%-20s%-20s%s%s", nombres[rand.nextInt(nombres.length)], "Edad: " + rand.nextInt(50), String.format("Ahorros: $%.2f", Math.random() * 10000), saltoLinea);
-            }
 
             formatter.close();
         }

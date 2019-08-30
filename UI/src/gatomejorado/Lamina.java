@@ -32,9 +32,7 @@ public class Lamina extends JPanel implements MouseListener, KeyListener
         timer = new Timer(60, (e) ->
         {
             if (!gameOver)
-            {
                 repaint();
-            }
         });
 
         timer.start();
@@ -58,17 +56,11 @@ public class Lamina extends JPanel implements MouseListener, KeyListener
             g.setFont(new Font("serif", Font.BOLD, 50));
 
             if (turno && empate != 9)
-            {
                 g.drawString("�Ha ganado el jugador 2!", 230, 100);
-
-            } else if (!turno && empate != 9)
-            {
+            else if (!turno && empate != 9)
                 g.drawString("�Ha ganado el jugador 1!", 230, 100);
-
-            } else
-            {
+            else
                 g.drawString("�Hubo un empate!", 300, 100);
-            }
         }
 
         g.dispose();
@@ -106,9 +98,7 @@ public class Lamina extends JPanel implements MouseListener, KeyListener
             return true;
 
         } else
-        {
             return false;
-        }
     }
 
     public void actualizarTablero(boolean legal, int x, int y)
@@ -141,25 +131,17 @@ public class Lamina extends JPanel implements MouseListener, KeyListener
             for (int j = 0; j < tablero.tablero.length; j++)
             {
                 if (tablero.tablero[i][j] == 0 || (tablero.tablero[i][0] != tablero.tablero[i][1] || tablero.tablero[i][0] != tablero.tablero[i][2]))
-                {
                     cont_filas++;
-                }
 
                 if (i == j && (tablero.tablero[i][j] == 0 || tablero.tablero[0][0] != tablero.tablero[1][1] || tablero.tablero[0][0] != tablero.tablero[2][2]))
-                {
                     cont_principal++;
-                }
 
                 if (tablero.tablero[j][i] == 0 || (tablero.tablero[0][i] != tablero.tablero[1][i] || tablero.tablero[0][i] != tablero.tablero[2][i]))
-                {
                     cont_columnas++;
-                }
             }
 
             if (cont_filas == 0 || cont_principal == 0 || cont_columnas == 0)
-            {
                 return true;
-            }
 
             cont_columnas = 0;
 
@@ -169,14 +151,10 @@ public class Lamina extends JPanel implements MouseListener, KeyListener
         for (int i = 2, j = 0; i >= 0; i--, j++)
         {
             if (tablero.tablero[i][j] == 0 || tablero.tablero[2][0] != tablero.tablero[1][1] || tablero.tablero[2][0] != tablero.tablero[0][2])
-            {
                 cont_inversa++;
-            }
 
             if (cont_inversa == 0)
-            {
                 return true;
-            }
         }
 
         return false;

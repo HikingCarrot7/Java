@@ -44,7 +44,6 @@ public final class Cuadricula implements Drawable
     {
 
         for (int i = 0; i < tablero.length; i++)
-        {
             for (int j = 0; j < tablero[i].length; j++)
             {
 
@@ -85,7 +84,6 @@ public final class Cuadricula implements Drawable
                 g.setColor(Color.white);
 
             }
-        }
 
         dibujarEtiquetas(g, INICIOX, INICIOY, 15);
 
@@ -98,26 +96,17 @@ public final class Cuadricula implements Drawable
         g.setFont(new Font("serif", Font.BOLD, 15));
 
         for (int i = 0; i < ALTOTABLERO; i++)
-        {
             g.drawString("" + letra++, INICIOX - OFFSET, INICIOY + i * LADOCUADRO + OFFSET);
-        }
 
         for (int i = 0; i < ANCHOTABLERO; i++)
-        {
             g.drawString(i < 9 ? "0" + (i + 1) : "" + (i + 1), INICIOX + 5 + i * LADOCUADRO, INICIOY - 10);
-        }
     }
 
     public void modificarTablero(int i, int j, int cambio, boolean eliminar)
     {
         if (i < ALTOTABLERO && i >= 0 && j < ANCHOTABLERO && j >= 0)
-        {
             if (tablero[i][j] != 2 || eliminar)
-            {
                 tablero[i][j] = cambio;
-            }
-
-        }
     }
 
     public void recibirTablero(int[][] tablero)
@@ -133,14 +122,8 @@ public final class Cuadricula implements Drawable
     public void iniciarTablero()
     {
         for (int[] I : tablero)
-        {
             for (int i = 0; i < I.length; i++)
-            {
                 if (I[i] != 2)
-                {
                     I[i] = 0;
-                }
-            }
-        }
     }
 }

@@ -84,9 +84,7 @@ public class Lamina extends JPanel
         public void focusGained(FocusEvent e)
         {
             if (text.contentEquals(""))
-            {
                 campoTexto.setText("");
-            }
         }
 
         @Override
@@ -95,10 +93,7 @@ public class Lamina extends JPanel
             text = campoTexto.getText().trim();
 
             if (text.contentEquals(""))
-            {
                 campoTexto.setText("Escribe lo que se te solicita...");
-
-            }
 
         }
 
@@ -126,12 +121,8 @@ public class Lamina extends JPanel
 
                 //Validas el email
                 for (int i = 0; i < text.length(); i++)
-                {
                     if (text.charAt(i) == '@' || text.substring(text.length() - 4, text.length()).contains("@") || text.charAt(0) == '@')
-                    {
                         arrobas++;
-                    }
-                }
 
                 if (arrobas == 1)
                 {
@@ -154,9 +145,7 @@ public class Lamina extends JPanel
                 }
 
             } else
-            {
                 resultado.setText("No llenaste alguno de los campos!");
-            }
         }
     }
 }

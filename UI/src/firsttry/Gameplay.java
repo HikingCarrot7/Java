@@ -135,9 +135,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         player.paintIcon(this, g, player1.x, player1.y);
 
         for (Rectangulos rectangulos : rect)
-        {
             rectangulos.dibujar(g);
-        }
 
         g.setColor(Color.GREEN);
         g.fillOval(ball.x, ball.y, 50, 50);
@@ -169,15 +167,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             puntuacion++;
 
             for (Rectangulos rectangulos : rect)
-            {
                 if (player1.intersects(rectangulos.getxPos(), rectangulos.getyPos(), rectangulos.getAncho(), rectangulos.getLargo()) || player1.intersects(ball))
-                {
                     gameOver = true;
-                }
-            }
 
             for (int i = 0; i < rect.length; i++)
-            {
                 if (new Rectangle(0, 730, 800, 10).intersects(rect[i].getxPos(), rect[i].getyPos(), rect[i].getAncho(), rect[i].getLargo()))
                 {
                     int x = rand.nextInt(700);
@@ -187,39 +180,24 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                     rect[i + 1].setxPos(-x + 800);
                     rect[i + 1].setyPos(50);
                 }
-            }
 
             if (player1.x > 740)
-            {
                 player1.x = 740;
-
-            } else if (player1.x < 0)
-            {
+            else if (player1.x < 0)
                 player1.x = 0;
-            }
 
             if (player1.y > 720)
-            {
                 player1.y = 720;
-
-            } else if (player1.y < 0)
-            {
+            else if (player1.y < 0)
                 player1.y = 0;
-
-            } else if (player1.y < 300)
-            {
+            else if (player1.y < 300)
                 player1.y = 300;
-            }
 
             if (ball.x > 750 || ball.x < 0)
-            {
                 velocidadX *= -1;
-            }
 
             if (ball.y > 750 || ball.y < 0)
-            {
                 velocidadY *= -1;
-            }
 
             ball.x += velocidadX;
             ball.y += velocidadY;
@@ -233,27 +211,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
     public void keyPressed(KeyEvent e)
     {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-        {
             player1.x += 30;
-        }
 
         if (e.getKeyCode() == KeyEvent.VK_LEFT)
-        {
             player1.x -= 30;
-        }
 
         if (e.getKeyCode() == KeyEvent.VK_UP)
-        {
             player1.y -= 30;
-        }
 
         if (e.getKeyCode() == KeyEvent.VK_DOWN)
-        {
             player1.y += 30;
-        }
 
         if (e.getKeyCode() == KeyEvent.VK_ENTER)
-        {
             if (gameOver)
             {
                 int x = rand.nextInt(700);
@@ -287,7 +256,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 
                 repaint();
             }
-        }
     }
 
     @Override

@@ -30,9 +30,7 @@ public class Tablero
     public void dibujar(Graphics2D g)
     {
         for (int i = 0; i < tablero.length; i++)
-        {
             for (int j = 0; j < tablero.length; j++)
-            {
                 if (tablero[i][j] == 0)
                 {
                     g.setColor(Color.white);
@@ -61,19 +59,13 @@ public class Tablero
                     g.drawRect(i * lado + desfase, j * lado + desfase, lado, lado);
                     player2.paintIcon(null, (Graphics) g, i * lado + desfase, j * lado + desfase);
                 }
-            }
-        }
     }
 
     private int[][] initTablero(int tablero[][])
     {
         for (int i = 0; i < tablero.length; i++)
-        {
             for (int j = 0; j < tablero.length; j++)
-            {
                 tablero[i][j] = 0;
-            }
-        }
 
         return tablero;
     }

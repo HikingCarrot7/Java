@@ -107,14 +107,10 @@ final class Circulos extends JPanel
     public void choques()
     {
         if (xPos < 0 || xPos > getWidth() - 30)
-        {
             velocidadX *= -1;
-        }
 
         if (yPos < 0 || yPos > getHeight() - 30)
-        {
             velocidadY *= -1;
-        }
     }
 }
 

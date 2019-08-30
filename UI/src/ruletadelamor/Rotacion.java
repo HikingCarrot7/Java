@@ -54,13 +54,9 @@ public class Rotacion extends JPanel
         dibujarfiguras((Graphics2D) g);
 
         if (thicks++ % tope == 0 && velocidad != 0)
-        {
             velocidad -= razon;
-
-        } else if (velocidad < 0)
-        {
+        else if (velocidad < 0)
             velocidad = 0;
-        }
     }
 
     public void dibujarfiguras(Graphics2D g)

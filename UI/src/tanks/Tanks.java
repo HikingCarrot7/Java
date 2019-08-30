@@ -220,15 +220,11 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
 
             //Balas jugador 1
             for (Balas bala : balas1)
-            {
                 bala.dibujar(g);
-            }
 
             //Balas jugador 2
             for (Balas bala : balas2)
-            {
                 bala.dibujar(g);
-            }
 
             //Vidas player 1
             g.setColor(Color.black);
@@ -242,9 +238,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
             g.drawString(">Player 2: " + vidasPlayer2, 160, 25);
 
             if (vidasPlayer1 < 1 || vidasPlayer2 < 1)
-            {
                 gameOver = true;
-            }
         }
 
         g.dispose();
@@ -256,7 +250,6 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
         if (!gameOver)
         {
             for (Rectangle rect : rectangulos)
-            {
                 if (player1.intersects(rect) || player1.x < 0 || player1.x > 970 || player1.y < 0 || player1.y > 990)
                 {
                     player1.x = 5;
@@ -271,10 +264,8 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
 
                     vidasPlayer2--;
                 }
-            }
 
             for (int i = 0; i < balas2.size(); i++)
-            {
                 if (player1.intersects(balas2.get(i).xPos, balas2.get(i).yPos, 10, 10))
                 {
                     player1.x = 5;
@@ -282,10 +273,8 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
 
                     vidasPlayer1--;
                 }
-            }
 
             for (int i = 0; i < balas1.size(); i++)
-            {
                 if (player2.intersects(balas1.get(i).xPos, balas1.get(i).yPos, 10, 10))
                 {
                     player2.x = 969;
@@ -293,7 +282,6 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
 
                     vidasPlayer2--;
                 }
-            }
 
             choque(balas1);
             choque(balas2);
@@ -318,13 +306,11 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
             }
 
             for (Rectangle rect : rectangulos)
-            {
                 if (rectangulo.intersects(rect))
                 {
                     balas.get(i).setRebotes();
 
                     if (balas.get(i).getVelocidadX() > 0 && balas.get(i).getVelocidadY() > 0)
-                    {
                         if (rect.intersects(balas.get(i).xPos, balas.get(i).yPos, 1, 35))
                         {
                             balas.get(i).yPos -= 20;
@@ -337,9 +323,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
                             x = -15 + rand.nextInt(15);
                             y = -15 + rand.nextInt(31);
                         }
-
-                    } else if (balas.get(i).getVelocidadX() < 0 && balas.get(i).getVelocidadY() < 0)
-                    {
+                    else if (balas.get(i).getVelocidadX() < 0 && balas.get(i).getVelocidadY() < 0)
                         if (rect.intersects(balas.get(i).xPos + 5, balas.get(i).yPos - 50, 1, 1))
                         {
                             balas.get(i).yPos += 20;
@@ -352,9 +336,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
                             x = 1 + rand.nextInt(15);
                             y = -15 + rand.nextInt(31);
                         }
-
-                    } else if (balas.get(i).getVelocidadX() < 0 && balas.get(i).getVelocidadY() > 0)
-                    {
+                    else if (balas.get(i).getVelocidadX() < 0 && balas.get(i).getVelocidadY() > 0)
                         if (rect.intersects(balas.get(i).xPos, balas.get(i).yPos, 1, 35))
                         {
                             balas.get(i).yPos -= 20;
@@ -367,9 +349,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
                             x = 1 + rand.nextInt(15);
                             y = -15 + rand.nextInt(31);
                         }
-
-                    } else if (balas.get(i).getVelocidadX() > 0 && balas.get(i).getVelocidadY() < 0)
-                    {
+                    else if (balas.get(i).getVelocidadX() > 0 && balas.get(i).getVelocidadY() < 0)
                         if (rect.intersects(balas.get(i).xPos + 5, balas.get(i).yPos - 50, 1, 1))
                         {
                             balas.get(i).yPos += 20;
@@ -382,13 +362,11 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
                             x = -15 + rand.nextInt(15);
                             y = -15 + rand.nextInt(31);
                         }
-                    }
 
                     balas.get(i).velocidad(x, y);
 
                     break;
                 }
-            }
         }
     }
 
@@ -447,10 +425,10 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
     @Override
     public void keyPressed(KeyEvent e)
     {
-        teclas.add(new Integer(e.getKeyCode()));
+        teclas.add(e.getKeyCode());
 
         //Player 1
-        if (teclas.contains(new Integer(KeyEvent.VK_RIGHT)))
+        if (teclas.contains(KeyEvent.VK_RIGHT))
         {
             derecha1 = true;
             izquierda1 = false;
@@ -460,7 +438,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
 
         }
 
-        if (teclas.contains(new Integer(KeyEvent.VK_LEFT)))
+        if (teclas.contains(KeyEvent.VK_LEFT))
         {
             derecha1 = false;
             izquierda1 = true;
@@ -469,7 +447,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
             player1.x -= 20;
         }
 
-        if (teclas.contains(new Integer(KeyEvent.VK_UP)))
+        if (teclas.contains(KeyEvent.VK_UP))
         {
             derecha1 = false;
             izquierda1 = false;
@@ -478,7 +456,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
             player1.y -= 20;
         }
 
-        if (teclas.contains(new Integer(KeyEvent.VK_DOWN)))
+        if (teclas.contains(KeyEvent.VK_DOWN))
         {
             derecha1 = false;
             izquierda1 = false;
@@ -487,8 +465,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
             player1.y += 20;
         }
 
-        if (teclas.contains(new Integer(KeyEvent.VK_ENTER)))
-        {
+        if (teclas.contains(KeyEvent.VK_ENTER))
             if (gameOver)
             {
                 balas1.clear();
@@ -497,13 +474,10 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
                 init();
 
             } else if (balas1.size() < 8)
-            {
                 disparar(derecha1, izquierda1, arriba1, balas1, Color.green, player1);
-            }
-        }
 
         //Player 2
-        if (teclas.contains(new Integer(KeyEvent.VK_D)))
+        if (teclas.contains(KeyEvent.VK_D))
         {
             derecha2 = true;
             izquierda2 = false;
@@ -513,7 +487,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
 
         }
 
-        if (teclas.contains(new Integer(KeyEvent.VK_A)))
+        if (teclas.contains(KeyEvent.VK_A))
         {
             derecha2 = false;
             izquierda2 = true;
@@ -522,7 +496,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
             player2.x -= 20;
         }
 
-        if (teclas.contains(new Integer(KeyEvent.VK_W)))
+        if (teclas.contains(KeyEvent.VK_W))
         {
             derecha2 = false;
             izquierda2 = false;
@@ -531,7 +505,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
             player2.y -= 20;
         }
 
-        if (teclas.contains(new Integer(KeyEvent.VK_S)))
+        if (teclas.contains(KeyEvent.VK_S))
         {
             derecha2 = false;
             izquierda2 = false;
@@ -540,13 +514,9 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
             player2.y += 20;
         }
 
-        if (teclas.contains(new Integer(KeyEvent.VK_SPACE)))
-        {
+        if (teclas.contains(KeyEvent.VK_SPACE))
             if (balas2.size() < 8)
-            {
                 disparar(derecha2, izquierda2, arriba2, balas2, Color.yellow, player2);
-            }
-        }
     }
 
     @Override

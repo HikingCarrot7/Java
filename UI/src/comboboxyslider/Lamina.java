@@ -51,9 +51,7 @@ public class Lamina extends JPanel
             public void actionPerformed(ActionEvent e)
             {
                 if (tamanoTexto.getValue() <= 10 || tamanoTexto.getValue() >= 50)
-                {
                     razon *= -1;
-                }
 
                 tamanoTexto.setValue(tamanoTexto.getValue() + razon);
             }
@@ -103,9 +101,7 @@ public class Lamina extends JPanel
             {
 
                 if (thicks++ % 30 == 0)
-                {
                     fuente = elementos[rand.nextInt(6)];
-                }
 
                 texto.setFont(new Font(fuente, Font.PLAIN, tamanoTexto.getValue()));
             }

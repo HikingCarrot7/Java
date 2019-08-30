@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Referencias
 {
 
-    private String[] nombres =
+    private final String[] nombres =
     {
         "Nicolas", "Javier"
     };
@@ -99,7 +99,7 @@ public class Referencias
 
     public static void ReferenciaMetodoStatic()
     {
-        System.out.println("Esta es una referencia a un m�todo static");
+        System.out.println("Esta es una referencia a un metodo static");
     }
 
     public static void main(String[] args)
@@ -110,20 +110,6 @@ public class Referencias
         Saludar s = r2::ReferenciaMetodoInstanciaParticular;
 
         s.saludar();
-
-        int z = 0;
-
-        z = z++;
-
-        z = z++;
-
-        z = z++;
-
-        z = z++;
-
-        z = z++;
-
-        System.out.println(z + " Hola");
 
     }
 

@@ -15,14 +15,11 @@ public class MisFuentes
         String[] misFuentes = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 
         for (String misF : misFuentes)
-        {
             System.out.println(misF);
-        }
 
         fuente = JOptionPane.showInputDialog("Inserta la fuente que quieres buscar");
 
         for (String misF : misFuentes)
-        {
             if (fuente.equals(misF))
             {
                 encontrado = true;
@@ -30,7 +27,6 @@ public class MisFuentes
                 break;
 
             }
-        }
 
         System.out.println(encontrado);
 

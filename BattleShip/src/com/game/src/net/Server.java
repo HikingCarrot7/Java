@@ -47,7 +47,6 @@ public final class Server
 
                 //Detectamos si es nuevo el usuario
                 if (mensaje.getFila() != -2)
-                {
                     if (mensaje.isNuevo())
                     {
                         System.out.println("Se detecto a un nuevo jugador");
@@ -91,7 +90,6 @@ public final class Server
                         out.writeObject(mensaje);
 
                     }
-                }
 
             }
 

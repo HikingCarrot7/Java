@@ -28,9 +28,7 @@ public class LaminaBotones extends JPanel
         abajo.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         for (JButton boton : botones)
-        {
             abajo.add(boton);
-        }
 
         add(abajo, BorderLayout.SOUTH);
 
@@ -55,12 +53,8 @@ public class LaminaBotones extends JPanel
         public void actionPerformed(ActionEvent e)
         {
             for (int i = 0; i < botones.length; i++)
-            {
                 if (i != (int) getValue("i"))
-                {
                     botones[i].setEnabled(cambio);
-                }
-            }
 
             if (!cambio)
             {

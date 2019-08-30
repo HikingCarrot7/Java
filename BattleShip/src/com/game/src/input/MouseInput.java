@@ -24,9 +24,7 @@ public class MouseInput extends MouseAdapter
     public void mousePressed(MouseEvent e)
     {
         if (cliente != null)
-        {
             cliente.mousePressed(e);
-        }
 
         menu.mousePressed(e);
 

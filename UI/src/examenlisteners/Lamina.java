@@ -137,9 +137,7 @@ public class Lamina extends JPanel implements MouseListener, MouseMotionListener
             g.fillOval(centro.x - cambio, centro.y - cambio, radio + cambio * 2, radio + cambio * 2);
 
             if (cambio > tamano || cambio < 20)
-            {
                 razon *= -1;
-            }
 
             cambio += razon;
         }
@@ -248,36 +246,22 @@ public class Lamina extends JPanel implements MouseListener, MouseMotionListener
         if (generacionCircular)
         {
             for (Circular c : circular)
-            {
                 c.dibujar(g);
-            }
 
             if (!generacionLineas)
-            {
                 generarLineas();
-            }
 
             for (Lineas l : lineas)
-            {
                 l.dibujar(g);
-            }
 
             updateLines();
 
         } else if (generacionZoom)
-        {
             for (Zoom z : zoom)
-            {
                 z.dibujar(g);
-            }
-
-        } else if (generacionCirculos)
-        {
+        else if (generacionCirculos)
             for (Circulos c : circulos)
-            {
                 c.dibujar(g);
-            }
-        }
 
         g.dispose();
 

@@ -90,26 +90,18 @@ public class Lamina extends JPanel
         public void insertUpdate(DocumentEvent e)
         {
             if (!control)
-            {
                 actualizarContra(contrasena);
-
-            } else
-            {
+            else
                 actualizarUsuario(usuario);
-            }
         }
 
         @Override
         public void removeUpdate(DocumentEvent e)
         {
             if (!control)
-            {
                 actualizarContra(contrasena);
-
-            } else
-            {
+            else
                 actualizarUsuario(usuario);
-            }
         }
     }
 
@@ -120,13 +112,9 @@ public class Lamina extends JPanel
         public void actionPerformed(ActionEvent e)
         {
             if (userCorrecto && passCorrecto)
-            {
                 respuesta.setText("Datos correctos");
-
-            } else
-            {
+            else
                 respuesta.setText("Alguno de los datos es incorrecto");
-            }
         }
     }
 
@@ -177,11 +165,8 @@ public class Lamina extends JPanel
         palabra = contrasena.getPassword();
 
         if (palabra.length != 0)
-        {
             if (!(palabra.length < contra.length || palabra.length > contra.length))
-            {
                 for (int i = 0; i < password.length(); i++)
-                {
                     if (palabra[i] == contra[i])
                     {
                         contrasena.setBackground(Color.white);
@@ -195,16 +180,13 @@ public class Lamina extends JPanel
                         passCorrecto = false;
 
                     }
-                }
-
-            } else
+            else
             {
                 contrasena.setBackground(Color.red.brighter().brighter());
 
                 passCorrecto = false;
             }
-
-        } else
+        else
         {
             contrasena.setBackground(Color.white);
 

@@ -47,9 +47,7 @@ public class PlacingShips implements Drawable, InputListener
     public void tick()
     {
         if (timer > 0)
-        {
             timer--;
-        }
     }
 
     @Override
@@ -79,20 +77,12 @@ public class PlacingShips implements Drawable, InputListener
         {
 
             for (int i = 0; i < barcosHorizontales.length; i++)
-            {
                 if (!barcosColocados[i])
-                {
                     g.draw(barcosHorizontales[i]);
-                }
-            }
 
             for (int i = 0; i < barcosVerticales.length; i++)
-            {
                 if (!barcosColocados[i + 5])
-                {
                     g.draw(barcosVerticales[i]);
-                }
-            }
         }
     }
 
@@ -102,23 +92,19 @@ public class PlacingShips implements Drawable, InputListener
     {
 
         if (orientacion)
-        {
             for (int i = 0; i < barcos.length; i++)
             {
                 barcos[i] = new Rectangle(INICIOX, INICIOY + i * (LADOCUADRO + 5), (i + 2) * LADOCUADRO, LADOCUADRO);
 
                 g.draw(barcos[i]);
             }
-
-        } else
-        {
+        else
             for (int i = barcos.length - 1; i >= 0; i--)
             {
                 barcos[i] = new Rectangle(INICIOX + (barcos.length - 1 - i) * (LADOCUADRO + 5), INICIOY + (barcos.length - 1 - i) * LADOCUADRO, LADOCUADRO, (i + barcos.length - 1) * LADOCUADRO);
 
                 g.draw(barcos[i]);
             }
-        }
     }
 
     // Pinta de color azul el barco seleccionado
@@ -136,29 +122,24 @@ public class PlacingShips implements Drawable, InputListener
     public void barcoSeleccionadoMouse(Graphics2D g)
     {
         if (barcoSeleccionado != null)
-        {
             g.drawRect(COORDENADAX, COORDENADAY, barcoSeleccionado.width, barcoSeleccionado.height);
-        }
 
     }
 
     public void confirmarBarcoMientrasArrastre()
     {
         if (barcoSeleccionado != null)
-        {
             checarTableroAlArrastrar(
                     (COORDENADAY - 105) / LADOCUADRO,
                     (COORDENADAX - 25) / LADOCUADRO,
                     (orientacionBarcoActual ? barcoSeleccionado.width : barcoSeleccionado.height) / LADOCUADRO,
                     orientacionBarcoActual);
-        }
     }
 
     // Checamos el tablero al arrastrar (antes de hacer clic)
     public void checarTableroAlArrastrar(int fila, int columna, int length, boolean horizontal)
     {
         if (fila < ALTOTABLERO && fila >= 0 && columna < ANCHOTABLERO && columna >= 0)
-        {
 
             if (validarUbicacionBarco(orientacionBarcoActual, fila, columna, cuadricula.obtenerTablero(), barcoSeleccionado))
             {
@@ -172,18 +153,15 @@ public class PlacingShips implements Drawable, InputListener
 
                 pintarBarco(fila, columna, length, 3, orientacionBarcoActual, false);
             }
-
-        } else
-        {
+        
+        else
             cuadricula.iniciarTablero();
-        }
     }
 
     // Checamos el tablero al colocar el barco (cuando se hace click)
     public void checarTableroAlColocar(int fila, int columna)
     {
         if (fila < ALTOTABLERO && fila >= 0 && columna < ANCHOTABLERO && columna >= 0 && barcoSeleccionado != null)
-        {
 
             if (validarUbicacionBarco(orientacionBarcoActual, fila, columna, cuadricula.obtenerTablero(), barcoSeleccionado))
             {
@@ -199,8 +177,6 @@ public class PlacingShips implements Drawable, InputListener
 
             }
 
-        }
-
     }
 
     // Pintamos el barco de acuerdo al color que le pasemos
@@ -211,13 +187,9 @@ public class PlacingShips implements Drawable, InputListener
             cuadricula.modificarTablero(i, j, color, eliminar);
 
             if (orientacionBarcoActual)
-            {
                 j++;
-
-            } else
-            {
+            else
                 i++;
-            }
 
         }
     }
@@ -233,26 +205,18 @@ public class PlacingShips implements Drawable, InputListener
         tempTablero = randomLayout.copiarTableros(tempTablero, tablero, 0, 1, 0);
 
         if (posicion + length > limite)
-        {
             return false;
-        }
 
         for (int i = fila + 1, j = columna + 1; (orientacion ? j : i) < (orientacion ? columna : fila) + length + 1;)
         {
 
             if (tempTablero[i][j] == 2 || tempTablero[i][j - 1] == 2 || tempTablero[i][j + 1] == 2 || tempTablero[i + 1][j] == 2 || tempTablero[i - 1][j] == 2)
-            {
                 return false;
-            }
 
             if (orientacion)
-            {
                 j++;
-
-            } else
-            {
+            else
                 i++;
-            }
         }
 
         return true;
@@ -274,11 +238,8 @@ public class PlacingShips implements Drawable, InputListener
         }
 
         if (tempTablero[fila][columna] == 2)
-        {
 
             eliminarBarco(tempTablero[fila][columna - 1] == 2 || tempTablero[fila][columna + 1] == 2, fila, columna, tempTablero);
-
-        }
 
     }
 
@@ -287,9 +248,7 @@ public class PlacingShips implements Drawable, InputListener
         int aux = orientacion ? columna : fila, contBloques = 1;
 
         while (tempTablero[orientacion ? fila : aux - 1][orientacion ? aux - 1 : columna] != 0)
-        {
             aux--;
-        }
 
         int aux2 = aux;
 
@@ -317,7 +276,6 @@ public class PlacingShips implements Drawable, InputListener
         {
 
             for (int i = 0; i < barcosHorizontales.length; i++)
-            {
                 if (r.intersects(barcosHorizontales[i]) && !barcosColocados[i])
                 {
                     barcoSeleccionado = barcosHorizontales[i];
@@ -326,10 +284,8 @@ public class PlacingShips implements Drawable, InputListener
 
                     return;
                 }
-            }
 
             for (int i = 0; i < barcosVerticales.length; i++)
-            {
                 if (r.intersects(barcosVerticales[i]) && !barcosColocados[i + 5])
                 {
                     barcoSeleccionado = barcosVerticales[i];
@@ -339,25 +295,19 @@ public class PlacingShips implements Drawable, InputListener
                     return;
                 }
 
-            }
-
             checarTableroAlColocar(fila, columna);
 
         } else if (Main.GAMESTATE.equals(Main.STATE.ColocandoBarcos) && e.getButton() == MouseEvent.BUTTON1 && CONTBARCOSCOLOCADOS == 8 && r.intersects(continuar))
         {
             if (!menu.getServer())
-            {
                 menu.crearCliente();
-            }
 
             cliente.setBarcos(cuadricula.obtenerTablero());
 
             Main.GAMESTATE = Main.STATE.Jugando;
 
         } else if (e.getButton() == MouseEvent.BUTTON3)
-        {
             checarEliminacionBarco(fila + 1, columna + 1);
-        }
 
     }
 
@@ -373,9 +323,7 @@ public class PlacingShips implements Drawable, InputListener
         Font title = new Font("serif", Font.BOLD, 30), text = new Font("serif", Font.BOLD, 15), instrucciones = new Font("serif", Font.BOLD, 13);
 
         if (CONTBARCOSCOLOCADOS == 8)
-        {
             g.draw(continuar);
-        }
 
         g.setFont(title);
         g.drawString("Coloca tus barcos!", Main.ANCHO / 2 - 170, 30);

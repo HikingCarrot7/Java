@@ -58,9 +58,7 @@ public class Menu implements Drawable, InputListener
     public void tick()
     {
         if (Main.GAMESTATE.equals(Main.STATE.ColocandoBarcos))
-        {
             placingShips.tick();
-        }
     }
 
     @Override
@@ -155,9 +153,7 @@ public class Menu implements Drawable, InputListener
         g.draw(back);
 
         if (!ipValida)
-        {
             g.drawString("IP NO valida!", continuar.x + 40, continuar.y + 100);
-        }
 
     }
 
@@ -181,10 +177,8 @@ public class Menu implements Drawable, InputListener
         Rectangle r = new Rectangle(e.getX(), e.getY(), 1, 1);
 
         if (r.intersects(play) && Main.GAMESTATE.equals(Main.STATE.Menu))
-        {
             Main.GAMESTATE = Main.STATE.SelectingMode;
-
-        } else if (r.intersects(connect) && Main.GAMESTATE.equals(Main.STATE.Menu))
+        else if (r.intersects(connect) && Main.GAMESTATE.equals(Main.STATE.Menu))
         {
             Main.GAMESTATE = Main.STATE.ConnectingToServer;
 
@@ -196,22 +190,16 @@ public class Menu implements Drawable, InputListener
         {
 
             if (!connecting)
-            {
                 crearServer();
-            }
 
             Main.GAMESTATE = Main.STATE.ColocandoBarcos;
 
         } else if (r.intersects(random) && Main.GAMESTATE.equals(Main.STATE.SelectingMode))
         {
             if (connecting)
-            {
                 main.crearCliente(ip.trim());
-
-            } else
-            {
+            else
                 crearServer();
-            }
 
             cliente.setBarcos(randomLayout.generarTablero());
 
@@ -239,9 +227,7 @@ public class Menu implements Drawable, InputListener
             }
 
             if (ipValida)
-            {
                 Main.GAMESTATE = Main.STATE.SelectingMode;
-            }
 
         } else if (r.intersects(back) && (Main.GAMESTATE.equals(Main.STATE.SelectingMode) || Main.GAMESTATE.equals(Main.STATE.ConnectingToServer)))
         {
@@ -278,14 +264,10 @@ public class Menu implements Drawable, InputListener
         if (e.getKeyCode() == 8)
         {
             if (ip.length() > 0)
-            {
                 ip = ip.substring(0, ip.length() - 1);
-            }
 
         } else if (ip.length() < 16)
-        {
             ip += e.getKeyChar();
-        }
 
     }
 

@@ -99,17 +99,14 @@ public class Lamina extends JPanel
         public void actionPerformed(ActionEvent e)
         {
             for (int i = 0; i < fuente.length; i++)
-            {
                 if (e.getSource() == fuente[i])
                 {
                     fuenteGuardada = (String) getValue(Action.NAME);
 
                     actualizarTexto();
                 }
-            }
 
             for (int i = 0; i < tamano.length; i++)
-            {
                 if (e.getSource() == tamano[i])
                 {
                     tamanoGuardado = (String) getValue(Action.NAME);
@@ -117,33 +114,21 @@ public class Lamina extends JPanel
                     //new StyledEditorKit.FontSizeAction("", 36);
                     actualizarTexto();
                 }
-            }
 
             for (int i = 0; i < tipo.length; i++)
-            {
                 if (e.getSource() == tipo[i])
                 {
                     if ((int) getValue("fuente") == 0)
-                    {
                         tipoGuardado = 0;
-
-                    } else if (tipoGuardado < 3)
-                    {
+                    else if (tipoGuardado < 3)
                         tipoGuardado += (int) getValue("fuente");
-                    }
 
                     actualizarTexto();
                 }
 
-            }
-
             for (int i = 0; i < colorfondo.length; i++)
-            {
                 if (e.getSource() == colorfondo[i])
-                {
                     texto.setBackground((Color) getValue("color"));
-                }
-            }
 
         }
 
@@ -166,10 +151,7 @@ public class Lamina extends JPanel
         };
 
         for (int i = 0; i < todasMisFuentes.length - 240; i++)
-        {
             fuente[i] = todasMisFuentes(todasMisFuentes[i]);
-
-        }
 
         for (int i = 0; i < etiquetas.length; i++)
         {
@@ -184,9 +166,7 @@ public class Lamina extends JPanel
     public void anadirItem(JMenu menu, JMenuItem[] items)
     {
         for (JMenuItem I : items)
-        {
             menu.add(I);
-        }
 
     }
 

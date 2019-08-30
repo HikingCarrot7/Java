@@ -58,34 +58,23 @@ public class RandomLayout
                     }
 
                     if (horizontal)
-                    {
                         j++;
-
-                    } else
-                    {
+                    else
                         i++;
-                    }
 
                 }
 
                 if (posicionValida)
-                {
                     for (int i = posicionI, j = posicionJ; (horizontal ? j : i) < (horizontal ? posicionJ : posicionI) + LONGBARCOACTUAL;)
                     {
                         tempTablero[i][j] = 2;
 
                         if (horizontal)
-                        {
                             j++;
-
-                        } else
-                        {
+                        else
                             i++;
-                        }
 
                     }
-
-                }
 
             } while (!posicionValida);
 
@@ -98,12 +87,8 @@ public class RandomLayout
     public int[][] copiarTableros(int[][] tablero, int[][] tablero2, int inicio, int desface, int desfaceCiclo)
     {
         for (int i = inicio; i < tablero2.length + desfaceCiclo; i++)
-        {
             for (int j = inicio; j < tablero2[i].length + desfaceCiclo; j++)
-            {
                 tablero[i + desface][j + desface] = tablero2[i][j];
-            }
-        }
 
         return tablero;
     }

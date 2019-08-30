@@ -114,20 +114,14 @@ class WindowPrinc extends JFrame
             {
 
                 for (int i = 0; i < Dir.size(); i++)
-                {
 
                     if (dir == Dir.get(i))
-                    {
 
                         Dir.remove(i);
-                    }
-                }
 
                 if (Dir.size() == 0)
-                {
 
                     Dir.add("N/A");
-                }
             }
         });
 

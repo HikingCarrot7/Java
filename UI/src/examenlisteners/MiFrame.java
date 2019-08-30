@@ -124,12 +124,9 @@ public class MiFrame extends JFrame
         public void windowStateChanged(WindowEvent e)
         {
             if (e.getNewState() == Frame.MAXIMIZED_BOTH)
-            {
                 lamina.generarCircular();
-            } else if (e.getOldState() == Frame.MAXIMIZED_BOTH)
-            {
+            else if (e.getOldState() == Frame.MAXIMIZED_BOTH)
                 lamina.generarCirculos();
-            }
         }
 
         @Override

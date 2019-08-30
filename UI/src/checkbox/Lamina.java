@@ -29,9 +29,7 @@ public class Lamina extends JPanel
         checks = new JPanel();
 
         for (int i = 0; i < checkboxs.length; i++)
-        {
             checks.add(checkboxs[i]);
-        }
 
         add(texto, BorderLayout.CENTER);
         add(checks, BorderLayout.SOUTH);
@@ -54,14 +52,10 @@ public class Lamina extends JPanel
             int tipo = 0;
 
             if (checkboxs[0].isSelected())
-            {
                 tipo += Font.BOLD;
-            }
 
             if (checkboxs[1].isSelected())
-            {
                 tipo += Font.ITALIC;
-            }
 
             texto.setFont(new Font("serif", tipo, 25));
         }

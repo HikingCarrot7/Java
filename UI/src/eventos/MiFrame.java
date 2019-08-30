@@ -61,13 +61,9 @@ public class MiFrame extends JFrame implements WindowFocusListener, WindowStateL
     public void windowStateChanged(WindowEvent e)
     {
         if (e.getNewState() == Frame.MAXIMIZED_BOTH)
-        {
             lamina.setBackground(Color.green);
-
-        } else if (e.getOldState() == Frame.MAXIMIZED_BOTH)
-        {
+        else if (e.getOldState() == Frame.MAXIMIZED_BOTH)
             lamina.setBackground(Color.black);
-        }
 
     }
 

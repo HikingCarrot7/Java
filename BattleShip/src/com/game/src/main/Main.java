@@ -109,9 +109,7 @@ public class Main extends Canvas implements Runnable
                     moving = true;
 
                 } else
-                {
                     moving = false;
-                }
 
                 if (CAMBIOY <= 700)
                 {
@@ -120,9 +118,7 @@ public class Main extends Canvas implements Runnable
                     moving = true;
 
                 } else
-                {
                     moving = false;
-                }
 
                 break;
 
@@ -133,9 +129,7 @@ public class Main extends Canvas implements Runnable
         }
 
         if (cliente != null)
-        {
             cliente.tick();
-        }
 
     }
 

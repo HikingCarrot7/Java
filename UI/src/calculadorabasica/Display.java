@@ -46,9 +46,7 @@ public class Display extends JPanel
         botones.setLayout(new GridLayout(4, 4));
 
         for (int i = 0; i < etiquetas.length; i++)
-        {
             anadirBotones(etiquetas[i]);
-        }
 
         add(botones, BorderLayout.CENTER);
     }
@@ -94,25 +92,15 @@ public class Display extends JPanel
         public void calcular(double numero)
         {
             if (ultimaOperacion.contentEquals("+"))
-            {
                 resultado += numero;
-
-            } else if (ultimaOperacion.contentEquals("*"))
-            {
+            else if (ultimaOperacion.contentEquals("*"))
                 resultado *= numero;
-
-            } else if (ultimaOperacion.contentEquals("-"))
-            {
+            else if (ultimaOperacion.contentEquals("-"))
                 resultado -= numero;
-
-            } else if (ultimaOperacion.contentEquals("/"))
-            {
+            else if (ultimaOperacion.contentEquals("/"))
                 resultado /= numero;
-
-            } else
-            {
+            else
                 resultado = numero;
-            }
 
             display.setText("" + resultado);
         }

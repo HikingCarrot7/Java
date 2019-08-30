@@ -152,13 +152,9 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
                 columnaAMostrar = mensajeRecibido.getColumna();
 
                 if (mensajeRecibido.getFila() == -1)
-                {
                     otroJugadorConectado = true;
-
-                } else if (!mensajeRecibido.getIp().equals("-1"))
-                {
+                else if (!mensajeRecibido.getIp().equals("-1"))
                     modificarTableroAliado(mensajeRecibido);
-                }
 
             }
 
@@ -206,7 +202,6 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
         int fila = (e.getY() - 420) / 24, columna = (e.getX() - 130) / 24;
 
         if (fila < 10 && fila >= 0 && columna < 20 && columna >= 0 && miTurno && otroJugadorConectado)
-        {
             try
             {
 
@@ -230,8 +225,6 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
 
             }
 
-        }
-
     }
 
     public void dibujarHUD(Graphics2D g)
@@ -245,25 +238,17 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
         g.setFont(instrucciones);
 
         if (otroJugadorConectado)
-        {
             g.drawString(miTurno ? ">Es su turno, dispare!" : ">Debe esperar su turno para disparar!", 5, 15);
-
-        } else
-        {
+        else
             g.drawString(">Esperando la conexion del otro jugador...", 5, 15);
-        }
 
         g.drawString(">Su direccion IP es: " + miIp, 5, 30);
 
         if (menu.getServer())
-        {
             g.drawString(">Eres un server!", 630, 20);
-        }
 
         if (acertado)
-        {
             g.drawString(">Le diste a un barco enemigo en las coordenadas: " + (char) (65 + filaAMostrar) + (columnaAMostrar + 1), 5, 45);
-        }
 
     }
 

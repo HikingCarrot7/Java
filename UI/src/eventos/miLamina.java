@@ -78,9 +78,7 @@ public class miLamina extends JPanel
             String text = cuadro1.getText();
 
             if (text.contentEquals(""))
-            {
                 System.out.println("No puedes dejar los campos vac�os");
-            }
 
         }
     }
@@ -120,18 +118,11 @@ class EventoMouse implements MouseListener, MouseMotionListener
     public void mousePressed(MouseEvent e)
     {
         if (e.getModifiersEx() == MouseEvent.BUTTON1_DOWN_MASK)
-        {
             System.out.println("You pressed the left button");
-
-        } else if (e.getModifiersEx() == MouseEvent.BUTTON3_DOWN_MASK)
-        {
+        else if (e.getModifiersEx() == MouseEvent.BUTTON3_DOWN_MASK)
             System.out.println("Let me guess... I think you just pressed the right button");
-
-        } else if (e.getModifiersEx() == MouseEvent.BUTTON2_DOWN_MASK)
-        {
+        else if (e.getModifiersEx() == MouseEvent.BUTTON2_DOWN_MASK)
             System.out.println("Congratulations, your wheel button works properly");
-
-        }
 
     }
 
@@ -140,9 +131,7 @@ class EventoMouse implements MouseListener, MouseMotionListener
     {
 
         if (e.getModifiersEx() == MouseEvent.BUTTON1_DOWN_MASK)
-        {
             System.out.println("You are moving somethig, invisible btw");
-        }
 
     }
 

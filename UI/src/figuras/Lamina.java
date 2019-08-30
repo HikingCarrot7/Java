@@ -93,23 +93,15 @@ public class Lamina extends JPanel
         g.drawRect(401, 401, 399, 396);
 
         for (Cuadrados misFiguras : cuadros)
-        {
             misFiguras.dibujar(g);
-        }
 
         for (Circulos misFiguras : circulos)
-        {
             misFiguras.dibujar(g);
-        }
 
         for (Rectangulos misFiguras : rectangulos)
-        {
             misFiguras.dibujar(g);
-        }
 
         for (Lineas misFiguras : lineas)
-        {
             misFiguras.dibujar(g);
-        }
     }
 }

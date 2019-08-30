@@ -66,9 +66,7 @@ public class Lamina extends JPanel
         estrella.moveTo(puntosX[0], puntosY[0]);
 
         for (int i = 0; i < puntosX.length; i++)
-        {
             estrella.lineTo(puntosX[i], puntosY[i]);
-        }
 
         estrella.closePath();
 

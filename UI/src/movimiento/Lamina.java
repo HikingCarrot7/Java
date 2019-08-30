@@ -119,10 +119,7 @@ public class Lamina extends JPanel implements ActionListener
         g.fillOval(x, (int) (y - Math.sin(Math.toRadians(x)) * 100), 10, 10);
 
         if (x > 780 || x < 0)
-        {
             velocidad *= -1;
-
-        }
 
         x += velocidad;
     }
@@ -133,10 +130,7 @@ public class Lamina extends JPanel implements ActionListener
         g.fillOval((int) (x2 - Math.sin(Math.toRadians(y2)) * 100), y2, 10, 10);
 
         if (y2 > 780 || y2 < 0)
-        {
             velocidad2 *= -1;
-
-        }
 
         y2 += velocidad2;
     }
@@ -147,13 +141,9 @@ public class Lamina extends JPanel implements ActionListener
         g.fillOval(rebote.x, rebote.y, 10, 10);
 
         if (rebote.x > 780 || rebote.x < 0)
-        {
             velocidadX *= -1;
-
-        } else if (rebote.y > 770 || rebote.y < 0)
-        {
+        else if (rebote.y > 770 || rebote.y < 0)
             velocidadY *= -1;
-        }
 
         rebote.x += velocidadX;
         rebote.y += velocidadY;
@@ -165,9 +155,7 @@ public class Lamina extends JPanel implements ActionListener
         g.fillOval(100 - cambio, 650 - cambio, 10 + cambio * 2, 10 + cambio * 2);
 
         if (cambio > 50 || cambio < 20)
-        {
             razon *= -1;
-        }
 
         cambio += razon;
     }

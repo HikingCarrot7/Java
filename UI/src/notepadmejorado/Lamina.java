@@ -105,9 +105,7 @@ public final class Lamina extends JPanel
         fuente = new JMenuItem[misFuentes.length - 235];
 
         for (int i = 0; i < misFuentes.length - 235; i++)
-        {
             fuente[i] = new JRadioButtonMenuItem(misFuentes[i]);
-        }
 
     }
 
@@ -164,9 +162,7 @@ public final class Lamina extends JPanel
     public void anadirHerramientas(JToolBar herramientas, JMenuItem items[])
     {
         for (JMenuItem H : items)
-        {
             herramientas.add(H);
-        }
 
     }
 
@@ -194,23 +190,17 @@ public final class Lamina extends JPanel
     public void anadirItems(JMenu opcion, JMenuItem[] items)
     {
         for (JMenuItem I : items)
-        {
             opcion.add(I);
-        }
     }
 
     public void anadirAcciones(JMenuItem[][] items)
     {
 
         for (JMenuItem F : fuente)
-        {
             F.addActionListener(new StyledEditorKit.FontFamilyAction("", F.getText()));
-        }
 
         for (JMenuItem S : size)
-        {
             S.addActionListener(new StyledEditorKit.FontSizeAction("", Integer.parseInt(S.getText())));
-        }
 
         anadirAtajos(items);
 
@@ -236,9 +226,7 @@ public final class Lamina extends JPanel
         grupo = new ButtonGroup();
 
         for (JMenuItem M : items[indice])
-        {
             grupo.add(M);
-        }
 
     }
 
