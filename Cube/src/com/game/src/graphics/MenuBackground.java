@@ -41,13 +41,9 @@ public class MenuBackground extends GameObject
         y += velY;
 
         if (y < 0 || y > Game.ALTO - 25)
-        {
             velY *= -1;
-        }
         if (x < 0 || x > Game.ANCHO - 32)
-        {
             velX *= -1;
-        }
 
         /*for (int i = 0; i < menu.rectangles.length; i++) 
          {

@@ -22,9 +22,7 @@ public class PREFABS
 
         //lava
         for (int xxx = xx + 128; xxx < xx + 256; xxx += 32)
-        {
             controller.addObject(new Lava(xxx, (level - 32), tex, ObjectId.Lava));
-        }
 
         //stairs right
         controller.addObject(new Base(xx + 256, (level - 96), tex, ObjectId.Moon_Top));
@@ -46,9 +44,7 @@ public class PREFABS
 
         //lava left
         for (int xxx = xx + 96; xxx < xx + 288; xxx += 32)
-        {
             controller.addObject(new Lava(xxx, level, tex, ObjectId.Lava));
-        }
 
         //middle pillar
         controller.addObject(new Base(xx + 288, (level - 96), tex, ObjectId.Moon_Top));
@@ -57,9 +53,7 @@ public class PREFABS
 
         //lava left
         for (int xxx = xx + 384; xxx < xx + 576; xxx += 32)
-        {
             controller.addObject(new Lava(xxx, level, tex, ObjectId.Lava));
-        }
 
         //stairs right
         controller.addObject(new Base(xx + 576, (level - 64), tex, ObjectId.Moon_Top));

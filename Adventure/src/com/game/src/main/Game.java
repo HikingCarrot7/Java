@@ -92,9 +92,7 @@ public class Game extends Canvas
         flowerAnimations = new AnimatedSprite[100];
 
         for (int i = 0; i < flowerAnimations.length; i++)
-        {
             flowerAnimations[i] = new AnimatedSprite(flowerSheet, 8, i * 50, 70);
-        }
 
         //SDK BUTTONS--------------------------
         //SDK
@@ -102,9 +100,7 @@ public class Game extends Canvas
         tileSprite = tiles.getSprites();
 
         for (int i = 0; i < buttons.length; i++)
-        {
             buttons[i] = new SDKButton(tileSprite[i], i, new Rectangle(0, i * (16 * xZoom + 2), 16 * xZoom, 16 * yZoom), this);
-        }
 
         gui = new GUI(buttons, 15, 15, true);
 
@@ -112,12 +108,8 @@ public class Game extends Canvas
         inventoryButtons = new GUIButton[25];
 
         for (int y = 0; y < 5; y++)
-        {
             for (int x = 0; x < 5; x++)
-            {
                 inventoryButtons[x + y * 5] = new SDKButton(tileSprite[0], 0, new Rectangle(y * (16 * xZoom + 2), x * (16 * xZoom + 2), 16 * xZoom, 16 * yZoom), this);
-            }
-        }
 
         //inventory = new GUI(inventoryButtons, ANCHO/2 - 80, ALTO/2 - 80, true);
         //Objects
@@ -140,14 +132,10 @@ public class Game extends Canvas
     public void tick()
     {
         for (GameObject gameObject : objects)
-        {
             gameObject.tick(this);
-        }
 
         for (int i = 0; i < flowerAnimations.length; i++)
-        {
             flowerAnimations[i].tick(this);
-        }
     }
 
     public void render()
@@ -161,14 +149,10 @@ public class Game extends Canvas
         map.renderMap(renderer, xZoom, yZoom);
 
         for (GameObject gameObject : objects)
-        {
             gameObject.render(renderer, xZoom, yZoom);
-        }
 
         for (AnimatedSprite flowerAnimation : flowerAnimations)
-        {
             flowerAnimation.render(renderer, xZoom, yZoom);
-        }
 
         renderer.render(g);
 
@@ -205,12 +189,8 @@ public class Game extends Canvas
         boolean stoppedChecking = false;
 
         for (GameObject O : objects)
-        {
             if (!stoppedChecking)
-            {
                 stoppedChecking = O.handleMouseClick(mouseRect, renderer.getCamera(), xZoom, yZoom);
-            }
-        }
 
         if (!stoppedChecking)
         {
@@ -262,9 +242,7 @@ public class Game extends Canvas
     public void handleCTRL(boolean[] keys)
     {
         if (keys[KeyEvent.VK_S])
-        {
             map.saveMap();
-        }
     }
 
     public KeyInput getKeyListener()

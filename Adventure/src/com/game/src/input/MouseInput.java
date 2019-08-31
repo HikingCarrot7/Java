@@ -20,14 +20,10 @@ public class MouseInput implements MouseListener, MouseMotionListener
     public void mousePressed(MouseEvent e)
     {
         if (e.getButton() == MouseEvent.BUTTON1)
-        {
             game.LeftPressed(e.getX(), e.getY());
-        }
 
         if (e.getButton() == MouseEvent.BUTTON3)
-        {
             game.RightPressed(e.getX(), e.getY());
-        }
 
     }
 

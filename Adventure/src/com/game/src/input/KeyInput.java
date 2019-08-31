@@ -26,22 +26,15 @@ public class KeyInput implements KeyListener, FocusListener
         int key = e.getKeyCode();
 
         if (key == 45)
-        {
             game.ZoomMin();
-        } else if (key == 521)
-        {
+        else if (key == 521)
             game.ZoomMax();
-        }
 
         if (key < keys.length)
-        {
             keys[e.getKeyCode()] = true;
-        }
 
         if (keys[KeyEvent.VK_CONTROL])
-        {
             game.handleCTRL(keys);
-        }
 
     }
 
@@ -51,9 +44,7 @@ public class KeyInput implements KeyListener, FocusListener
         int key = e.getKeyCode();
 
         if (key < keys.length)
-        {
             keys[e.getKeyCode()] = false;
-        }
 
     }
 
@@ -61,9 +52,7 @@ public class KeyInput implements KeyListener, FocusListener
     public void focusLost(FocusEvent e)
     {
         for (int i = 0; i < keys.length; i++)
-        {
             keys[i] = false;
-        }
 
     }
 

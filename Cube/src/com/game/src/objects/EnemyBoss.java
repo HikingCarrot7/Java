@@ -38,41 +38,29 @@ public class EnemyBoss extends GameObject
         y += velY;
 
         if (timer <= 0)
-        {
             velY = 0;
-        } else
-        {
+        else
             timer--;
-        }
 
         if (timer <= 0)
-        {
             timer2--;
-        }
 
         if (timer2 <= 0)
         {
             x += velX;
 
             if (velX > 0)
-            {
                 velX += 0.01f;
-            } else
-            {
+            else
                 velX -= 0.01f;
-            }
 
             velX = Game.clamp(velX, 10, -10);
 
             if (rand.nextInt(Game.difficulty ? 5 : 10) == 0)
-            {
                 handler.addObject(new EnemyBossBullet(x + 48, y + 48, ObjectId.BoundEnemy, handler));
-            }
 
             if (x < 0 || x > Game.ANCHO - 96)
-            {
                 velX *= -1;
-            }
         }
 
         //if(y < 0 || y > Game.ALTO - 96) velY *= -1;

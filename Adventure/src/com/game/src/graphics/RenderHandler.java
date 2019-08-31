@@ -24,14 +24,10 @@ public class RenderHandler
         for (GraphicsDevice graphicsDevice1 : graphicsDevice)
         {
             if (MaxScreenWidth < graphicsDevice1.getDisplayMode().getWidth())
-            {
                 MaxScreenWidth = graphicsDevice1.getDisplayMode().getWidth();
-            }
-            
+
             if (MaxScreenHeight < graphicsDevice1.getDisplayMode().getHeight())
-            {
                 MaxScreenHeight = graphicsDevice1.getDisplayMode().getHeight();
-            }
         }
 
         view = new BufferedImage(MaxScreenWidth, MaxScreenHeight, BufferedImage.TYPE_INT_RGB);
@@ -58,9 +54,7 @@ public class RenderHandler
         int[] rectanglePixels = rectangle.getPixels();
 
         if (rectanglePixels != null)
-        {
             renderArray(rectanglePixels, rectangle.w, rectangle.h, rectangle.x, rectangle.y, xZoom, yZoom, fixed);
-        }
     }
 
     public void renderRectangle(Rectangle rectangle, Rectangle offSet, int xZoom, int yZoom, boolean fixed)
@@ -68,9 +62,7 @@ public class RenderHandler
         int[] rectanglePixels = rectangle.getPixels();
 
         if (rectanglePixels != null)
-        {
             renderArray(rectanglePixels, rectangle.w, rectangle.h, rectangle.x + offSet.x, rectangle.y + offSet.y, xZoom, yZoom, fixed);
-        }
     }
 
     public void renderSprite(Sprite sprite, int xPos, int yPos, int xZoom, int yZoom, boolean fixed)
@@ -81,18 +73,10 @@ public class RenderHandler
     public void renderArray(int[] renderPixels, int renderW, int renderH, int xPos, int yPos, int xZoom, int yZoom, boolean fixed)
     {
         for (int y = 0; y < renderH; y++)
-        {
             for (int x = 0; x < renderW; x++)
-            {
                 for (int yZoomPosition = 0; yZoomPosition < yZoom; yZoomPosition++)
-                {
                     for (int xZoomPosition = 0; xZoomPosition < xZoom; xZoomPosition++)
-                    {
                         setPixel(renderPixels[y * renderW + x], (x * xZoom + xPos + xZoomPosition), (y * yZoom + yPos + yZoomPosition), fixed);
-                    }
-                }
-            }
-        }
     }
 
     private void setPixel(int pixel, int x, int y, boolean fixed)
@@ -102,28 +86,20 @@ public class RenderHandler
         if (!fixed)
         {
             if (x >= camera.x && y >= camera.y && x <= camera.x + camera.w && y <= camera.y + camera.h)
-            {
                 pixelIndex = (y - camera.y) * view.getWidth() + (x - camera.x);
-            }
 
         } else if (x >= 0 && y >= 0 && x <= camera.w && y <= camera.h)
-        {
             pixelIndex = x + y * view.getWidth();
-        }
 
         if (pixels.length > pixelIndex && pixel != Game.alpha)
-        {
             pixels[pixelIndex] = pixel;
-        }
 
     }
 
     public void clear()
     {
         for (int i = 0; i < pixels.length; i++)
-        {
             pixels[i] = 0;
-        }
     }
 
     public Rectangle getCamera()

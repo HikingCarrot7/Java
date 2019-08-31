@@ -36,14 +36,10 @@ public class BoundEnemy extends GameObject
         y += velY;
 
         if (y < 0 || y > Game.ALTO - 25)
-        {
             velY *= -1;
-        }
 
         if (x < 0 || x > Game.ANCHO - 32)
-        {
             velX *= -1;
-        }
 
         handler.addObject(new Trail(x, y, ObjectId.Trail, handler, Color.red, 16, 16, 0.02f));
 

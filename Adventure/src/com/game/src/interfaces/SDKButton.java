@@ -35,13 +35,10 @@ public class SDKButton extends GUIButton
                 isGreen = true;
             }
 
-        } else
+        } else if (isGreen)
         {
-            if (isGreen)
-            {
-                rect.generateGraphics(0xFFFFFF00);
-                isGreen = false;
-            }
+            rect.generateGraphics(0xFFFFFF00);
+            isGreen = false;
         }
     }
 

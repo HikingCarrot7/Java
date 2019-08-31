@@ -32,9 +32,7 @@ public class Handler
         try
         {
             for (GameObject O : objetos)
-            {
                 O.tick(objetos);
-            }
 
         } catch (ConcurrentModificationException e)
         {
@@ -47,9 +45,7 @@ public class Handler
         try
         {
             for (GameObject O : objetos)
-            {
                 O.render(g);
-            }
 
         } catch (ConcurrentModificationException e)
         {

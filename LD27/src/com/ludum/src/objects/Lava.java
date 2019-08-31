@@ -35,20 +35,13 @@ public class Lava extends Entity implements GameObject
     public void render(Graphics g)
     {
         if (id == ObjectId.Lava)
-        {
             lava.drawAnimation(g, x, y);
-        } else if (id == ObjectId.LavaBase)
-        {
+        else if (id == ObjectId.LavaBase)
             lava_base.drawAnimation(g, x, y);
-        }
 
         for (int yy = y + 32; yy < 512; yy += 32)
-        {
             if (id == ObjectId.Lava)
-            {
                 lava_base.drawAnimation(g, x, yy);
-            }
-        }
     }
 
     public Rectangle getBounds()

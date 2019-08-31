@@ -15,9 +15,7 @@ public class ExplosionAnimation
         particulas = new ArrayList<>();
 
         for (int i = 0; i < 30; i++)
-        {
             particulas.add(new Particles(x, y));
-        }
     }
 
     public void tick()
@@ -32,9 +30,7 @@ public class ExplosionAnimation
     public void render(Graphics2D g)
     {
         for (Particles P : particulas)
-        {
             P.render(g);
-        }
     }
 
     private class Particles
@@ -55,13 +51,9 @@ public class ExplosionAnimation
             velY = rand.nextInt(10) - 5;
 
             if (velX == 0)
-            {
                 velX = 5;
-            }
             if (velY == 0)
-            {
                 velY = 3;
-            }
 
         }
 

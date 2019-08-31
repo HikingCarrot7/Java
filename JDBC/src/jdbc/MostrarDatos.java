@@ -53,9 +53,7 @@ public final class MostrarDatos extends JFrame
         file = new File("res/Consulta2.txt");
 
         if (!file.exists())
-        {
             file.createNewFile();
-        }
 
     }
 
@@ -70,7 +68,7 @@ public final class MostrarDatos extends JFrame
             ResultSet resultados = DriverManager.getConnection("jdbc:mysql://localhost:3306/sql?serverTimezone=UTC&useSSL=false", "root", "").createStatement().executeQuery(query);
 
             aux += String.format("%-30s%-20s%-20s%s%5$s%5$s", "EMPRESA", "POBLACIÓN", "TELÉFONO", "RESPONSABLE", lineSeparator);
-            
+
             area.append(aux);
 
             while (resultados.next())
@@ -78,9 +76,9 @@ public final class MostrarDatos extends JFrame
                 datos = String.format("%-30s%-20s%-20s%s%s", resultados.getString("EMPRESA"),
                         resultados.getString("POBLACIÓN"),
                         resultados.getString("TELÉFONO"),
-                        resultados.getString("RESPONSABLE"), 
+                        resultados.getString("RESPONSABLE"),
                         lineSeparator);
-                
+
                 aux += datos;
 
                 area.append(datos);

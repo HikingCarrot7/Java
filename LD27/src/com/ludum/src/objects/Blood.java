@@ -35,12 +35,9 @@ public class Blood extends Entity implements GameObject
         int z = r.nextInt(2);
 
         if (z == 0)
-        {
             velX = r.nextInt(3);
-        } else
-        {
+        else
             velX = -r.nextInt(3);
-        }
 
         velY = -r.nextInt(4) + -1;
 
@@ -58,12 +55,9 @@ public class Blood extends Entity implements GameObject
         y += velY;
 
         if (ALPHA >= 0.1)
-        {
             ALPHA -= 0.01f;
-        } else
-        {
+        else
             controller.removeObject(this);
-        }
     }
 
     public void render(Graphics g)

@@ -62,15 +62,13 @@ public class Controller
         int xx = 0;
 
         for (int i = 0; i < chunk_size; i++)
-        {
             if (i == chunk_size - 1)
-            {
                 for (int j = 0; j < (45 * 32); j += 32)
                 {
                     this.addObject(new Base(xx, level, tex, ObjectId.End_Block));
                     xx += 32;
                 }
-            } else
+            else
             {
                 for (int j = 0; j < (32 * (r.nextInt(chunk_length + 5) + chunk_length)); j += 32)
                 {
@@ -97,9 +95,7 @@ public class Controller
                         {
                             int z = r.nextInt(coinSpawn);
                             if (z == 0)
-                            {
                                 this.addObject(new Coin(xx, level - 32, tex, ObjectId.Coin, this));
-                            }
                             //	coinCount = 0;
                         }
                         //else coinCount++;
@@ -112,59 +108,40 @@ public class Controller
                 int z = r.nextInt(6);
 
                 if (z == 0 && level < 352)
-                {
                     level += 32;
-                } else if (z == 1 && level < 352)
-                {
+                else if (z == 1 && level < 352)
                     level += 64;
-                } else if (z == 2 && level < 352)
-                {
+                else if (z == 2 && level < 352)
                     level += 96;
-                } else
-                {
+                else
                     level -= 64;
-                }
 
                 if (z == 4 && level > 256)
-                {
                     level -= 32;
-                } else if (z == 5 && level > 256)
-                {
+                else if (z == 5 && level > 256)
                     level -= 64;
-                } else if (z == 6 && level > 256)
-                {
+                else if (z == 6 && level > 256)
                     level -= 96;
-                } else
-                {
+                else
                     level += 64;
-                }
             }
-        }
     }
 
     public void tick()
     {
         if (storeSelect < 0)
-        {
             storeSelect = 3;
-        } else if (storeSelect > 3)
-        {
+        else if (storeSelect > 3)
             storeSelect = 0;
-        }
 
         if (storeSelect == 0)
-        {
             storeY = 250;
-        } else if (storeSelect == 1)
-        {
+        else if (storeSelect == 1)
             storeY = 300;
-        } else if (storeSelect == 2)
-        {
+        else if (storeSelect == 2)
             storeY = 350;
-        } else if (storeSelect == 3)
-        {
+        else if (storeSelect == 3)
             storeY = 400;
-        }
 
         for (int i = 0; i < object.size(); i++)
         {

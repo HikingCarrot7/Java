@@ -27,17 +27,12 @@ public class KeyInput extends KeyAdapter
         int key = e.getKeyCode();
 
         for (int i = 0; i < handler.getObjects().size(); i++)
-        {
             if (handler.getObjects().get(i).getId().equals(ObjectId.Player))
             {
                 if (key == KeyEvent.VK_RIGHT)
-                {
                     handler.getObjects().get(i).setVelX(5);
-                }
                 if (key == KeyEvent.VK_LEFT)
-                {
                     handler.getObjects().get(i).setVelX(-5);
-                }
 
                 if (key == KeyEvent.VK_UP && !handler.getObjects().get(i).isJumping())
                 {
@@ -49,17 +44,12 @@ public class KeyInput extends KeyAdapter
                  handler.addObject(new Bullet(handler.getObjects().get(i).getX(), handler.getObjects().get(i).getY() + 32, ObjectId.Bullet, handler.getObjects().get(i).getFacing() * 8));	*/
                 break;
             }
-        }
 
         if (key == KeyEvent.VK_S)
-        {
             camera.setY(-300);
-        }
 
         if (key == KeyEvent.VK_ESCAPE)
-        {
             System.exit(1);
-        }
 
     }
 
@@ -69,20 +59,14 @@ public class KeyInput extends KeyAdapter
         int key = e.getKeyCode();
 
         for (int i = 0; i < handler.getObjects().size(); i++)
-        {
             if (handler.getObjects().get(i).getId().equals(ObjectId.Player))
             {
                 if (key == KeyEvent.VK_RIGHT)
-                {
                     handler.getObjects().get(i).setVelX(0);
-                }
                 if (key == KeyEvent.VK_LEFT)
-                {
                     handler.getObjects().get(i).setVelX(0);
-                }
 
             }
-        }
     }
 
 }

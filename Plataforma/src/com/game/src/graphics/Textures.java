@@ -36,31 +36,19 @@ public class Textures
     private void getTexture()
     {
         for (int i = 0; i < block.length; i++)
-        {
             block[i] = bs.grabImage(1, i + 1, 32, 32);
-        }
 
         for (int i = 0; i < player.length; i++)
-        {
             if (i < 7)
-            {
                 player[i] = ps.grabImage(1, i + 1, 32, 64);
-            } else
-            {
+            else
                 player[i] = ps.grabImage(1, 27 - i, 32, 64);
-            }
-        }
 
         for (int i = 0; i < playerJump.length; i++)
-        {
             if (i < 3)
-            {
                 playerJump[i] = ps.grabImage(2, 8 + i, 32, 64);
-            } else
-            {
+            else
                 playerJump[i] = ps.grabImage(2, 16 - i, 32, 64);
-            }
-        }
 
     }
 

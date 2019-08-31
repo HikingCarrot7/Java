@@ -32,23 +32,15 @@ public class Base extends Entity implements GameObject
         //	g2d.draw(getBounds());
 
         if (id == ObjectId.Moon_Top)
-        {
             g.drawImage(tex.block[1], x, y, null);
-        } else if (id == ObjectId.End_Block)
-        {
+        else if (id == ObjectId.End_Block)
             g.drawImage(tex.block[2], x, y, null);
-        }
 
         for (int yy = y + 32; yy < 512; yy += 32)
-        {
             if (id == ObjectId.Moon_Top)
-            {
                 g.drawImage(tex.block[0], x, yy, null);
-            } else if (id == ObjectId.End_Block)
-            {
+            else if (id == ObjectId.End_Block)
                 g.drawImage(tex.block[2], x, yy, null);
-            }
-        }
 
     }
 

@@ -42,12 +42,8 @@ public class GUI implements GameObject
     public void tick(Game game)
     {
         if (buttons != null)
-        {
             for (GUIButton guiButton : buttons)
-            {
                 guiButton.tick(game);
-            }
-        }
 
     }
 
@@ -55,17 +51,11 @@ public class GUI implements GameObject
     public void render(RenderHandler renderer, int xZoom, int yZoom)
     {
         if (backgroundSprite != null)
-        {
             renderer.renderSprite(backgroundSprite, rect.x, rect.y, xZoom, yZoom, fixed);
-        }
 
         if (buttons != null)
-        {
             for (GUIButton guiButton : buttons)
-            {
                 guiButton.render(renderer, xZoom, yZoom, rect);
-            }
-        }
 
     }
 
@@ -73,9 +63,7 @@ public class GUI implements GameObject
     public boolean handleMouseClick(Rectangle mouseRectangle, Rectangle camera, int xZoom, int yZoom)
     {
         if (!fixed)
-        {
             mouseRectangle = new Rectangle(mouseRectangle.x + camera.x, mouseRectangle.y + camera.y, 1, 1);
-        }
 
         boolean stoppedChecking = false;
 
@@ -89,9 +77,7 @@ public class GUI implements GameObject
                 boolean result = guiButton.handleMouseClick(mouseRectangle, camera, xZoom, yZoom);
 
                 if (!stoppedChecking)
-                {
                     stoppedChecking = result;
-                }
             }
 
         }

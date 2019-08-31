@@ -22,9 +22,7 @@ public class AnimatedSprite extends Sprite implements GameObject
         sprites = new Sprite[positions.length];
 
         for (int i = 0; i < positions.length; i++)
-        {
             sprites[i] = new Sprite(sheet, positions[i].x, positions[i].y, positions[i].w, positions[i].h);
-        }
 
     }
 
@@ -54,9 +52,7 @@ public class AnimatedSprite extends Sprite implements GameObject
         endSprite = images.length;
 
         for (int i = 0; i < images.length; i++)
-        {
             sprites[i] = new Sprite(images[i]);
-        }
     }
 
     @Override
@@ -114,9 +110,7 @@ public class AnimatedSprite extends Sprite implements GameObject
     public void incrementSprite()
     {
         if (currentSprite++ >= endSprite)
-        {
             currentSprite = startSprite;
-        }
     }
 
     @Override

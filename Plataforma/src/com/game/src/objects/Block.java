@@ -30,12 +30,9 @@ public class Block extends GameObject
     public void render(Graphics2D g)
     {
         if (type == 0)
-        {
             g.drawImage(Game.getTexture().block[0], (int) x, (int) y, null);
-        } else
-        {
+        else
             g.drawImage(Game.getTexture().block[1], (int) x, (int) y, null);
-        }
     }
 
     @Override

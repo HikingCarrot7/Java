@@ -57,21 +57,17 @@ public class Player extends Entity implements GameObject
         speed = controller.speed;
 
         if (canMove)
-        {
             x += velX;
-        } else
+        else
         {
             if (velX > 0)
-            {
                 velX -= 0.1f;
-            } else
+            else
             {
                 velX = 0;
 
                 if (Game.ALPHA < 0.01)
-                {
                     canMove = true;
-                }
             }
 
             x += velX;
@@ -83,9 +79,7 @@ public class Player extends Entity implements GameObject
             y += FallSpeed;
 
             if (FallSpeed < MAX_FALL_SPEED)
-            {
                 FallSpeed += Gravity;
-            }
         }
 
         if (time.timeMil <= 0)
@@ -95,9 +89,7 @@ public class Player extends Entity implements GameObject
             time.timer2.stop();
 
             if (!controller.isDead)
-            {
                 Game.ALPHA = 0.1f;
-            }
 
             controller.isDead = true;
             controller.proceed = true;
@@ -128,9 +120,7 @@ public class Player extends Entity implements GameObject
                     time.timer2.stop();
 
                     if (!controller.isDead)
-                    {
                         Game.ALPHA = 0.1f;
-                    }
 
                     controller.isDead = true;
                     controller.proceed = true;
@@ -154,10 +144,8 @@ public class Player extends Entity implements GameObject
                     if (tempObject.getId() == ObjectId.End_Block && canMove)
                     {
                         if (canMove)
-                        {
                             //AudioPlayer.getSound("woah").play();
                             canMove = false;
-                        }
 
                         time.timer.stop();
                         time.timer2.stop();
@@ -180,39 +168,25 @@ public class Player extends Entity implements GameObject
 
                 }
             } else
-            {
                 isFalling = true;
-            }
 
             if (getBoundsRight().intersects(tempObject.getBounds()))
             {
                 if (tempObject.getId() != ObjectId.Coin)
-                {
                     x += speed;
-                }
 
             } else if (getBoundsLeft().intersects(tempObject.getBounds()))
-            {
                 if (tempObject.getId() != ObjectId.Coin)
-                {
                     if (FallSpeed > 5)
-                    {
                         x -= (speed * 2);
-                    } else
-                    {
+                    else
                         x -= speed;
-                    }
-                }
-            }
         }
 
         if (velX > 0)
-        {
             facing = 1;
-        } else if (velX < 0)
-        {
+        else if (velX < 0)
             facing = -1;
-        }
 
         //animation
         walkingRight.runAnimation();
@@ -223,21 +197,14 @@ public class Player extends Entity implements GameObject
             int finBonus = time.time * 500;
 
             if (bonus < finBonus)
-            {
                 if (time.time >= 3)
-                {
                     bonus += 10;
-                } else
-                {
+                else
                     bonus += 5;
-                }
-            } else
+            else if (!addScore)
             {
-                if (!addScore)
-                {
-                    addScore = true;
-                    Time.SCORE += bonus;
-                }
+                addScore = true;
+                Time.SCORE += bonus;
             }
         }
 
@@ -253,57 +220,29 @@ public class Player extends Entity implements GameObject
         //g2d.draw(getBounds());
 
         if (facing == 1)
-        {
             if (FallSpeed > 2)
-            {
                 g.drawImage(tex.player[16], x, y, 64, 96, null);
-            } else
-            {
-                if (isJumping)
-                {
-                    if (FallSpeed > 0)
-                    {
-                        g.drawImage(tex.player[16], x, y, 64, 96, null);
-                    } else
-                    {
-                        g.drawImage(tex.player[14], x, y, 64, 96, null);
-                    }
-                } else if (velX > 0)
-                {
-                    walkingRight.drawAnimation(g, x, y, 64, 96);
-                } else
-                {
-                    g.drawImage(tex.player[0], x, y, 64, 96, null);
-                }
-            }
-
-        }
+            else if (isJumping)
+                if (FallSpeed > 0)
+                    g.drawImage(tex.player[16], x, y, 64, 96, null);
+                else
+                    g.drawImage(tex.player[14], x, y, 64, 96, null);
+            else if (velX > 0)
+                walkingRight.drawAnimation(g, x, y, 64, 96);
+            else
+                g.drawImage(tex.player[0], x, y, 64, 96, null);
         if (facing == -1)
-        {
             if (FallSpeed > 2)
-            {
                 g.drawImage(tex.player[19], x, y, 64, 96, null);
-            } else
-            {
-                if (isJumping)
-                {
-                    if (FallSpeed > 0)
-                    {
-                        g.drawImage(tex.player[19], x, y, 64, 96, null);
-                    } else
-                    {
-                        g.drawImage(tex.player[17], x, y, 64, 96, null);
-                    }
-                } else if (velX < 0)
-                {
-                    walkingLeft.drawAnimation(g, x, y, 64, 96);
-                } else
-                {
-                    g.drawImage(tex.player[7], x, y, 64, 96, null);
-                }
-            }
-
-        }
+            else if (isJumping)
+                if (FallSpeed > 0)
+                    g.drawImage(tex.player[19], x, y, 64, 96, null);
+                else
+                    g.drawImage(tex.player[17], x, y, 64, 96, null);
+            else if (velX < 0)
+                walkingLeft.drawAnimation(g, x, y, 64, 96);
+            else
+                g.drawImage(tex.player[7], x, y, 64, 96, null);
 
         if (canMove == false && velX == 0)
         {
@@ -333,168 +272,120 @@ public class Player extends Entity implements GameObject
                 if (Time.U1 == 1)
                 {
                     if (Time.SCORE >= 3000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$3000 Move Faster : LVL " + Time.U1, x - 105, 250);
                 } else if (Time.U1 == 2)
                 {
                     if (Time.SCORE >= 5000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$5000 Move Faster : LVL " + Time.U1, x - 105, 250);
                 } else if (Time.U1 == 3)
                 {
                     if (Time.SCORE >= 7000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$7000 Move Faster : LVL " + Time.U1, x - 105, 250);
                 } else if (Time.U1 == 4)
                 {
                     if (Time.SCORE >= 9000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$9000 Move Faster : LVL " + Time.U1, x - 105, 250);
                 }
 
                 if (Time.U2 == 1)
                 {
                     if (Time.SCORE >= 3000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$3000 Jump Higher : LVL " + Time.U2, x - 105, 300);
                 } else if (Time.U2 == 2)
                 {
                     if (Time.SCORE >= 5000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$5000 Jump Higher : LVL " + Time.U2, x - 105, 300);
                 } else if (Time.U2 == 3)
                 {
                     if (Time.SCORE >= 7000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$7000 Jump Higher : LVL " + Time.U2, x - 105, 300);
                 } else if (Time.U2 == 4)
                 {
                     if (Time.SCORE >= 9000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$9000 Jump Higher : LVL " + Time.U2, x - 105, 300);
                 }
 
                 if (Time.U3 == 1)
                 {
                     if (Time.SCORE >= 3000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$3000 Fall Quicker : LVL " + Time.U3, x - 105, 350);
                 } else if (Time.U3 == 2)
                 {
                     if (Time.SCORE >= 5000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$5000 Fall Quicker : LVL " + Time.U3, x - 105, 350);
                 } else if (Time.U3 == 3)
                 {
                     if (Time.SCORE >= 7000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$7000 Fall Quicker : LVL " + Time.U3, x - 105, 350);
                 } else if (Time.U3 == 4)
                 {
                     if (Time.SCORE >= 9000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$9000 Fall Quicker : LVL " + Time.U3, x - 105, 350);
                 }
 
                 if (Time.U4 == 1)
                 {
                     if (Time.SCORE >= 3000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$3000 More Coins : LVL " + Time.U4, x - 105, 400);
                 } else if (Time.U4 == 2)
                 {
                     if (Time.SCORE >= 5000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$5000 More Coins : LVL " + Time.U4, x - 105, 400);
                 } else if (Time.U4 == 3)
                 {
                     if (Time.SCORE >= 7000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$7000 More Coins : LVL " + Time.U4, x - 105, 400);
                 } else if (Time.U4 == 4)
                 {
                     if (Time.SCORE >= 9000)
-                    {
                         g.setColor(Color.green);
-                    } else
-                    {
+                    else
                         g.setColor(Color.red);
-                    }
                     g.drawString("$9000 More Coins : LVL " + Time.U4, x - 105, 400);
                 }
             }
@@ -502,29 +393,18 @@ public class Player extends Entity implements GameObject
             if (controller.proceed)
             {
                 if (!controller.isDead)
-                {
                     Game.state = STATE.Game;
-                }
 
                 if (!controller.isDead)
                 {
                     if (Game.ALPHA < 0.99)
-                    {
                         Game.ALPHA += 0.01f;
-                    }
-                } else
-                {
-                    if (Game.ALPHA < 0.99)
-                    {
-                        Game.ALPHA += 0.001f;
-                    }
-                }
+                } else if (Game.ALPHA < 0.99)
+                    Game.ALPHA += 0.001f;
 
                 addScore = true;
             } else
-            {
                 Game.ALPHA = 0.1f;
-            }
 
         }
 

@@ -66,12 +66,9 @@ public class Player implements GameObject
         updateCamera(game.getRenderer().getCamera());
 
         if (didMove)
-        {
             playerAnimation.tick(game);
-        } else
-        {
+        else
             playerAnimation.reset();
-        }
 
     }
 

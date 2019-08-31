@@ -27,14 +27,12 @@ public class SmartEnemy extends GameObject
         velY = 5;
 
         for (int i = 0; i < handler.getObjects().size(); i++)
-        {
             if (handler.getObjects().get(i).getId().equals(ObjectId.Player1))
             {
                 player = handler.getObjects().get(i);
 
                 break;
             }
-        }
 
         this.handler = handler;
         this.tex = tex;
@@ -57,14 +55,10 @@ public class SmartEnemy extends GameObject
         velY = (float) ((-vel / distance) * diffY * vel);
 
         if (y < 0 || y > Game.ALTO - 25)
-        {
             velY *= -1;
-        }
 
         if (x < 0 || x > Game.ANCHO - 32)
-        {
             velX *= -1;
-        }
 
         handler.addObject(new Trail(x, y, ObjectId.Trail, handler, Color.yellow, 16, 16, 0.05f));
 

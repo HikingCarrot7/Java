@@ -59,9 +59,7 @@ public class Tiles
     public void renderTile(int tileID, RenderHandler renderer, int xPos, int yPos, int xZoom, int yZoom)
     {
         if (tiles.size() > tileID && tileID >= 0)
-        {
             renderer.renderSprite(tiles.get(tileID).sprite, xPos, yPos, xZoom, yZoom, false);
-        }
     }
 
     public int tiles()
@@ -74,9 +72,7 @@ public class Tiles
         Sprite[] sprites = new Sprite[tiles()];
 
         for (int i = 0; i < sprites.length; i++)
-        {
             sprites[i] = tiles.get(i).sprite;
-        }
 
         return sprites;
     }

@@ -57,21 +57,16 @@ public class Player extends GameObject
         x += velX;
 
         if (velX < 0)
-        {
             facing = -1;
-        } else if (velX > 0)
-        {
+        else if (velX > 0)
             facing = 1;
-        }
 
         if (falling || jumping)
         {
             velY += gravity;
 
             if (velY > MAX_SPEED)
-            {
                 velY = MAX_SPEED;
-            }
         }
 
         Collision(object);
@@ -89,7 +84,6 @@ public class Player extends GameObject
     private void Collision(ArrayList<GameObject> object)
     {
         for (int i = 0; i < object.size(); i++)
-        {
             if (object.get(i).getId().equals(ObjectId.Block))
             {
                 //top
@@ -108,32 +102,23 @@ public class Player extends GameObject
                     jumping = false;
 
                 } else
-                {
                     falling = true;
-                }
 
                 //right
                 if (getBoundsRight().intersects(object.get(i).getBounds()))
-                {
                     x = object.get(i).getX() - ancho;
-                }
 
                 //left
                 if (getBoundsLeft().intersects(object.get(i).getBounds()))
-                {
                     x = object.get(i).getX() + 32;
-                }
 
             } else if (object.get(i).getId().equals(ObjectId.Flag))
-            {
                 if (getBounds().intersects(object.get(i).getBounds()))
                 {
                     handler.removeLevel();
 
                     handler.switchLevel();
                 }
-            }
-        }
     }
 
     public void dividirArrays()
@@ -148,26 +133,16 @@ public class Player extends GameObject
         jleft = new BufferedImage[jright.length];
 
         for (int i = 0; i < right.length * 2; i++)
-        {
             if (i < 7)
-            {
                 right[i] = Game.getTexture().player[i];
-            } else
-            {
+            else
                 left[i - 7] = Game.getTexture().player[i];
-            }
-        }
 
         for (int i = 0; i < jright.length * 2; i++)
-        {
             if (i < 3)
-            {
                 jright[i] = Game.getTexture().playerJump[i];
-            } else
-            {
+            else
                 jleft[i - 3] = Game.getTexture().playerJump[i];
-            }
-        }
     }
 
     @Override
@@ -175,27 +150,18 @@ public class Player extends GameObject
     {
 
         if (jumping && facing == 1)
-        {
             playerJumpingRight.drawAnimation(g, (int) x, (int) y);
-        } else if (jumping && facing == -1)
-        {
+        else if (jumping && facing == -1)
             playerJumpingLeft.drawAnimation(g, (int) x, (int) y);
-        } else if (velX != 0)
-        {
+        else if (velX != 0)
             if (velX > 0)
-            {
                 playerWalkRight.drawAnimation(g, (int) x, (int) y);
-            } else
-            {
+            else
                 playerWalkLeft.drawAnimation(g, (int) x, (int) y);
-            }
-        } else if (facing == 1)
-        {
+        else if (facing == 1)
             g.drawImage(Game.getTexture().player[0], (int) x, (int) y, null);
-        } else
-        {
+        else
             g.drawImage(Game.getTexture().player[7], (int) x, (int) y, null);
-        }
 
         /*g.setColor(Color.blue);
          g.drawRect((int) x, (int) y, ancho, alto);

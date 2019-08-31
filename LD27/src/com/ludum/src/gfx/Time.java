@@ -38,16 +38,13 @@ public class Time implements ActionListener
             {
                 timeMil--;
                 if (timeMil <= 0)
-                {
                     if (!canStop)
-                    {
                         timeMil = 9;
-                    } else
+                    else
                     {
                         timer2.stop();
                         canStop = false;
                     }
-                }
 
             }
         });
@@ -80,15 +77,11 @@ public class Time implements ActionListener
         g.setColor(Color.yellow);
         g.setFont(new Font("Peach Milk", 0, 120));
         if (time == 10)
-        {
             g.drawString(time + "." + timeMil, 500, 480);
-        } else if (time == 0)
-        {
+        else if (time == 0)
             g.drawString(time + "." + timeMil, 530, 480);
-        } else
-        {
+        else
             g.drawString(time + "." + timeMil, 540, 480);
-        }
 
         g.setFont(new Font("Peach Milk", 1, 40));
         g.drawString("STAGE " + LEVEL, 10, 480);
@@ -96,7 +89,6 @@ public class Time implements ActionListener
         g.drawString("SCORE: " + SCORE, 10, 50);
 
         if (Game.state == STATE.Counter)
-        {
 
             if (counter == 3)
             {
@@ -114,7 +106,6 @@ public class Time implements ActionListener
                 g.setFont(new Font("Peach Milk", 1, 190));
                 g.drawString("SATYR!!", 100, 300);
             }
-        }
     }
 
     public void actionPerformed(ActionEvent e)

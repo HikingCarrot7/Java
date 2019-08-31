@@ -42,9 +42,7 @@ public class PrimeraConexión
         file = new File(ruta);
 
         if (!file.exists())
-        {
             file.createNewFile();
-        }
 
         out = new Formatter(new FileWriter(ruta, true));
     }
@@ -75,10 +73,8 @@ public class PrimeraConexión
                 datos = String.format("| %-28s| $%-13s%-5s%s", miResultSet.getString("SECCIÓN"), miResultSet.getString("SUMA_PRECIO"), "|", lineSeparator);
 
                 for (int i = 0; i < 48; i++)
-                {
                     datos += "-";
-                }
-                
+
                 datos += lineSeparator;
 
                 System.out.printf(datos);

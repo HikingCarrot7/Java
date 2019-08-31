@@ -24,14 +24,12 @@ public class MouseInput extends MouseAdapter
         this.camera = camera;
 
         for (int i = 0; i < handler.getObjects().size(); i++)
-        {
             if (handler.getObjects().get(i).getId().equals(ObjectId.Player))
             {
                 player = (Player) handler.getObjects().get(i);
 
                 break;
             }
-        }
     }
 
     @Override

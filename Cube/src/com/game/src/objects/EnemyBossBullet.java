@@ -37,9 +37,7 @@ public class EnemyBossBullet extends GameObject
         y += velY;
 
         if (y > Game.ALTO - 25)
-        {
             handler.removeObject(this);
-        }
 
         //if (x < 0 || x > Game.ANCHO - 32) velX *= -1;
         //handler.addTrail(new Trail(x, y, ObjectId.Trail, handler, Color.red, 16, 16, 0.009f));

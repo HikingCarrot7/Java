@@ -38,65 +38,38 @@ public class Menu
         y += velY;
 
         if (x <= 0)
-        {
             velX *= -1;
-        }
         if (y <= 0)
-        {
             velY *= -1;
-        }
         if (x >= 640)
-        {
             velX *= -1;
-        }
         if (y >= 480)
-        {
             velY *= -1;
-        }
 
         if (selected < 0)
-        {
             selected = 2;
-        } else if (selected > 2)
-        {
+        else if (selected > 2)
             selected = 0;
-        }
 
         if (changing)
-        {
             if (radius > 700)
-            {
                 radius -= 0.2f;
-            } else
-            {
+            else
                 changing = false;
-            }
-        } else
-        {
-            if (radius < 800)
-            {
-                radius += 0.2f;
-            } else
-            {
-                changing = true;
-            }
-        }
+        else if (radius < 800)
+            radius += 0.2f;
+        else
+            changing = true;
     }
 
     public void render(Graphics g)
     {
         if (selected == 0)
-        {
             g.drawImage(tex.menu_p[0], -140, -20, (32 * 14), (32 * 20), null);
-        }
         if (selected == 2)
-        {
             g.drawImage(tex.menu_p[1], -140, -20, (32 * 14), (32 * 20), null);
-        }
         if (selected == 1)
-        {
             g.drawImage(tex.menu_p[2], -120, -20, (32 * 14), (32 * 20), null);
-        }
 
         g.setColor(Color.red);
         g.setFont(new Font("Peach Milk", 0, 120));

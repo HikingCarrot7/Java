@@ -67,24 +67,16 @@ public final class Map
 
                         //se est� buscando el bloque que este m�s cerca y el que est� m�s alejado
                         if (mappedTile.x < minX)
-                        {
                             minX = mappedTile.x;
-                        }
 
                         if (mappedTile.y < minY)
-                        {
                             minY = mappedTile.y;
-                        }
 
                         if (mappedTile.x > maxX)
-                        {
                             maxX = mappedTile.x;
-                        }
 
                         if (mappedTile.y > maxY)
-                        {
                             maxY = mappedTile.y;
-                        }
 
                         mappedTiles.add(mappedTile);
 
@@ -113,9 +105,7 @@ public final class Map
                 assert (chunkX >= 0 && chunkX < chunks.length && chunkY >= 0 && chunkY < chunks[0].length);
 
                 if (chunks[chunkX][chunkY] == null)
-                {
                     chunks[chunkX][chunkY] = new Chunk();
-                }
 
                 chunks[chunkX][chunkY].mappedTiles.add(mappedTile);
 
@@ -150,9 +140,7 @@ public final class Map
         }
 
         if (!foundTile)
-        {
             mappedTiles.add(new MappedTile(tileID, tileX, tileY));
-        }
 
     }
 
@@ -163,9 +151,7 @@ public final class Map
             MappedTile mappedTile = mappedTiles.get(i);
 
             if (mappedTile.x == tileX && mappedTile.y == tileY)
-            {
                 mappedTiles.remove(i);
-            }
 
         }
     }
@@ -177,15 +163,9 @@ public final class Map
 
         //Dibuja el fondo
         if (fillTileID >= 0)
-        {
             for (int y = renderer.getCamera().y - yIncrement - (renderer.getCamera().y % yIncrement); y < renderer.getCamera().y + renderer.getCamera().h; y += yIncrement)
-            {
                 for (int x = renderer.getCamera().x - xIncrement - (renderer.getCamera().x % xIncrement); x < renderer.getCamera().x + renderer.getCamera().w; x += xIncrement)
-                {
                     tileSet.renderTile(fillTileID, renderer, x, y, xZoom, yZoom);
-                }
-            }
-        }
 
         int topLeftX = renderer.getCamera().x;
 //		int topLeftY = renderer.getCamera().y;
@@ -203,12 +183,8 @@ public final class Map
         while (pixelX < bottomRightX && pixelY < bottomRightY)
         {
             if (chunkX >= 0 && chunkY >= 0 && chunkX < chunks.length && chunkY < chunks[0].length)
-            {
                 if (chunks[chunkX][chunkY] != null)
-                {
                     chunks[chunkX][chunkY].render(renderer, xZoom, yZoom, xIncrement, yIncrement);
-                }
-            }
 
             chunkX++;
             pixelX += chunkPixelW;
@@ -221,9 +197,7 @@ public final class Map
                 pixelY += chunkPixelH;
 
                 if (pixelY > bottomRightY)
-                {
                     break;
-                }
             }
 
         }
@@ -254,23 +228,19 @@ public final class Map
         try
         {
             if (mapFile.exists())
-            {
                 mapFile.delete();
-            }
 
             mapFile.createNewFile();
 
             try (PrintWriter printWriter = new PrintWriter(mapFile))
             {
                 if (fillTileID >= 0)
-                {
                     printWriter.printf("//Fill title for whole map%nFill:%d%n//TileID-X-Y%n", fillTileID);
-                }
-                
+
                 for (int i = 0; i < mappedTiles.size(); i++)
                 {
                     MappedTile mappedTile = mappedTiles.get(i);
-                    
+
                     printWriter.println(mappedTile.id + "," + mappedTile.x + "," + mappedTile.y);
                 }
             }

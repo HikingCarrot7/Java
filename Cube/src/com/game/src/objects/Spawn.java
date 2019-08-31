@@ -46,9 +46,7 @@ public class Spawn
                 handler.addObject(new BoundEnemy(rand.nextInt(Game.ANCHO - 32), rand.nextInt(Game.ALTO - 32), ObjectId.BoundEnemy, handler, tex));
 
                 if (hud.getLevel() % 3 == 0)
-                {
                     handler.addObject(new FastEnemy(rand.nextInt(Game.ANCHO - 32), rand.nextInt(Game.ALTO - 32), ObjectId.FastEnemy, handler, tex));
-                }
 
                 if (hud.getLevel() == 3)
                 {

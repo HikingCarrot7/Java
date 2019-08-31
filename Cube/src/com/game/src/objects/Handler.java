@@ -39,12 +39,8 @@ public class Handler
     public void clearEnemies()
     {
         for (int i = objects.size() - 1; i > 0; i--)
-        {
             if (!objects.get(i).getId().equals(ObjectId.Player1))
-            {
                 objects.remove(i);
-            }
-        }
     }
 
     public void addObject(GameObject object)

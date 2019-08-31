@@ -70,9 +70,7 @@ public class MainMenu
             g.drawString("Exit", rectangles[2].x + rectangles[2].width / 2 - 35, rectangles[2].y + rectangles[2].height / 2 + 15);
 
             for (int i = 0; i < rectangles.length - 3; i++)
-            {
                 g.draw(rectangles[i]);
-            }
 
         } else if (Game.gameState.equals(Game.STATE.Help))
         {
@@ -121,9 +119,7 @@ public class MainMenu
             g.drawString("Back", rectangles[2].x + rectangles[2].width / 2 - 45, rectangles[2].y + rectangles[2].height / 2 + 15);
 
             for (int i = 0; i < rectangles.length - 3; i++)
-            {
                 g.draw(rectangles[i]);
-            }
         }
 
     }
@@ -147,9 +143,7 @@ public class MainMenu
             handler.clearEnemies();
 
             for (int i = 0; i < 2; i++)
-            {
                 handler.addObject(new BoundEnemy(rand.nextInt(Game.ANCHO - 32), rand.nextInt(Game.ALTO - 32), ObjectId.BoundEnemy, handler, tex));
-            }
 
             playSound();
 
@@ -168,9 +162,7 @@ public class MainMenu
             Game.difficulty = true;
 
             for (int i = 0; i < 2; i++)
-            {
                 handler.addObject(new BoundEnemy(rand.nextInt(Game.ANCHO - 32), rand.nextInt(Game.ALTO - 32), ObjectId.BoundEnemy, handler, tex));
-            }
 
             playSound();
 
@@ -199,9 +191,7 @@ public class MainMenu
             init();
 
             for (int i = 0; i < 2; i++)
-            {
                 handler.addObject(new BoundEnemy(rand.nextInt(Game.ANCHO - 32), rand.nextInt(Game.ALTO - 32), ObjectId.BoundEnemy, handler, tex));
-            }
 
             playSound();
 

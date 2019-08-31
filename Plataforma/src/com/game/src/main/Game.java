@@ -42,9 +42,7 @@ public class Game extends Canvas
     public synchronized void start()
     {
         if (!running)
-        {
             running = true;
-        }
     }
 
     public synchronized void stop()
@@ -79,12 +77,8 @@ public class Game extends Canvas
         handler.tick();
 
         for (int i = 0; i < handler.getObjects().size(); i++)
-        {
             if (handler.getObjects().get(i).getId().equals(ObjectId.Player))
-            {
                 camera.tick(handler.getObjects().get(i));
-            }
-        }
 
     }
 
@@ -109,9 +103,7 @@ public class Game extends Canvas
         g.translate((int) camera.getX(), (int) camera.getY());
 
         for (int i = 0; i < clouds.getWidth() * 7; i += clouds.getWidth() + 100)
-        {
             g.drawImage(clouds, i, LEVEL * 900 + 20, this);
-        }
 
         handler.render(g);
 
@@ -125,7 +117,6 @@ public class Game extends Canvas
     public void LoadImageLevel(BufferedImage image)
     {
         for (int j = LEVEL == 0 ? LEVEL * 30 : LEVEL * 30 - 20; j < LEVEL * 30 + 30; j++)
-        {
             for (int i = 0; i < 100; i++)
             {
                 int pixel = image.getRGB(i, j);
@@ -135,20 +126,14 @@ public class Game extends Canvas
                 int blue = (pixel) & 0xff;
 
                 if (red == 255 && green == 255 && blue == 255)
-                {
                     handler.addObject(new Block(i * 32, j * 32, 0, ObjectId.Block));
-                } else if (red == 128 && green == 128 && blue == 128)
-                {
+                else if (red == 128 && green == 128 && blue == 128)
                     handler.addObject(new Block(i * 32, j * 32, 1, ObjectId.Block));
-                } else if (red == 0 && green == 0 && blue == 255)
-                {
+                else if (red == 0 && green == 0 && blue == 255)
                     handler.addObject(new Player(i * 32, j * 32, ObjectId.Player, handler, camera));
-                } else if (red == 255 && green == 255 && blue == 0)
-                {
+                else if (red == 255 && green == 255 && blue == 0)
                     handler.addObject(new Flag(i * 32, j * 32, ObjectId.Flag));
-                }
             }
-        }
     }
 
     public static Textures getTexture()

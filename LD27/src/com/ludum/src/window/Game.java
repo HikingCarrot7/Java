@@ -108,9 +108,7 @@ public class Game extends Canvas implements Runnable
     public synchronized void start()
     {
         if (running)
-        {
             return;
-        }
 
         running = true;
         thread = new Thread(this, "Game Thread");
@@ -157,27 +155,19 @@ public class Game extends Canvas implements Runnable
         controller.tick();
 
         if (state == STATE.Game || state == STATE.Store || state == STATE.Counter)
-        {
 
             for (int i = 0; i < controller.object.size(); i++)
             {
                 GameObject object = controller.object.get(i);
 
                 if (object.getId() == ObjectId.Player)
-                {
                     if (object.getX() > 320)
-                    {
                         cam.setX(object.getX() - (getWidth() / 2) + 16);
-                    } else
-                    {
+                    else
                         cam.setX(0);
-                    }
-                }
             }
-        }
 
         if (Game.ALPHA > 0.9 && !fade)
-        {
 
             if (!controller.isDead)
             {
@@ -213,23 +203,15 @@ public class Game extends Canvas implements Runnable
                 chunk_size = 5;
                 chunk_length = 10;
             }
-        }
 
         if (fade)
-        {
             if (Game.ALPHA > 0.01)
-            {
                 Game.ALPHA -= 0.01f;
-            } else
-            {
+            else
                 fade = false;
-            }
-        }
 
         if (state == STATE.Menu)
-        {
             menu.tick();
-        }
     }
 
     private AlphaComposite makeTransparent(float alpha)
@@ -254,23 +236,17 @@ public class Game extends Canvas implements Runnable
         g.fillRect(0, 0, getWidth(), getHeight());
 
         if (state == STATE.Game || state == STATE.Store || state == STATE.Counter)
-        {
             g2d.translate(-cam.getX(), -cam.getY());
-
-        }
 
         //drawing background
         for (int xx = 0; xx < (639 * 15); xx += 639)
-        {
             g.drawImage(background, xx, 0, this);
-        }
 
         try
         {
             if (controller.object.size() >= 1)
-            {
                 controller.render(g);
-            }
+
         } catch (Exception e)
         {
             StringWriter sw = new StringWriter();
@@ -291,9 +267,7 @@ public class Game extends Canvas implements Runnable
             g2d.translate(-cam.getX(), -cam.getY());
 
             if (Game.ALPHA < 0.1)
-            {
                 for (int i = 0; i < controller.object.size(); i++)
-                {
                     if (controller.object.get(i).getId() == ObjectId.Player)
                     {
                         Point2D center = new Point2D.Float(controller.object.get(i).getX() - 32, controller.object.get(i).getY() + 64);
@@ -311,9 +285,6 @@ public class Game extends Canvas implements Runnable
                         g2d.fillRect(cam.getX(), cam.getY(), 800, 800);
                         g2d.dispose();
                     }
-
-                }
-            }
 
             g2d.translate(cam.getX(), cam.getY());
 
@@ -360,10 +331,7 @@ public class Game extends Canvas implements Runnable
         }
 
         if (state == STATE.Menu)
-        {
-
             menu.render(g);
-        }
 
         if (state == STATE.Dead)
         {

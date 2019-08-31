@@ -27,9 +27,7 @@ public class Shop
         rectangles = new Rectangle[3];
 
         for (int i = 0; i < rectangles.length; i++)
-        {
             rectangles[i] = new Rectangle(i * 250 + 50, 200, 200, 120);
-        }
 
     }
 
@@ -58,9 +56,7 @@ public class Shop
         g.drawString("Press Space to go back", Game.ANCHO / 2 - 250, 550);
 
         for (Rectangle R : rectangles)
-        {
             g.draw(R);
-        }
     }
 
     public void mousePressed(MouseEvent e)
@@ -90,7 +86,6 @@ public class Shop
             }
 
         } else if (r.intersects(rectangles[2]) && Game.gameState.equals(Game.STATE.Shop))
-        {
             if (hud.getScore() >= b3)
             {
                 hud.setScore(hud.getScore() - b3);
@@ -99,7 +94,6 @@ public class Shop
                 HUD.HEALTH += hud.bounds;
 
             }
-        }
 
     }
 

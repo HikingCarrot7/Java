@@ -57,11 +57,9 @@ public class Player extends GameObject
     public void render(Graphics2D g)
     {
         if (Game.gameState.equals(Game.STATE.Game) || Game.gameState.equals(Game.STATE.Shop))
-        {
             //g.setColor(Color.white);
             //g.fillRect((int) x, (int) y, 32, 32);
             g.drawImage(tex.player, (int) x, (int) y, null);
-        }
     }
 
     @Override
@@ -73,28 +71,18 @@ public class Player extends GameObject
     public void Collision(ArrayList<GameObject> object)
     {
         for (int i = 0; i < object.size(); i++)
-        {
             if (object.get(i).getId().equals(ObjectId.BoundEnemy) || object.get(i).getId().equals(ObjectId.FastEnemy) || object.get(i).getId().equals(ObjectId.SmartEnemy))
-            {
                 if (getBounds().intersects(object.get(i).getBounds()))
-                {
                     HUD.HEALTH -= Game.difficulty ? 2 : 0.5;
-                }
-            }
-        }
     }
 
     public void keyTracker()
     {
         if (keys.contains(38))
-        {
             setVelY(Game.difficulty ? -8 : -5);
-        }
 
         if (keys.contains(40))
-        {
             setVelY(Game.difficulty ? 8 : 5);
-        }
 
         if (!controlHorizontal && keys.contains(39))
         {
@@ -113,15 +101,11 @@ public class Player extends GameObject
             controlHorizontal = true;
 
             if (keys.contains(39))
-            {
                 setVelX(Game.difficulty ? 8 : 5);
-            }
         }
 
         if (keys.isEmpty() || (keys.size() == 1 && keys.contains(39)))
-        {
             controlHorizontal = false;
-        }
     }
 
     public void addKey(Integer key)

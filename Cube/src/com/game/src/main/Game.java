@@ -62,9 +62,7 @@ public class Game extends Canvas
     public synchronized void start()
     {
         if (!running)
-        {
             running = true;
-        }
     }
 
     public synchronized void stop()
@@ -104,9 +102,7 @@ public class Game extends Canvas
             handler.tick();
 
             for (ExplosionAnimation A : explosiones)
-            {
                 A.tick();
-            }
 
             if (gameState.equals(STATE.Game))
             {
@@ -114,9 +110,7 @@ public class Game extends Canvas
                 spawn.tick();
 
             } else if (gameState.equals(STATE.Menu) || gameState.equals(STATE.End))
-            {
                 menu.tick();
-            }
         }
 
     }
@@ -140,27 +134,17 @@ public class Game extends Canvas
         handler.render(g);
 
         for (ExplosionAnimation A : explosiones)
-        {
             A.render(g);
-        }
 
         if (gameState.equals(STATE.Game))
-        {
             hud.render(g);
-
-        } else if (gameState.equals(STATE.Shop))
-        {
+        else if (gameState.equals(STATE.Shop))
             shop.render(g);
-
-        } else
-        {
+        else
             menu.render(g);
-        }
 
         if (paused)
-        {
             g.drawString("PAUSED", ANCHO / 2 - 100, ALTO / 2);
-        }
 
         g.dispose();
         bs.show();
@@ -170,31 +154,20 @@ public class Game extends Canvas
     public void createBackground()
     {
         for (int i = 0; i < 20; i++)
-        {
             if (i < 10)
-            {
                 handler.addObject(new MenuBackground(rand.nextInt(ANCHO / 2 - 100), rand.nextInt(Game.ALTO - 50), ObjectId.MenuBackgroudParticle, handler, menu));
-
-            } else
-            {
+            else
                 handler.addObject(new MenuBackground(ANCHO / 2 + 100 + rand.nextInt(100), rand.nextInt(Game.ALTO - 50), ObjectId.MenuBackgroudParticle, handler, menu));
-
-            }
-        }
     }
 
     public static float clamp(float var, int max, int min)
     {
         if (var > max)
-        {
             return max;
-        } else if (var < min)
-        {
+        else if (var < min)
             return min;
-        } else
-        {
+        else
             return var;
-        }
     }
 
     public void addExplosion(ExplosionAnimation explosion)

@@ -37,9 +37,7 @@ public class Coin extends Entity implements GameObject
     public void render(Graphics g)
     {
         if (id == ObjectId.Coin)
-        {
             coin.drawAnimation(g, x, y);
-        }
     }
 
     public Rectangle getBounds()

@@ -32,12 +32,8 @@ public class SpriteSheet
         int SpriteID = 0;
 
         for (int y = 0; y < SIZEY; y += spriteSizeY)
-        {
             for (int x = 0; x < SIZEX; x += spriteSizeX)
-            {
                 loadedSprites[SpriteID++] = new Sprite(this, x, y, spriteSizeX, spriteSizeY);
-            }
-        }
     }
 
     public Sprite getSprite(int x, int y)
@@ -45,12 +41,9 @@ public class SpriteSheet
         int SpriteID = x + y * (SIZEX / spriteSizeX);
 
         if (SpriteID < loadedSprites.length)
-        {
             return loadedSprites[SpriteID];
-        } else
-        {
+        else
             return null;
-        }
     }
 
     public Sprite[] getLoadedSprites()

@@ -35,7 +35,6 @@ public final class ReadMap
             generateControlText();
 
             for (int y = 0; y < mapa.getHeight(); y++)
-            {
                 for (int x = 0; x < mapa.getWidth(); x++)
                 {
                     int pixel = mapa.getRGB(x, y);
@@ -45,12 +44,9 @@ public final class ReadMap
                     int blue = (pixel) & 0xff;
 
                     if (red == 255 && green == 255 && blue == 0)
-                    {
                         salida.format("%s%n", "3," + x + "," + y);
-                    }
 
                 }
-            }
 
             salida.close();
 

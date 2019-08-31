@@ -37,14 +37,10 @@ public class Window extends JFrame
                 int newHeight = game.getHeight();
 
                 if (newWidth > renderer.getMaxScreenWidth())
-                {
                     newWidth = renderer.getMaxScreenWidth();
-                }
 
                 if (newHeight > renderer.getMaxScreenHeight())
-                {
                     newHeight = renderer.getMaxScreenHeight();
-                }
 
                 renderer.getCamera().w = newWidth;
                 renderer.getCamera().h = newHeight;

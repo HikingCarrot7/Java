@@ -44,40 +44,26 @@ public class KeyInput extends KeyAdapter
             {
                 //player Controls
                 if (key == KeyEvent.VK_D)
-                {
                     object.setVelX(object.getSpeed());
-                }
                 if (key == KeyEvent.VK_A)
-                {
                     object.setVelX(-object.getSpeed());
-                }
                 if (key == KeyEvent.VK_S)
-                {
                     object.setFallSpeed(downHeight);
-                }
 
                 if (key == KeyEvent.VK_RIGHT)
-                {
                     object.setVelX(object.getSpeed());
-                }
                 if (key == KeyEvent.VK_LEFT)
-                {
                     object.setVelX(-object.getSpeed());
-                }
                 if (key == KeyEvent.VK_DOWN)
-                {
                     object.setFallSpeed(downHeight);
-                }
 
                 if (key == KeyEvent.VK_SPACE)
-                {
                     if (!object.getJumping())
                     {
                         object.setFalling(true);
                         object.setFallSpeed(-jumpHeight);
                         object.setJumping(true);
                     }
-                }
 
             }
         }
@@ -107,29 +93,18 @@ public class KeyInput extends KeyAdapter
             }
 
             if (key == KeyEvent.VK_ENTER && menu.getSelected() == 0)
-            {
                 controller.createGame(time, game);
-            }
             if (key == KeyEvent.VK_ENTER && menu.getSelected() == 1)
-            {
                 Game.state = STATE.Options;
-            }
             if (key == KeyEvent.VK_ENTER && menu.getSelected() == 2)
-            {
                 System.exit(1);
-            }
         }
 
         if (Game.state == STATE.Options)
-        {
             if (key == KeyEvent.VK_BACK_SPACE)
-            {
                 Game.state = STATE.Menu;
-            }
-        }
 
         if (Game.state == STATE.Dead)
-        {
             if (key == KeyEvent.VK_ENTER)
             {
 
@@ -154,7 +129,6 @@ public class KeyInput extends KeyAdapter
                 controller.isDead = false;
                 controller.generateLevel(10, 10);
             }
-        }
 
         if (Game.state == Game.STATE.Store)
         {
@@ -162,47 +136,36 @@ public class KeyInput extends KeyAdapter
             {
                 int x = r.nextInt(2);
                 if (x == 0)
-                {
                     controller.storeSelect--;
-                }
             }
             if (key == KeyEvent.VK_S)
             {
                 int x = r.nextInt(2);
                 if (x == 0)
-                {
                     controller.storeSelect++;
-                }
             }
 
             if (key == KeyEvent.VK_UP)
             {
                 int x = r.nextInt(2);
                 if (x == 0)
-                {
                     controller.storeSelect--;
-                }
             }
             if (key == KeyEvent.VK_DOWN)
             {
                 int x = r.nextInt(2);
                 if (x == 0)
-                {
                     controller.storeSelect++;
-                }
             }
 
             if (key == KeyEvent.VK_ENTER && controller.storeSelect == 0)
-            {
                 if (Time.U1 == 1)
                 {
                     if (Time.SCORE >= 3000)
                     {
                         int x = r.nextInt(2);
                         if (x == 0)
-                        {
                             Time.SCORE -= 3000;
-                        }
                         Time.U1++;
                         controller.speed += 2;
                     }
@@ -224,7 +187,6 @@ public class KeyInput extends KeyAdapter
                         controller.speed += 2;
                     }
                 } else if (Time.U1 == 4)
-                {
                     if (Time.SCORE >= 9000)
                     {
                         int x = r.nextInt(2);
@@ -232,10 +194,7 @@ public class KeyInput extends KeyAdapter
                         Time.U1++;
                         controller.speed += 2;
                     }
-                }
-            }
             if (key == KeyEvent.VK_ENTER && controller.storeSelect == 1)
-            {
                 if (Time.U2 == 1)
                 {
                     if (Time.SCORE >= 3000)
@@ -264,7 +223,6 @@ public class KeyInput extends KeyAdapter
                         jumpHeight += 2;
                     }
                 } else if (Time.U2 == 4)
-                {
                     if (Time.SCORE >= 9000)
                     {
                         int x = r.nextInt(2);
@@ -272,10 +230,7 @@ public class KeyInput extends KeyAdapter
                         Time.U2++;
                         jumpHeight += 2;
                     }
-                }
-            }
             if (key == KeyEvent.VK_ENTER && controller.storeSelect == 2)
-            {
                 if (Time.U3 == 1)
                 {
                     if (Time.SCORE >= 3000)
@@ -304,7 +259,6 @@ public class KeyInput extends KeyAdapter
                         downHeight += 2;
                     }
                 } else if (Time.U3 == 4)
-                {
                     if (Time.SCORE >= 9000)
                     {
                         int x = r.nextInt(2);
@@ -312,10 +266,7 @@ public class KeyInput extends KeyAdapter
                         Time.U3++;
                         downHeight += 2;
                     }
-                }
-            }
             if (key == KeyEvent.VK_ENTER && controller.storeSelect == 3)
-            {
                 if (Time.U4 == 1)
                 {
                     if (Time.SCORE >= 3000)
@@ -344,7 +295,6 @@ public class KeyInput extends KeyAdapter
                         controller.coinSpawn -= 1;
                     }
                 } else if (Time.U4 == 4)
-                {
                     if (Time.SCORE >= 9000)
                     {
                         int x = r.nextInt(2);
@@ -352,8 +302,6 @@ public class KeyInput extends KeyAdapter
                         Time.U4++;
                         controller.coinSpawn -= 1;
                     }
-                }
-            }
 
             if (key == KeyEvent.VK_SPACE)
             {
@@ -364,9 +312,7 @@ public class KeyInput extends KeyAdapter
         }
 
         if (key == KeyEvent.VK_ESCAPE)
-        {
             System.exit(1);
-        }
     }
 
     @Override
@@ -382,22 +328,14 @@ public class KeyInput extends KeyAdapter
             {
                 //player Controls
                 if (key == KeyEvent.VK_D)
-                {
                     object.setVelX(0);
-                }
                 if (key == KeyEvent.VK_A)
-                {
                     object.setVelX(0);
-                }
 
                 if (key == KeyEvent.VK_RIGHT)
-                {
                     object.setVelX(0);
-                }
                 if (key == KeyEvent.VK_LEFT)
-                {
                     object.setVelX(0);
-                }
 
             }
         }

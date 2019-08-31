@@ -112,15 +112,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         if (play)
         {
             if (new Rectangle(ballposX, ballposY, 20, 20).intersects(new Rectangle(playerX, 550, 100, 8)))
-            {
                 ballYdir = -ballYdir;
-            }
 
             A:
             for (int i = 0; i < map.map.length; i++)
-            {
                 for (int j = 0; j < map.map[0].length; j++)
-                {
                     if (map.map[i][j] > 0)
                     {
                         int brickX = j * map.brickWidth + 80;
@@ -138,41 +134,27 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                             score += 5;
 
                             if (ballposX + 19 <= rect.x || ballposX + 1 >= rect.x + rect.width)
-                            {
                                 ballXdir = -ballXdir;
-
-                            } else
-                            {
+                            else
                                 ballYdir = -ballYdir;
-                            }
 
                             break A;
 
                         }
-                        
+
                     }
-                    
-                }
-                
-            }
 
             ballposX += ballXdir;
             ballposY += ballYdir;
 
             if (ballposX < 0)
-            {
                 ballXdir = -ballXdir;
-            }
 
             if (ballposY < 0)
-            {
                 ballYdir = -ballYdir;
-            }
 
             if (ballposX > 670)
-            {
                 ballXdir = -ballXdir;
-            }
         }
 
         repaint();
@@ -183,29 +165,16 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
     public void keyPressed(KeyEvent e)
     {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-        {
             if (playerX >= 600)
-            {
                 playerX = 600;
-
-            } else
-            {
+            else
                 moveRight();
-            }
-        }
         if (e.getKeyCode() == KeyEvent.VK_LEFT)
-        {
             if (playerX < 10)
-            {
                 playerX = 10;
-
-            } else
-            {
+            else
                 moveLeft();
-            }
-        }
         if (e.getKeyCode() == KeyEvent.VK_ENTER)
-        {
             if (!play)
             {
                 play = true;
@@ -220,7 +189,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 
                 repaint();
             }
-        }
     }
 
     public void moveRight()
