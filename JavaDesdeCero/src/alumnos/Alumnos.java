@@ -30,9 +30,7 @@ public class Alumnos
         int[] frecuencias = new int[11];
 
         for (int i = 0; i < calificaciones.size(); i++)
-        {
             ++frecuencias[(int) Math.floor(calificaciones.get(i) / 10)];
-        }
 
         for (int i = 0; i < frecuencias.length; i++)
         {
@@ -40,9 +38,7 @@ public class Alumnos
             System.out.printf(i == 10 ? "  100: " : "%02d-%02d: ", i * 10, i * 10 + 9);
 
             for (int j = 0; j < frecuencias[i]; j++)
-            {
                 System.out.print("*");
-            }
 
             System.out.println("");
 

@@ -25,6 +25,7 @@ public class Tutor extends Persona implements Reporte
 
     }
 
+    @Override
     public String toString()
     {
 

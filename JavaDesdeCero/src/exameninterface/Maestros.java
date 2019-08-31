@@ -3,9 +3,9 @@ package exameninterface;
 public class Maestros extends Persona implements Reporte
 {
 
-    private String asignatura;
-    private double sueldo;
-    private String nombreReporte;
+    private final String asignatura;
+    private final double sueldo;
+    private final String nombreReporte;
 
     public Maestros(String nombre, int edad, String asignatura, double sueldo)
     {

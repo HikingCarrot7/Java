@@ -27,9 +27,7 @@ public class PaqueteCartas
         paquete = new Cartas[NUMERO_DE_CARTAS];
 
         for (int cuenta = 0; cuenta < paquete.length; cuenta++)
-        {
             paquete[cuenta] = new Cartas(caras[cuenta % 13], palos[cuenta / 13]);
-        }
 
     }
 
@@ -54,13 +52,9 @@ public class PaqueteCartas
     public Cartas repartirCartas()
     {
         if (cartaActual < paquete.length)
-        {
             return paquete[cartaActual++];
-
-        } else
-        {
+        else
             return null;
-        }
 
     }
 }

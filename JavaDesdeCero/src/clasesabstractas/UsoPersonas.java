@@ -13,9 +13,7 @@ public class UsoPersonas
         misPersonas[2] = new Empleado("Viviana", "25", "Soltera", false, true, "Triste", "Femenino", "JGHD875", 7550, "FMAT");
 
         for (Persona i : misPersonas)
-        {
             System.out.println(i);
-        }
 
     }
 

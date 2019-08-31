@@ -56,14 +56,10 @@ public class Empleado implements Comparable<Empleado>
     public int compareTo(Empleado miObjeto)
     {
         if (this.sueldo < miObjeto.sueldo)
-        {
             return -1;
-        } else if (this.sueldo > miObjeto.sueldo)
-        {
+        else if (this.sueldo > miObjeto.sueldo)
             return 1;
-        } else
-        {
+        else
             return 0;
-        }
     }
 }

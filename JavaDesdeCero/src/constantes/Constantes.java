@@ -25,10 +25,7 @@ public class Constantes
         do
         {
             for (Empleado i : misEmpleados)
-            {
                 System.out.println("Empleados:\n" + i.getDatos());
-
-            }
 
             System.out.println(Empleado.getIdSiguiente());
 
@@ -77,10 +74,7 @@ class Empleado
     public void setSaldo(double saldo)
     {
         if (saldo > 0)
-        {
             this.saldo += saldo;
-
-        }
     }
 
     //Los m�todos est�ticos no actuan sobre un objeto

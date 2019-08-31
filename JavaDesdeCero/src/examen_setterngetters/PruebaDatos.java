@@ -37,9 +37,7 @@ public class PruebaDatos
             int j = 1;
 
             for (Datos i : personas)
-            {
                 System.out.println((j++) + ".- " + i.getNombre() + " --> Saldo: " + i.getSaldo());
-            }
 
             /*for(int i = 0; i < personas.length; i++) 
              {
@@ -61,16 +59,14 @@ public class PruebaDatos
                     if (--opcion >= 0 && opcion < personas.length)
                     {
 
-                        nombre = in.nextLine();
+                        in.nextLine();
                         System.out.println("Escriba su nuevo nombre ");
                         nombre = in.nextLine();
 
                         personas[opcion].setNombre(nombre);
 
                     } else
-                    {
                         System.out.println("Posici�n NO v�lida");
-                    }
 
                     break;
 

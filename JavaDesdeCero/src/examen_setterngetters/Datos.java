@@ -28,9 +28,7 @@ public class Datos
     public void setSaldo(float saldo)
     {
         if ((saldo < 0 && this.saldo + saldo >= 0) || saldo > 0)
-        {
             this.saldo += saldo;
-        }
     }
 
     //M�todo getter para el saldo

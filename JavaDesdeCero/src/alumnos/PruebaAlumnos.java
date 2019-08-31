@@ -17,9 +17,7 @@ public class PruebaAlumnos
         System.out.printf("%-18s%s%n%n", "Nombre: ", "Calificaci�n: ");
 
         for (Alumnos A : misAlumnos)
-        {
             A.mostrarDatos();
-        }
 
         Alumnos.mostrarGrafico();
     }

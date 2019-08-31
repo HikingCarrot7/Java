@@ -18,9 +18,7 @@ public class Reloj
             System.out.println("La hora es: " + ahora);
 
             if (sonido)
-            {
                 Toolkit.getDefaultToolkit().beep();
-            }
         });
 
         miTemporizador.start();

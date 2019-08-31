@@ -3,7 +3,7 @@ package exameninterface;
 public class Director extends Persona implements Reporte, ExpulsarYBonos
 {
 
-    private double sueldo;
+    private final double sueldo;
 
     public Director(String nombre, int edad, double sueldo)
     {

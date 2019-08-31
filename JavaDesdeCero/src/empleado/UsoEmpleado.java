@@ -43,9 +43,7 @@ public class UsoEmpleado
 
         System.out.println("-->Empleados<--");
         for (Empleado i : misEmpleados)
-        {
-            System.out.println(i); //<-- El enlazado din�mico se da porque la maquina virtual de java JVM
-        }									//Sabe a cu�l de estos m�todos llamar(sabe cuando llamar al de programadores 
+            System.out.println(i); //<-- El enlazado din�mico se da porque la maquina virtual de java JVM									//Sabe a cu�l de estos m�todos llamar(sabe cuando llamar al de programadores 
         //y cuando al de administradores)
 
         /*System.out.println("\n-->Administradores<--");

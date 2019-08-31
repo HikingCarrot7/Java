@@ -34,27 +34,18 @@ public abstract class Persona
     {
 
         if (discapacidad)
-        {
             return "S�";
-
-        } else
-        {
+        else
             return "No";
-        }
 
     }
 
     private String tengoLentes()
     {
         if (usaLentes)
-        {
             return "S�";
-
-        } else
-        {
+        else
             return "No";
-
-        }
     }
 
 }

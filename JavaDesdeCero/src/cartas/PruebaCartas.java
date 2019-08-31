@@ -16,9 +16,7 @@ public class PruebaCartas
             System.out.printf("%-20s", miPaqueteCartas.repartirCartas());
 
             if (i % 4 == 0)
-            {
                 System.out.println("");
-            }
 
         }
 

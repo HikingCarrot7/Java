@@ -16,10 +16,8 @@ public class UsoVehiculo
         System.out.println("-->Veh�culos<--");
 
         for (Vehiculo i : misVehiculos)
-        {
             /*Polimorfismo en acci�n. La variable i de tipo objeto llama al m�todo toString de cada clase. N�tese que cada m�todo toString de cada clase es diferente*/
             System.out.println(i);
-        }
 
         /*Imprimimos el n�mero de elementos de veh�culos que se registraron (3). Se llama al m�todo est�tico de la clase veh�culo (este m�dodo le pertenece a la clase, no a 
          * los objetos)*/

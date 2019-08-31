@@ -51,16 +51,12 @@ public class Prueba
         misPruebas[1] = new PruebaEncapsulamiento("Prueba polimorfismo", "Esto es una prueba\n");
 
         for (Prueba P : misPruebas)
-        {
             System.out.println(P);
-        }
 
         for (int[] I : numeros)
         {
             for (int J : I)
-            {
                 System.out.print(J + " ");
-            }
 
             System.out.println("");
         }
@@ -68,9 +64,7 @@ public class Prueba
         System.out.println("\n");
 
         for (Prueba P : pruebas)
-        {
             System.out.println(P);
-        }
 
         saludar(new Saludar()
         {
@@ -124,6 +118,7 @@ public class Prueba
         A.sigueme();
     }
 
+    @Override
     public String toString()
     {
         return nombre;

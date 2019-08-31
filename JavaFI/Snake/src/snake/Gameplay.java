@@ -163,7 +163,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         enemyimage.paintIcon(this, g, enemyXpos[xpos], enemyYpos[ypos]);
 
         for (int b = 1; b < lengthofsnake; b++)
-        {
 
             if (snakeXlength[b] == snakeXlength[0] && snakeYlength[b] == snakeYlength[0])
             {
@@ -181,8 +180,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                 g.drawString("Press Espace to Restart", 350, 340);
             }
 
-        }
-
         g.dispose();
     }
 
@@ -194,26 +191,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         {
 
             for (int r = lengthofsnake - 1; r >= 0; r--)
-            {
                 snakeYlength[r + 1] = snakeYlength[r];
-            }
 
             for (int r = lengthofsnake; r >= 0; r--)
             {
 
                 if (r == 0)
-                {
                     snakeXlength[r] += 25;
-
-                } else
-                {
+                else
                     snakeXlength[r] = snakeXlength[r - 1];
-                }
 
                 if (snakeXlength[r] > 850)
-                {
                     snakeXlength[r] = 25;
-                }
 
             }
 
@@ -223,26 +212,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         {
 
             for (int r = lengthofsnake - 1; r >= 0; r--)
-            {
                 snakeYlength[r + 1] = snakeYlength[r];
-            }
 
             for (int r = lengthofsnake; r >= 0; r--)
             {
 
                 if (r == 0)
-                {
                     snakeXlength[r] -= 25;
-
-                } else
-                {
+                else
                     snakeXlength[r] = snakeXlength[r - 1];
-                }
 
                 if (snakeXlength[r] < 25)
-                {
                     snakeXlength[r] = 850;
-                }
             }
 
         }
@@ -251,27 +232,19 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         {
 
             for (int r = lengthofsnake - 1; r >= 0; r--)
-            {
                 snakeXlength[r + 1] = snakeXlength[r];
-            }
 
             for (int r = lengthofsnake; r >= 0; r--)
             {
 
                 if (r == 0)
-                {
                     snakeYlength[r] -= 25;
-
-                } else
-                {
+                else
                     snakeYlength[r] = snakeYlength[r - 1];
-                }
 
                 if (snakeYlength[r] < 75)
-                {
 
                     snakeYlength[r] = 625;
-                }
 
             }
 
@@ -281,26 +254,18 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         {
 
             for (int r = lengthofsnake - 1; r >= 0; r--)
-            {
                 snakeXlength[r + 1] = snakeXlength[r];
-            }
 
             for (int r = lengthofsnake; r >= 0; r--)
             {
 
                 if (r == 0)
-                {
                     snakeYlength[r] += 25;
-
-                } else
-                {
+                else
                     snakeYlength[r] = snakeYlength[r - 1];
-                }
 
                 if (snakeYlength[r] > 625)
-                {
                     snakeYlength[r] = 75;
-                }
 
             }
 
@@ -330,11 +295,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             right = true;
 
             if (!left)
-            {
 
                 right = true;
-
-            } else
+            else
             {
 
                 left = true;
@@ -352,10 +315,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             left = true;
 
             if (!right)
-            {
                 left = true;
-
-            } else
+            else
             {
 
                 right = true;
@@ -374,10 +335,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             up = true;
 
             if (!down)
-            {
                 up = true;
-
-            } else
+            else
             {
 
                 down = true;
@@ -396,11 +355,9 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             down = true;
 
             if (!up)
-            {
 
                 down = true;
-
-            } else
+            else
             {
 
                 up = true;
