@@ -28,23 +28,17 @@ public final class Bullet extends GameObject
         y += velY;
 
         if (x >= 32 * 64 || x <= 0)
-        {
             handler.removeObject(this);
-        }
 
         if (y >= 32 * 64 || y <= 0)
-        {
             handler.removeObject(this);
-        }
 
         for (int i = 0; i < handler.getObjects().size(); i++)
         {
             GameObject tempObject = handler.getObjects().get(i);
 
             if (tempObject.getId().equals(ObjectId.Block) && getBounds().intersects(tempObject.getBounds()))
-            {
                 handler.removeObject(this);
-            }
         }
 
     }

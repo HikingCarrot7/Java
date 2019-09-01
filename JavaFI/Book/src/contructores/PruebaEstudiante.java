@@ -13,9 +13,7 @@ public class PruebaEstudiante
         estudiantes[3] = new Promedio("Fernando Euan", 99.67);
 
         for (Promedio P : estudiantes)
-        {
             System.out.println(P);
-        }
 
     }
 

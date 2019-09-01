@@ -21,7 +21,6 @@ public class Figuras extends JPanel
         super.paintComponent(g);
 
         for (int i = 0; i < 10; i++)
-        {
             switch (opcion)
             {
 
@@ -36,6 +35,5 @@ public class Figuras extends JPanel
                     break;
 
             }
-        }
     }
 }

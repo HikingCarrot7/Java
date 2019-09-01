@@ -36,9 +36,7 @@ public class Game extends Canvas
     public synchronized void start()
     {
         if (!running)
-        {
             running = true;
-        }
     }
 
     public synchronized void stop()
@@ -65,14 +63,12 @@ public class Game extends Canvas
 
         handler.tick();
         for (GameObject O : handler.getObjects())
-        {
             if (O.getId().equals(ObjectId.Player))
             {
                 camera.tick((Wizard) O);
 
                 break;
             }
-        }
 
     }
 
@@ -105,7 +101,6 @@ public class Game extends Canvas
     public void LoadImageLevel(BufferedImage image)
     {
         for (int j = 0; j < image.getWidth(); j++)
-        {
             for (int i = 0; i < image.getHeight(); i++)
             {
                 int pixel = image.getRGB(i, j);
@@ -115,21 +110,15 @@ public class Game extends Canvas
                 int blue = (pixel) & 0xff;
 
                 if (red == 255 && green == 0 && blue == 0)
-                {
                     handler.addObject(new Block(i * 32, j * 32, ObjectId.Block));
-                } else if (red == 255 && green == 255)
-                {
+                else if (red == 255 && green == 255)
                     handler.addObject(new Enemy(i * 32, j * 32, ObjectId.Enemy, handler));
-                } else if (blue == 255)
-                {
+                else if (blue == 255)
                     handler.addObject(new Wizard(i * 32, j * 32, ObjectId.Player, handler));
-                } else if (green == 255)
-                {
+                else if (green == 255)
                     handler.addObject(new Crate(i * 32, j * 32, ObjectId.Crate, handler));
-                }
 
             }
-        }
     }
 
 }

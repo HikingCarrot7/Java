@@ -12,20 +12,16 @@ public class Cuenta
         this.nombre = nombre;
 
         if (saldo > 0.0)
-        {
 
             this.saldo = saldo;
-        }
     }
 
     public void depositar(double montoDeposito)
     {
 
         if (montoDeposito > 0.0)
-        {
 
             saldo = saldo + montoDeposito;
-        }
     }
 
     public double obtenerSaldo()

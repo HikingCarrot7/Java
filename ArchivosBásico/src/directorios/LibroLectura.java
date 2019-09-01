@@ -53,9 +53,7 @@ public class LibroLectura
     public static void escribir()
     {
         for (String N : nombres)
-        {
             salida.format("%s%n%n", N);
-        }
 
         salida.flush();
 
@@ -69,9 +67,7 @@ public class LibroLectura
         try
         {
             while (entrada.hasNext())
-            {
                 System.out.println(entrada.next());
-            }
 
         } catch (NoSuchElementException | IllegalStateException e)
         {

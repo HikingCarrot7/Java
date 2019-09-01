@@ -26,22 +26,14 @@ public class Camera
         y += (yTarg - y) * (0.05);
 
         if (x >= 0)
-        {
             x = 0;
-        }
         if (y >= 0)
-        {
             y = 0;
-        }
 
         if (x - Game.ANCHO <= -32 * 64)
-        {
             x = -32 * 64 + Game.ANCHO;
-        }
         if (y - Game.ALTO <= -32 * 64)
-        {
             y = -32 * 64 + Game.ALTO;
-        }
 
     }
 

@@ -96,9 +96,7 @@ class Archivo
     public void cerrarArchivo()
     {
         if (salida != null)
-        {
             salida.close();
-        }
     }
 
 }

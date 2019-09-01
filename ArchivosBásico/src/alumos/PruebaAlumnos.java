@@ -86,14 +86,9 @@ public class PruebaAlumnos
     public static void imprimirAlumnos(ArrayList<Alumnos> alumnos)
     {
         if (alumnos.size() > 0)
-        {
             for (Alumnos A : alumnos)
-            {
                 System.out.println(A);
-            }
-        } else
-        {
+        else
             System.out.println("No hay alumnos registrados");
-        }
     }
 }

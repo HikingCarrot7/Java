@@ -44,9 +44,7 @@ public class PruebaDirectorios
                         String[] subcarpeta = f.list();
 
                         for (String S : subcarpeta)
-                        {
                             System.out.println(S);
-                        }
 
                     }
 
@@ -96,21 +94,14 @@ public class PruebaDirectorios
         for (int i = 0; i < 20; i++)
         {
             for (int j = 0; j < 20; j++)
-            {
                 if (i < 10 && j < 10)
-                {
                     matriz += "[0" + i + "][0" + j + "]";
-                } else if (i < 10)
-                {
+                else if (i < 10)
                     matriz += "[0" + i + "][" + j + "]";
-                } else if (j < 10)
-                {
+                else if (j < 10)
                     matriz += "[" + i + "][0" + j + "]";
-                } else
-                {
+                else
                     matriz += "[" + i + "][" + j + "]";
-                }
-            }
 
             matriz += System.getProperty("line.separator");
 

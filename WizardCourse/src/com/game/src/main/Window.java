@@ -23,7 +23,7 @@ public class Window extends JFrame
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        new Ticker(game);
+        new Ticker(game, this);
     }
 
 }

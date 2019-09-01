@@ -33,16 +33,15 @@ public class PruebaAlumnos
     {
         try
         {
-            ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream("C:\\Archivos\\Prueba.txt"));
-
-            file.writeObject(misAlumnos);
-            file.writeObject(alumnos);
-
-            file.close();
+            try (ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream("C:\\Archivos\\Prueba.txt")))
+            {
+                file.writeObject(misAlumnos);
+                file.writeObject(alumnos);
+            }
 
         } catch (IOException e)
         {
-
+            System.out.println(e.getMessage());
         }
     }
 
@@ -50,23 +49,18 @@ public class PruebaAlumnos
     {
         try
         {
-            ObjectInputStream file = new ObjectInputStream(new FileInputStream("C:\\Archivos\\Prueba.txt"));
-
-            for (Alumnos A : (Alumnos[]) file.readObject())
+            try (ObjectInputStream file = new ObjectInputStream(new FileInputStream("C:\\Archivos\\Prueba.txt")))
             {
-                System.out.println(A);
+                for (Alumnos A : (Alumnos[]) file.readObject())
+                    System.out.println(A);
+                
+                for (Alumnos A : (Alumnos[]) file.readObject())
+                    System.out.println(A);
             }
 
-            for (Alumnos A : (Alumnos[]) file.readObject())
-            {
-                System.out.println(A);
-            }
-
-            file.close();
-
-        } catch (Exception e)
+        } catch (IOException | ClassNotFoundException e)
         {
-
+            System.out.println(e.getMessage());
         }
     }
 }

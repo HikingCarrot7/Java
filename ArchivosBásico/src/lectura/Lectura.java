@@ -18,9 +18,7 @@ public class Lectura
             imagen = new int[(int) file.getChannel().size()];
 
             for (int i = 0; i < file.getChannel().size(); i++)
-            {
                 imagen[i] = file.read();
-            }
 
             file.close();
 
@@ -40,9 +38,7 @@ public class Lectura
             FileOutputStream file = new FileOutputStream("C:\\Archivos\\lolis_copia.jpg");
 
             for (int i = 0; i < imagen.length; i++)
-            {
                 file.write(imagen[i]);
-            }
 
             file.close();
 

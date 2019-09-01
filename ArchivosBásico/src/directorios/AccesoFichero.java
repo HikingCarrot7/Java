@@ -43,10 +43,8 @@ class Fichero
 			
              lectura.close();*/
             do
-            {
                 System.out.println(mibuffer.readLine());
-
-            } while (mibuffer.readLine() != null);
+            while (mibuffer.readLine() != null);
 
             mibuffer.close();
 

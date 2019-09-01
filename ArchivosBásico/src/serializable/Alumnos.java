@@ -7,8 +7,8 @@ public class Alumnos implements Serializable
 
     private static final long serialVersionUID = 1L;
 
-    private String nombre;
-    private int edad;
+    private final String nombre;
+    private final int edad;
 
     public Alumnos(String nombre, int edad)
     {

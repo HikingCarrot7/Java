@@ -62,32 +62,23 @@ public class Wizard extends GameObject
     public void Collision(ArrayList<GameObject> objects)
     {
         for (int i = 0; i < objects.size(); i++)
-        {
             if (objects.get(i).getId().equals(ObjectId.Block))
             {
                 //top
                 if (getBoundsTop().intersects(objects.get(i).getBounds()))
-                {
                     y = objects.get(i).getY() + 32;
-                }
 
                 //beneath
                 if (getBoundsBeneath().intersects(objects.get(i).getBounds()))
-                {
                     y = objects.get(i).getY() - alto;
-                }
 
                 //right
                 if (getBoundsRight().intersects(objects.get(i).getBounds()))
-                {
                     x = objects.get(i).getX() - ancho;
-                }
 
                 //left
                 if (getBoundsLeft().intersects(objects.get(i).getBounds()))
-                {
                     x = objects.get(i).getX() + 32;
-                }
 
             } else if (objects.get(i).getId().equals(ObjectId.Crate) && getBounds().intersects(objects.get(i).getBounds()))
             {
@@ -95,7 +86,6 @@ public class Wizard extends GameObject
 
                 handler.removeObject(objects.get(i));
             }
-        }
     }
 
     @Override
@@ -130,14 +120,10 @@ public class Wizard extends GameObject
         y += getVelY();
 
         if (keys.contains(38))
-        {
             setVelY(-5);
-        }
 
         if (keys.contains(40))
-        {
             setVelY(5);
-        }
 
         if (!controlHorizontal && keys.contains(39))
         {
@@ -156,15 +142,11 @@ public class Wizard extends GameObject
             controlHorizontal = true;
 
             if (keys.contains(39))
-            {
                 setVelX(5);
-            }
         }
 
         if (keys.isEmpty() || (keys.size() == 1 && keys.contains(39)))
-        {
             controlHorizontal = false;
-        }
     }
 
     public void addKey(Integer key)

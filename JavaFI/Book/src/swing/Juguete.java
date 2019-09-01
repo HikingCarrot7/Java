@@ -23,9 +23,7 @@ public class Juguete
         for (int[] I : matriz)
         {
             for (int J : I)
-            {
                 System.out.print(i < 10 ? "[0" + i++ + "]" : "[" + i++ + "]");
-            }
 
             System.out.println("");
         }

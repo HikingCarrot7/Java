@@ -73,8 +73,6 @@ public class CalificacionesLetra
                     "D: ", dCuenta,
                     "F: ", fCuenta);
         } else
-        {
             System.out.println("No se introdujeron Calificaciones");
-        }
     }
 }

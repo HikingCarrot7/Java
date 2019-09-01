@@ -39,7 +39,6 @@ public class Enemy extends GameObject
             GameObject tempObject = handler.getObjects().get(i);
 
             if (tempObject.getId().equals(ObjectId.Block))
-            {
                 if (getBoundsBig().intersects(tempObject.getBounds()))
                 {
                     x += (velX * 5) * -1;
@@ -53,10 +52,8 @@ public class Enemy extends GameObject
                     velX = rand.nextInt(8) - 4;
                     velY = rand.nextInt(8) - 4;
                 }
-            }
 
             if (tempObject.getId().equals(ObjectId.Bullet))
-            {
                 if (getBounds().intersects(tempObject.getBounds()))
                 {
                     hp -= 50;
@@ -64,11 +61,8 @@ public class Enemy extends GameObject
                     handler.removeObject(tempObject);
 
                     if (hp <= 0)
-                    {
                         handler.removeObject(this);
-                    }
                 }
-            }
 
         }
 

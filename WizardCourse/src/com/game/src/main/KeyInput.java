@@ -16,14 +16,12 @@ public class KeyInput extends KeyAdapter
     public KeyInput(Handler handler)
     {
         for (GameObject O : handler.getObjects())
-        {
             if (O.getId().equals(ObjectId.Player))
             {
                 wizard = (Wizard) O;
 
                 break;
             }
-        }
     }
 
     @Override
@@ -32,41 +30,23 @@ public class KeyInput extends KeyAdapter
         Integer key = e.getKeyCode();
 
         if (key.equals(KeyEvent.VK_UP))
-        {
             if (!wizard.getKeys().contains(KeyEvent.VK_UP))
-            {
                 wizard.addKey(KeyEvent.VK_UP);
-            }
-        }
 
         if (key.equals(KeyEvent.VK_DOWN))
-        {
             if (!wizard.getKeys().contains(KeyEvent.VK_DOWN))
-            {
                 wizard.addKey(KeyEvent.VK_DOWN);
-            }
-        }
 
         if (key.equals(KeyEvent.VK_LEFT))
-        {
             if (!wizard.getKeys().contains(KeyEvent.VK_LEFT))
-            {
                 wizard.addKey(KeyEvent.VK_LEFT);
-            }
-        }
 
         if (key.equals(KeyEvent.VK_RIGHT))
-        {
             if (!wizard.getKeys().contains(KeyEvent.VK_RIGHT))
-            {
                 wizard.addKey(KeyEvent.VK_RIGHT);
-            }
-        }
 
         if (key.equals(KeyEvent.VK_ESCAPE))
-        {
             System.exit(1);
-        }
 
     }
 

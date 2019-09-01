@@ -27,9 +27,7 @@ public class MouseInput extends MouseAdapter
             GameObject tempObject = handler.getObjects().get(i);
 
             if (tempObject.getId().equals(ObjectId.Player))
-            {
                 wizard = (Wizard) tempObject;
-            }
         }
 
     }
@@ -43,9 +41,7 @@ public class MouseInput extends MouseAdapter
         wizard.setAmmo(wizard.getAmmo() - 1);
 
         if (wizard.getAmmo() >= 0)
-        {
             handler.addObject(new Bullet(wizard.getX() + 16, wizard.getY() + 32, ObjectId.Bullet, mx, my, handler));
-        }
 
     }
 

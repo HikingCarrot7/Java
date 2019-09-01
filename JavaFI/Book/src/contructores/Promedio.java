@@ -3,17 +3,13 @@ package contructores;
 public class Promedio
 {
 
-    private String nombre;
-    private double promedio;
+    private final String nombre;
+    private final double promedio;
 
     public Promedio(String nombre, double promedio)
     {
         this.nombre = nombre;
-
-        if (promedio > 0.0)
-        {
-            this.promedio = promedio;
-        }
+        this.promedio = promedio > 0 ? promedio : 0;
 
     }
 
@@ -28,25 +24,19 @@ public class Promedio
         String calificacionEstudiante;
 
         if (promedio >= 90)
-        {
             calificacionEstudiante = "A";
 
-        } else if (promedio >= 80)
-        {
+        else if (promedio >= 80)
             calificacionEstudiante = "B";
 
-        } else if (promedio >= 70)
-        {
+        else if (promedio >= 70)
             calificacionEstudiante = "C";
 
-        } else if (promedio >= 60)
-        {
+        else if (promedio >= 60)
             calificacionEstudiante = "D";
 
-        } else
-        {
+        else
             calificacionEstudiante = "F";
-        }
 
         return calificacionEstudiante;
     }
