@@ -127,10 +127,13 @@ public class Game extends Canvas
 
                 if (red == 255 && green == 255 && blue == 255)
                     handler.addObject(new Block(i * 32, j * 32, 0, ObjectId.Block));
+                
                 else if (red == 128 && green == 128 && blue == 128)
                     handler.addObject(new Block(i * 32, j * 32, 1, ObjectId.Block));
+                
                 else if (red == 0 && green == 0 && blue == 255)
                     handler.addObject(new Player(i * 32, j * 32, ObjectId.Player, handler, camera));
+                
                 else if (red == 255 && green == 255 && blue == 0)
                     handler.addObject(new Flag(i * 32, j * 32, ObjectId.Flag));
             }

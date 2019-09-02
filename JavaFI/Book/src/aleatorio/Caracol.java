@@ -11,7 +11,7 @@ public class Caracol
     {
 
         System.out.println("Introduce algo...");
-        
+
         try
         {
             System.out.println(new BufferedReader(new InputStreamReader(System.in)).readLine());

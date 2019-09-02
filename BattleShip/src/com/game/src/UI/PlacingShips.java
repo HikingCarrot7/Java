@@ -153,7 +153,7 @@ public class PlacingShips implements Drawable, InputListener
 
                 pintarBarco(fila, columna, length, 3, orientacionBarcoActual, false);
             }
-        
+
         else
             cuadricula.iniciarTablero();
     }

@@ -11,11 +11,9 @@ import com.game.src.main.Game;
 public class Handler
 {
 
-    private ArrayList<GameObject> objetos;
-
-    private Game game;
-
-    private BufferedImage imagen;
+    private final ArrayList<GameObject> objetos;
+    private final Game game;
+    private final BufferedImage imagen;
 
     public Handler(Game game, BufferedImage imagen)
     {

@@ -12,7 +12,7 @@ public class Ticker implements Runnable
         this.window = window;
 
         new Thread(this).start();
-        
+
         game.start();
     }
 

@@ -53,7 +53,7 @@ public class PruebaAlumnos
             {
                 for (Alumnos A : (Alumnos[]) file.readObject())
                     System.out.println(A);
-                
+
                 for (Alumnos A : (Alumnos[]) file.readObject())
                     System.out.println(A);
             }

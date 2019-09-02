@@ -29,8 +29,10 @@ public class ExplosionAnimation
 
     public void render(Graphics2D g)
     {
-        for (Particles P : particulas)
+        particulas.stream().forEach((P) ->
+        {
             P.render(g);
+        });
     }
 
     private class Particles

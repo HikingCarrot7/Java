@@ -56,14 +56,14 @@ public class Craps
 
             if (sumaDeDados == miPunto)
                 estadoJuego = Estado.GANO;
-            
+
             else if (sumaDeDados == SIETE)
                 estadoJuego = Estado.PIERDO;
         }
 
         if (estadoJuego == Estado.GANO)
             System.out.printf("El jugador gana");
-        
+
         else
             System.out.printf("El jugador pierde");
     }

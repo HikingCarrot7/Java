@@ -48,7 +48,7 @@ public class MatrizAleatoria
                 if (columnas < 5)
                     columnas = 0;
             }
-            
+
             if (diagonal == 5)
                 System.out.printf("Insert� la diagonal principal, gan� $5");
             else if (filas == 5)
@@ -59,7 +59,7 @@ public class MatrizAleatoria
                 System.out.printf("Recuperaste tus $2");
             else
                 System.out.printf("Perdiste tus $2");
-            
+
         }
     }
 
