@@ -14,6 +14,7 @@ public class Triciclo extends Vehiculo
 
     }
 
+    @Override
     public int getLlantas()
     {
 
@@ -21,6 +22,7 @@ public class Triciclo extends Vehiculo
 
     }
 
+    @Override
     public String toString()
     {
 

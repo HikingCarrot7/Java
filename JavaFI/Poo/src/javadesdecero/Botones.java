@@ -1,7 +1,9 @@
 package javadesdecero;
 
-import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 public class Botones extends JFrame implements ActionListener
 {
@@ -24,9 +26,7 @@ public class Botones extends JFrame implements ActionListener
     {
 
         if (e.getSource() == boton1)
-        {
             System.exit(0);
-        }
     }
 
     public static void main(String args[])

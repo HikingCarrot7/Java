@@ -22,6 +22,7 @@ public class Files
     {
         "Nicolás", "Iván", "Fernando", "Javier", "Luis", "Alexis", "Viviana", "Juan", "Carlos"
     };
+
     private final String ruta = "res//com//src//alumnos//Nombres.txt";
     private final Scanner in;
 

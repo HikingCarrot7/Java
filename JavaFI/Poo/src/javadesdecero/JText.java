@@ -1,14 +1,18 @@
 package javadesdecero;
 
-import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class JText extends JFrame implements ActionListener
 {
 
-    private JTextField textfield1;
-    private JLabel label1;
-    private JButton boton1;
+    private final JTextField textfield1;
+    private final JLabel label1;
+    private final JButton boton1;
 
     public JText()
     {
@@ -47,6 +51,7 @@ public class JText extends JFrame implements ActionListener
         jtext1.setVisible(true);
         jtext1.setResizable(false);
         jtext1.setLocationRelativeTo(null);
+        jtext1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 }

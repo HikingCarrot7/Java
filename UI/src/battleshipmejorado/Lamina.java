@@ -39,6 +39,7 @@ public class Lamina extends JPanel implements ActionListener, MouseListener
 
     }
 
+    @Override
     public void paint(Graphics g)
     {
         g.setColor(Color.white);

@@ -13,33 +13,29 @@ public class Camioneta extends Vehiculo
 
     }
 
+    @Override
     public int getLlantas()
     {
-
         return super.getLlantas();
-
     }
 
+    @Override
     public int getPesoPlataforma()
     {
-
         return super.getPesoPlataforma() + 100;
-
     }
 
+    @Override
     public int getPesoMotor()
     {
-
         return super.getPesoMotor() + 30;
-
     }
 
     //Getter obtener datos
+    @Override
     public String toString()
     {
-
         return super.toString() + "\nLlantas: " + getLlantas() + "\nPeso motor: " + getPesoMotor() + " Kg\nPeso plataforma: " + getPesoPlataforma() + " Kg\nCarga: " + carga + " Kg";
-
     }
 
 }

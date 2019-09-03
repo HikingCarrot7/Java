@@ -8,7 +8,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Iterator;
-
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import sockets.mensaje.Mensaje;
@@ -134,7 +133,6 @@ public final class ServidorInterfaz extends JPanel
             Iterator<String> nombres = datos.keySet().iterator();
 
             for (int i = 0; i < datos.size(); i++)
-            {
                 try
                 {
 
@@ -148,8 +146,6 @@ public final class ServidorInterfaz extends JPanel
                 {
                     System.out.println(ex.getMessage());
                 }
-
-            }
 
         }
     }

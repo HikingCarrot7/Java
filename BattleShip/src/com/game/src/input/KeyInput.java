@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class KeyInput extends KeyAdapter
 {

@@ -1,11 +1,5 @@
 package com.game.src.main;
 
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-
 import com.game.src.framework.KeyInput;
 import com.game.src.framework.MouseInput;
 import com.game.src.framework.ObjectId;
@@ -14,6 +8,11 @@ import com.game.src.objects.Block;
 import com.game.src.objects.Flag;
 import com.game.src.objects.Handler;
 import com.game.src.objects.Player;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game extends Canvas
 {
@@ -127,13 +126,13 @@ public class Game extends Canvas
 
                 if (red == 255 && green == 255 && blue == 255)
                     handler.addObject(new Block(i * 32, j * 32, 0, ObjectId.Block));
-                
+
                 else if (red == 128 && green == 128 && blue == 128)
                     handler.addObject(new Block(i * 32, j * 32, 1, ObjectId.Block));
-                
+
                 else if (red == 0 && green == 0 && blue == 255)
                     handler.addObject(new Player(i * 32, j * 32, ObjectId.Player, handler, camera));
-                
+
                 else if (red == 255 && green == 255 && blue == 0)
                     handler.addObject(new Flag(i * 32, j * 32, ObjectId.Flag));
             }

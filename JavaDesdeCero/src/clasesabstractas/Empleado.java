@@ -20,12 +20,14 @@ public class Empleado extends Persona
 
     }
 
+    @Override
     public String genero()
     {
         return "\nMi g�nero es: " + genero;
 
     }
 
+    @Override
     public String toString()
     {
 

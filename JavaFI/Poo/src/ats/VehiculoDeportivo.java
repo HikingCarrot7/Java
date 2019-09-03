@@ -3,7 +3,7 @@ package ats;
 public class VehiculoDeportivo extends Vehiculo
 {
 
-    private int cilindrada;
+    private final int cilindrada;
 
     public VehiculoDeportivo(int cilindrada, String matricula, String marca, String modelo)
     {
@@ -19,8 +19,7 @@ public class VehiculoDeportivo extends Vehiculo
     @Override
     public String mostrarDatos()
     {
-        return "Matricula: " + matricula + "\nMarca: " + marca + "\nModelo: " + modelo + "\nCilindrada: " + cilindrada;
-
+        return String.format("Matrícula: %s\nMarca: %s\nModelo: %s\nCilidrada: %s\n", matricula, marca, modelo, cilindrada);
     }
 
 }

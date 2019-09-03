@@ -15,7 +15,7 @@ import sockets.cliente.ClienteInterfaz;
 public class EnvioOnline extends WindowAdapter
 {
 
-    private ClienteInterfaz cliente;
+    private final ClienteInterfaz cliente;
 
     public EnvioOnline(ClienteInterfaz cliente)
     {

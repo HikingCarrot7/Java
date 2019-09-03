@@ -9,7 +9,7 @@ import java.util.Random;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class Explosion implements Drawable
 {

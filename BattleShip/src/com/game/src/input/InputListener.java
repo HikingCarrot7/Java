@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public interface InputListener
 {

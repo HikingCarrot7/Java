@@ -9,9 +9,8 @@ import java.awt.event.MouseEvent;
 public class Menu
 {
 
-    private Rectangle play, help, exit;
-
-    private Game game;
+    private final Rectangle play, help, exit;
+    private final Game game;
 
     public Menu(Game game)
     {
@@ -47,20 +46,16 @@ public class Menu
         Rectangle r = new Rectangle(e.getX(), e.getY(), 1, 1);
 
         if (r.intersects(play))
-        {
             Game.state = Game.STATE.GAME;
-        } else if (r.intersects(help))
+
+        else if (r.intersects(help))
         {
 
         } else if (r.intersects(exit))
-        {
             game.stop();
-        }
 
         if (r.intersects(game.getReset()) && game.getMuerte())
-        {
             game.reset();
-        }
     }
 
 }

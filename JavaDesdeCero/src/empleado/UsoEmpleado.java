@@ -1,7 +1,6 @@
 package empleado;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class UsoEmpleado
 {
@@ -27,31 +26,24 @@ public class UsoEmpleado
         /*programadores[0] = new Programadores("Carlos Monroy", 2450, 23, 2019, 05, 24, 600);
          programadores[1] = new Programadores("Fernando Uicad", 3200, 45, 2019, 05, 24, 600);
          programadores[2] = new Programadores("Luis Mena", 600);
-		
+
          administradores[0] = new Administrador("�ngel Hern�ndez", 5000, 23, 2019, 05, 25, 500);
          administradores[1] = new Administrador("David Sansones", 6000, 28, 2019, 05, 25, 500);
          administradores[2] = new Administrador("Nicol�s Canul", 2000, 56, 2019, 05, 25, 500);*/
-        Arrays.sort(misEmpleados, new Comparator<Empleado>()
-        {
-            @Override
-            public int compare(Empleado p1, Empleado p2)
-            {
-                return p1.getNombre().compareTo(p2.getNombre());
-            }
-
-        });
+        Arrays.sort(misEmpleados, (Empleado p1, Empleado p2) -> p1.getNombre().compareTo(p2.getNombre()));
 
         System.out.println("-->Empleados<--");
+
         for (Empleado i : misEmpleados)
-            System.out.println(i); //<-- El enlazado din�mico se da porque la maquina virtual de java JVM									//Sabe a cu�l de estos m�todos llamar(sabe cuando llamar al de programadores 
+            System.out.println(i); //<-- El enlazado din�mico se da porque la maquina virtual de java JVM									//Sabe a cu�l de estos m�todos llamar(sabe cuando llamar al de programadores
         //y cuando al de administradores)
 
         /*System.out.println("\n-->Administradores<--");
-         for(Administrador i: administradores) 
+         for(Administrador i: administradores)
          {
-			
+
          System.out.printf(i + i.getBono() + "\nSueldo: " + i.getSueldo() + "\n");
-			
+
          }*/
     }
 

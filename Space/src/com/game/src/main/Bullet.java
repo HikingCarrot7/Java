@@ -1,10 +1,9 @@
 package com.game.src.main;
 
+import com.game.src.main.interfaces.EntityA;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-
-import com.game.src.main.interfaces.EntityA;
 
 public class Bullet extends GameObject implements EntityA
 {
@@ -15,7 +14,7 @@ public class Bullet extends GameObject implements EntityA
     {
         super(x, y);
 
-        bala = new BufferedImageLoader().loadImage("/res/lasers/laserBlue01.png");
+        bala = new BufferedImageLoader().loadImage("res/lasers/laserBlue01.png");
 
     }
 

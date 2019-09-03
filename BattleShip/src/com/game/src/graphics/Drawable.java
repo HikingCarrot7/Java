@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public interface Drawable
 {

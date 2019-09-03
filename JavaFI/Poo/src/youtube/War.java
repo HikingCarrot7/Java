@@ -16,7 +16,7 @@ public class War
     {
         //hand1 = new ArrayQueue<Card>();
         //hand2 = new ArrayQueue<Card>();
-        
+
         Deck deck = new Deck();
 
         deck.shuffle();
@@ -43,15 +43,14 @@ public class War
             System.out.print("\nHit return to play round: ");
             INPUT.nextLine();
             playRound();
+
             if (hand1.isEmpty())
-            {
                 System.out.println("Player 2 wins!");
-            }
+
             if (hand2.isEmpty())
-            {
                 System.out.println("Player 1 wins!");
-            }
         }
+
     }
 
     public void playRound()
@@ -72,14 +71,10 @@ public class War
             Queue<Card> winner = null;
 
             if (card1.getRank() > card2.getRank())
-            {
                 winner = hand1;
-            }
 
             if (card1.getRank() < card2.getRank())
-            {
                 winner = hand2;
-            }
 
             if (winner != null)
             {
@@ -88,6 +83,7 @@ public class War
             }
 
         } while (!settledByWar(stack1, stack2));
+
     }
 
     public boolean settledByWar(Stack stack1, Stack stack2)
@@ -107,31 +103,27 @@ public class War
                 give(stack1, stack2, hand1);
                 return true;
             }
+
             stack2.push(hand2.remove());
         }
+
         return false;
+
     }
 
     public void give(Stack<Card> stack1, Stack<Card> stack2, Queue<Card> winner)
     {
 
         if (winner == hand1)
-        {
             System.out.println("Player 1 gets the cards");
-        } else
-        {
+        else
             System.out.println("Player 2 gets the cards");
-        }
 
         while (!(stack1.isEmpty()))
-        {
             winner.add(stack1.pop());
-        }
 
         while (!(stack2.isEmpty()))
-        {
             winner.add(stack2.pop());
-        }
     }
 
 }

@@ -17,11 +17,7 @@ public class Principal
         misVehiculos.add(new VehiculoFurgoneta(2000, "WA21", "Toyota", "HG3"));
 
         for (Vehiculo vehiculos : misVehiculos)
-        {
             System.out.println(vehiculos.mostrarDatos());
-            System.out.println(" ");
-
-        }
 
     }
 

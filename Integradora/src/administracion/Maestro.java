@@ -18,7 +18,6 @@ public class Maestro extends Persona implements InicioSesion
         this.sueldo = sueldo;
         this.usuario = usuario;
         this.contrasena = contrasena;
-
         this.fechaAlta = fechaAlta;
 
     }

@@ -17,9 +17,10 @@ public class PaqueteCartas
         {
             "As", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez", "Joker", "Reina", "Rey"
         };
+
         String palos[] =
         {
-            "Corazones", "Diamantes", "Tr�boles", "Espadas"
+            "Corazones", "Diamantes", "Tréboles", "Espadas"
         };
 
         cartaActual = 0;
@@ -53,6 +54,7 @@ public class PaqueteCartas
     {
         if (cartaActual < paquete.length)
             return paquete[cartaActual++];
+
         else
             return null;
 

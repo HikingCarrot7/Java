@@ -19,6 +19,7 @@ public abstract class Persona
         return nombre;
     }
 
+    @Override
     public String toString()
     {
         return "Nombre: " + nombre + "\nEdad: " + edad;

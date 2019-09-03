@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -24,19 +23,12 @@ public class Login extends JFrame
     private static final long serialVersionUID = 1L;
 
     private final LaminaLogin laminaLogin;
-
     private boolean encontrado = false;
-
     protected static boolean administrador = true, incorrecto = false;
-
     protected static int indiceMaestro = 0;
-
     protected static JButton admin, maestro;
-
     protected static JLabel infoUser;
-
     private int indice = 0;
-
     protected static ArrayList<Administradores> administradores;
 
     public Login()
@@ -58,13 +50,9 @@ public class Login extends JFrame
         private static final long serialVersionUID = 1L;
 
         private JPanel info, botones;
-
         private JButton login;
-
         private JLabel infoPassword;
-
         private JPasswordField password;
-
         private JTextField usuario;
 
         public LaminaLogin()
@@ -153,9 +141,7 @@ public class Login extends JFrame
                             dispose();
 
                         } else
-                        {
                             mostrarError();
-                        }
 
                     } else
                     {
@@ -182,9 +168,7 @@ public class Login extends JFrame
                             dispose();
 
                         } else
-                        {
                             mostrarError();
-                        }
 
                     }
 
@@ -199,9 +183,8 @@ public class Login extends JFrame
             for (T P : contrasenas)
             {
                 if (!(P.getUsuario().contentEquals(usuario.getText().trim()) && P.getContrasena().contentEquals(Generales.pasarAString(password.getPassword()))))
-                {
                     incorrecto = true;
-                } else
+                else
                 {
                     incorrecto = false;
 
@@ -303,7 +286,6 @@ public class Login extends JFrame
         {
 
             for (int i = 0; i < persona.size(); i++)
-            {
                 if (persona.get(i).getUsuario().contentEquals(usuario.getText().trim()))
                 {
                     indice = i;
@@ -313,13 +295,9 @@ public class Login extends JFrame
                     break;
 
                 } else
-                {
                     encontrado = false;
-                }
-            }
 
             if (encontrado)
-            {
                 if (persona.get(indice).getContrasena().contentEquals(Generales.pasarAString(password.getPassword())))
                 {
                     usuario.setBackground(Color.green);
@@ -332,7 +310,7 @@ public class Login extends JFrame
 
                     encontrado = false;
                 }
-            } else
+            else
             {
                 usuario.setBackground(Color.white);
                 password.setBackground(Color.white);
@@ -343,12 +321,9 @@ public class Login extends JFrame
         public void update()
         {
             if (administrador)
-            {
                 updateCampos(administradores);
-            } else
-            {
+            else
                 updateCampos(LaminaMaestro.maestrosInstanciados);
-            }
         }
 
         public void mostrarError()

@@ -14,6 +14,7 @@ public class Cartas
 
     }
 
+    @Override
     public String toString()
     {
 

@@ -15,7 +15,7 @@ import java.awt.image.BufferStrategy;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class Main extends Canvas implements Runnable
 {

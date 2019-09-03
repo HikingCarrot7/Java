@@ -6,6 +6,7 @@
             <name>Space</name>
             <source-roots>
                 <root id="src.dir" name="src"/>
+                <root id="src.res.dir"/>
             </source-roots>
             <test-roots/>
         </data>

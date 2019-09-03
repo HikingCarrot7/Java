@@ -4,7 +4,7 @@ package com.game.src.main;
  * Este es el coraz�n del juego, desde aqu� se renderozan todas las im�genes y se actualizan las posiciones de todos los objectos.
  *
  *
- * @author HikingCarrot7
+ * @author Mohammed
  * @since 1.0
  */
 public final class Ticker implements Runnable

@@ -20,7 +20,7 @@ import java.net.UnknownHostException;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class Menu implements Drawable, InputListener
 {

@@ -1,26 +1,20 @@
 package com.game.src.main;
 
+import com.game.src.main.interfaces.EntityB;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-import com.game.src.main.interfaces.EntityB;
-
 public class Enemy extends GameObject implements EntityB
 {
 
-    private BufferedImage enemy;
-
-    private Random rand;
-
-    private int velocidad;
-
-    private Controller controller;
-
-    private Game game;
-
     private static int enemigosTotales = 5;
+    private int velocidad;
+    private final BufferedImage enemy;
+    private final Random rand;
+    private final Controller controller;
+    private final Game game;
 
     public Enemy(double x, double y, Controller controller, Game game)
     {
@@ -34,7 +28,7 @@ public class Enemy extends GameObject implements EntityB
 
         velocidad = rand.nextInt(3) + 2;
 
-        enemy = new BufferedImageLoader().loadImage("/res/enemies/enemy1.png");
+        enemy = new BufferedImageLoader().loadImage("res/enemies/enemy1.png");
     }
 
     @Override
@@ -45,25 +39,19 @@ public class Enemy extends GameObject implements EntityB
         if (y > Game.LARGO * Game.ESCALA)
         {
             y = 0;
-
             velocidad = rand.nextInt(3) + 2;
-
             x = rand.nextInt(Game.ANCHO * Game.ESCALA - 60);
+
         }
 
         for (int i = 0; i < controller.obtenerEntidadesA().size(); i++)
-        {
             if (Physics.Collision(controller.obtenerEntidadesA().get(i), this))
             {
                 game.setCoordenadasExp(true, (int) getX(), (int) getY());
-
                 game.setEnemigosDestruidos(game.getEnemigosDestruidos() + 1);
-
                 controller.removeEntity(controller.obtenerEntidadesB(), this);
-
                 controller.removeEntity(controller.obtenerEntidadesA(), controller.obtenerEntidadesA().get(i));
             }
-        }
 
     }
 

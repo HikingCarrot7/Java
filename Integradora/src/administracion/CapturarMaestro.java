@@ -6,7 +6,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Date;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -24,7 +23,6 @@ public class CapturarMaestro extends JFrame
     private static final long serialVersionUID = 1L;
 
     private final DatosAlumno datosAlumno;
-
     private boolean datosCorrectos = true;
 
     public CapturarMaestro()
@@ -46,13 +44,9 @@ public class CapturarMaestro extends JFrame
         private static final long serialVersionUID = 1L;
 
         private JTextField nombre, edad, asignatura, salario, user;
-
         private JPasswordField password, password2;
-
         private JLabel infonombre, infoedad, infoasig, infosalario, infouser, infopass, infopass2, vacioNombre, vacioEdad, vacioasig, vaciosalario, vaciouser, vaciopass, vaciopass2;
-
         private JButton confirmar;
-
         private JPanel infoPersona, boton;
 
         public DatosAlumno()

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public final class Server
 {

@@ -12,21 +12,23 @@ public class Administrador extends Empleado implements Jefes
     public Administrador(String nombre, String roll)
     {
         super(nombre, roll);
-
     }
 
+    @Override
     public float getSueldo()
     {
         return (float) ((bonus + 100) + super.getSueldo() * 1.1);
 
     }
 
+    @Override
     public String toString()
     {
         return super.toString() + "\nTu bono por ser administrador es: $" + (bonus + 100);
 
     }
 
+    @Override
     public String tomarDecisiones(String decision)
     {
         return "Un administrador tom� la decisi�n de " + decision;

@@ -1,5 +1,7 @@
 package javadesdecero;
 
+import javax.swing.JFrame;
+
 public class Prueba
 {
 
@@ -12,6 +14,7 @@ public class Prueba
         Etiquetas1.setVisible(true);
         Etiquetas1.setResizable(false);
         Etiquetas1.setLocationRelativeTo(null);
+        Etiquetas1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
 

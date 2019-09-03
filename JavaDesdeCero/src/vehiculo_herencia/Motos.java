@@ -14,6 +14,7 @@ public class Motos extends Vehiculo
 
     }
 
+    @Override
     public int getLlantas()
     {
 
@@ -21,6 +22,7 @@ public class Motos extends Vehiculo
 
     }
 
+    @Override
     public int getPesoPlataforma()
     {
 
@@ -28,6 +30,7 @@ public class Motos extends Vehiculo
 
     }
 
+    @Override
     public int getPesoMotor()
     {
 
@@ -36,6 +39,7 @@ public class Motos extends Vehiculo
     }
 
     //Getter obtener datos
+    @Override
     public String toString()
     {
 

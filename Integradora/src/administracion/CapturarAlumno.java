@@ -1,17 +1,22 @@
 package administracion;
 
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class CapturarAlumno extends JFrame
 {
 
     private static final long serialVersionUID = 1L;
 
-    private DatosAlumno datosAlumno;
-
+    private final DatosAlumno datosAlumno;
     private boolean datosCorrectos;
 
     public CapturarAlumno()
@@ -27,7 +32,7 @@ public class CapturarAlumno extends JFrame
         setVisible(true);
     }
 
-    private class DatosAlumno extends JPanel
+    private final class DatosAlumno extends JPanel
     {
 
         private static final long serialVersionUID = 1L;

@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public final class Cliente extends Object implements Drawable, InputListener, Runnable
 {

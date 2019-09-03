@@ -16,10 +16,10 @@ public class Lamina extends JPanel
 
     private static final long serialVersionUID = 1L;
 
-    private GeneralPath estrella, rectangulo;
-    private SecureRandom rand;
+    private final GeneralPath estrella, rectangulo;
+    private final SecureRandom rand;
+    private final Timer timer;
     private int cambio = 0;
-    private Timer timer;
 
     public Lamina()
     {
@@ -27,14 +27,9 @@ public class Lamina extends JPanel
 
         rectangulo = new GeneralPath();
 
-        timer = new Timer(60, new ActionListener()
+        timer = new Timer(60, (e) ->
         {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                repaint();
-            }
-
+            repaint();
         });
 
         rand = new SecureRandom();
@@ -95,7 +90,6 @@ public class Lamina extends JPanel
         }
 
         g.dispose();
-
         g2.dispose();
 
     }

@@ -2,9 +2,9 @@ package regex;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
-public class Regex 
+public class Regex
 {
 
     public static void main(String[] args)

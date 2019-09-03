@@ -4,7 +4,6 @@ public class Deck
 {
 
     private final Card[] cards;
-
     private int size;
 
     public Deck()
@@ -13,13 +12,8 @@ public class Deck
         size = 0;
 
         for (int suit = Card.SPADES; suit <= Card.CLUBS; suit++)
-        {
             for (int rank = Card.ACE; rank <= Card.KING; rank++)
-            {
-                cards[size] = new Card(rank, suit);
-                size += 1;
-            }
-        }
+                cards[size++] = new Card(rank, suit);
     }
 
     public Card deal()
@@ -31,9 +25,7 @@ public class Deck
     public void shuffle()
     {
         for (int i = size - 1; i > 0; i--)
-        {
             swap(i, (int) (Math.random() * (i + 1)));
-        }
     }
 
     protected void swap(int i, int j)
@@ -42,7 +34,7 @@ public class Deck
         cards[i] = cards[j];
         cards[j] = temp;
     }
-    
+
     public boolean isEmpty()
     {
         return cards.length == 0;

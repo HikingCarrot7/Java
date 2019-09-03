@@ -8,16 +8,15 @@ public class PruebaScanner
     public static void main(String[] args)
     {
 
-        Scanner in = new Scanner(System.in);
+        try (Scanner in = new Scanner(System.in))
+        {
+            String personas;
 
-        String personas;
+            System.out.print("Personas: ");
+            personas = in.nextLine();
 
-        System.out.print("Personas: ");
-        personas = in.nextLine();
-
-        System.out.printf("Las personas son: %s", personas);
-
-        in.close();
+            System.out.printf("Las personas son: %s", personas);
+        }
 
     }
 

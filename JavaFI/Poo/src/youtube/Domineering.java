@@ -7,7 +7,6 @@ public class Domineering
 
     public Domineering()
     {
-
         squares = new boolean[8][8];
     }
 
@@ -31,16 +30,10 @@ public class Domineering
             result += "\n" + row;
 
             for (int column = 0; column < 8; column++)
-            {
                 if (squares[row][column])
-                {
                     result += " #";
-
-                } else
-                {
+                else
                     result += " .";
-                }
-            }
         }
 
         return result;
@@ -60,13 +53,10 @@ public class Domineering
             System.out.println("\n" + this);
 
             if (player == HORIZONTAL)
-            {
                 System.out.println("Horizontal to play");
 
-            } else
-            {
+            else
                 System.out.println("Vertical to play");
-            }
 
             if (!(hasLegalMoveFor(player)))
             {
@@ -84,7 +74,9 @@ public class Domineering
             playAt(row, column, player);
 
             player = !player;
+
         }
+
     }
 
     public void playAt(int row, int column, boolean player)
@@ -92,13 +84,11 @@ public class Domineering
         squares[row][column] = true;
 
         if (player == HORIZONTAL)
-        {
             squares[row][column + 1] = true;
 
-        } else
-        {
+        else
             squares[row + 1][column] = true;
-        }
+
     }
 
     public boolean hasLegalMoveFor(boolean player)
@@ -107,27 +97,18 @@ public class Domineering
         int columnOffset = 0;
 
         if (player == HORIZONTAL)
-        {
             columnOffset = 1;
 
-        } else
-        {
+        else
             rowOffset = 1;
-        }
 
         for (int row = 0; row < (8 - rowOffset); row++)
-        {
             for (int column = 0; column < (8 - columnOffset); column++)
-            {
                 if (!(squares[row][column] || squares[row + rowOffset][column + columnOffset]))
-                {
                     return true;
-                }
-            }
-
-        }
 
         return false;
+
     }
 
     public interface Domino
@@ -138,5 +119,7 @@ public class Domineering
         public int getLeft();
 
         public int getRight();
+
     }
+
 }

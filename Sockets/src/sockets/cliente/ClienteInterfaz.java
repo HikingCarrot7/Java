@@ -13,7 +13,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.Iterator;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -23,7 +22,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
-
 import sockets.mensaje.Mensaje;
 
 public final class ClienteInterfaz extends JPanel implements Runnable
@@ -102,9 +100,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
             nick = JOptionPane.showInputDialog(null, "Inserta tu nick", "New user", JOptionPane.PLAIN_MESSAGE);
 
             if (nick == null)
-            {
                 System.exit(1);
-            }
 
             if (nick.length() <= 6)
             {
@@ -115,9 +111,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
                 JOptionPane.showMessageDialog(null, "User NO válido. Debe contener al menos 7 caracteres", "User inválido", JOptionPane.ERROR_MESSAGE);
 
             } else
-            {
                 validar = true;
-            }
         }
 
     }
@@ -129,30 +123,31 @@ public final class ClienteInterfaz extends JPanel implements Runnable
             try
             {
 
-                //Socket para establecer una conexión con el servidor principal
-                Socket miSocket = new Socket(InetAddress.getLocalHost().getHostAddress(), 9999);
-
                 //Se crea un objeto datos
-                Mensaje datos = new Mensaje();
+                //Socket para establecer una conexión con el servidor principal
+                try (Socket miSocket = new Socket(InetAddress.getLocalHost().getHostAddress(), 9999))
+                {
+                    //Se crea un objeto datos
+                    Mensaje datos = new Mensaje();
 
-                //Se establecen los valores al objeto datos
-                datos.setNick(nombreUser.getText());
+                    //Se establecen los valores al objeto datos
+                    datos.setNick(nombreUser.getText());
 
-                //Cortamos los "()" del combo
-                String[] ip = usersOnline.getSelectedItem().toString().split("-");
+                    //Cortamos los "()" del combo
+                    String[] ip = usersOnline.getSelectedItem().toString().split("-");
 
-                datos.setIp(ip[1]);
-                datos.setMensaje(texto.getText());
-                datos.setControl(true);
+                    datos.setIp(ip[1]);
+                    datos.setMensaje(texto.getText());
+                    datos.setControl(true);
 
-                //Flujo de salida para los datos(objeto datos)
-                ObjectOutputStream salidaPaquete = new ObjectOutputStream(miSocket.getOutputStream());
+                    //Flujo de salida para los datos(objeto datos)
+                    ObjectOutputStream salidaPaquete = new ObjectOutputStream(miSocket.getOutputStream());
 
-                //Se envían los datos
-                salidaPaquete.writeObject(datos);
+                    //Se envían los datos
+                    salidaPaquete.writeObject(datos);
 
-                //Se cierra el socket para evitar "fugas de recursos"
-                miSocket.close();
+                    //Se cierra el socket para evitar "fugas de recursos"
+                }
 
             } catch (IOException e1)
             {
@@ -203,9 +198,7 @@ public final class ClienteInterfaz extends JPanel implements Runnable
 
                         //si se trata de nuestra misma ip no la añadimos al combo
                         if (!InetAddress.getLocalHost().getHostAddress().equals(datos.get(nombreActual)))
-                        {
                             usersOnline.addItem(nombreActual + " -" + datos.get(nombreActual) + "-");
-                        }
 
                     }
 

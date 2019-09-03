@@ -1,23 +1,18 @@
 package com.game.src.main;
 
+import com.game.src.main.interfaces.EntityA;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-
-import com.game.src.main.interfaces.EntityA;
 
 public class Player extends GameObject implements EntityA
 {
 
     private int velX = 0, velY = 0;
-
-    private BufferedImage player;
-
-    private Controller controller;
-
+    private final BufferedImage player;
+    private final Controller controller;
     private boolean muerte = false;
-
-    private Game game;
+    private final Game game;
 
     public Player(double x, double y, Controller controller, Game game)
     {
@@ -27,7 +22,7 @@ public class Player extends GameObject implements EntityA
 
         this.controller = controller;
 
-        player = new BufferedImageLoader().loadImage("/res/player/player.png");
+        player = new BufferedImageLoader().loadImage("res/player/player.png");
 
     }
 
@@ -37,27 +32,18 @@ public class Player extends GameObject implements EntityA
         y += velY;
 
         if (x <= 0)
-        {
             x = 0;
-        }
 
         if (x >= 600)
-        {
             x = 600;
-        }
 
         if (y <= 0)
-        {
             y = 0;
-        }
 
         if (y >= 450)
-        {
             y = 450;
-        }
 
         for (int i = 0; i < controller.obtenerEntidadesB().size(); i++)
-        {
             if (Physics.Collision(this, controller.obtenerEntidadesB().get(i)))
             {
                 Game.VIDA -= 1;
@@ -65,7 +51,6 @@ public class Player extends GameObject implements EntityA
                 break;
 
             }
-        }
 
         if (Game.VIDA <= 0 && !muerte)
         {
@@ -76,6 +61,7 @@ public class Player extends GameObject implements EntityA
 
     }
 
+    @Override
     public double getX()
     {
         return x;
@@ -86,6 +72,7 @@ public class Player extends GameObject implements EntityA
         this.x = x;
     }
 
+    @Override
     public double getY()
     {
         return y;

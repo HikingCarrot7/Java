@@ -1,5 +1,6 @@
 package com.game.src.main;
 
+import com.game.src.main.animations.ExplosionAnimation;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,10 +10,7 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-
 import javax.swing.JFrame;
-
-import com.game.src.main.animations.ExplosionAnimation;
 
 public class Game extends Canvas implements Runnable
 {
@@ -27,29 +25,17 @@ public class Game extends Canvas implements Runnable
 
 //	private BufferedImage image = new BufferedImage(ANCHO, LARGO, BufferedImage.TYPE_INT_BGR);
     private BufferedImage fondo;
-
     private static Game game;
-
     private static JFrame frame;
-
     private Player player;
-
     private Controller controller;
-
     private Menu menu;
-
     private Graphics2D g;
-
     private ExplosionAnimation explosion;
-
     private BufferStrategy bs;
-
     private int enemigosDestruidos = 0;
-
     private int lastfps = 0;
-
     private Rectangle reset;
-
     private int update = 0;
     private int frames = 0;
     private long timer = System.currentTimeMillis();
@@ -68,15 +54,11 @@ public class Game extends Canvas implements Runnable
     {
 
         frame = new JFrame("2D space game");
-
         game = new Game();
 
         game.setPreferredSize(new Dimension(ANCHO * ESCALA, LARGO * ESCALA));
-
         game.setMaximumSize(new Dimension(ANCHO * ESCALA, LARGO * ESCALA));
-
         game.setMinimumSize(new Dimension(ANCHO * ESCALA, LARGO * ESCALA));
-
         frame.add(game);
         frame.pack();
         frame.setResizable(false);
@@ -92,7 +74,6 @@ public class Game extends Canvas implements Runnable
         if (!running)
         {
             running = true;
-
             thread = new Thread(this);
 
             thread.start();
@@ -123,11 +104,8 @@ public class Game extends Canvas implements Runnable
         reset = new Rectangle(ANCHO / 2 + 70, - 50, 200, 50);
 
         menu = new Menu(this);
-
         controller = new Controller(game);
-
-        fondo = new BufferedImageLoader().loadImage("/res/background/background.jpg");
-
+        fondo = new BufferedImageLoader().loadImage("res/background/background.jpg");
         player = new Player(ANCHO - 30, LARGO * ESCALA, controller, this);
 
         controller.generarEnemigo(Enemy.getEnemigosTotales());
@@ -209,9 +187,7 @@ public class Game extends Canvas implements Runnable
         if (state.equals(STATE.GAME))
         {
             if (VIDA > 0)
-            {
                 player.render(g);
-            }
 
             if (player.getMuerte())
             {
@@ -223,9 +199,7 @@ public class Game extends Canvas implements Runnable
                 g.drawString("You died!", reset.x - 5, reset.y - 20);
 
                 if (reset.y >= LARGO)
-                {
                     reset.y = LARGO;
-                }
             }
 
             controller.render(g);
@@ -241,9 +215,7 @@ public class Game extends Canvas implements Runnable
             g.drawRect(5, 5, 200, 20);
 
         } else
-        {
             menu.render((Graphics2D) g);
-        }
 
         dibujarFps(g);
 
@@ -326,27 +298,21 @@ public class Game extends Canvas implements Runnable
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_RIGHT)
-        {
             player.setVelX(5);
 
-        } else if (key == KeyEvent.VK_LEFT)
-        {
+        else if (key == KeyEvent.VK_LEFT)
             player.setVelX(-5);
 
-        } else if (key == KeyEvent.VK_UP)
-        {
+        else if (key == KeyEvent.VK_UP)
             player.setVelY(-5);
 
-        } else if (key == KeyEvent.VK_DOWN)
-        {
+        else if (key == KeyEvent.VK_DOWN)
             player.setVelY(5);
 
-        } else if (key == KeyEvent.VK_ENTER && !player.getMuerte())
+        else if (key == KeyEvent.VK_ENTER && !player.getMuerte())
         {
             if (!disparando)
-            {
                 controller.addEntity(controller.obtenerEntidadesA(), new Bullet(player.getX() + player.anchoPlayer() / 2 - 5, player.getY() - player.largoPlayer() / 2 - 10));
-            }
 
             disparando = true;
 
@@ -358,25 +324,19 @@ public class Game extends Canvas implements Runnable
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_RIGHT)
-        {
             player.setVelX(0);
 
-        } else if (key == KeyEvent.VK_LEFT)
-        {
+        else if (key == KeyEvent.VK_LEFT)
             player.setVelX(0);
 
-        } else if (key == KeyEvent.VK_UP)
-        {
+        else if (key == KeyEvent.VK_UP)
             player.setVelY(0);
 
-        } else if (key == KeyEvent.VK_DOWN)
-        {
+        else if (key == KeyEvent.VK_DOWN)
             player.setVelY(0);
 
-        } else if (key == KeyEvent.VK_ENTER)
-        {
+        else if (key == KeyEvent.VK_ENTER)
             disparando = false;
-        }
 
     }
 

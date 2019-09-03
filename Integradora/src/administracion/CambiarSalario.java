@@ -3,7 +3,6 @@ package administracion;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -19,7 +18,7 @@ public class CambiarSalario extends JFrame
 
     private static final long serialVersionUID = 1L;
 
-    private Cambiarsalario cambiarsalario;
+    private final Cambiarsalario cambiarsalario;
 
     public CambiarSalario()
     {
@@ -40,20 +39,15 @@ public class CambiarSalario extends JFrame
         private static final long serialVersionUID = 1L;
 
         private JSlider manipular;
-
         private JLabel infosalario, vaciosalario;
-
         private JTextField salario;
-
         private JButton aceptar;
-
         private JPanel info, boton;
 
         public Cambiarsalario()
         {
 
             iniciarElementos();
-
             anadirElementos();
 
         }
@@ -72,7 +66,7 @@ public class CambiarSalario extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                boolean datosCorrectos = true;
+                boolean datosCorrectos;
 
                 datosCorrectos = Generales.intentarValidarDouble(salario, vaciosalario, 50000);
 
@@ -112,9 +106,7 @@ public class CambiarSalario extends JFrame
 
             infosalario = new JLabel("Salario: ");
             vaciosalario = new JLabel(" ");
-
             salario = new JTextField();
-
             aceptar = new JButton(new AccionBoton());
 
         }
@@ -132,6 +124,11 @@ public class CambiarSalario extends JFrame
             add(boton, BorderLayout.SOUTH);
         }
 
+    }
+
+    public static synchronized <T> String getString(T t)
+    {
+        return t.toString();
     }
 
 }

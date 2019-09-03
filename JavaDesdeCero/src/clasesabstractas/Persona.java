@@ -23,6 +23,7 @@ public abstract class Persona
 
     public abstract String genero();
 
+    @Override
     public String toString()
     {
 

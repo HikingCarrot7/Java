@@ -13,7 +13,7 @@ public class PruebaCartas
         for (int i = 1; i <= 52; i++)
         {
 
-            System.out.printf("%-20s", miPaqueteCartas.repartirCartas());
+            System.out.printf("%-25s", miPaqueteCartas.repartirCartas());
 
             if (i % 4 == 0)
                 System.out.println("");

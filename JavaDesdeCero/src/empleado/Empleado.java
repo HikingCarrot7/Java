@@ -57,8 +57,10 @@ public class Empleado implements Comparable<Empleado>
     {
         if (this.sueldo < miObjeto.sueldo)
             return -1;
+
         else if (this.sueldo > miObjeto.sueldo)
             return 1;
+
         else
             return 0;
     }

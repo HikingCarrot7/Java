@@ -1,7 +1,6 @@
 package administracion;
 
 import java.awt.event.ActionEvent;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -79,10 +78,8 @@ public class LaminaAdministrador extends JFrame
             public void actionPerformed(ActionEvent e)
             {
                 if (e.getSource() == anadirMaestro)
-                {
                     new CapturarMaestro();
-
-                } else if (e.getSource() == eliminarMaestro)
+                else if (e.getSource() == eliminarMaestro)
                 {
                     int opcion = Generales.alerta("La lista de alumnos relacionada con este maestro se borrar�. �Est� seguro?", "�Se borrar�n todos los datos!");
 
@@ -113,22 +110,14 @@ public class LaminaAdministrador extends JFrame
                     }
 
                 } else if (e.getSource() == salarioMaestro)
-                {
                     new CambiarSalario();
-
-                } else if (e.getSource() == mostrar)
-                {
+                else if (e.getSource() == mostrar)
 
                     if (mostrar.isSelected())
-                    {
                         infoImport.setText(LaminaMaestro.maestrosInstanciados.get(listaMaestros.getSelectedIndex()).infoPrivada());
-
-                    } else
-                    {
+                    else
                         infoImport.setText("");
-                    }
-
-                } else
+                else
                 {
 
                     new Login();

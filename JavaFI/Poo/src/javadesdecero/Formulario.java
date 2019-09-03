@@ -1,12 +1,14 @@
 package javadesdecero;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class Formulario extends JFrame
 {
 
-    private JTextField textfield1;
-    private JTextArea jtextarea1;
+    private final JTextField textfield1;
+    private final JTextArea jtextarea1;
 
     public Formulario()
     {
@@ -29,6 +31,7 @@ public class Formulario extends JFrame
         textarea1.setVisible(true);
         textarea1.setResizable(false);
         textarea1.setLocationRelativeTo(null);
+        textarea1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 }

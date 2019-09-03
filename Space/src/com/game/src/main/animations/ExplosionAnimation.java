@@ -8,23 +8,18 @@ public class ExplosionAnimation implements Runnable
 {
 
     private Thread thread;
-
-    private Image ima;
-
+    private final Image ima;
     private int ancho = 128, altura = 128, incremento = 0, mx = 0, my = 0;
-
     private int x, y;
-
     private volatile boolean iniciar;
 
     public ExplosionAnimation(boolean iniciar)
     {
         this.iniciar = iniciar;
 
-        ima = Toolkit.getDefaultToolkit().getImage("bin/res/explosion/explosion.png");
+        ima = Toolkit.getDefaultToolkit().getImage("res/explosion/explosion.png");
 
         thread = new Thread(this);
-
         thread.start();
 
     }
@@ -34,7 +29,6 @@ public class ExplosionAnimation implements Runnable
         if (iniciar)
         {
             mx = (incremento % 4) * ancho;
-
             my = (incremento / 4) * altura;
 
             g.drawImage(ima, x - 30, y - 40, x + ancho - 30, y + altura - 40, mx, my, mx + ancho, my + altura, null);
@@ -44,35 +38,25 @@ public class ExplosionAnimation implements Runnable
     @Override
     public void run()
     {
-        while (true)
+        while (iniciar)
         {
+
             try
             {
-                Thread.sleep(1);
+                Thread.sleep(20);
 
-            } catch (InterruptedException e1)
+            } catch (InterruptedException e)
             {
             }
 
-            while (iniciar)
+            if (incremento >= 16)
             {
-                try
-                {
-                    Thread.sleep(20);
+                incremento = 0;
 
-                } catch (InterruptedException e)
-                {
-                }
-
-                if (incremento >= 16)
-                {
-                    incremento = 0;
-
-                    iniciar = false;
-                }
-
-                incremento++;
+                iniciar = false;
             }
+
+            incremento++;
 
         }
 

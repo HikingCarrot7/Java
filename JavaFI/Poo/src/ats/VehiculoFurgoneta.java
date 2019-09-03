@@ -3,7 +3,7 @@ package ats;
 public class VehiculoFurgoneta extends Vehiculo
 {
 
-    private int carga;
+    private final int carga;
 
     public VehiculoFurgoneta(int carga, String matricula, String marca, String modelo)
     {
@@ -19,8 +19,7 @@ public class VehiculoFurgoneta extends Vehiculo
     @Override
     public String mostrarDatos()
     {
-        return "Matricula: " + matricula + "\nMarca: " + marca + "\nModelo: " + modelo + "\nCarga: " + carga;
-
+        return String.format("Matrícula: %s\nMarca: %s\nModelo: %s\nCarga: %s\n", matricula, marca, modelo, carga);
     }
 
 }

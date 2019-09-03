@@ -1,7 +1,6 @@
 package administracion;
 
 import java.awt.Toolkit;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -24,10 +23,7 @@ public class Generales
                 return false;
 
             } else
-            {
                 texto.setText("");
-
-            }
 
         } catch (Exception E)
         {
@@ -55,12 +51,9 @@ public class Generales
                 return false;
 
             } else
-            {
                 texto.setText("");
 
-            }
-
-        } catch (Exception E)
+        } catch (NumberFormatException E)
         {
             texto.setText("*Dato no v�lido");
 
@@ -80,9 +73,7 @@ public class Generales
             return false;
 
         } else
-        {
             return true;
-        }
 
     }
 
@@ -91,9 +82,7 @@ public class Generales
         String pass = "";
 
         for (int i = 0; i < contra.length; i++)
-        {
             pass += contra[i];
-        }
 
         return pass;
     }

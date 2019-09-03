@@ -24,13 +24,15 @@ public class Alumnos
 
     public static void mostrarGrafico()
     {
-        System.out.println("Relaci�n de calificaciones: ");
+        System.out.println("Relación de calificaciones: ");
 
         //Frecuencias
         int[] frecuencias = new int[11];
 
-        for (int i = 0; i < calificaciones.size(); i++)
-            ++frecuencias[(int) Math.floor(calificaciones.get(i) / 10)];
+        calificaciones.stream().forEach((calificacion) ->
+        {
+            ++frecuencias[(int) Math.floor(calificacion / 10)];
+        });
 
         for (int i = 0; i < frecuencias.length; i++)
         {

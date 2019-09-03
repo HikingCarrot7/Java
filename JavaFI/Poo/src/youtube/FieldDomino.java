@@ -14,6 +14,7 @@ public class FieldDomino implements Domino
         this.right = right;
     }
 
+    @Override
     public void flip()
     {
         int swap = left;
@@ -21,16 +22,19 @@ public class FieldDomino implements Domino
         right = swap;
     }
 
+    @Override
     public int getLeft()
     {
         return left;
     }
 
+    @Override
     public int getRight()
     {
         return right;
     }
 
+    @Override
     public String toString()
     {
         return left + "-" + right;

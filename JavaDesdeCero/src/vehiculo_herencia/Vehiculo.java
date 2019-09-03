@@ -34,6 +34,7 @@ public class Vehiculo
 
     //Getter datos
 	/*Getter para retornar los datos que se comparten entre todos los objetos (cada objeto tiene su propia copia de estos datos)*/
+    @Override
     public String toString()
     {
 

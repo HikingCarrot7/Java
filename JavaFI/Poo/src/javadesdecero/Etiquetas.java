@@ -1,13 +1,16 @@
 package javadesdecero;
 
-import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class Etiquetas extends JFrame implements ActionListener
 {
 
-    private JButton boton1, boton2, boton3;
-    private JLabel label1;
+    private final JButton boton1, boton2, boton3;
+    private final JLabel label1;
 
     public Etiquetas()
     {
@@ -34,23 +37,18 @@ public class Etiquetas extends JFrame implements ActionListener
 
     }
 
+    @Override
     public void actionPerformed(ActionEvent e)
     {
 
         if (e.getSource() == boton1)
-        {
-            label1.setText("Has precionado el bot�n 1");
-        }
+            label1.setText("Has precionado el botón 1");
 
         if (e.getSource() == boton2)
-        {
-            label1.setText("Has precionado el bot�n 2");
-        }
+            label1.setText("Has precionado el botón 2");
 
         if (e.getSource() == boton3)
-        {
-            label1.setText("Has precionado el bot�n 3");
-        }
+            label1.setText("Has precionado el botón 3");
 
     }
 }

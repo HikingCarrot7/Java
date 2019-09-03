@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public final class MostrarDatos extends JFrame
 {

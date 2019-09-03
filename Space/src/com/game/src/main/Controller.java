@@ -1,13 +1,12 @@
 package com.game.src.main;
 
+import com.game.src.main.interfaces.Entity;
+import com.game.src.main.interfaces.EntityA;
+import com.game.src.main.interfaces.EntityB;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Random;
-
-import com.game.src.main.interfaces.Entity;
-import com.game.src.main.interfaces.EntityA;
-import com.game.src.main.interfaces.EntityB;
 
 public class Controller
 {
@@ -39,9 +38,7 @@ public class Controller
     public void generarEnemigo(int enemigos)
     {
         for (int i = 0; i < enemigos; i++)
-        {
             addEntity(entidadB, new Enemy(rand.nextInt(Game.ANCHO * Game.ESCALA), - 10, this, game));
-        }
     }
 
     public void render(Graphics g)
@@ -71,9 +68,7 @@ public class Controller
             try
             {
                 if (entidad.get(i).getY() <= - 50 && entidad.get(i) instanceof Bullet)
-                {
                     removeEntity(entidadA, entidad.get(i));
-                }
 
             } catch (IndexOutOfBoundsException e)
             {
@@ -87,9 +82,7 @@ public class Controller
         try
         {
             for (Entity E : entidad)
-            {
                 E.render(g);
-            }
 
         } catch (ConcurrentModificationException e)
         {

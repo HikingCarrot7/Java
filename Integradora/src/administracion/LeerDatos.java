@@ -124,12 +124,8 @@ public class LeerDatos
             salida = new Formatter(new FileWriter("Alumnos.txt"));
 
             for (int i = 0; i < LaminaMaestro.alumnosInstancias.size(); i++)
-            {
                 for (int j = 0; j < LaminaMaestro.alumnosInstancias.get(i).size(); j++)
-                {
                     escrituraDatosAlumnos(LaminaMaestro.alumnosInstancias.get(i).get(j), i);
-                }
-            }
 
             salida.close();
 

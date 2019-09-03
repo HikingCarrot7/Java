@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class MouseInput extends MouseAdapter
 {

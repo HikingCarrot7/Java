@@ -17,9 +17,7 @@ public class Constantes
         Empleado[] misEmpleados = new Empleado[EMPLEADOS];
 
         misEmpleados[0] = new Empleado("Juan Carlos");
-
         misEmpleados[1] = new Empleado("Fernando Uicab");
-
         misEmpleados[2] = new Empleado("Francisco Herrera");
 
         do
@@ -86,10 +84,10 @@ class Empleado
     }
 
     //Getter nombre
-	/*public String getNombre() 
+	/*public String getNombre()
      {
-		
+
      return "Tu nombre es: " + this.nombre;
-		
+
      }*/
 }

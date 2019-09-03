@@ -19,8 +19,7 @@ public class VehiculoTurismo extends Vehiculo
     @Override
     public String mostrarDatos()
     {
-        return "Matricula: " + matricula + "\nMarca: " + marca + "\nModelo: " + modelo + "\nN�mero de puertas: " + nPuertas;
-
+        return String.format("Matrícula: %s\nMarca: %s\nModelo: %s\nNúmero de puertas: %s\n", matricula, marca, modelo, nPuertas);
     }
 
 }

@@ -145,6 +145,7 @@ public class Tanks extends JPanel implements ActionListener, KeyListener
         timer.start();
     }
 
+    @Override
     public void paint(Graphics g)
     {
         //background

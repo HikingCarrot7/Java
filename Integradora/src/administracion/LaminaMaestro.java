@@ -4,7 +4,6 @@ import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -63,10 +62,8 @@ public final class LaminaMaestro extends JPanel
         public void actionPerformed(ActionEvent e)
         {
             if (e.getSource() == anadirAlumno)
-            {
                 new CapturarAlumno();
-
-            } else if (e.getSource() == borrarAlumno)
+            else if (e.getSource() == borrarAlumno)
             {
                 int opcion = Generales.alerta("Se perder�n los datos del alumno. �Est�s seguro?", "!Se perder�n datos!");
 
@@ -90,7 +87,6 @@ public final class LaminaMaestro extends JPanel
                 String calif;
 
                 if (listaAlumnos.getItemCount() > 0)
-                {
 
                     try
                     {
@@ -108,10 +104,7 @@ public final class LaminaMaestro extends JPanel
                                 break;
 
                             } else
-                            {
                                 error("La calificaci�n es demasiado grande!");
-
-                            }
                         }
 
                     } catch (HeadlessException | NumberFormatException E)
@@ -120,8 +113,6 @@ public final class LaminaMaestro extends JPanel
 
                     }
 
-                }
-
             } else if (e.getSource() == maestro)
             {
                 updatePantalla("Iniciar sesi�n como maestro", "Maestro: ", false, true);
@@ -129,11 +120,8 @@ public final class LaminaMaestro extends JPanel
                 Login.maestro.setEnabled(false);
 
             } else
-            {
 
                 updatePantalla("Iniciar sesi�n como administrador", "Admin: ", true, false);
-
-            }
 
         }
 

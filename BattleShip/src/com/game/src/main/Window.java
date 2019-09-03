@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class Window extends JFrame
 {
