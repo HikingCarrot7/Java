@@ -12,7 +12,6 @@ public class Cuenta
         this.nombre = nombre;
 
         if (saldo > 0.0)
-
             this.saldo = saldo;
     }
 
@@ -20,25 +19,21 @@ public class Cuenta
     {
 
         if (montoDeposito > 0.0)
-
             saldo = saldo + montoDeposito;
     }
 
     public double obtenerSaldo()
     {
-
         return saldo;
     }
 
     public void establecerNombre(String nombre)
     {
-
         this.nombre = nombre;
     }
 
     public String obtenerNombre()
     {
-
         return nombre;
     }
 

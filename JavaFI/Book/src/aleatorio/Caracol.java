@@ -12,14 +12,7 @@ public class Caracol
 
         System.out.println("Introduce algo...");
 
-        try
-        {
-            System.out.println(new BufferedReader(new InputStreamReader(System.in)).readLine());
-
-        } catch (IOException e)
-        {
-            System.out.println("Hubo un error...");
-        }
+        System.out.println(new BufferedReader(new InputStreamReader(System.in)).readLine());
 
         int matriz[][] = new int[5][5];
         int n = 5, inicio = 0, nlimite = n - 1, c = 1;
@@ -40,6 +33,7 @@ public class Caracol
 
             inicio++;
             nlimite--;
+
         }
 
         for (int i = 0; i < n; i++)
@@ -48,6 +42,9 @@ public class Caracol
                 System.out.print(matriz[i][j] + "\t");
 
             System.out.println(" ");
+
         }
+
     }
+
 }
