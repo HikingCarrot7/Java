@@ -1,11 +1,10 @@
 package com.game.src.objects;
 
+import com.game.src.framework.GameObject;
+import com.game.src.framework.ObjectId;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-
-import com.game.src.framework.GameObject;
-import com.game.src.framework.ObjectId;
 
 public final class Bullet extends GameObject
 {
@@ -19,6 +18,7 @@ public final class Bullet extends GameObject
         this.handler = handler;
 
         calculateVelocity(x, y, mx, my);
+
     }
 
     @Override
@@ -39,6 +39,7 @@ public final class Bullet extends GameObject
 
             if (tempObject.getId().equals(ObjectId.Block) && getBounds().intersects(tempObject.getBounds()))
                 handler.removeObject(this);
+
         }
 
     }
@@ -51,6 +52,7 @@ public final class Bullet extends GameObject
         velY = (float) ((toY - fromY) * speed / distance);
         //find X
         velX = (float) ((toX - fromX) * speed / distance);
+
     }
 
     @Override
@@ -64,7 +66,6 @@ public final class Bullet extends GameObject
     @Override
     public Rectangle getBounds()
     {
-
         return new Rectangle((int) x, (int) y, 8, 8);
     }
 
