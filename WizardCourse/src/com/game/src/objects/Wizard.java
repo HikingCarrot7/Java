@@ -1,12 +1,11 @@
 package com.game.src.objects;
 
+import com.game.src.framework.GameObject;
+import com.game.src.framework.ObjectId;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
-
-import com.game.src.framework.GameObject;
-import com.game.src.framework.ObjectId;
 
 public class Wizard extends GameObject
 {
@@ -83,9 +82,10 @@ public class Wizard extends GameObject
             } else if (objects.get(i).getId().equals(ObjectId.Crate) && getBounds().intersects(objects.get(i).getBounds()))
             {
                 setAmmo(getAmmo() + 25);
-
                 handler.removeObject(objects.get(i));
+
             }
+
     }
 
     @Override
@@ -133,6 +133,7 @@ public class Wizard extends GameObject
             {
                 setVelX(-5);
                 controlHorizontal = false;
+
             }
 
         } else if (keys.contains(37))
@@ -143,6 +144,7 @@ public class Wizard extends GameObject
 
             if (keys.contains(39))
                 setVelX(5);
+
         }
 
         if (keys.isEmpty() || (keys.size() == 1 && keys.contains(39)))
