@@ -1,11 +1,5 @@
 package com.game.src.main;
 
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-
 import com.game.src.framework.GameObject;
 import com.game.src.framework.ObjectId;
 import com.game.src.graphics.BufferedImageLoader;
@@ -15,6 +9,11 @@ import com.game.src.objects.Crate;
 import com.game.src.objects.Enemy;
 import com.game.src.objects.Handler;
 import com.game.src.objects.Wizard;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game extends Canvas
 {
@@ -111,14 +110,18 @@ public class Game extends Canvas
 
                 if (red == 255 && green == 0 && blue == 0)
                     handler.addObject(new Block(i * 32, j * 32, ObjectId.Block));
+
                 else if (red == 255 && green == 255)
                     handler.addObject(new Enemy(i * 32, j * 32, ObjectId.Enemy, handler));
+
                 else if (blue == 255)
                     handler.addObject(new Wizard(i * 32, j * 32, ObjectId.Player, handler));
+
                 else if (green == 255)
                     handler.addObject(new Crate(i * 32, j * 32, ObjectId.Crate, handler));
 
             }
+
     }
 
 }
