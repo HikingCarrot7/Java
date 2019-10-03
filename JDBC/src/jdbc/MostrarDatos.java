@@ -87,7 +87,7 @@ public final class MostrarDatos extends JFrame
 
             }
 
-            WriteFile(aux);
+            writeFile(aux);
 
         } catch (SQLException ex)
         {
@@ -106,7 +106,7 @@ public final class MostrarDatos extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    private void WriteFile(String data) throws IOException
+    private void writeFile(String data) throws IOException
     {
         try (Formatter out = new Formatter(new FileWriter(file, true)))
         {
