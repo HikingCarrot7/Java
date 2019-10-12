@@ -20,6 +20,7 @@ public class Main extends Application
     {
         try
         {
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/vista/EjemploVista.fxml"));
             Pane ventana = (Pane) loader.load();
@@ -27,6 +28,7 @@ public class Main extends Application
             Scene scene = new Scene(ventana);
 
             primaryStage.setScene(scene);
+            //new EjemploController().start();
             primaryStage.show();
 
         } catch (IOException ex)

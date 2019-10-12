@@ -5,9 +5,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import modelo.Draw;
 import modelo.Suma;
 
 public class EjemploController implements Initializable
@@ -21,6 +23,10 @@ public class EjemploController implements Initializable
     private TextField numero2;
     @FXML
     private TextField resultado;
+    @FXML
+    private Canvas canvas;
+    @FXML
+    private Button lol;
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
@@ -28,9 +34,15 @@ public class EjemploController implements Initializable
 
     }
 
+    public void start()
+    {
+        new Draw(getCanvas()).draw();
+    }
+
     @FXML
     private void click(ActionEvent e)
     {
+
         try
         {
             double n1 = Double.parseDouble(numero1.getText());
@@ -46,6 +58,14 @@ public class EjemploController implements Initializable
             alert.setTitle("Error");
             alert.setContentText("Formato incorrecto");
             alert.showAndWait();
+
         }
+
     }
+
+    public Canvas getCanvas()
+    {
+        return canvas;
+    }
+
 }
