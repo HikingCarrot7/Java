@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
  */
 @Inherited
 @Documented
-@Target(ElementType.TYPE)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @interface SmartPhone
 {
@@ -24,14 +24,35 @@ import java.lang.annotation.Target;
 
 }
 
-@SmartPhone(os = "IOS", version = 12.0)
+@Inherited
+@Documented
+@Target(ElementType.PARAMETER)
+@Retention(RetentionPolicy.RUNTIME)
+@interface NotNull
+{
+
+    String name() default " ";
+
+}
+
 class IPhone
 {
+
+    @SmartPhone(os = "IOS", version = 12.0)
+    void f(@NotNull int x)
+    {
+
+    }
 
 }
 
 class x extends IPhone
 {
+
+    @Override
+    void f(@NotNull int x)
+    {
+    }
 
 }
 
