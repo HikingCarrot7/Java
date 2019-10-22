@@ -54,16 +54,14 @@ public final class Server
                         //Avisamos al jugador 1 que ya se conecto el jugador 2
                         if (ips.size() > 0)
                         {
-                            Socket socket = new Socket(ips.get(0), 10000);
+                            try (Socket socket = new Socket(ips.get(0), 10000); ObjectOutputStream out2 = new ObjectOutputStream(socket.getOutputStream()))
+                            {
 
-                            ObjectOutputStream out2 = new ObjectOutputStream(socket.getOutputStream());
+                                Mensaje mensajeAvisarConexion = new Mensaje(-1, 0, 0, 2, false, false, ips.get(0));
 
-                            Mensaje mensajeAvisarConexion = new Mensaje(-1, 0, 0, 2, false, false, ips.get(0));
+                                out2.writeObject(mensajeAvisarConexion);
 
-                            out2.writeObject(mensajeAvisarConexion);
-
-                            out2.close();
-                            socket.close();
+                            }
 
                             System.out.println("Le avise al jugador 1");
 
@@ -95,10 +93,12 @@ public final class Server
 
         } catch (IOException | ClassNotFoundException ex)
         {
+
             System.out.println(ex.getMessage());
 
         } finally
         {
+
             try
             {
                 server.close();
@@ -107,6 +107,7 @@ public final class Server
             {
                 System.out.println(ex.getMessage());
             }
+
         }
 
     }
