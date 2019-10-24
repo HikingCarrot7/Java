@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import com.game.src.main.Game;
 
-public final class ReadMap
+public final class MapLoader
 {
 
     private final BufferedImage mapa;
@@ -18,7 +18,7 @@ public final class ReadMap
     private Scanner in;
     private boolean mapLoaded = false;
 
-    public ReadMap(Game game)
+    public MapLoader(Game game)
     {
         mapa = game.loadImage("/Map.png");
 

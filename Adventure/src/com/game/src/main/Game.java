@@ -19,7 +19,7 @@ import com.game.src.graphics.SpriteSheet;
 import com.game.src.graphics.Tiles;
 import com.game.src.input.KeyInput;
 import com.game.src.input.MouseInput;
-import com.game.src.input.ReadMap;
+import com.game.src.input.MapLoader;
 import com.game.src.interfaces.GUI;
 import com.game.src.interfaces.GUIButton;
 import com.game.src.interfaces.SDKButton;
@@ -70,7 +70,7 @@ public class Game extends Canvas
     {
         createBufferStrategy(3);
 
-        new ReadMap(this);
+        new MapLoader(this);
         renderer = new RenderHandler(getWidth(), getHeight());
 
         //Sheets
