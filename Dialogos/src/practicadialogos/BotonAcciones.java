@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.util.Date;
-
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,6 +24,7 @@ public class BotonAcciones
 
                 g.setColor(Color.yellow);
                 g.fillRect(0, 0, getWidth(), getHeight());
+
             }
 
         }, new Date()
@@ -44,80 +44,102 @@ public class BotonAcciones
     {
         Lamina.listo.addActionListener((ActionEvent e) ->
         {
-            if (Lamina.secciones[0].toString().contentEquals("Mensaje"))
+            switch (Lamina.secciones[0].toString())
             {
-                JOptionPane.showMessageDialog(null, obtenerMensaje(), "T�tulo", obtenerTipo(1), null);
-            } else if (Lamina.secciones[0].toString().contentEquals("Confirmar"))
-            {
-                JOptionPane.showConfirmDialog(null, obtenerMensaje(), "T�tulo", obtenerTipo(3), obtenerTipo(1), null);
-            } else if (Lamina.secciones[0].toString().contentEquals("Opci�n"))
-            {
-                JOptionPane.showOptionDialog(null, obtenerMensaje(), "T�tulo", obtenerTipo(3), obtenerTipo(1), null, obtenerObjetos(4), null);
-            } else
-            {
-                JOptionPane.showInputDialog(null, obtenerMensaje(), "T�tulo", obtenerTipo(1), null, obtenerObjetos(5), null);
+                case "Mensaje":
+                    JOptionPane.showMessageDialog(null, obtenerMensaje(), "T�tulo", obtenerTipo(1), null);
+                    break;
+
+                case "Confirmar":
+                    JOptionPane.showConfirmDialog(null, obtenerMensaje(), "T�tulo", obtenerTipo(3), obtenerTipo(1), null);
+                    break;
+
+                case "Opci�n":
+                    JOptionPane.showOptionDialog(null, obtenerMensaje(), "T�tulo", obtenerTipo(3), obtenerTipo(1), null, obtenerObjetos(4), null);
+                    break;
+
+                default:
+                    JOptionPane.showInputDialog(null, obtenerMensaje(), "T�tulo", obtenerTipo(1), null, obtenerObjetos(5), null);
+                    break;
+
             }
+
         });
+
     }
 
     public static Object obtenerMensaje()
     {
-        if (Lamina.secciones[2].toString().contentEquals("Cadena"))
+        switch (Lamina.secciones[2].toString())
         {
-            return objetos[0];
-        } else if (Lamina.secciones[2].toString().contentEquals("Icono"))
-        {
-            return objetos[1];
-        } else if (Lamina.secciones[2].toString().contentEquals("Componente"))
-        {
-            return objetos[2];
-        } else if (Lamina.secciones[2].toString().contentEquals("Otros"))
-        {
-            return objetos[3];
-        } else
-        {
-            return objetos;
+            case "Cadena":
+                return objetos[0];
+
+            case "Icono":
+                return objetos[1];
+
+            case "Componente":
+                return objetos[2];
+
+            case "Otros":
+                return objetos[3];
+
+            default:
+                return objetos;
+
         }
+
     }
 
     public static int obtenerTipo(int i)
     {
         String texto = Lamina.secciones[i].toString();
 
-        if (texto.contentEquals("ERROR_MESSAGE") || texto.contentEquals("YES_NO_OPTION"))
+        switch (texto)
         {
-            return 0;
-        } else if (texto.contentEquals("INFORMATION_MESSAGE") || texto.contentEquals("YES_NO_CANCEL_OPTION"))
-        {
-            return 1;
-        } else if (texto.contentEquals("WARNING_MENSSAGE") || texto.contentEquals("OK_CANCEL_OPTION"))
-        {
-            return 2;
-        } else if (texto.contentEquals("QUESTION_MENSSAGE"))
-        {
-            return 3;
-        } else
-        {
-            return -1;
+            case "ERROR_MESSAGE":
+            case "YES_NO_OPTION":
+                return 0;
+
+            case "INFORMATION_MESSAGE":
+            case "YES_NO_CANCEL_OPTION":
+                return 1;
+
+            case "WARNING_MENSSAGE":
+            case "OK_CANCEL_OPTION":
+                return 2;
+
+            case "QUESTION_MENSSAGE":
+                return 3;
+
+            default:
+                return -1;
+
         }
+
     }
 
     public static Object[] obtenerObjetos(int i)
     {
         String texto = Lamina.secciones[i].toString();
 
-        if (texto.contentEquals("String[]") || texto.contentEquals("Combo"))
+        switch (texto)
         {
-            return cadenaseimagenes[0];
-        } else if (texto.contentEquals("Icon[]"))
-        {
-            return cadenaseimagenes[1];
-        } else if (texto.contentEquals("Object[]"))
-        {
-            return objetos;
-        } else
-        {
-            return null;
+            case "String[]":
+            case "Combo":
+                return cadenaseimagenes[0];
+
+            case "Icon[]":
+                return cadenaseimagenes[1];
+
+            case "Object[]":
+                return objetos;
+
+            default:
+                return null;
+
         }
+
     }
+
 }

@@ -5,14 +5,13 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class MiFrame extends JFrame
+public final class MiFrame extends JFrame
 {
 
     private static final long serialVersionUID = 1L;
@@ -46,7 +45,7 @@ public class MiFrame extends JFrame
         /*ponerBotones(botones, "Sample test", new ActionListener()
          {
          @Override
-         public void actionPerformed(ActionEvent e) 
+         public void actionPerformed(ActionEvent e)
          {
          System.exit(0);
          }
@@ -72,12 +71,12 @@ public class MiFrame extends JFrame
 
     }
 
-    /*public void ponerBotones(Container c, String titulo, ActionListener oyente) 
+    /*public void ponerBotones(Container c, String titulo, ActionListener oyente)
      {
      JButton boton = new JButton(titulo);
-		
+
      c.add(boton);
-		
+
      boton.addActionListener(oyente);
      }*/
     private class AccionBotones extends AbstractAction

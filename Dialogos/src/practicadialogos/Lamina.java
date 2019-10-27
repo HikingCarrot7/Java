@@ -2,7 +2,6 @@ package practicadialogos;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -19,6 +18,7 @@ public class Lamina extends JPanel
 
     private String[][] opciones =
     {
+
         {
             "Tipo", "Mensaje", "Confirmar", "Opci�n", "Entrada"
         },
@@ -37,6 +37,7 @@ public class Lamina extends JPanel
         {
             "Entrada", "Campo de texto", "Combo"
         }
+
     };
 
     public Lamina()
@@ -49,6 +50,7 @@ public class Lamina extends JPanel
 
         add(mensajes, BorderLayout.CENTER);
         add(boton, BorderLayout.SOUTH);
+
     }
 
     public void anadirMensajes()
@@ -58,7 +60,9 @@ public class Lamina extends JPanel
             secciones[i] = new LaminaSecciones(opciones[i][0], opciones[i]);
 
             mensajes.add(secciones[i]);
+
         }
+
     }
 
     public void anadirComponentes()
@@ -76,4 +80,5 @@ public class Lamina extends JPanel
 
         boton.add(listo);
     }
+
 }

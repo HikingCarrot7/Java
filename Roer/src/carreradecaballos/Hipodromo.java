@@ -7,7 +7,6 @@ import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.util.Observable;
 import java.util.Observer;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -53,10 +52,12 @@ public final class Hipodromo extends JPanel implements Observer
         dale = new JButton("Dale!");
 
         accionBoton();
+
     }
 
     public void anadirElementos()
     {
+
         for (int i = 0; i < nombres.length; i++)
         {
             nombres[i] = new JLabel("Caballo: " + (i + 1));
@@ -66,6 +67,7 @@ public final class Hipodromo extends JPanel implements Observer
             caballosBars[i].setStringPainted(true);
             caballosBars[i].setString("0%");
             carrera.add(caballosBars[i]);
+
         }
 
         ganador.add(nomGanador);
@@ -85,7 +87,7 @@ public final class Hipodromo extends JPanel implements Observer
 
             for (int i = 0; i < threads.length; i++)
             {
-                Caballos c = new Caballos((i + 1) + "");
+                Caballo c = new Caballo((i + 1) + "");
 
                 c.addObserver(this);
 
@@ -101,15 +103,13 @@ public final class Hipodromo extends JPanel implements Observer
     private void terminar()
     {
         for (Thread thread : threads)
-        {
             thread.interrupt();
-        }
     }
 
     @Override
     public void update(Observable o, Object obj)
     {
-        int index = Integer.parseInt(((Caballos) o).getNombre()) - 1;
+        int index = Integer.parseInt(((Caballo) o).getNombre()) - 1;
 
         caballosBars[index].setValue((int) obj);
         caballosBars[index].setString((int) obj < 100 ? obj + "%" : "100%");
@@ -120,7 +120,7 @@ public final class Hipodromo extends JPanel implements Observer
 
             dale.setEnabled(true);
 
-            nomGanador.setText("El ganador es: " + ((Caballos) o).getNombre());
+            nomGanador.setText("El ganador es: " + ((Caballo) o).getNombre());
         }
 
     }
@@ -137,12 +137,10 @@ public final class Hipodromo extends JPanel implements Observer
             {
 
                 if (i + 1 % 2 == 0)
-                {
                     c.getComponent(i).setBounds(x, y, 100, 50);
-                } else
-                {
+
+                else
                     c.getComponent(i).setBounds(x, y, 350, 30);
-                }
 
                 x += 80;
 

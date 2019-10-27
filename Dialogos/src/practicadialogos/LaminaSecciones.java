@@ -25,6 +25,7 @@ public class LaminaSecciones extends JPanel
 
         for (int i = 1; i < opciones.length; i++)
         {
+
             boton = new JRadioButton(opciones[i]);
 
             boton.setActionCommand(opciones[i]);
@@ -34,7 +35,9 @@ public class LaminaSecciones extends JPanel
             grupos.add(boton);
 
             boton.setSelected(i == 1);
+
         }
+
     }
 
     @Override
@@ -42,4 +45,5 @@ public class LaminaSecciones extends JPanel
     {
         return grupos.getSelection().getActionCommand();
     }
+
 }

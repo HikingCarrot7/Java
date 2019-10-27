@@ -3,13 +3,13 @@ package carreradecaballos;
 import java.util.Observable;
 import java.util.Random;
 
-public final class Caballos extends Observable implements Runnable
+public final class Caballo extends Observable implements Runnable
 {
 
     private final Random rand;
     private final String nombre;
 
-    public Caballos(String nombre)
+    public Caballo(String nombre)
     {
         rand = new Random();
 
