@@ -37,6 +37,7 @@ public class UsoExcepciones
         {
             throw new miPropiaExc("Caus� otra excepci�n en el m�todo 1", e);
         }
+        
     }
 
     public static void metodo2() throws Exception
@@ -49,6 +50,7 @@ public class UsoExcepciones
         {
             throw new miPropiaExc("Caus� otra excepci�n en el m�todo 2", e);
         }
+        
     }
 
     public static void metodo3() throws Exception
