@@ -7,7 +7,6 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
-import com.game.src.audio.AudioPlayer;
 import com.game.src.framework.ObjectId;
 import com.game.src.graphics.HUD;
 import com.game.src.graphics.Textures;
@@ -227,7 +226,7 @@ public class MainMenu
 
     public void playSound()
     {
-        AudioPlayer.getSound("sound").play();
+        //AudioPlayer.getSound("sound").play();
     }
 
 }

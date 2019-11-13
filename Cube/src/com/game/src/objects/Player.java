@@ -1,16 +1,15 @@
 package com.game.src.objects;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.util.ArrayList;
-
 import com.game.src.framework.GameObject;
 import com.game.src.framework.ObjectId;
 import com.game.src.graphics.HUD;
 import com.game.src.graphics.Textures;
 import com.game.src.graphics.Trail;
 import com.game.src.main.Game;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.util.ArrayList;
 
 public class Player extends GameObject
 {
@@ -70,14 +69,17 @@ public class Player extends GameObject
 
     public void Collision(ArrayList<GameObject> object)
     {
+
         for (int i = 0; i < object.size(); i++)
             if (object.get(i).getId().equals(ObjectId.BoundEnemy) || object.get(i).getId().equals(ObjectId.FastEnemy) || object.get(i).getId().equals(ObjectId.SmartEnemy))
                 if (getBounds().intersects(object.get(i).getBounds()))
                     HUD.HEALTH -= Game.difficulty ? 2 : 0.5;
+
     }
 
     public void keyTracker()
     {
+
         if (keys.contains(38))
             setVelY(Game.difficulty ? -8 : -5);
 
@@ -102,10 +104,12 @@ public class Player extends GameObject
 
             if (keys.contains(39))
                 setVelX(Game.difficulty ? 8 : 5);
+
         }
 
         if (keys.isEmpty() || (keys.size() == 1 && keys.contains(39)))
             controlHorizontal = false;
+
     }
 
     public void addKey(Integer key)

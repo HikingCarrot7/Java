@@ -6,7 +6,6 @@ import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ButtonGroup;
@@ -247,4 +246,5 @@ public final class Lamina extends JPanel
 
         return etiqueta;
     }
+
 }

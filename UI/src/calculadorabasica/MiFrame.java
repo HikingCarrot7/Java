@@ -2,7 +2,7 @@ package calculadorabasica;
 
 import javax.swing.JFrame;
 
-public class MiFrame extends JFrame
+public final class MiFrame extends JFrame
 {
 
     private static final long serialVersionUID = 1L;
@@ -17,16 +17,16 @@ public class MiFrame extends JFrame
         setBounds(0, 0, 400, 350);
         setLocationRelativeTo(null);
         setResizable(true);
-        setTitle("Calculadora b�sica");
+        setTitle("Calculadora básica");
         add(lamina);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+
     }
 
     public static void main(String[] args)
     {
         new MiFrame();
-
     }
 
 }

@@ -31,10 +31,8 @@ public class Rectangle
         if (x > otherRectangle.x + otherRectangle.w || otherRectangle.x > x + w)
             return false;
 
-        if (y > otherRectangle.y + otherRectangle.h || otherRectangle.y > y + h)
-            return false;
+        return !(y > otherRectangle.y + otherRectangle.h || otherRectangle.y > y + h);
 
-        return true;
     }
 
     public void generateGraphics(int color)
@@ -42,6 +40,7 @@ public class Rectangle
         for (int y = 0; y < h; y++)
             for (int x = 0; x < w; x++)
                 pixels[x + y * w] = color;
+
     }
 
     public void generateGraphics(int borderW, int color)
@@ -61,6 +60,7 @@ public class Rectangle
         for (int y = h - borderW; y < h; y++)
             for (int x = 0; x < w; x++)
                 pixels[x + y * w] = color;
+
     }
 
     public int[] getPixels()
@@ -71,6 +71,7 @@ public class Rectangle
             System.out.println("No se han generado los pixeles");
 
         return null;
+
     }
 
 }

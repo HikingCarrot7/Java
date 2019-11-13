@@ -59,22 +59,23 @@ class x extends IPhone
 public class Anotaciones
 {
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws NoSuchMethodException
     {
         IPhone cel = new IPhone();
+
+        System.out.println(Anotaciones.class.getMethod("A", (Class<?>) null));
 
         /*Class c = cel.getClass();
 
         Annotation an = c.getAnnotation(SmartPhone.class);
 
         SmartPhone s = (SmartPhone) an;*/
-        System.out.println(cel.getClass().getAnnotation(SmartPhone.class).os());
-
+        // System.out.println(cel.getClass().getAnnotation(SmartPhone.class).os());
     }
 
-    void A()
+    public void A() throws RuntimeException
     {
-
+        System.out.println("Hola");
     }
 
 }
@@ -83,7 +84,7 @@ class B extends Anotaciones
 {
 
     @Override
-    void A()
+    public void A() throws NullPointerException
     {
 
     }

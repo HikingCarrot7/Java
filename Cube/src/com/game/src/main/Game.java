@@ -1,13 +1,5 @@
 package com.game.src.main;
 
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.image.BufferStrategy;
-import java.util.ArrayList;
-import java.util.Random;
-
-import com.game.src.audio.AudioPlayer;
 import com.game.src.framework.ObjectId;
 import com.game.src.graphics.ExplosionAnimation;
 import com.game.src.graphics.HUD;
@@ -18,6 +10,12 @@ import com.game.src.menus.Shop;
 import com.game.src.objects.Handler;
 import com.game.src.objects.Player;
 import com.game.src.objects.Spawn;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Game extends Canvas
 {
@@ -72,10 +70,9 @@ public class Game extends Canvas
 
     public void init()
     {
-        AudioPlayer.load();
+        //AudioPlayer.load();
 
-        AudioPlayer.getMusic("paladins").loop();
-
+        // AudioPlayer.getMusic("paladins").loop();
         explosiones = new ArrayList<>();
 
         rand = new Random();
@@ -101,8 +98,11 @@ public class Game extends Canvas
         {
             handler.tick();
 
-            for (ExplosionAnimation A : explosiones)
+            explosiones.forEach((A) ->
+            {
                 A.tick();
+
+            });
 
             if (gameState.equals(STATE.Game))
             {
@@ -111,6 +111,7 @@ public class Game extends Canvas
 
             } else if (gameState.equals(STATE.Menu) || gameState.equals(STATE.End))
                 menu.tick();
+
         }
 
     }
@@ -133,15 +134,30 @@ public class Game extends Canvas
 
         handler.render(g);
 
-        for (ExplosionAnimation A : explosiones)
+        explosiones.forEach((A) ->
+        {
             A.render(g);
 
-        if (gameState.equals(STATE.Game))
-            hud.render(g);
-        else if (gameState.equals(STATE.Shop))
-            shop.render(g);
-        else
-            menu.render(g);
+        });
+
+        switch (gameState)
+        {
+            case Game:
+
+                hud.render(g);
+                break;
+
+            case Shop:
+
+                shop.render(g);
+                break;
+
+            default:
+
+                menu.render(g);
+                break;
+
+        }
 
         if (paused)
             g.drawString("PAUSED", ANCHO / 2 - 100, ALTO / 2);
