@@ -4,7 +4,7 @@ import com.game.src.framework.ObjectId;
 import com.game.src.graphics.ExplosionAnimation;
 import com.game.src.graphics.HUD;
 import com.game.src.graphics.MenuBackground;
-import com.game.src.graphics.Textures;
+import com.game.src.graphics.Texture;
 import com.game.src.menus.MainMenu;
 import com.game.src.menus.Shop;
 import com.game.src.objects.Handler;
@@ -36,7 +36,7 @@ public class Game extends Canvas
     private Spawn spawn;
     private MainMenu menu;
     private Random rand;
-    private Textures tex;
+    private Texture tex;
     private Shop shop;
 
     public static enum STATE
@@ -76,7 +76,7 @@ public class Game extends Canvas
         explosiones = new ArrayList<>();
 
         rand = new Random();
-        tex = new Textures();
+//        tex = new Texture();
         handler = new Handler();
         hud = new HUD(this, handler);
         spawn = new Spawn(handler, hud, tex);
@@ -90,6 +90,7 @@ public class Game extends Canvas
         requestFocus();
         addKeyListener(new KeyInput(handler, (Player) handler.getObjects().get(0)));
         addMouseListener(new MouseInput(menu, shop));
+
     }
 
     public void tick()

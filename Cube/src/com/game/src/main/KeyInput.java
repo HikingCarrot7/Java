@@ -3,7 +3,7 @@ package com.game.src.main;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import com.game.src.audio.AudioPlayer;
+
 import com.game.src.objects.Handler;
 import com.game.src.objects.Player;
 
@@ -50,7 +50,7 @@ public class KeyInput extends KeyAdapter
                 Game.paused = true;
 
         if (key.equals(KeyEvent.VK_N))
-            AudioPlayer.getMusic("paladins").loop();
+            //AudioPlayer.getMusic("paladins").loop();
 
         if (key.equals(KeyEvent.VK_SPACE))
             if (Game.gameState.equals(Game.STATE.Shop))

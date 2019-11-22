@@ -1,19 +1,17 @@
 package com.game.src.objects;
 
+import com.game.src.framework.GameObject;
+import com.game.src.framework.ObjectId;
+import com.game.src.main.Game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.Random;
 
-import com.game.src.framework.GameObject;
-import com.game.src.framework.ObjectId;
-import com.game.src.main.Game;
-
 public class EnemyBossBullet extends GameObject
 {
 
     private Handler handler;
-
     private Random rand;
 
     public EnemyBossBullet(float x, float y, ObjectId id, Handler handler)

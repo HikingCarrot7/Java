@@ -6,6 +6,7 @@
             <name>Cube</name>
             <source-roots>
                 <root id="src.librerias.dir"/>
+                <root id="src.img.dir"/>
                 <root id="src.dir" name="src"/>
             </source-roots>
             <test-roots/>

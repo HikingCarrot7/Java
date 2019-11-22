@@ -26,6 +26,7 @@ public final class Hipodromo extends JPanel implements Observer
 
     public Hipodromo()
     {
+
         setLayout(new BorderLayout());
 
         iniciarElementos();
@@ -35,6 +36,7 @@ public final class Hipodromo extends JPanel implements Observer
         add(carrera, BorderLayout.CENTER);
         add(ganador, BorderLayout.NORTH);
         add(iniciar, BorderLayout.SOUTH);
+
     }
 
     public void iniciarElementos()
@@ -77,8 +79,10 @@ public final class Hipodromo extends JPanel implements Observer
 
     public void accionBoton()
     {
+
         dale.addActionListener((e) ->
         {
+
             nomGanador.setText("");
 
             threads = new Thread[4];
@@ -87,6 +91,7 @@ public final class Hipodromo extends JPanel implements Observer
 
             for (int i = 0; i < threads.length; i++)
             {
+
                 Caballo c = new Caballo((i + 1) + "");
 
                 c.addObserver(this);
@@ -94,6 +99,7 @@ public final class Hipodromo extends JPanel implements Observer
                 threads[i] = new Thread(c);
 
                 threads[i].start();
+
             }
 
         });

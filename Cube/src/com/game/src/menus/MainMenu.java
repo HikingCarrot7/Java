@@ -1,19 +1,18 @@
 package com.game.src.menus;
 
+import com.game.src.framework.ObjectId;
+import com.game.src.graphics.HUD;
+import com.game.src.graphics.Texture;
+import com.game.src.main.Game;
+import com.game.src.objects.BoundEnemy;
+import com.game.src.objects.Handler;
+import com.game.src.objects.Spawn;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.util.Random;
-
-import com.game.src.framework.ObjectId;
-import com.game.src.graphics.HUD;
-import com.game.src.graphics.Textures;
-import com.game.src.main.Game;
-import com.game.src.objects.BoundEnemy;
-import com.game.src.objects.Handler;
-import com.game.src.objects.Spawn;
 
 public class MainMenu
 {
@@ -24,9 +23,9 @@ public class MainMenu
     private HUD hud;
     private Spawn spawn;
     private Game game;
-    private Textures tex;
+    private Texture tex;
 
-    public MainMenu(Handler handler, HUD hud, Spawn spawn, Game game, Textures tex)
+    public MainMenu(Handler handler, HUD hud, Spawn spawn, Game game, Texture tex)
     {
         rectangles = new Rectangle[6];
 
@@ -54,71 +53,55 @@ public class MainMenu
 
     public void render(Graphics2D g)
     {
-        if (Game.gameState.equals(Game.STATE.Menu))
+        switch (Game.gameState)
         {
-            g.setColor(Color.white);
-            g.setFont(new Font("serif", Font.BOLD, 70));
-            g.drawString("Wave", Game.ANCHO / 2 - 90, 100);
-
-            g.setFont(new Font("serif", Font.BOLD, 40));
-
-            g.drawString("Play", rectangles[0].x + rectangles[0].width / 2 - 35, rectangles[0].y + rectangles[0].height / 2 + 12);
-
-            g.drawString("Help", rectangles[1].x + rectangles[1].width / 2 - 35, rectangles[1].y + rectangles[1].height / 2 + 12);
-
-            g.drawString("Exit", rectangles[2].x + rectangles[2].width / 2 - 35, rectangles[2].y + rectangles[2].height / 2 + 15);
-
-            for (int i = 0; i < rectangles.length - 3; i++)
-                g.draw(rectangles[i]);
-
-        } else if (Game.gameState.equals(Game.STATE.Help))
-        {
-            g.setColor(Color.white);
-            g.setFont(new Font("serif", Font.BOLD, 70));
-            g.drawString("Help", Game.ANCHO / 2 - 90, 100);
-
-            g.setFont(new Font("serif", Font.BOLD, 35));
-            g.drawString("Use arrow keys to move player and dodge enemies", Game.ANCHO / 2 - 380, Game.ALTO / 2);
-
-            g.setFont(new Font("serif", Font.BOLD, 40));
-            g.drawString("Back", rectangles[3].x + rectangles[3].width / 2 - 45, rectangles[3].y + rectangles[3].height / 2 + 15);
-
-            g.draw(rectangles[3]);
-
-        } else if (Game.gameState.equals(Game.STATE.End))
-        {
-            g.setColor(Color.white);
-            g.setFont(new Font("serif", Font.BOLD, 70));
-            g.drawString("Game Over", Game.ANCHO / 2 - 170, 150);
-
-            g.setFont(new Font("serif", Font.BOLD, 35));
-            g.drawString("You lost with a score of: " + hud.getScore(), Game.ANCHO / 2 - 210, Game.ALTO / 2);
-
-            g.setFont(new Font("serif", Font.BOLD, 40));
-            g.drawString("Restart", rectangles[4].x + rectangles[3].width / 2 - 63, rectangles[3].y + rectangles[3].height / 2 + 15);
-
-            g.setFont(new Font("serif", Font.BOLD, 40));
-            g.drawString("Menu", rectangles[5].x + rectangles[3].width / 2 - 50, rectangles[3].y + rectangles[3].height / 2 + 15);
-
-            g.draw(rectangles[4]);
-            g.draw(rectangles[5]);
-
-        } else if (Game.gameState.equals(Game.STATE.Select))
-        {
-            g.setColor(Color.white);
-            g.setFont(new Font("serif", Font.BOLD, 45));
-            g.drawString("SELECT DIFFICULTY", Game.ANCHO / 2 - 220, 100);
-
-            g.setFont(new Font("serif", Font.BOLD, 40));
-
-            g.drawString("Normal", rectangles[0].x + rectangles[0].width / 2 - 65, rectangles[0].y + rectangles[0].height / 2 + 12);
-
-            g.drawString("Hard", rectangles[1].x + rectangles[1].width / 2 - 45, rectangles[1].y + rectangles[1].height / 2 + 12);
-
-            g.drawString("Back", rectangles[2].x + rectangles[2].width / 2 - 45, rectangles[2].y + rectangles[2].height / 2 + 15);
-
-            for (int i = 0; i < rectangles.length - 3; i++)
-                g.draw(rectangles[i]);
+            case Menu:
+                g.setColor(Color.white);
+                g.setFont(new Font("serif", Font.BOLD, 70));
+                g.drawString("Wave", Game.ANCHO / 2 - 90, 100);
+                g.setFont(new Font("serif", Font.BOLD, 40));
+                g.drawString("Play", rectangles[0].x + rectangles[0].width / 2 - 35, rectangles[0].y + rectangles[0].height / 2 + 12);
+                g.drawString("Help", rectangles[1].x + rectangles[1].width / 2 - 35, rectangles[1].y + rectangles[1].height / 2 + 12);
+                g.drawString("Exit", rectangles[2].x + rectangles[2].width / 2 - 35, rectangles[2].y + rectangles[2].height / 2 + 15);
+                for (int i = 0; i < rectangles.length - 3; i++)
+                    g.draw(rectangles[i]);
+                break;
+            case Help:
+                g.setColor(Color.white);
+                g.setFont(new Font("serif", Font.BOLD, 70));
+                g.drawString("Help", Game.ANCHO / 2 - 90, 100);
+                g.setFont(new Font("serif", Font.BOLD, 35));
+                g.drawString("Use arrow keys to move player and dodge enemies", Game.ANCHO / 2 - 380, Game.ALTO / 2);
+                g.setFont(new Font("serif", Font.BOLD, 40));
+                g.drawString("Back", rectangles[3].x + rectangles[3].width / 2 - 45, rectangles[3].y + rectangles[3].height / 2 + 15);
+                g.draw(rectangles[3]);
+                break;
+            case End:
+                g.setColor(Color.white);
+                g.setFont(new Font("serif", Font.BOLD, 70));
+                g.drawString("Game Over", Game.ANCHO / 2 - 170, 150);
+                g.setFont(new Font("serif", Font.BOLD, 35));
+                g.drawString("You lost with a score of: " + hud.getScore(), Game.ANCHO / 2 - 210, Game.ALTO / 2);
+                g.setFont(new Font("serif", Font.BOLD, 40));
+                g.drawString("Restart", rectangles[4].x + rectangles[3].width / 2 - 63, rectangles[3].y + rectangles[3].height / 2 + 15);
+                g.setFont(new Font("serif", Font.BOLD, 40));
+                g.drawString("Menu", rectangles[5].x + rectangles[3].width / 2 - 50, rectangles[3].y + rectangles[3].height / 2 + 15);
+                g.draw(rectangles[4]);
+                g.draw(rectangles[5]);
+                break;
+            case Select:
+                g.setColor(Color.white);
+                g.setFont(new Font("serif", Font.BOLD, 45));
+                g.drawString("SELECT DIFFICULTY", Game.ANCHO / 2 - 220, 100);
+                g.setFont(new Font("serif", Font.BOLD, 40));
+                g.drawString("Normal", rectangles[0].x + rectangles[0].width / 2 - 65, rectangles[0].y + rectangles[0].height / 2 + 12);
+                g.drawString("Hard", rectangles[1].x + rectangles[1].width / 2 - 45, rectangles[1].y + rectangles[1].height / 2 + 12);
+                g.drawString("Back", rectangles[2].x + rectangles[2].width / 2 - 45, rectangles[2].y + rectangles[2].height / 2 + 15);
+                for (int i = 0; i < rectangles.length - 3; i++)
+                    g.draw(rectangles[i]);
+                break;
+            default:
+                break;
         }
 
     }
