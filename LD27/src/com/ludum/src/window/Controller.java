@@ -12,7 +12,7 @@ import com.ludum.src.interfaces.Texture;
 import com.ludum.src.objects.Base;
 import com.ludum.src.objects.Coin;
 import com.ludum.src.objects.Player;
-import com.ludum.src.window.Game.STATE;
+import com.ludum.src.window.LD27.STATE;
 
 public class Controller
 {
@@ -41,11 +41,11 @@ public class Controller
         this.tex = tex;
     }
 
-    public void createGame(Time time, Game game)
+    public void createGame(Time time, LD27 game)
     {
         object.clear();
 
-        Game.state = STATE.Counter;
+        LD27.state = STATE.Counter;
         Time.LEVEL = 1;
 
         generateLevel(game.getChunk_size(), game.getChunk_length());

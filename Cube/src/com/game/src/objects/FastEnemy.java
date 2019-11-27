@@ -1,22 +1,21 @@
 package com.game.src.objects;
 
+import com.game.src.framework.GameObject;
+import com.game.src.framework.ObjectId;
+import com.game.src.graphics.Texture;
+import com.game.src.graphics.Trail;
+import com.game.src.main.Game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-
-import com.game.src.framework.GameObject;
-import com.game.src.framework.ObjectId;
-import com.game.src.graphics.Textures;
-import com.game.src.graphics.Trail;
-import com.game.src.main.Game;
 
 public class FastEnemy extends GameObject
 {
 
     private Handler handler;
-    private Textures tex;
+    private Texture tex;
 
-    public FastEnemy(float x, float y, ObjectId id, Handler handler, Textures tex)
+    public FastEnemy(float x, float y, ObjectId id, Handler handler, Texture tex)
     {
         super(x, y, id);
 
@@ -48,11 +47,10 @@ public class FastEnemy extends GameObject
     @Override
     public void render(Graphics2D g)
     {
-        /*g.setColor(Color.cyan);
-         g.fillRect((int) x, (int) y, 16, 16);*/
+        g.setColor(Color.cyan);
+        g.fillRect((int) x, (int) y, 16, 16);
 
-        g.drawImage(tex.fastEnemy, (int) x, (int) y, null);
-
+        //g.drawImage(tex.fastEnemy, (int) x, (int) y, null);
     }
 
     @Override

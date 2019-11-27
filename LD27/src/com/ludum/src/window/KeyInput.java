@@ -8,7 +8,7 @@ import com.ludum.src.gfx.Menu;
 import com.ludum.src.gfx.Time;
 import com.ludum.src.interfaces.GameObject;
 import com.ludum.src.interfaces.ObjectId;
-import com.ludum.src.window.Game.STATE;
+import com.ludum.src.window.LD27.STATE;
 
 public class KeyInput extends KeyAdapter
 {
@@ -16,14 +16,14 @@ public class KeyInput extends KeyAdapter
     private Controller controller;
     private Menu menu;
     private Time time;
-    private Game game;
+    private LD27 game;
 
     private int jumpHeight = 12;
     private int downHeight = 6;
 
     Random r = new Random();
 
-    public KeyInput(Controller controller, Menu menu, Time time, Game game)
+    public KeyInput(Controller controller, Menu menu, Time time, LD27 game)
     {
         this.controller = controller;
         this.menu = menu;
@@ -40,7 +40,7 @@ public class KeyInput extends KeyAdapter
         {
             GameObject object = controller.object.get(i);
 
-            if (object.getId() == ObjectId.Player && object.getMove() && Game.state == STATE.Game)
+            if (object.getId() == ObjectId.Player && object.getMove() && LD27.state == STATE.Game)
             {
                 //player Controls
                 if (key == KeyEvent.VK_D)
@@ -68,7 +68,7 @@ public class KeyInput extends KeyAdapter
             }
         }
 
-        if (Game.state == Game.STATE.Menu)
+        if (LD27.state == LD27.STATE.Menu)
         {
             if (key == KeyEvent.VK_W)
             {
@@ -95,21 +95,21 @@ public class KeyInput extends KeyAdapter
             if (key == KeyEvent.VK_ENTER && menu.getSelected() == 0)
                 controller.createGame(time, game);
             if (key == KeyEvent.VK_ENTER && menu.getSelected() == 1)
-                Game.state = STATE.Options;
+                LD27.state = STATE.Options;
             if (key == KeyEvent.VK_ENTER && menu.getSelected() == 2)
                 System.exit(1);
         }
 
-        if (Game.state == STATE.Options)
+        if (LD27.state == STATE.Options)
             if (key == KeyEvent.VK_BACK_SPACE)
-                Game.state = STATE.Menu;
+                LD27.state = STATE.Menu;
 
-        if (Game.state == STATE.Dead)
+        if (LD27.state == STATE.Dead)
             if (key == KeyEvent.VK_ENTER)
             {
 
                 controller.object.clear();
-                Game.state = STATE.Menu;
+                LD27.state = STATE.Menu;
 
                 Time.U1 = 1;
                 Time.U2 = 1;
@@ -130,7 +130,7 @@ public class KeyInput extends KeyAdapter
                 controller.generateLevel(10, 10);
             }
 
-        if (Game.state == Game.STATE.Store)
+        if (LD27.state == LD27.STATE.Store)
         {
             if (key == KeyEvent.VK_W)
             {
@@ -305,7 +305,7 @@ public class KeyInput extends KeyAdapter
 
             if (key == KeyEvent.VK_SPACE)
             {
-                Game.state = STATE.Game;
+                LD27.state = STATE.Game;
                 controller.proceed = true;
             }
 

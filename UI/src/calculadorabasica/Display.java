@@ -4,11 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class Display extends JPanel
+public final class Display extends JPanel
 {
 
     private static final long serialVersionUID = 1L;
@@ -27,7 +26,7 @@ public class Display extends JPanel
     //Numeros del display
     private String text = "";
 
-    //Numero 
+    //Numero
     private String ultimaOperacion = "=";
     private double resultado = 0;
 
@@ -45,8 +44,8 @@ public class Display extends JPanel
 
         botones.setLayout(new GridLayout(4, 4));
 
-        for (int i = 0; i < etiquetas.length; i++)
-            anadirBotones(etiquetas[i]);
+        for (String etiqueta : etiquetas)
+            anadirBotones(etiqueta);
 
         add(botones, BorderLayout.CENTER);
     }
@@ -87,22 +86,35 @@ public class Display extends JPanel
                 text = "";
 
             }
+
         }
 
         public void calcular(double numero)
         {
-            if (ultimaOperacion.contentEquals("+"))
-                resultado += numero;
-            else if (ultimaOperacion.contentEquals("*"))
-                resultado *= numero;
-            else if (ultimaOperacion.contentEquals("-"))
-                resultado -= numero;
-            else if (ultimaOperacion.contentEquals("/"))
-                resultado /= numero;
-            else
-                resultado = numero;
+            switch (ultimaOperacion)
+            {
+                case "+":
+                    resultado += numero;
+                    break;
+                case "*":
+                    resultado *= numero;
+                    break;
+                case "-":
+                    resultado -= numero;
+                    break;
+                case "/":
+                    resultado /= numero;
+                    break;
+                default:
+                    resultado = numero;
+                    break;
+
+            }
 
             display.setText("" + resultado);
+
         }
+
     }
+
 }

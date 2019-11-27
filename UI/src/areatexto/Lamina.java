@@ -2,7 +2,6 @@ package areatexto;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -74,40 +73,21 @@ public class Lamina extends JPanel
 
         });
 
-        insertar.addActionListener(new ActionListener()
+        insertar.addActionListener((ActionEvent e) ->
         {
-
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                areaTexto.append("Terraria es lo m�ximo!");
-
-            }
-
+            areaTexto.append("Terraria es lo m�ximo!");
         });
 
-        saltar.addActionListener(new ActionListener()
+        saltar.addActionListener((ActionEvent e) ->
         {
+            areaTexto.setLineWrap(!areaTexto.getLineWrap());
 
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                areaTexto.setLineWrap(!areaTexto.getLineWrap());
-
-                saltar.setText(areaTexto.getLineWrap() ? "Quitar el salto de l�nea" : "Con salto de l�nea");
-
-            }
-
+            saltar.setText(areaTexto.getLineWrap() ? "Quitar el salto de l�nea" : "Con salto de l�nea");
         });
 
-        comprobar.addActionListener(new ActionListener()
+        comprobar.addActionListener((ActionEvent e) ->
         {
-
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                info.setText(areaTexto.getText().trim().contentEquals("Terraria es lo m�ximo!") ? "Est�s en lo correcto bro! xD" : "");
-            }
+            info.setText(areaTexto.getText().trim().contentEquals("Terraria es lo m�ximo!") ? "Est�s en lo correcto bro! xD" : "");
 
         });
 

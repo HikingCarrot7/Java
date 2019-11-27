@@ -4,6 +4,7 @@ import DAO.DAOCliente;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import modelo.Cliente;
 import vista.VistaCliente;
@@ -27,6 +28,7 @@ public class ControlCliente implements ActionListener
         this.vistaCliente.getjButton2().addActionListener(this);
         this.vistaCliente.getjButton3().addActionListener(this);
         this.vistaCliente.getjButton4().addActionListener(this);
+
     }
 
     @Override
@@ -54,8 +56,8 @@ public class ControlCliente implements ActionListener
             try
             {
                 daoCliente.agregar(modeloCliente);
-                
-            } catch (Exception e)
+
+            } catch (SQLException e)
             {
                 e.printStackTrace();
             }
@@ -70,11 +72,11 @@ public class ControlCliente implements ActionListener
             condicion = " id_clientes = " + claveCliente;
 
             DAOCliente daoCliente = new DAOCliente();
-            
+
             try
             {
                 daoCliente.eliminar(condicion);
-                
+
             } catch (Exception e)
             {
                 e.printStackTrace();
@@ -104,12 +106,12 @@ public class ControlCliente implements ActionListener
             condicion = " id_clientes = " + claveCliente;
 
             DAOCliente daoCliente = new DAOCliente();
-            
+
             try
             {
                 daoCliente.modificar(modeloCliente, condicion);
-                
-            } catch (Exception e)
+
+            } catch (SQLException e)
             {
                 e.printStackTrace();
             }
@@ -124,14 +126,14 @@ public class ControlCliente implements ActionListener
 
             claveCliente = Integer.parseInt(vistaCliente.getjTextField1().getText());
             condicion = " id_clientes = " + claveCliente;
-            
+
             DAOCliente daoCliente = new DAOCliente();
-            
+
             try
             {
                 listaClientes = daoCliente.consultar(condicion);
-                
-            } catch (Exception e)
+
+            } catch (SQLException e)
             {
                 e.printStackTrace();
             }
@@ -143,4 +145,5 @@ public class ControlCliente implements ActionListener
         }
 
     }
+
 }

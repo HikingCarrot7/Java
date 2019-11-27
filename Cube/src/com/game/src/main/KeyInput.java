@@ -1,11 +1,9 @@
 package com.game.src.main;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
-import com.game.src.audio.AudioPlayer;
 import com.game.src.objects.Handler;
 import com.game.src.objects.Player;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter
 {
@@ -17,12 +15,14 @@ public class KeyInput extends KeyAdapter
     {
         this.handler = handler;
         this.player = player;
+
     }
 
     @Override
     public void keyPressed(KeyEvent e)
     {
-        Integer key = (Integer) e.getKeyCode();
+
+        Integer key = e.getKeyCode();
 
         if (key.equals(38))
             if (!player.getKeys().contains(38))
@@ -44,25 +44,24 @@ public class KeyInput extends KeyAdapter
             System.exit(1);
 
         if (key.equals(KeyEvent.VK_P) && Game.gameState.equals(Game.STATE.Game))
-            if (Game.paused)
-                Game.paused = false;
-            else
-                Game.paused = true;
+            Game.paused = !Game.paused;
 
         if (key.equals(KeyEvent.VK_N))
-            AudioPlayer.getMusic("paladins").loop();
+            //AudioPlayer.getMusic("paladins").loop();
 
-        if (key.equals(KeyEvent.VK_SPACE))
-            if (Game.gameState.equals(Game.STATE.Shop))
-                Game.gameState = Game.STATE.Game;
-            else if (Game.gameState.equals(Game.STATE.Game))
-                Game.gameState = Game.STATE.Shop;
+            if (key.equals(KeyEvent.VK_SPACE))
+                if (Game.gameState.equals(Game.STATE.Shop))
+                    Game.gameState = Game.STATE.Game;
+
+                else if (Game.gameState.equals(Game.STATE.Game))
+                    Game.gameState = Game.STATE.Shop;
     }
 
     @Override
     public void keyReleased(KeyEvent e)
     {
-        Integer key = (Integer) e.getKeyCode();
+
+        Integer key = e.getKeyCode();
 
         if (key.equals(38))
         {

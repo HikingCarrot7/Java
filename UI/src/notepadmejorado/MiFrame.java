@@ -2,7 +2,7 @@ package notepadmejorado;
 
 import javax.swing.JFrame;
 
-public class MiFrame extends JFrame
+public final class MiFrame extends JFrame
 {
 
     private static final long serialVersionUID = 1L;
@@ -16,7 +16,7 @@ public class MiFrame extends JFrame
         setBounds(0, 0, 500, 500);
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Notepad b�sico mejorado");
+        setTitle("Notepad básico");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(lamina);
         setVisible(true);

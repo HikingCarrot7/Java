@@ -1,14 +1,13 @@
 package com.game.src.menus;
 
+import com.game.src.graphics.HUD;
+import com.game.src.main.Game;
+import com.game.src.objects.Handler;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
-
-import com.game.src.graphics.HUD;
-import com.game.src.main.Game;
-import com.game.src.objects.Handler;
 
 public class Shop
 {
@@ -99,6 +98,7 @@ public class Shop
 
     public void mouseReleased(MouseEvent e)
     {
+
     }
 
 }

@@ -35,8 +35,8 @@ public abstract class DAOGeneral<T>
                 cargadoDriver = true;
 
             }
-            
-        } catch (Exception e)
+
+        } catch (ClassNotFoundException e)
         {
             e.printStackTrace();
         }
@@ -69,12 +69,9 @@ public abstract class DAOGeneral<T>
         try
         {
             if (con != null)
-            {
-                if (!con.isClosed())    // Si no esta cerrada, se cierra
-                {
+                if (!con.isClosed()) // Si no esta cerrada, se cierra
+
                     con.close();
-                }
-            }
 
         } catch (SQLException e)
         {

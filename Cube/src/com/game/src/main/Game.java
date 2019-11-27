@@ -1,23 +1,21 @@
 package com.game.src.main;
 
+import com.game.src.framework.ObjectId;
+import com.game.src.graphics.ExplosionAnimation;
+import com.game.src.graphics.HUD;
+import com.game.src.graphics.MenuBackground;
+import com.game.src.graphics.Texture;
+import com.game.src.menus.MainMenu;
+import com.game.src.menus.Shop;
+import com.game.src.objects.Handler;
+import com.game.src.objects.Player;
+import com.game.src.objects.Spawn;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 import java.util.Random;
-
-import com.game.src.audio.AudioPlayer;
-import com.game.src.framework.ObjectId;
-import com.game.src.graphics.ExplosionAnimation;
-import com.game.src.graphics.HUD;
-import com.game.src.graphics.MenuBackground;
-import com.game.src.graphics.Textures;
-import com.game.src.menus.MainMenu;
-import com.game.src.menus.Shop;
-import com.game.src.objects.Handler;
-import com.game.src.objects.Player;
-import com.game.src.objects.Spawn;
 
 public class Game extends Canvas
 {
@@ -38,7 +36,7 @@ public class Game extends Canvas
     private Spawn spawn;
     private MainMenu menu;
     private Random rand;
-    private Textures tex;
+    private Texture tex;
     private Shop shop;
 
     public static enum STATE
@@ -50,6 +48,7 @@ public class Game extends Canvas
         Game,
         Shop,
         End
+
     };
 
     public static STATE gameState = STATE.Menu;
@@ -72,14 +71,13 @@ public class Game extends Canvas
 
     public void init()
     {
-        AudioPlayer.load();
+        //AudioPlayer.load();
 
-        AudioPlayer.getMusic("paladins").loop();
-
+        // AudioPlayer.getMusic("paladins").loop();
         explosiones = new ArrayList<>();
 
         rand = new Random();
-        tex = new Textures();
+//        tex = new Texture();
         handler = new Handler();
         hud = new HUD(this, handler);
         spawn = new Spawn(handler, hud, tex);
@@ -93,16 +91,21 @@ public class Game extends Canvas
         requestFocus();
         addKeyListener(new KeyInput(handler, (Player) handler.getObjects().get(0)));
         addMouseListener(new MouseInput(menu, shop));
+
     }
 
     public void tick()
     {
+
         if (!(paused || gameState.equals(STATE.Shop)))
         {
             handler.tick();
 
-            for (ExplosionAnimation A : explosiones)
+            explosiones.forEach((A) ->
+            {
                 A.tick();
+
+            });
 
             if (gameState.equals(STATE.Game))
             {
@@ -111,6 +114,7 @@ public class Game extends Canvas
 
             } else if (gameState.equals(STATE.Menu) || gameState.equals(STATE.End))
                 menu.tick();
+
         }
 
     }
@@ -133,15 +137,30 @@ public class Game extends Canvas
 
         handler.render(g);
 
-        for (ExplosionAnimation A : explosiones)
+        explosiones.forEach((A) ->
+        {
             A.render(g);
 
-        if (gameState.equals(STATE.Game))
-            hud.render(g);
-        else if (gameState.equals(STATE.Shop))
-            shop.render(g);
-        else
-            menu.render(g);
+        });
+
+        switch (gameState)
+        {
+            case Game:
+
+                hud.render(g);
+                break;
+
+            case Shop:
+
+                shop.render(g);
+                break;
+
+            default:
+
+                menu.render(g);
+                break;
+
+        }
 
         if (paused)
             g.drawString("PAUSED", ANCHO / 2 - 100, ALTO / 2);

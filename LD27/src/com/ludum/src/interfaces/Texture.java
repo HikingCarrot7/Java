@@ -3,7 +3,7 @@ package com.ludum.src.interfaces;
 import java.awt.image.BufferedImage;
 
 import com.ludum.src.gfx.SpriteSheet;
-import com.ludum.src.window.Game;
+import com.ludum.src.window.LD27;
 
 public final class Texture
 {
@@ -15,7 +15,7 @@ public final class Texture
     public BufferedImage[] coin = new BufferedImage[9];
     public BufferedImage[] menu_p = new BufferedImage[3];
 
-    public Texture(Game game)
+    public Texture(LD27 game)
     {
         ps = new SpriteSheet(game.getPlayerSheet());
         bs = new SpriteSheet(game.getBlockSheet());

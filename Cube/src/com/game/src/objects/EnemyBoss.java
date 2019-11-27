@@ -1,22 +1,19 @@
 package com.game.src.objects;
 
+import com.game.src.framework.GameObject;
+import com.game.src.framework.ObjectId;
+import com.game.src.graphics.Trail;
+import com.game.src.main.Game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.Random;
 
-import com.game.src.framework.GameObject;
-import com.game.src.framework.ObjectId;
-import com.game.src.graphics.Trail;
-import com.game.src.main.Game;
-
 public class EnemyBoss extends GameObject
 {
 
     private Handler handler;
-
     private Random rand;
-
     private int timer = 65, timer2 = 45;
 
     public EnemyBoss(float x, float y, ObjectId id, Handler handler)
