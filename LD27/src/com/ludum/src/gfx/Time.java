@@ -10,8 +10,8 @@ import javax.swing.Timer;
 
 import com.ludum.src.interfaces.Texture;
 import com.ludum.src.window.Controller;
-import com.ludum.src.window.Game;
-import com.ludum.src.window.Game.STATE;
+import com.ludum.src.window.LD27;
+import com.ludum.src.window.LD27.STATE;
 
 public class Time implements ActionListener
 {
@@ -56,7 +56,7 @@ public class Time implements ActionListener
                 counter--;
                 if (counter <= 0)
                 {
-                    Game.state = STATE.Game;
+                    LD27.state = STATE.Game;
                     timer.start();
                     timer2.start();
                     counter = 3;
@@ -88,7 +88,7 @@ public class Time implements ActionListener
 
         g.drawString("SCORE: " + SCORE, 10, 50);
 
-        if (Game.state == STATE.Counter)
+        if (LD27.state == STATE.Counter)
 
             if (counter == 3)
             {

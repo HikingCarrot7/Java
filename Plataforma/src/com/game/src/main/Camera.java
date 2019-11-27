@@ -13,12 +13,13 @@ public class Camera
     {
         this.x = x;
         this.y = y;
+
     }
 
     public void tick(GameObject player)
     {
-        //x = (- player.getX() + Game.ANCHO/2)/2;
 
+        //x = (- player.getX() + Game.ANCHO/2)/2;
         if (!noMover)
         {
             float xTarg = (-player.getX() + Game.ANCHO / 2) / 2;

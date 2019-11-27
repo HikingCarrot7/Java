@@ -14,8 +14,8 @@ import com.ludum.src.interfaces.ObjectId;
 import com.ludum.src.interfaces.Texture;
 import com.ludum.src.window.AudioPlayer;
 import com.ludum.src.window.Controller;
-import com.ludum.src.window.Game;
-import com.ludum.src.window.Game.STATE;
+import com.ludum.src.window.LD27;
+import com.ludum.src.window.LD27.STATE;
 
 public class Player extends Entity implements GameObject
 {
@@ -66,7 +66,7 @@ public class Player extends Entity implements GameObject
             {
                 velX = 0;
 
-                if (Game.ALPHA < 0.01)
+                if (LD27.ALPHA < 0.01)
                     canMove = true;
             }
 
@@ -89,7 +89,7 @@ public class Player extends Entity implements GameObject
             time.timer2.stop();
 
             if (!controller.isDead)
-                Game.ALPHA = 0.1f;
+                LD27.ALPHA = 0.1f;
 
             controller.isDead = true;
             controller.proceed = true;
@@ -120,7 +120,7 @@ public class Player extends Entity implements GameObject
                     time.timer2.stop();
 
                     if (!controller.isDead)
-                        Game.ALPHA = 0.1f;
+                        LD27.ALPHA = 0.1f;
 
                     controller.isDead = true;
                     controller.proceed = true;
@@ -262,7 +262,7 @@ public class Player extends Entity implements GameObject
             if (addScore && !controller.isDead)
             {
                 g.setColor(Color.green);
-                Game.state = STATE.Store;
+                LD27.state = STATE.Store;
 
                 g.setFont(new Font("Peach Milk", 0, 30));
 
@@ -393,18 +393,18 @@ public class Player extends Entity implements GameObject
             if (controller.proceed)
             {
                 if (!controller.isDead)
-                    Game.state = STATE.Game;
+                    LD27.state = STATE.Game;
 
                 if (!controller.isDead)
                 {
-                    if (Game.ALPHA < 0.99)
-                        Game.ALPHA += 0.01f;
-                } else if (Game.ALPHA < 0.99)
-                    Game.ALPHA += 0.001f;
+                    if (LD27.ALPHA < 0.99)
+                        LD27.ALPHA += 0.01f;
+                } else if (LD27.ALPHA < 0.99)
+                    LD27.ALPHA += 0.001f;
 
                 addScore = true;
             } else
-                Game.ALPHA = 0.1f;
+                LD27.ALPHA = 0.1f;
 
         }
 

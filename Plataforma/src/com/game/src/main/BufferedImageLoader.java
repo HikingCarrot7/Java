@@ -9,8 +9,10 @@ public class BufferedImageLoader
 
     public BufferedImage loadImage(String path)
     {
+
         try
         {
+
             return ImageIO.read(getClass().getResource(path));
 
         } catch (IOException e)

@@ -12,7 +12,7 @@ public class Window extends Canvas
 
     private static final long serialVersionUID = 1L;
 
-    public Window(int width, int height, String title, Game game)
+    public Window(int width, int height, String title, LD27 game)
     {
         game.setPreferredSize(new Dimension(width, height));
         game.setMaximumSize(new Dimension(width, height));

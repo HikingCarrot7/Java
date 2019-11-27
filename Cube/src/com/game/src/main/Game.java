@@ -48,6 +48,7 @@ public class Game extends Canvas
         Game,
         Shop,
         End
+
     };
 
     public static STATE gameState = STATE.Menu;
@@ -95,6 +96,7 @@ public class Game extends Canvas
 
     public void tick()
     {
+
         if (!(paused || gameState.equals(STATE.Shop)))
         {
             handler.tick();

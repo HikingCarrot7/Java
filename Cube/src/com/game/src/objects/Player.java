@@ -37,6 +37,7 @@ public class Player extends GameObject
         {
             keyTracker();
             handler.addObject(new Trail(x, y, ObjectId.Trail, handler, Color.green, 32, 32, 0.04f));
+
         }
 
         x += velX;
@@ -47,11 +48,13 @@ public class Player extends GameObject
         y = Game.clamp((int) y, Game.ALTO - 32, 0);
 
         collision(handler.getObjects());
+
     }
 
     @Override
     public void render(Graphics2D g)
     {
+
         if (Game.gameState.equals(Game.STATE.Game) || Game.gameState.equals(Game.STATE.Shop))
         {
 

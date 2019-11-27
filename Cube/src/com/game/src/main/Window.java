@@ -1,17 +1,16 @@
 package com.game.src.main;
 
 import java.awt.Dimension;
-
 import javax.swing.JFrame;
 
-public class Window extends JFrame
+public final class Window extends JFrame
 {
 
     private static final long serialVersionUID = 1L;
 
     public Window(int w, int h, String title, Game game)
     {
-    	
+
         game.setPreferredSize(new Dimension(w, h));
         game.setMaximumSize(new Dimension(w, h));
         game.setMinimumSize(new Dimension(w, h));
@@ -22,10 +21,10 @@ public class Window extends JFrame
         add(game);
         pack();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         new Ticker(game);
-        
+
     }
 
 }

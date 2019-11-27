@@ -27,6 +27,7 @@ public class MainMenu
 
     public MainMenu(Handler handler, HUD hud, Spawn spawn, Game game, Texture tex)
     {
+
         rectangles = new Rectangle[6];
 
         rectangles[0] = new Rectangle(Game.ANCHO / 2 - 100, 185, 200, 45);
@@ -55,6 +56,7 @@ public class MainMenu
     {
         switch (Game.gameState)
         {
+
             case Menu:
                 g.setColor(Color.white);
                 g.setFont(new Font("serif", Font.BOLD, 70));
@@ -102,12 +104,14 @@ public class MainMenu
                 break;
             default:
                 break;
+
         }
 
     }
 
     public void mousePressed(MouseEvent e)
     {
+
         Rectangle r = new Rectangle(e.getX(), e.getY(), 1, 1);
 
         if (r.intersects(rectangles[0]) && Game.gameState.equals(Game.STATE.Menu))
@@ -192,6 +196,7 @@ public class MainMenu
 
     public void init()
     {
+
         HUD.HEALTH = 100;
         hud.setScore(0);
         hud.setLevel(1);

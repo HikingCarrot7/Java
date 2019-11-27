@@ -1,21 +1,5 @@
 package com.ludum.src.window;
 
-import java.awt.AlphaComposite;
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GraphicsEnvironment;
-import java.awt.RadialGradientPaint;
-import java.awt.geom.Point2D;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.Random;
-
 import com.ludum.src.gfx.BufferedImageLoader;
 import com.ludum.src.gfx.Menu;
 import com.ludum.src.gfx.Time;
@@ -24,8 +8,25 @@ import com.ludum.src.interfaces.GameObject;
 import com.ludum.src.interfaces.ObjectId;
 import com.ludum.src.interfaces.Texture;
 import com.ludum.src.objects.Player;
+import java.awt.AlphaComposite;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
+import java.awt.RadialGradientPaint;
+import java.awt.geom.Point2D;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Random;
 
-public class Game extends Canvas implements Runnable
+public class LD27 extends Canvas implements Runnable
 {
 
     private static final long serialVersionUID = 5996886121335760115L;
@@ -73,14 +74,12 @@ public class Game extends Canvas implements Runnable
         block_sheet = loader.loadImage("/block_sheet.png");
         background = loader.loadImage("/background.png");
 
-        //AudioPlayer.init();
-        //	AudioPlayer.getMusic("soundtrack").loop();
-        //font loading
         try
         {
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("res/peach_milk.TTF")));
-        } catch (Exception e)
+
+        } catch (FontFormatException | IOException e)
         {
             e.printStackTrace();
         }
@@ -98,7 +97,7 @@ public class Game extends Canvas implements Runnable
         /*
          for(int xx = 0; xx < getWidth() * 3; xx += 32)
          controller.addObject(new Base(xx, getHeight() - 32, tex, ObjectId.Moon_Top));
-		
+
          for(int xx = (32 * 5); xx < getWidth() + 32; xx += 32)
          controller.addObject(new Base(xx, (32 * 7), tex, ObjectId.Moon_Top));
          */
@@ -167,7 +166,7 @@ public class Game extends Canvas implements Runnable
                         cam.setX(0);
             }
 
-        if (Game.ALPHA > 0.9 && !fade)
+        if (LD27.ALPHA > 0.9 && !fade)
 
             if (!controller.isDead)
             {
@@ -205,8 +204,8 @@ public class Game extends Canvas implements Runnable
             }
 
         if (fade)
-            if (Game.ALPHA > 0.01)
-                Game.ALPHA -= 0.01f;
+            if (LD27.ALPHA > 0.01)
+                LD27.ALPHA -= 0.01f;
             else
                 fade = false;
 
@@ -266,7 +265,7 @@ public class Game extends Canvas implements Runnable
 
             g2d.translate(-cam.getX(), -cam.getY());
 
-            if (Game.ALPHA < 0.1)
+            if (LD27.ALPHA < 0.1)
                 for (int i = 0; i < controller.object.size(); i++)
                     if (controller.object.get(i).getId() == ObjectId.Player)
                     {
@@ -366,7 +365,7 @@ public class Game extends Canvas implements Runnable
 
     public static void main(String args[])
     {
-        new Window(640, 480, "LD27 | Satyr Run!", new Game());
+        new Window(640, 480, "LD27 | Satyr Run!", new LD27());
     }
 
     public int getChunk_size()

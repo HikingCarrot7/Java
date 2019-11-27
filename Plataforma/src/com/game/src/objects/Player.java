@@ -1,6 +1,5 @@
 package com.game.src.objects;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -69,7 +68,7 @@ public class Player extends GameObject
                 velY = MAX_SPEED;
         }
 
-        Collision(object);
+        collision(object);
 
         playerWalkRight.runAnimation();
 
@@ -81,7 +80,7 @@ public class Player extends GameObject
 
     }
 
-    private void Collision(ArrayList<GameObject> object)
+    private void collision(ArrayList<GameObject> object)
     {
         for (int i = 0; i < object.size(); i++)
             if (object.get(i).getId().equals(ObjectId.Block))
@@ -165,16 +164,16 @@ public class Player extends GameObject
 
         /*g.setColor(Color.blue);
          g.drawRect((int) x, (int) y, ancho, alto);
-		
+
          g.setColor(Color.green);
          g.draw(getBounds());
-		
+
          g.setColor(Color.red);
          g.draw(getBoundsLeft());
-		
+
          g.setColor(Color.white);
          g.draw(getBoundsRight());
-		
+
          g.setColor(Color.gray);
          g.draw(getBoundsTop());*/
     }

@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -26,6 +25,7 @@ public class Animation extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(lamina);
         setVisible(true);
+
     }
 
     public static void main(String[] args)
@@ -39,16 +39,14 @@ class Lamina extends JPanel implements Runnable
 
     private static final long serialVersionUID = 1L;
 
-    private Thread thread;
-
     private int ancho = 112, altura = 156, incremento = 0, mx = 0, my = 0;
-
+    private Thread thread;
     private Image ima;
-
     private BufferedImage bi;
 
     public Lamina()
     {
+
         bi = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
 
         ima = Toolkit.getDefaultToolkit().getImage("src/sprite/persona.png");
@@ -107,6 +105,7 @@ class Lamina extends JPanel implements Runnable
     @Override
     public void run()
     {
+
         while (true)
         {
             try
@@ -127,5 +126,7 @@ class Lamina extends JPanel implements Runnable
 
             incremento++;
         }
+
     }
+
 }
