@@ -20,6 +20,7 @@ public final class MiFrame extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(lamina);
         setVisible(true);
+
     }
 
     public static void main(String[] args)

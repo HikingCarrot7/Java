@@ -19,6 +19,7 @@ public class AccesoFichero
 
         fichero.escribirArchivo();
     }
+
 }
 
 class Fichero
@@ -33,14 +34,14 @@ class Fichero
         {
             mibuffer = new BufferedReader(new FileReader("C:/Archivos/Prueba.txt"));
 
-            /*do 
-             {				
+            /*do
+             {
              c = lectura.read();
-				
+
              System.out.print((char) c);
-				
+
              }while(c != -1);
-			
+
              lectura.close();*/
             do
                 System.out.println(mibuffer.readLine());

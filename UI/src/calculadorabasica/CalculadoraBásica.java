@@ -2,14 +2,14 @@ package calculadorabasica;
 
 import javax.swing.JFrame;
 
-public final class MiFrame extends JFrame
+public final class CalculadoraBásica extends JFrame
 {
 
     private static final long serialVersionUID = 1L;
 
     private Display lamina;
 
-    public MiFrame()
+    public CalculadoraBásica()
     {
 
         lamina = new Display();
@@ -22,11 +22,6 @@ public final class MiFrame extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
-    }
-
-    public static void main(String[] args)
-    {
-        new MiFrame();
     }
 
 }

@@ -10,8 +10,6 @@ import javax.swing.JPanel;
 public final class Display extends JPanel
 {
 
-    private static final long serialVersionUID = 1L;
-
     private String[] etiquetas =
     {
         "7", "8", "9", "/", "4", "5", "6", "*", "1", "2", "3", "-", "0", ".", "=", "+"
@@ -32,7 +30,8 @@ public final class Display extends JPanel
 
     public Display()
     {
-        this.setLayout(new BorderLayout());
+
+        setLayout(new BorderLayout());
 
         display = new JButton("0.0");
 
@@ -48,12 +47,13 @@ public final class Display extends JPanel
             anadirBotones(etiqueta);
 
         add(botones, BorderLayout.CENTER);
+
     }
 
     public void anadirBotones(String boton)
     {
-        JButton auxBoton = new JButton(boton);
 
+        JButton auxBoton = new JButton(boton);
         auxBoton.addActionListener(new AccionNumeros());
 
         botones.add(auxBoton);
@@ -69,6 +69,7 @@ public final class Display extends JPanel
             if (!e.getActionCommand().contentEquals("+") && !e.getActionCommand().contentEquals("*") && !e.getActionCommand().contentEquals("-")
                     && !e.getActionCommand().contentEquals("/") && !e.getActionCommand().contentEquals("="))
             {
+
                 if (!(text.contentEquals("") && e.getActionCommand().contentEquals("0")))
                 {
                     text += e.getActionCommand();
@@ -91,6 +92,7 @@ public final class Display extends JPanel
 
         public void calcular(double numero)
         {
+
             switch (ultimaOperacion)
             {
                 case "+":
