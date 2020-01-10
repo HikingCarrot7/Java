@@ -167,7 +167,7 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
 
     private void modificarTableroAliado(Mensaje mensaje)
     {
-        boolean acerto = barcos.obtenerTablero()[mensaje.getFila()][mensaje.getColumna()] == 2;
+        boolean acerto = barcos.getTablero()[mensaje.getFila()][mensaje.getColumna()] == 2;
 
         barcos.modificarTablero(mensaje.getFila(), mensaje.getColumna(), 3, true);
 
@@ -254,7 +254,7 @@ public final class Cliente extends Object implements Drawable, InputListener, Ru
 
     public void setBarcos(int[][] tablero)
     {
-        barcos.recibirTablero(tablero);
+        barcos.setTablero(tablero);
     }
 
     @Override

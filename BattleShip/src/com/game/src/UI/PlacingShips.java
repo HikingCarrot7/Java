@@ -141,7 +141,7 @@ public class PlacingShips implements Drawable, InputListener
     {
         if (fila < ALTOTABLERO && fila >= 0 && columna < ANCHOTABLERO && columna >= 0)
 
-            if (validarUbicacionBarco(orientacionBarcoActual, fila, columna, cuadricula.obtenerTablero(), barcoSeleccionado))
+            if (validarUbicacionBarco(orientacionBarcoActual, fila, columna, cuadricula.getTablero(), barcoSeleccionado))
             {
                 cuadricula.iniciarTablero();
 
@@ -163,7 +163,7 @@ public class PlacingShips implements Drawable, InputListener
     {
         if (fila < ALTOTABLERO && fila >= 0 && columna < ANCHOTABLERO && columna >= 0 && barcoSeleccionado != null)
 
-            if (validarUbicacionBarco(orientacionBarcoActual, fila, columna, cuadricula.obtenerTablero(), barcoSeleccionado))
+            if (validarUbicacionBarco(orientacionBarcoActual, fila, columna, cuadricula.getTablero(), barcoSeleccionado))
             {
                 int length = (orientacionBarcoActual ? barcoSeleccionado.width : barcoSeleccionado.height) / LADOCUADRO;
 
@@ -224,7 +224,7 @@ public class PlacingShips implements Drawable, InputListener
 
     public void checarEliminacionBarco(int fila, int columna)
     {
-        int[][] tablero = cuadricula.obtenerTablero(), tempTablero = new int[12][22];
+        int[][] tablero = cuadricula.getTablero(), tempTablero = new int[12][22];
 
         tempTablero = randomLayout.copiarTableros(tempTablero, tablero, 0, 1, 0);
 
@@ -302,7 +302,7 @@ public class PlacingShips implements Drawable, InputListener
             if (!menu.getServer())
                 menu.crearCliente();
 
-            cliente.setBarcos(cuadricula.obtenerTablero());
+            cliente.setBarcos(cuadricula.getTablero());
 
             Main.GAMESTATE = Main.STATE.Jugando;
 

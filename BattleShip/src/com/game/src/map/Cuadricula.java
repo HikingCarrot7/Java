@@ -91,6 +91,7 @@ public final class Cuadricula implements Drawable
 
     public void dibujarEtiquetas(Graphics2D g, int INICIOX, int INICIOY, int OFFSET)
     {
+
         char letra = 'A';
 
         g.setFont(new Font("serif", Font.BOLD, 15));
@@ -100,30 +101,36 @@ public final class Cuadricula implements Drawable
 
         for (int i = 0; i < ANCHOTABLERO; i++)
             g.drawString(i < 9 ? "0" + (i + 1) : "" + (i + 1), INICIOX + 5 + i * LADOCUADRO, INICIOY - 10);
+
     }
 
     public void modificarTablero(int i, int j, int cambio, boolean eliminar)
     {
+
         if (i < ALTOTABLERO && i >= 0 && j < ANCHOTABLERO && j >= 0)
             if (tablero[i][j] != 2 || eliminar)
                 tablero[i][j] = cambio;
-    }
 
-    public void recibirTablero(int[][] tablero)
-    {
-        this.tablero = tablero;
-    }
-
-    public int[][] obtenerTablero()
-    {
-        return tablero;
     }
 
     public void iniciarTablero()
     {
-        for (int[] I : tablero)
-            for (int i = 0; i < I.length; i++)
-                if (I[i] != 2)
-                    I[i] = 0;
+
+        for (int[] row : tablero)
+            for (int i = 0; i < row.length; i++)
+                if (row[i] != 2)
+                    row[i] = 0;
+
     }
+
+    public void setTablero(int[][] tablero)
+    {
+        this.tablero = tablero;
+    }
+
+    public int[][] getTablero()
+    {
+        return tablero;
+    }
+
 }
