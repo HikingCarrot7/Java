@@ -9,7 +9,6 @@ public class PruebaDirectorios
 {
 
     private static File carpetaDireccion, archivoDireccion;
-
     private static final String carpeta = "C:\\Archivos\\Estrella", archivo = "C:\\Archivos\\Estrella\\Nicol�s.txt";
 
     public static void main(String[] args)
@@ -19,9 +18,7 @@ public class PruebaDirectorios
 
     public static void analizarRuta(String carpeta, String archivo)
     {
-
         carpetaDireccion = new File(carpeta);
-
         archivoDireccion = new File(archivo);
 
         //System.out.println(nombre.getAbsolutePath());
@@ -33,11 +30,11 @@ public class PruebaDirectorios
             {
                 String[] directorio = carpetaDireccion.list();
 
-                for (String D : directorio)
+                for (String direc : directorio)
                 {
-                    System.out.printf("%s%n", D);
+                    System.out.printf("%s%n", direc);
 
-                    File f = new File(carpetaDireccion.getAbsolutePath(), D);
+                    File f = new File(carpetaDireccion.getAbsolutePath(), direc);
 
                     if (f.isDirectory())
                     {

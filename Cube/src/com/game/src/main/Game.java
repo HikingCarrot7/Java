@@ -140,7 +140,6 @@ public class Game extends Canvas
         explosiones.forEach((A) ->
         {
             A.render(g);
-
         });
 
         switch (gameState)
