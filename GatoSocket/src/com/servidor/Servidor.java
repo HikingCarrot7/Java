@@ -1,19 +1,21 @@
 package com.servidor;
 
-import java.awt.BorderLayout;
+import static java.awt.BorderLayout.CENTER;
 import java.io.IOException;
+import static java.lang.System.exit;
+import static java.lang.System.out;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Formatter;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import static java.util.concurrent.Executors.newFixedThreadPool;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
+import static javax.swing.SwingUtilities.invokeLater;
 
 /**
  *
@@ -29,21 +31,21 @@ public final class Servidor extends JFrame
     private int jugadorActual;
     private final static int JUGADOR_X = 0;
     private final static int JUGADOR_O = 1;
+
     private final static String[] MARCAS =
     {
         "X", "O"
     };
+
     private ExecutorService ejecutarJuego;
     private Lock bloqueoJuego;
     private Condition otroJugadorConectado, turnoOtroJugador;
 
     public Servidor()
     {
-
         iniciarElementos();
         iniciarServer();
         elementosVentana();
-
     }
 
     //Iniciamos todos los elementos
@@ -51,15 +53,13 @@ public final class Servidor extends JFrame
     {
         tablero = new String[9];
 
-        ejecutarJuego = Executors.newFixedThreadPool(2);
+        ejecutarJuego = newFixedThreadPool(2);
         bloqueoJuego = new ReentrantLock();
         otroJugadorConectado = bloqueoJuego.newCondition();
         turnoOtroJugador = bloqueoJuego.newCondition();
 
         for (int i = 0; i < 9; i++)
-        {
             tablero[i] = "";
-        }
 
         jugadores = new Jugador[2];
         jugadorActual = JUGADOR_X;
@@ -78,29 +78,27 @@ public final class Servidor extends JFrame
 
         } catch (IOException ex)
         {
-            System.out.println(ex.getMessage());
-
-            System.exit(1);
+            out.println(ex.getMessage());
+            exit(1);
         }
 
     }
 
-    //Ejecutar los hilos de los jugadores (Espera hasta que se conecten)
+    /**
+     * Ejecutar los hilos de los jugadores (Espera hasta que se conecten).
+     */
     public void execute()
     {
         for (int i = 0; i < jugadores.length; i++)
-        {
             try
             {
                 jugadores[i] = new Jugador(servidor.accept(), i);
-
                 ejecutarJuego.execute(jugadores[i]);
 
             } catch (IOException ex)
             {
-                System.out.println(ex.getMessage());
+                out.println(ex.getMessage());
             }
-        }
 
         bloqueoJuego.lock();
 
@@ -119,7 +117,7 @@ public final class Servidor extends JFrame
     //Muestra el mensaje en el textarea pero con una cierta particularidad ...
     private void mostrarMensaje(final String mensajeAMostrar)
     {
-        SwingUtilities.invokeLater(() -> textoSalida.append(mensajeAMostrar));
+        invokeLater(() -> textoSalida.append(mensajeAMostrar));
     }
 
     public boolean validarYMover(int ubicacion, int jugador)
@@ -134,7 +132,7 @@ public final class Servidor extends JFrame
 
             } catch (InterruptedException ex)
             {
-                System.out.println(ex.getMessage());
+                out.println(ex.getMessage());
 
             } finally
             {
@@ -145,9 +143,7 @@ public final class Servidor extends JFrame
         if (!estaOcupado(ubicacion))
         {
             tablero[ubicacion] = MARCAS[jugadorActual];
-
             jugadorActual = (jugadorActual + 1) % 2;
-
             jugadores[jugadorActual].otroJugadorMovio(ubicacion);
 
             bloqueoJuego.lock();
@@ -162,7 +158,6 @@ public final class Servidor extends JFrame
             }
 
             return true;
-
         }
 
         return false;
@@ -174,7 +169,11 @@ public final class Servidor extends JFrame
         return tablero[ubicacion].equals(MARCAS[JUGADOR_X]) || tablero[ubicacion].equals(MARCAS[JUGADOR_O]);
     }
 
-    //aqui van las logicas de los movimientos
+    /**
+     * Lógica de los movimientos.
+     *
+     * @return
+     */
     public boolean seTerminoJuego()
     {
         return false;
@@ -188,8 +187,8 @@ public final class Servidor extends JFrame
         setResizable(false);
         setAlwaysOnTop(true);
         setTitle("Servidor");
-        add(textoSalida, BorderLayout.CENTER);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(textoSalida, CENTER);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
 
@@ -218,15 +217,13 @@ public final class Servidor extends JFrame
             } catch (IOException ex)
             {
                 System.out.println(ex.getMessage());
-
-                System.exit(1);
+                exit(1);
             }
         }
 
         @Override
         public void run()
         {
-
             try
             {
                 mostrarMensaje("Jugador " + marca + " conectado\n");
@@ -243,9 +240,7 @@ public final class Servidor extends JFrame
                     try
                     {
                         while (estado)
-                        {
                             otroJugadorConectado.await();
-                        }
 
                     } catch (InterruptedException ex)
                     {
@@ -270,9 +265,7 @@ public final class Servidor extends JFrame
                     int ubicacion = 0;
 
                     if (in.hasNext())
-                    {
                         ubicacion = in.nextInt();
-                    }
 
                     if (validarYMover(ubicacion, numeroJugador))
                     {
@@ -296,7 +289,7 @@ public final class Servidor extends JFrame
                 } catch (IOException e)
                 {
                     System.out.println(e.getMessage());
-                    System.exit(1);
+                    exit(1);
                 }
 
             }
@@ -308,7 +301,6 @@ public final class Servidor extends JFrame
             out.format("El oponente realizó un movimiento.\n");
             out.format("%d\n", ubicacion);
             out.flush();
-
         }
 
         public void establecerSuspendido(boolean estado)

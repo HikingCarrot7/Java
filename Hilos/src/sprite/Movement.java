@@ -1,14 +1,20 @@
 package sprite;
 
 import java.awt.Color;
+import static java.awt.Color.white;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import static java.awt.Toolkit.getDefaultToolkit;
 import java.awt.event.KeyEvent;
+import static java.awt.event.KeyEvent.VK_LEFT;
+import static java.awt.event.KeyEvent.VK_R;
+import static java.awt.event.KeyEvent.VK_RIGHT;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import static java.awt.image.BufferedImage.TYPE_INT_RGB;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -27,7 +33,7 @@ public class Movement extends JFrame
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Animation");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         addKeyListener(lamina);
         add(lamina);
         setVisible(true);
@@ -68,9 +74,9 @@ class LaminaMovement extends JPanel implements Runnable, KeyListener
 
         yPos = 70;
 
-        ima = Toolkit.getDefaultToolkit().getImage("src/sprite/ninoReposo.png");
+        ima = getDefaultToolkit().getImage("src/sprite/ninoReposo.png");
 
-        bi = new BufferedImage(1000, 200, BufferedImage.TYPE_INT_RGB);
+        bi = new BufferedImage(1000, 200, TYPE_INT_RGB);
 
         hilo = new Thread(this);
 
@@ -87,7 +93,7 @@ class LaminaMovement extends JPanel implements Runnable, KeyListener
 
         g = bi.createGraphics();
 
-        g.setColor(Color.white);
+        g.setColor(white);
         g.fillRect(0, 0, 1000, 200);
 
         mx = (incremento % 6) * ancho;
@@ -105,7 +111,7 @@ class LaminaMovement extends JPanel implements Runnable, KeyListener
         {
             try
             {
-                Thread.sleep(150);
+                sleep(150);
 
             } catch (InterruptedException e)
             {
@@ -120,38 +126,35 @@ class LaminaMovement extends JPanel implements Runnable, KeyListener
     @Override
     public void keyPressed(KeyEvent e)
     {
-        if (e.getKeyCode() != KeyEvent.VK_R)
-        {
+        if (e.getKeyCode() != VK_R)
             teclas.add(e.getKeyCode());
-        } else
-        {
+        else
             r = true;
-        }
 
-        if (teclas.contains(KeyEvent.VK_RIGHT) && r)
+        if (teclas.contains(VK_RIGHT) && r)
         {
-            ima = Toolkit.getDefaultToolkit().getImage("src/sprite/ninocorriendoright.png");
+            ima = getDefaultToolkit().getImage("src/sprite/ninocorriendoright.png");
 
             xPos += 8;
 
-        } else if (teclas.contains(KeyEvent.VK_LEFT) && r)
+        } else if (teclas.contains(VK_LEFT) && r)
         {
 
-            ima = Toolkit.getDefaultToolkit().getImage("src/sprite/ninocorriendoleft.png");
+            ima = getDefaultToolkit().getImage("src/sprite/ninocorriendoleft.png");
 
             xPos -= 8;
 
-        } else if (teclas.contains(KeyEvent.VK_LEFT))
+        } else if (teclas.contains(VK_LEFT))
         {
 
-            ima = Toolkit.getDefaultToolkit().getImage("src/sprite/ninoleft.png");
+            ima = getDefaultToolkit().getImage("src/sprite/ninoleft.png");
 
             xPos -= 5;
 
-        } else if (teclas.contains(KeyEvent.VK_RIGHT))
+        } else if (teclas.contains(VK_RIGHT))
         {
 
-            ima = Toolkit.getDefaultToolkit().getImage("src/sprite/ninoright.png");
+            ima = getDefaultToolkit().getImage("src/sprite/ninoright.png");
 
             xPos += 5;
 
@@ -162,12 +165,10 @@ class LaminaMovement extends JPanel implements Runnable, KeyListener
     @Override
     public void keyReleased(KeyEvent e)
     {
-        ima = Toolkit.getDefaultToolkit().getImage("src/sprite/ninoReposo.png");
+        ima = getDefaultToolkit().getImage("src/sprite/ninoReposo.png");
 
-        if (e.getKeyCode() == KeyEvent.VK_R)
-        {
+        if (e.getKeyCode() == VK_R)
             r = false;
-        }
 
         teclas.clear();
 

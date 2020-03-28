@@ -1,8 +1,10 @@
 package swingworker;
 
 import java.awt.Color;
+import static java.awt.Color.black;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
+import static java.lang.Integer.parseInt;
 import java.util.InputMismatchException;
 
 import javax.swing.JButton;
@@ -35,7 +37,7 @@ public class NumerosFibonacci extends JPanel
     private void iniciarCalculadora()
     {
         calculoFibonacci = new JPanel(new GridLayout(2, 2, 5, 5));
-        calculoFibonacci.setBorder(new TitledBorder(new LineBorder(Color.black), "Con SwingWorker"));
+        calculoFibonacci.setBorder(new TitledBorder(new LineBorder(black), "Con SwingWorker"));
         capturarNumero = new JTextField();
         resultado = new JLabel();
         empezar = new JButton("Iniciar");
@@ -59,7 +61,7 @@ public class NumerosFibonacci extends JPanel
 
             try
             {
-                n = Integer.parseInt(capturarNumero.getText());
+                n = parseInt(capturarNumero.getText());
 
             } catch (NumberFormatException | InputMismatchException ex)
             {

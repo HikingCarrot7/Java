@@ -1,6 +1,8 @@
 package primeracercamiento;
 
 import java.awt.BorderLayout;
+import static java.awt.BorderLayout.CENTER;
+import static java.awt.BorderLayout.SOUTH;
 import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -8,10 +10,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import static java.lang.System.exit;
+import static java.lang.Thread.currentThread;
+import static java.lang.Thread.interrupted;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPanel;
 
 public class UsoThreads
@@ -22,7 +28,7 @@ public class UsoThreads
 
         JFrame marco = new MarcoRebote();
 
-        marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        marco.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         marco.setVisible(true);
 
@@ -48,11 +54,10 @@ class PelotaHilos implements Runnable
     {
 
         // System.out.println(Thread.currentThread().isInterrupted());
-        while (!Thread.interrupted())
-        {
+        while (!interrupted())
             try
             {
-                Thread.sleep(4);
+                sleep(4);
 
                 pelota.mueve_pelota(lamina.getBounds());
 
@@ -60,9 +65,10 @@ class PelotaHilos implements Runnable
 
             } catch (InterruptedException e)
             {
-                Thread.currentThread().interrupt();
+                currentThread().interrupt();
             }
-        }
+
+        // System.out.println(Thread.currentThread().isInterrupted());
 
         // System.out.println(Thread.currentThread().isInterrupted());
     }
@@ -158,12 +164,10 @@ class LaminaPelota extends JPanel
         Graphics2D g2 = (Graphics2D) g;
 
         for (Pelota b : pelotas)
-        {
             g2.fill(b.getShape());
-        }
     }
 
-    private ArrayList<Pelota> pelotas = new ArrayList<Pelota>();
+    private ArrayList<Pelota> pelotas = new ArrayList<>();
 }
 
 //Marco con l�mina y botones------------------------------------------------------------------------------
@@ -181,46 +185,26 @@ class MarcoRebote extends JFrame
 
         lamina = new LaminaPelota();
 
-        add(lamina, BorderLayout.CENTER);
+        add(lamina, CENTER);
 
         JPanel laminaBotones = new JPanel();
 
-        ponerBoton(laminaBotones, "Dale!", new ActionListener()
+        ponerBoton(laminaBotones, "Dale!", (ActionEvent evento) ->
         {
-
-            public void actionPerformed(ActionEvent evento)
-            {
-
-                comienza_el_juego();
-            }
-
+            comienza_el_juego();
         });
 
-        ponerBoton(laminaBotones, "Salir", new ActionListener()
+        ponerBoton(laminaBotones, "Salir", (ActionEvent evento) ->
         {
-
-            public void actionPerformed(ActionEvent evento)
-            {
-
-                System.exit(0);
-
-            }
-
+            exit(0);
         });
 
-        ponerBoton(laminaBotones, "Detener", new ActionListener()
+        ponerBoton(laminaBotones, "Detener", (ActionEvent evento) ->
         {
-
-            public void actionPerformed(ActionEvent evento)
-            {
-
-                detener();
-
-            }
-
+            detener();
         });
 
-        add(laminaBotones, BorderLayout.SOUTH);
+        add(laminaBotones, SOUTH);
     }
 
     // Ponemos botones

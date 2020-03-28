@@ -1,9 +1,9 @@
 package swingworkerprimos;
 
+import static java.lang.Thread.sleep;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -31,9 +31,7 @@ public class CalculadoraPrimos extends SwingWorker<Integer, Integer>
         this.estado = estado;
 
         for (int i = 0; i < primos.length; i++)
-        {
             primos[i] = true;
-        }
     }
 
     @Override
@@ -44,16 +42,13 @@ public class CalculadoraPrimos extends SwingWorker<Integer, Integer>
         for (int i = 2; i < primos.length; i++)
         {
             if (detenido)
-            {
                 return cuenta;
-            } else
-            {
+            else
                 setProgress(100 * (i + 1) / primos.length);
-            }
 
             try
             {
-                Thread.sleep(rand.nextInt(4));
+                sleep(rand.nextInt(4));
 
             } catch (InterruptedException e)
             {
@@ -65,9 +60,7 @@ public class CalculadoraPrimos extends SwingWorker<Integer, Integer>
                 ++cuenta;
 
                 for (int j = i + i; j < primos.length; j += i)
-                {
                     primos[j] = false;
-                }
             }
 
         }
@@ -79,9 +72,7 @@ public class CalculadoraPrimos extends SwingWorker<Integer, Integer>
     protected void process(List<Integer> primos)
     {
         for (int i = 0; i < primos.size(); i++)
-        {
             mostrarNumeros.append(primos.get(i) + "\n");
-        }
 
     }
 

@@ -3,7 +3,12 @@ package sprite;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import static java.awt.Toolkit.getDefaultToolkit;
 import java.awt.image.BufferedImage;
+import static java.awt.image.BufferedImage.TYPE_INT_RGB;
+import static java.lang.System.out;
+import static java.lang.Thread.currentThread;
+import static java.lang.Thread.sleep;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -22,7 +27,7 @@ public class Animation extends JFrame
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Animation");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         add(lamina);
         setVisible(true);
 
@@ -47,32 +52,23 @@ class Lamina extends JPanel implements Runnable
     public Lamina()
     {
 
-        bi = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
+        bi = new BufferedImage(500, 500, TYPE_INT_RGB);
 
-        ima = Toolkit.getDefaultToolkit().getImage("src/sprite/persona.png");
+        ima = getDefaultToolkit().getImage("src/sprite/persona.png");
 
-        new Thread(new Runnable()
+        new Thread(() ->
         {
-
-            @Override
-            public void run()
+            try
             {
-                try
+                while (true)
                 {
-                    while (true)
-                    {
-                        Thread.sleep(1500);
-
-                        System.out.println("Este hilo se encarga de mostrar en pantalla este mensaje cada 1500 milisegundos");
-                    }
-
-                } catch (InterruptedException e)
-                {
-
+                    sleep(1500);
+                    out.println("Este hilo se encarga de mostrar en pantalla este mensaje cada 1500 milisegundos");
                 }
-
+            }catch (InterruptedException e)
+            {
+                
             }
-
         }).start();
 
         thread = new Thread(this);
@@ -110,7 +106,7 @@ class Lamina extends JPanel implements Runnable
         {
             try
             {
-                Thread.sleep(200);
+                sleep(200);
 
             } catch (InterruptedException e)
             {
@@ -119,7 +115,7 @@ class Lamina extends JPanel implements Runnable
 
             if (incremento >= 6)
             {
-                Thread.currentThread().interrupt();
+                currentThread().interrupt();
 
                 incremento = 0;
             }

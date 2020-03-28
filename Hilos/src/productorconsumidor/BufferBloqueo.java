@@ -1,7 +1,5 @@
 package productorconsumidor;
 
-import java.util.concurrent.ArrayBlockingQueue;
-
 public class BufferBloqueo implements Buffer
 {
     //private final ArrayBlockingQueue<Integer>buffer;
@@ -17,16 +15,11 @@ public class BufferBloqueo implements Buffer
     @Override
     public synchronized void establecer(int valor) throws InterruptedException
     {
-
         while (ocupado)
-        {
             wait();
-        }
 
         buffer = valor;
-
         ocupado = true;
-
         notifyAll();
 
         //System.out.printf("Productor escribe\t%2d", valor);
@@ -36,14 +29,10 @@ public class BufferBloqueo implements Buffer
     @Override
     public synchronized int obtener() throws InterruptedException
     {
-
         while (!ocupado)
-        {
             wait();
-        }
 
         ocupado = false;
-
         notifyAll();
 
         //valorLeido = buffer.take();

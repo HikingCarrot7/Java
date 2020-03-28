@@ -1,19 +1,19 @@
 package productorconsumidor;
 
+import static java.lang.System.out;
+import static java.lang.Thread.sleep;
 import java.util.Random;
 
 public class Productor implements Runnable
 {
 
-    private Buffer ubicacionCompartida;
-    private Random rand;
+    private final Buffer ubicacionCompartida;
+    private final Random rand;
 
     public Productor(Buffer ubicacionCompartida)
     {
         this.ubicacionCompartida = ubicacionCompartida;
-
         rand = new Random();
-
     }
 
     @Override
@@ -22,24 +22,17 @@ public class Productor implements Runnable
         int suma = 0;
 
         for (int i = 0; i < 10; i++)
-        {
-
             try
             {
-                Thread.sleep(rand.nextInt(3000));
-
+                sleep(rand.nextInt(3000));
                 ubicacionCompartida.establecer(i);
-
                 suma += i;
-
-                System.out.printf("\t%2d\n", suma);
+                out.printf("\t%2d\n", suma);
 
             } catch (InterruptedException e)
             {
                 e.printStackTrace();
             }
-
-        }
 
     }
 

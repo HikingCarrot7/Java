@@ -1,24 +1,26 @@
 package com.cliente;
 
-import java.awt.BorderLayout;
+import static java.awt.BorderLayout.CENTER;
+import static java.awt.BorderLayout.NORTH;
+import static java.awt.BorderLayout.SOUTH;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.net.InetAddress;
+import static java.net.InetAddress.getByName;
 import java.net.Socket;
 import java.util.Formatter;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import static java.util.concurrent.Executors.newFixedThreadPool;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
+import static javax.swing.SwingUtilities.invokeLater;
 
 /**
  *
@@ -43,11 +45,8 @@ public final class Cliente extends JFrame implements Runnable
     public Cliente(String host)
     {
         this.host = host;
-
         iniciarElementos();
-
         iniciarVentana();
-
     }
 
     public void iniciarElementos()
@@ -58,31 +57,28 @@ public final class Cliente extends JFrame implements Runnable
         panelTablero = new JPanel(new GridLayout(3, 3, 0, 0));
         tablero = new Cuadro[3][3];
 
-        //Iniciamos el tablero 
+        //Iniciamos el tablero
         for (int i = 0; i < tablero.length; i++)
-        {
             for (int j = 0; j < tablero[i].length; j++)
             {
                 tablero[i][j] = new Cuadro("", i * tablero.length + j);
                 panelTablero.add(tablero[i][j]);
             }
-        }
 
         campoId = new JTextField();
         campoId.setEnabled(false);
 
         soporte = new JPanel();
-        soporte.add(panelTablero, BorderLayout.CENTER);
+        soporte.add(panelTablero, CENTER);
 
         iniciarCliente();
-
     }
 
     public void iniciarCliente()
     {
         try
         {
-            conexion = new Socket(InetAddress.getByName(host), 9999);
+            conexion = new Socket(getByName(host), 9999);
 
             in = new Scanner(conexion.getInputStream());
             out = new Formatter(conexion.getOutputStream());
@@ -92,9 +88,8 @@ public final class Cliente extends JFrame implements Runnable
             System.out.println(ex.getMessage());
         }
 
-        ExecutorService thread = Executors.newFixedThreadPool(1);
+        ExecutorService thread = newFixedThreadPool(1);
         thread.execute(this);
-
     }
 
     public void iniciarVentana()
@@ -104,12 +99,11 @@ public final class Cliente extends JFrame implements Runnable
         setAlwaysOnTop(true);
         setLocationRelativeTo(null);
         setTitle("Cliente");
-        add(campoId, BorderLayout.NORTH);
-        add(soporte, BorderLayout.CENTER);
-        add(new JScrollPane(areaPantalla), BorderLayout.SOUTH);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        add(campoId, NORTH);
+        add(soporte, CENTER);
+        add(new JScrollPane(areaPantalla), SOUTH);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
-
     }
 
     @Override
@@ -117,7 +111,7 @@ public final class Cliente extends JFrame implements Runnable
     {
         miMarca = in.nextLine();
 
-        SwingUtilities.invokeLater(() ->
+        invokeLater(() ->
         {
             campoId.setText("Usted es el jugador \"" + miMarca + "\"");
         });
@@ -125,12 +119,8 @@ public final class Cliente extends JFrame implements Runnable
         miTurno = (miMarca.equals(MARCA_X));
 
         while (true)
-        {
             if (in.hasNext())
-            {
                 procesarMensaje(in.nextLine());
-            }
-        }
     }
 
     public void procesarMensaje(String mensaje)
@@ -138,7 +128,6 @@ public final class Cliente extends JFrame implements Runnable
         switch (mensaje)
         {
             case "Movimiento válido.":
-
                 mostrarMensaje("Movimiento válido, por favor espere\n");
                 establecerMarca(cuadroActual, miMarca);
                 break;
@@ -167,7 +156,7 @@ public final class Cliente extends JFrame implements Runnable
 
     private void mostrarMensaje(final String mensajeMostrar)
     {
-        SwingUtilities.invokeLater(() ->
+        invokeLater(() ->
         {
             areaPantalla.append(mensajeMostrar);
         });
@@ -175,7 +164,7 @@ public final class Cliente extends JFrame implements Runnable
 
     private void establecerMarca(final Cuadro cuadroMarcar, final String marca)
     {
-        SwingUtilities.invokeLater(() ->
+        invokeLater(() ->
         {
             cuadroMarcar.establecerMarca(marca);
         });
@@ -219,7 +208,6 @@ public final class Cliente extends JFrame implements Runnable
                 public void mouseReleased(MouseEvent e)
                 {
                     establecerCuadroActual(Cuadro.this);
-
                     enviarCuadroClic(obtenerUbicacionCuadro());
                 }
 
@@ -258,7 +246,6 @@ public final class Cliente extends JFrame implements Runnable
 
             g.drawRect(0, 0, 29, 29);
             g.drawString(marca, 11, 20);
-
         }
     }
 

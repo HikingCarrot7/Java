@@ -17,7 +17,7 @@ public class MiFrame extends JFrame
         setLocationRelativeTo(null);
         setResizable(true);
         setTitle("Pelotas");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         add(lamina);
         setVisible(true);
     }

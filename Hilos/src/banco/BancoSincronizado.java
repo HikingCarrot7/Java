@@ -1,6 +1,6 @@
 package banco;
 
-public class BancoSinSincronizar
+public class BancoSincronizado
 {
 
     public static void main(String[] args)
@@ -9,10 +9,8 @@ public class BancoSinSincronizar
 
         for (int i = 0; i < 100; i++)
         {
-            Thread hilo = new Thread(new EjecucionTransferencia(b, i, 2000));
-
+            Thread hilo = new Thread(new Transferencia(b, i, 2000));
             hilo.start();
-
         }
 
     }

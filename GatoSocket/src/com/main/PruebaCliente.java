@@ -1,7 +1,9 @@
 package com.main;
 
 import com.cliente.Cliente;
+import static java.lang.System.out;
 import java.net.InetAddress;
+import static java.net.InetAddress.getLocalHost;
 import java.net.UnknownHostException;
 
 /**
@@ -16,11 +18,11 @@ public class PruebaCliente
 
         try
         {
-            new Cliente(InetAddress.getLocalHost().getHostAddress());
+            new Cliente(getLocalHost().getHostAddress());
 
         } catch (UnknownHostException ex)
         {
-            System.out.println(ex.getMessage());
+            out.println(ex.getMessage());
         }
 
     }

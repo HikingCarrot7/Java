@@ -1,5 +1,7 @@
 package primeracercamiento;
 
+import static java.lang.System.out;
+
 public class SicronizandoHilos
 {
 
@@ -14,7 +16,7 @@ public class SicronizandoHilos
 
         hilo1.start();
 
-        System.out.println("Se han terminado las tareas");
+        out.println("Se han terminado las tareas");
 
     }
 
@@ -38,15 +40,13 @@ public class SicronizandoHilos
             try
             {
                 if (hilo != null)
-                {
                     hilo.join();
-                }
 
                 for (int i = 0; i < 5; i++)
                 {
-                    Thread.sleep(500);
+                    sleep(500);
 
-                    System.out.println("Se est� ejecutando el hilo " + getName());
+                    out.println("Se est� ejecutando el hilo " + getName());
 
                 }
 

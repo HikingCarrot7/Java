@@ -1,12 +1,14 @@
 package swingworkerprimos;
 
 import java.awt.BorderLayout;
+import static java.awt.BorderLayout.CENTER;
+import static java.awt.BorderLayout.NORTH;
+import static java.awt.BorderLayout.SOUTH;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import static java.lang.Integer.parseInt;
 import java.util.InputMismatchException;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
+import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
+import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS;
 
 public class Primos extends JPanel
 {
@@ -38,9 +42,9 @@ public class Primos extends JPanel
 
         anadirElementos();
 
-        add(norte, BorderLayout.NORTH);
-        add(centro, BorderLayout.CENTER);
-        add(sur, BorderLayout.SOUTH);
+        add(norte, NORTH);
+        add(centro, CENTER);
+        add(sur, SOUTH);
     }
 
     private void iniciarElementos()
@@ -55,7 +59,7 @@ public class Primos extends JPanel
         mostrarPrimos = new JTextArea();
         progreso = new JProgressBar();
         estado = new JLabel();
-        soporte = new JScrollPane(mostrarPrimos, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        soporte = new JScrollPane(mostrarPrimos, VERTICAL_SCROLLBAR_ALWAYS, HORIZONTAL_SCROLLBAR_NEVER);
 
         accionBotones();
 
@@ -72,7 +76,7 @@ public class Primos extends JPanel
 
             try
             {
-                numero = Integer.parseInt(primoMayor.getText());
+                numero = parseInt(primoMayor.getText());
 
             } catch (NumberFormatException | InputMismatchException ex)
             {
@@ -86,9 +90,7 @@ public class Primos extends JPanel
             calculadora.addPropertyChangeListener((PropertyChangeEvent p) ->
             {
                 if (p.getPropertyName().equals("progress"))
-                {
                     progreso.setValue((Integer) p.getNewValue());
-                }
             });
 
             obtenerPrimos.setEnabled(false);
@@ -114,7 +116,7 @@ public class Primos extends JPanel
         centro.setLayout(new BorderLayout());
         mostrarPrimos.setEditable(false);
         soporte.setWheelScrollingEnabled(true);
-        centro.add(soporte, BorderLayout.CENTER);
+        centro.add(soporte, CENTER);
 
         sur.setLayout(new GridLayout(1, 3, 10, 10));
         cancelar.setEnabled(false);

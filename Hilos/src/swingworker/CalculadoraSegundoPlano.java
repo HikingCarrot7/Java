@@ -1,7 +1,7 @@
 package swingworker;
 
+import static java.lang.String.valueOf;
 import java.util.concurrent.ExecutionException;
-
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
 
@@ -22,7 +22,7 @@ public class CalculadoraSegundoPlano extends SwingWorker<String, Object>
     {
         long nesimoFib = fibonacci(numero);
 
-        return String.valueOf(nesimoFib);
+        return valueOf(nesimoFib);
     }
 
     @Override
@@ -41,12 +41,9 @@ public class CalculadoraSegundoPlano extends SwingWorker<String, Object>
     private long fibonacci(int numero)
     {
         if (numero == 0 || numero == 1)
-        {
             return numero;
-        } else
-        {
+        else
             return fibonacci(numero - 1) + fibonacci(numero - 2);
-        }
     }
 
 }

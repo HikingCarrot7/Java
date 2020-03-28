@@ -1,17 +1,18 @@
 package primeracercamiento;
 
 import java.awt.BorderLayout;
+import static java.awt.BorderLayout.CENTER;
+import static java.awt.BorderLayout.SOUTH;
 import java.awt.Color;
-import java.awt.Component;
+import static java.awt.Color.black;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Thread.sleep;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 public class Lamina extends JPanel
 {
@@ -43,7 +44,7 @@ public class Lamina extends JPanel
 
         public void dibujarPelota(Graphics g)
         {
-            setBackground(Color.black);
+            setBackground(black);
 
             g.setColor(new Color(new SecureRandom().nextInt(255), new SecureRandom().nextInt(255), new SecureRandom().nextInt(255)));
             g.fillOval(xPos += velX, yPos += velY, 40, 40);
@@ -70,13 +71,13 @@ public class Lamina extends JPanel
 
         anadirElementos();
 
-        pelota.setBackground(Color.black);
+        pelota.setBackground(black);
 
         /*timer = new Timer(8, (ActionEvent e) ->
          {
          repaint();
          });
-		
+
          timer.start();*/
     }
 
@@ -96,14 +97,10 @@ public class Lamina extends JPanel
         for (int i = 0; i < pelotas.size(); i++)
         {
             if (pelotas.get(i).xPos > 500 || pelotas.get(i).xPos < 0)
-            {
                 pelotas.get(i).setVelX();
-            }
 
             if (pelotas.get(i).yPos > 500 || pelotas.get(i).yPos < 0)
-            {
                 pelotas.get(i).setVelY();
-            }
         }
     }
 
@@ -118,27 +115,21 @@ public class Lamina extends JPanel
 
         dale = new JButton("Dale!");
 
-        dale.addActionListener(new ActionListener()
+        dale.addActionListener((ActionEvent e) ->
         {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                pelotas.add(new Pelota(20, 20, 4, 6));
-
-                Thread thread = new Thread(new muevePelota(pelotas.get(pelotas.size() - 1)));
-
-                thread.start();
-
-                hilos.add(thread);
-
-            }
-
+            pelotas.add(new Pelota(20, 20, 4, 6));
+            
+            Thread thread = new Thread(new muevePelota(pelotas.get(pelotas.size() - 1)));
+            
+            thread.start();
+            
+            hilos.add(thread);
         });
 
         boton.add(dale);
 
-        add(pelota, BorderLayout.CENTER);
-        add(boton, BorderLayout.SOUTH);
+        add(pelota, CENTER);
+        add(boton, SOUTH);
 
     }
 
@@ -156,10 +147,9 @@ public class Lamina extends JPanel
         public void run()
         {
             while (true)
-            {
                 try
                 {
-                    Thread.sleep(8);
+                    sleep(8);
 
                     pelota.dibujarPelota(getGraphics());
 
@@ -168,7 +158,6 @@ public class Lamina extends JPanel
                 {
 
                 }
-            }
 
         }
 

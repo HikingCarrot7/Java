@@ -1,11 +1,13 @@
 package gato;
 
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Scanner;
 
 public class Gato
 {
 
-    static Scanner teclado = new Scanner(System.in);
+    static Scanner teclado = new Scanner(in);
 
     public static void main(String[] args)
     {
@@ -42,9 +44,9 @@ public class Gato
                     if (!hayValorPosicion(tablero, filas, columnas, vacio))
                         correcto = true;
                     else
-                        System.out.println("Esa posición ya está ocupada");
+                        out.println("Esa posición ya está ocupada");
                 else
-                    System.out.println("Esa posición no existe");
+                    out.println("Esa posición no existe");
 
             } while (!correcto);
 
@@ -66,25 +68,25 @@ public class Gato
 
         if (simbolo != simboloDef)
             if (simbolo == J1)
-                System.out.println("Ganó el jugador 1 por línea");
+                out.println("Ganó el jugador 1 por línea");
             else
-                System.out.println("Ganó el jugador 2 por línea");
+                out.println("Ganó el jugador 2 por línea");
 
         simbolo = coincidenciaColumna(matriz, simboloDef);
 
         if (simbolo != simboloDef)
             if (simbolo == J1)
-                System.out.println("Ganó el jugador 1 por columna");
+                out.println("Ganó el jugador 1 por columna");
             else
-                System.out.println("Ganó el jugador 2 por columna");
+                out.println("Ganó el jugador 2 por columna");
 
         simbolo = coincidenciaDiagonal(matriz, simboloDef);
 
         if (simbolo != simboloDef)
             if (simbolo == J1)
-                System.out.println("Ganó el jugador 1 por diagonal");
+                out.println("Ganó el jugador 1 por diagonal");
             else
-                System.out.println("Ganó el jugador 2 por diagonal");
+                out.println("Ganó el jugador 2 por diagonal");
 
     }
 
@@ -99,16 +101,16 @@ public class Gato
     {
 
         if (turno)
-            System.out.println("Es el turno del jugador 1");
+            out.println("Es el turno del jugador 1");
         else
-            System.out.println("Es el turno del jugador 2");
+            out.println("Es el turno del jugador 2");
 
     }
 
     public static int pedirInteger(String mensaje)
     {
 
-        System.out.println(mensaje);
+        out.println(mensaje);
         int numero = teclado.nextInt();
 
         return numero;
@@ -128,22 +130,20 @@ public class Gato
     public static void rellenarMatriz(char[][] matriz, char simbolo)
     {
 
-        for (int i = 0; i < matriz.length; i++)
+        for (char[] matriz1 : matriz)
             for (int j = 0; j < matriz.length; j++)
-                matriz[i][j] = simbolo;
+                matriz1[j] = simbolo;
 
     }
 
     public static void mostrarMatriz(char[][] matriz)
     {
 
-        for (int i = 0; i < matriz.length; i++)
+        for (char[] matriz1 : matriz)
         {
             for (int j = 0; j < matriz[0].length; j++)
-                System.out.print(matriz[i][j] + " ");
-
-            System.out.println("");
-
+                out.print(matriz1[j] + " ");
+            out.println("");
         }
 
     }
@@ -152,7 +152,7 @@ public class Gato
     {
 
         for (int i = 0; i < matriz.length; i++)
-            for (int j = 0; j < matriz[0].length; i++)
+            for (int j = 0; j < matriz[0].length; j++)
                 if (matriz[i][j] == simboloDef)
                     return false;
 

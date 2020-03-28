@@ -17,7 +17,7 @@ public class PruebaFibonacci extends JFrame
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("N�meros de fibonacci");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         add(numerosFibonacci);
         setVisible(true);
     }

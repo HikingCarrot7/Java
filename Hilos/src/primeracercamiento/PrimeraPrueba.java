@@ -1,5 +1,8 @@
 package primeracercamiento;
 
+import static java.lang.System.out;
+import static java.lang.Thread.sleep;
+
 public class PrimeraPrueba
 {
 
@@ -38,13 +41,13 @@ class imprimirMensaje implements Runnable
         {
             try
             {
-                Thread.sleep(tiempo);
+                sleep(tiempo);
 
             } catch (InterruptedException e)
             {
             }
 
-            System.out.println("Esta es una prueba con el " + nombre);
+            out.println("Esta es una prueba con el " + nombre);
         }
 
     }

@@ -1,5 +1,6 @@
 package gato;
 
+import static java.lang.System.out;
 import java.util.Scanner;
 
 public class CalculadoraDias
@@ -13,19 +14,19 @@ public class CalculadoraDias
         int year, diasFebrero, diaInicio, mesInicio, diaFinal, mesFinal;
         int total;
 
-        System.out.println("Inserte el año");
+        out.println("Inserte el año");
         year = in.nextInt();
 
-        System.out.println("Inserte el día");
+        out.println("Inserte el día");
         diaInicio = in.nextInt();
 
-        System.out.println("Inserte el mes");
+        out.println("Inserte el mes");
         mesInicio = in.nextInt();
 
-        System.out.println("Inserte el día final");
+        out.println("Inserte el día final");
         diaFinal = in.nextInt();
 
-        System.out.println("Inserte el mes final");
+        out.println("Inserte el mes final");
         mesFinal = in.nextInt();
 
         if (bisiesto(year))
@@ -41,7 +42,7 @@ public class CalculadoraDias
             total = dias(diasFebrero, diaInicio, mesInicio, diaFinal, mesFinal);
         }
 
-        System.out.println("Los días restantes son: " + total);
+        out.println("Los días restantes son: " + total);
 
     }
 

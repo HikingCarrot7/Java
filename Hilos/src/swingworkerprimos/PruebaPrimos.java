@@ -17,7 +17,7 @@ public class PruebaPrimos extends JFrame
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Primos!");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         add(primos);
         setVisible(true);
     }
