@@ -4,12 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.security.SecureRandom;
-
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -25,8 +23,8 @@ public class Lamina extends JPanel implements MouseListener, MouseMotionListener
     private class Circular
     {
 
-        private int diametroX;
-        private int diametroY;
+        private int radioX;
+        private int radioY;
         private double teta;
         private double inicio;
         private Color color;
@@ -36,14 +34,13 @@ public class Lamina extends JPanel implements MouseListener, MouseMotionListener
 
         public Circular(int radioX, int radioY, double teta, Point centro, Color color)
         {
-            this.diametroX = radioX;
-            this.diametroY = radioY;
-            this.teta = teta;
+            this.radioX = radioX;
+            this.radioY = radioY;
             this.centro = centro;
+            this.teta = teta;
             this.color = color;
 
             inicio = 0;
-
         }
 
         public void dibujar(Graphics g)
@@ -53,13 +50,12 @@ public class Lamina extends JPanel implements MouseListener, MouseMotionListener
             g.setColor(color);
             g.fillOval(movimiento.x, movimiento.y, 10, 10);
 
-            g.drawOval(centro.x - diametroX, centro.y - diametroY, diametroX * 2, diametroY * 2);
-
+            g.drawOval(centro.x - radioX, centro.y - radioY, radioX * 2, radioY * 2);
         }
 
         public Point trayectoria(double t)
         {
-            return new Point((int) (diametroX * Math.cos(t) + centro.x), (int) (diametroY * Math.sin(t) + centro.y));
+            return new Point((int) (radioX * Math.cos(t) + centro.x), (int) (radioY * Math.sin(t) + centro.y));
         }
 
     }
@@ -216,8 +212,6 @@ public class Lamina extends JPanel implements MouseListener, MouseMotionListener
 
         getActionMap().put("Desactivar", new AbstractAction()
         {
-            private static final long serialVersionUID = 1L;
-
             @Override
             public void actionPerformed(ActionEvent e)
             {
@@ -231,9 +225,7 @@ public class Lamina extends JPanel implements MouseListener, MouseMotionListener
         });
 
         rand = new SecureRandom();
-
         generarCirculos();
-
         timer.start();
     }
 
@@ -273,13 +265,13 @@ public class Lamina extends JPanel implements MouseListener, MouseMotionListener
 
         for (int i = 0; i < circular.length; i++)
         {
-            int diametroX = 20 + rand.nextInt(300);
-            int diametroY = 20 + rand.nextInt(300);
+            int radioX = 20 + rand.nextInt(300);
+            int radioY = 20 + rand.nextInt(300);
             double teta = -100 + rand.nextInt(200);
             Point centro = new Point(50 + rand.nextInt(1800), 50 + rand.nextInt(900));
             Color color = new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
 
-            circular[i] = new Circular(diametroX, diametroY, teta / 1000, centro, color);
+            circular[i] = new Circular(radioX, radioY, teta / 1000, centro, color);
         }
 
         generacionZoom = false;

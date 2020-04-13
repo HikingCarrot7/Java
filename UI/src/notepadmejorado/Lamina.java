@@ -85,11 +85,8 @@ public final class Lamina extends JPanel
         anadirAlGrupo(items, 4, alineacionitems);
 
         add(soporteTexto, BorderLayout.CENTER);
-
         add(soporteHerramientas, BorderLayout.WEST);
-
         add(mibarra, BorderLayout.NORTH);
-
     }
 
     public void anadirFuentes()
@@ -104,35 +101,22 @@ public final class Lamina extends JPanel
     public void anadirElementos(JMenuItem[][] items)
     {
         soporteHerramientas = new JPanel();
-
         herramientas = new JToolBar(JToolBar.VERTICAL);
-
         soporteHerramientas.add(herramientas);
-
         texto = new JTextPane();
-
         soporteTexto = new JScrollPane(texto);
-
         soporteTexto.setWheelScrollingEnabled(true);
-
         mibarra = new JMenuBar();
-
         emergente = new JPopupMenu();
-
         anadirMenuEmergente();
-
         anadirHerramientas(herramientas, herramientasColor);
-
         herramientas.addSeparator();
-
         anadirHerramientas(herramientas, alineacion);
-
         texto.setComponentPopupMenu(emergente);
 
         for (int i = 0; i < items.length - 2; i++)
         {
             mibarra.add(opciones[i]);
-
             anadirItems(opciones[i], items[i]);
         }
 
@@ -140,7 +124,6 @@ public final class Lamina extends JPanel
 
     public void anadirMenuEmergente()
     {
-
         JMenuItem cabecera = new JMenuItem("Set a background color...");
         cabecera.setEnabled(false);
 
@@ -154,18 +137,14 @@ public final class Lamina extends JPanel
 
     public void anadirHerramientas(JToolBar herramientas, JMenuItem items[])
     {
-
-        for (JMenuItem H : items)
-            herramientas.add(H);
-
+        for (JMenuItem item : items)
+            herramientas.add(item);
     }
 
     private class AccionEmergente extends AbstractAction
     {
 
-        private static final long serialVersionUID = 1L;
-
-        private Color color;
+        private final Color color;
 
         public AccionEmergente(String titulo, Color color)
         {
@@ -183,65 +162,51 @@ public final class Lamina extends JPanel
 
     public void anadirItems(JMenu opcion, JMenuItem[] items)
     {
-        for (JMenuItem I : items)
-            opcion.add(I);
+        for (JMenuItem item : items)
+            opcion.add(item);
     }
 
     public void anadirAcciones(JMenuItem[][] items)
     {
+        for (JMenuItem fuente : fuente)
+            fuente.addActionListener(new StyledEditorKit.FontFamilyAction("", fuente.getText()));
 
-        for (JMenuItem F : fuente)
-            F.addActionListener(new StyledEditorKit.FontFamilyAction("", F.getText()));
-
-        for (JMenuItem S : size)
-            S.addActionListener(new StyledEditorKit.FontSizeAction("", Integer.parseInt(S.getText())));
+        for (JMenuItem item : size)
+            item.addActionListener(new StyledEditorKit.FontSizeAction("", Integer.parseInt(item.getText())));
 
         anadirAtajos(items);
-
     }
 
     public void anadirAtajos(JMenuItem[][] items)
     {
-
         items[1][0].addActionListener(new StyledEditorKit.BoldAction());
         items[1][0].setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
         items[1][1].addActionListener(new StyledEditorKit.ItalicAction());
         items[1][1].setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_DOWN_MASK));
         items[1][2].addActionListener(new StyledEditorKit.UnderlineAction());
         items[1][2].setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.CTRL_DOWN_MASK));
-
     }
 
     public void anadirAlGrupo(JMenuItem[][] items, int indice, ButtonGroup grupo)
     {
-
         grupo = new ButtonGroup();
 
-        for (JMenuItem M : items[indice])
-            grupo.add(M);
-
+        for (JMenuItem item : items[indice])
+            grupo.add(item);
     }
 
     public JRadioButtonMenuItem anadirColores(Color color, String ruta)
     {
-
-        JRadioButtonMenuItem etiqueta = new JRadioButtonMenuItem(new ImageIcon(ruta));
-
-        etiqueta.addActionListener(new StyledEditorKit.ForegroundAction("", color));
-
-        return etiqueta;
-
+        JRadioButtonMenuItem button = new JRadioButtonMenuItem(new ImageIcon(ruta));
+        button.addActionListener(new StyledEditorKit.ForegroundAction("", color));
+        return button;
     }
 
     public JRadioButtonMenuItem anadirAlineacion(int i, String ruta)
     {
-
         JRadioButtonMenuItem etiqueta = new JRadioButtonMenuItem(new ImageIcon(ruta));
-
         etiqueta.addActionListener(new StyledEditorKit.AlignmentAction("", i));
-
         return etiqueta;
-
     }
 
 }
