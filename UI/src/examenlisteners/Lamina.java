@@ -351,11 +351,7 @@ public class Lamina extends JPanel implements MouseListener, MouseMotionListener
 
     public double distanciaPuntos(int x1, int y1, int x2, int y2)
     {
-
-        double distancia = (Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
-
-        return distancia;
-
+        return (Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
     }
 
     public int mouseTocandoVert(int mouseX, int mouseY)
@@ -369,7 +365,6 @@ public class Lamina extends JPanel implements MouseListener, MouseMotionListener
             if (dist <= circulos[i].getRadio())
             {
                 posicion = i;
-
                 break;
             }
         }

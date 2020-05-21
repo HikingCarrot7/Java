@@ -32,7 +32,6 @@ public class Rectangle
             return false;
 
         return !(y > otherRectangle.y + otherRectangle.h || otherRectangle.y > y + h);
-
     }
 
     public void generateGraphics(int color)
@@ -40,7 +39,6 @@ public class Rectangle
         for (int y = 0; y < h; y++)
             for (int x = 0; x < w; x++)
                 pixels[x + y * w] = color;
-
     }
 
     public void generateGraphics(int borderW, int color)
